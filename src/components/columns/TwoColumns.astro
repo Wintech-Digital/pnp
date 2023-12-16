@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+const images = {
+  'frame': () => import('/src/assets/images/Frame1000005248.png'),
+};
+const list = [
+    {
+        title: 'Iniciar sessão na sua conta',
+        body: 'Inicie sessão na sua conta no nosso casino utilizando as suas credenciais.'
+    },
+    {
+        title: 'Vá para a secção "Caixa" ou "Deposite na sua conta',
+        body: 'Uma vez conectado à sua conta, encontre a secção "Caixa", "Depósito" ou similar. Normalmente, esta secção pode ser encontrada no menu superior ou na página inicial da conta.'
+    },
+    {
+        title: 'Seleccione o seu método de pagamento preferido',
+        body: 'Escolha o método de pagamento mais conveniente para si a partir da lista de métodos de pagamento disponíveis. Aceitamos uma variedade de métodos de pagamento, incluindo cartões de crédito/débito, carteiras electrónicas e transferências bancárias.'
+    },
+    {
+        title: 'Introduzir as informações necessárias',
+        body: 'Introduza o montante necessário para o depósito e siga as instruções no ecrã, introduzindo o seu cartão, carteira ou outros dados necessários para o método de pagamento selecionado.'
+    },
+    {
+        title: 'Confirmar a transação',
+        body: 'Introduza o montante necessário para o depósito e siga as instruções no ecrã, introduzindo o seu cartão, carteira ou outros dados necessários para o método de pagamento selecionado.'
+    },
+    {
+        title: 'Sucesso!',
+        body: 'O seu depósito deve ter sido efectuado com sucesso. Em caso de problemas ou questões, contacte a nossa equipa de apoio.'
+    },
+
+
+]
+---
+<>
+<h1 class='text-34-37-700 sm:text-40-48-700 mb-[48px] sm:mb-[40px]'>
+    Opções de Pagamento: Depósitos e Saques no Pin-Up Casino
+</h1>  
+<div class="flex flex-col sm:flex-row gap-[48px]">
+    <div class='flex flex-col-reverse sm:flex-col'>
+        <Image 
+            src={images['frame']()} 
+            format='webp'
+            width='460'
+            alt={'frame'}
+            class="min-w-[460px] block sm:hidden"
+        />
+        <Image 
+            src={images['frame']()} 
+            format='webp'
+            width='392'
+            alt={'frame'}
+            class="min-w-[392px] hidden sm:block"
+        />
+        <h2 class='text-pnp text-24-26-700 mb-[24px] sm:text-28-34-700 sm:mt-[32px]'>
+             Guia para Fazer Depósitos: Passos Simples e Seguros
+        </h2>
+    </div>
+    <div>
+        <ul role="list" class="">
+            {list.map((item, index)=>(
+                <li class="flex gap-x-3 mb-[32px] last:mb-0">
+                    <div class="bg-pnp-green h-[28px] w-[28px] rounded-full flex items-center justify-center px-[11px] py-[10px]">
+                        <span class="text-16-24-600">{index+1}</span>
+                    </div>
+                    <div>
+                        <h3 class='text-18-28-600 text-pnp'>{item.title}</h3>
+                        <p class='text-16-24-400 text-pnp-grey20'>{item.body}</p>
+                    </div>
+                </li>
+            ))}
+          </ul>
+        </div>    
+</div>
+</>

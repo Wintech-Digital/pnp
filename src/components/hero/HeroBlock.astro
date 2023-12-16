@@ -1,0 +1,44 @@
+---
+import { getImage } from "astro:assets";
+import bgHero1 from "@assets/images/home-bg-hero1.png";
+import bgHero2 from "@assets/images/home-bg-hero2.png";
+import ButtonRounded from '@components/buttons/ButtonRounded.tsx';
+import SpaceBlock from "@components/spaces/SpaceBlock.astro";
+
+interface Props {
+    title: string;
+    descriptoin: string;
+}
+const {title, descriptoin} = Astro.props as Props;
+const bgImage1 = await getImage({ src: bgHero1, format: 'webp' });
+const bgImage2 = await getImage({ src: bgHero2, format: 'webp' });
+// background-position: bottom 0 right 145px top 0, center top;
+// background-size: auto, cover; bg-auto | bg-cover | bg-contain
+
+const rounded = `rounded-[32px] md:rounded-[48px]`;
+const paddings = `px-4 pb-4 pt-[218px] sm:px-[56px] sm:py-[48px]`;
+const margins = ' mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]';
+const bgImageSize = `bg-[length:auto_200px,auto_350px] sm:bg-[length:auto]`;
+const bgImagePosition = `bg-[position:_right_90px_top_0px,_right_-30px_top_-150px] md:bg-[position:_right_90px_top_0px,_right_-30px_top_0px]`;
+
+// bg-[position:center_bottom,_right_-15px_bottom_-20px,_left_0px_bottom_0px]
+// bg-[position:center_bottom,_right_-15px_bottom_-20px,_left_0px_bottom_0px]
+---
+<SpaceBlock>
+    <div 
+        class=`mr-0 border border-zinc-700 bg-[#161b1b] bg-no-repeat ${paddings} ${margins} ${bgImageSize} ${bgImagePosition} ${rounded}`
+        style={`background-image: url('${bgImage2.src}'), url('${bgImage1.src}')`}
+        >
+        <div class=" max-w-[585px] flex flex-col items-start gap-4">
+            <h1 class="text-40-44-700 sm:text-50-56-700">  
+                {title}
+            </h1>
+            <p class='text-16-24-400'>
+                {descriptoin}
+            </p>
+            <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" />
+        </div>  
+    </div>
+</SpaceBlock>
+
+<!-- clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%); -->

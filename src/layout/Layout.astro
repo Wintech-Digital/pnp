@@ -1,0 +1,48 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import Header from '@components/header/Header';
+import Footer from '@components/footer/Footer.astro';
+import Accordion from '@components/accordion/Accordion.astro';
+import SpaceBlock from '@components/spaces/SpaceBlock.astro';
+
+interface Props {
+    title?: string;
+}
+
+const {props, generator} = Astro;
+const { title = 'Empty title' }: Props = props;
+
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={generator} />
+		<title>{ title }</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<GoogleFontsOptimizer url={'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap'}>
+		</GoogleFontsOptimizer>
+		<link
+			rel="icon"
+			type="image/svg"
+			sizes="32x32"
+			href="./images/logo.svg"
+		/>
+		<ViewTransitions />
+	</head>
+	<body class="py-4 pl-4 pr-0 lg:p-10 bg-[#202726] text-pnp w-full border-[1px] border-pnp/50">
+		<div class="max-w-[1360px] mx-auto">
+			<Header client:only="react"/>
+			<main>
+				<slot/>
+			</main>
+			<SpaceBlock>
+				<Accordion/>
+			<SpaceBlock>
+			</SpaceBlock>
+				<Footer />
+			</SpaceBlock>
+		</div>
+	</body>
+</html>

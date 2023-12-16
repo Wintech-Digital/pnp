@@ -1,0 +1,33 @@
+---
+import InfoBlock from "./InfoBlock.astro";
+import infoPic1 from "@assets/svg/apple.svg";
+import infoPic2 from "@assets/svg/android.svg";
+import infoPic3 from "@assets/svg/monitor.svg";
+
+const infoTitle = 'Descubra as Funcionalidades e Vantagens do Aplicativo Pin-Up Casino';
+const infoData = [
+    {
+        bgStyle: 'gradient-green-coner-1',
+        title: 'Jogar no Android: Guia e Dicas',
+        image: infoPic1,
+        description: 'Pronto para mergulhar no mundo dos jogos de azar no seu Android? Conheça os melhores jogos, dicas e definições para se divertir ao máximo no seu dispositivo.',
+    },
+    {
+        bgStyle: 'gradient-green-coner-2',
+        title: 'Jogar no iOS: Vantagens e Facilidades',
+        image: infoPic2,
+        description: 'Descubra o mundo dos jogos iOS com as suas vantagens únicas. As capacidades desta plataforma permitem-lhe desfrutar de jogos emocionantes criados especificamente para o seu dispositivo.',
+    },
+    {
+        bgStyle: 'gradient-green-coner-3',
+        title: 'Experiência de Jogo Móvel vs. Desktop',
+        image: infoPic3,
+        description: 'Jogue em qualquer lugar! Desfrute da emoção num formato móvel conveniente ou mergulhe nos clássicos dos jogos de tabuleiro para uma experiência de jogo completa.',
+    },
+];
+---
+<InfoBlock
+    infoTitle={infoTitle}
+    infoData={infoData}
+/>
+

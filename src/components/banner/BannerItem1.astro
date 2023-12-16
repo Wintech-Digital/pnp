@@ -1,0 +1,24 @@
+---
+import { getImage } from "astro:assets";
+import Banner from "./Banner.astro";
+import bgHero from "@assets/images/home-bg-hero1.png";
+
+const title = 'Jogue e ganhe agora mesmo!';
+const description = 'Mergulhe no excitante mundo do jogo. Comece o jogo no modo de demonstração ou tente imediatamente a sua sorte com dinheiro real.';
+const bgImage = await getImage({ src: bgHero, format: 'webp' });
+
+---
+<Banner
+    title = {title}
+    description= {description}
+    image = {bgImage}
+/>
+
+
+<!-- 
+    const images = {
+        'mastercard': () => import('/src/assets/svg/mastercard.svg'),
+    };
+    <Image src={images[`${item}`]()} format='webp' height={h} alt={item} /> 
+-->
+  

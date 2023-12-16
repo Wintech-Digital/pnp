@@ -1,0 +1,19 @@
+---
+import Home from 'astro-heroicons/mini/Home.astro';
+import ChevronRight from 'astro-heroicons/mini/ChevronRight.astro';
+
+interface Props {
+    key: string;
+    name: string;
+}
+const { key, name } = Astro.props as Props;
+---
+<> 
+    { (key !== 'home') 
+        ? <ChevronRight class="h-[20px]"/> 
+        : <Home class="h-[20px]"/>
+    }
+    <span>
+        {name}
+    </span>
+</>
