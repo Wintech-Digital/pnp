@@ -16,22 +16,17 @@ const images = {
    const images = await import.meta.glob('/src/assets/svg/*.svg');
 */
 ---
-<>
-    <h2 class="text-24-26-700 sm:text-28-34-700">
-        {title}
-    </h2>
-    <div class="mt-6 grid gap-x-4 gap-y-4 grid-cols-2 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 lg:mx-0 lg:grid-cols-6">
-            {providersName.map(item => {
-                const h = (item !== 'mastercard') ? "25" : "45";
-                return (
-                    <div class='flex justify-center items-center px-8 py-8 h-[120px] rounded-[24px] bg-pnp/[.05]'>
-                        <Image 
-                            src={images[`${item}`]()} 
-                            format='webp' height={h} 
-                            alt={item}
-                        />
-                    </div>
-                )
-            })}
-    </div>
-</>
+<div class="mt-6 grid gap-x-4 gap-y-4 grid-cols-2 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 lg:mx-0 lg:grid-cols-6">
+    {providersName.map(item => {
+        const h = (item !== 'mastercard') ? "25" : "45";
+        return (
+            <div class='flex justify-center items-center px-8 py-8 h-[120px] rounded-[24px] bg-pnp/[.05]'>
+                <Image 
+                    src={images[`${item}`]()} 
+                    format='webp' height={h} 
+                    alt={item}
+                />
+            </div>
+        )
+    })}
+</div>

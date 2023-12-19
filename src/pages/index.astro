@@ -1,43 +1,29 @@
 ---
-import { Image, getImage } from "astro:assets";
+import { getImage } from "astro:assets";
 import Layout from '@layout/Layout.astro';
-import HeroBlock from '@components/hero/HeroBlock.astro';
+
+import BlockHero from '../content/BlockHero/BlockHero.astro';
+import BlockConciseFormat from '../content/BlockConciseFormat/BlockConciseFormat.astro';
+import BlockCasinoInfo from '../content/BlockCasinoInfo/BlockCasinoInfo.astro';
+import BlockBonus from '../content/BlockBonus/BlockBonus.astro';
+import BlockCasinoInfo2 from '../content/BlockCasinoInfo2/BlockCasinoInfo2.astro';
+import BlockCasinoProviders from '../content/BlockCasinoProviders/BlockCasinoProviders.astro';
+import BlockList from '../content/BlockList/BlockList.astro';
+import BlockSuporte from '../content/BlockSuporte/BlockSuporte.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
-import Slots from '@components/slots/Slots.astro';
 import Slider from '@components/slider/Slider';
-import SliderItem from '@components/slider/SliderItem';
-import SliderItem2 from '@components/slider/SliderItem2';
 import SliderItem3 from '@components/slider/SliderItem3';
-import InfoInCol from "@components/infoInCol/InfoInCol.astro";
-import InfoInCol2 from "@components/infoInCol/InfoInCol2.astro";
-import Providers from "@components/providers/Providers.astro";
-import TextTopic1 from '@components/topic/Topic1.astro';
-import TextTopic2 from '@components/topic/Topic2.astro';
-import TextTopic3 from '@components/topic/Topic3.astro';
-import ArticlesList from '@components/showMoreArticles/ArticlesList.astro';
-import ArticlesList2 from '@components/showMoreArticles/ArticlesList2.astro';
-import TwoColumns from '@components/columns/TwoColumns.astro';
-import TwoColumns1 from '@components/columns/TwoColumns1.astro';
 import Section from '@components/accordion/AccordionSection.astro';
 import SpaceBlock from "@components/spaces/SpaceBlock.astro";
-import SpaceBlockSlider from "@components/spaces/SpaceBlockSlider.astro";
 import BannerItem1 from "@components/banner/BannerItem1.astro";
 
 import bonusCardPic1 from "@assets/images/bonus1-card.png";
 import bonusCardPic2 from "@assets/images/bonus2-card.png";
 import bonusCardPic3 from "@assets/images/bonus3-card.png";
-import bonusCardPic4 from "@assets/images/bonus4-card.png";
-import bonusCardPic5 from "@assets/images/bonus5-card.png";
-import bonusCardPic6 from "@assets/images/bonus6-card.png";
 
 import slotsPic1 from "@assets/images/slots-1.png";
 import slotsPic2 from "@assets/images/slots-2.png";
 import slotsPic3 from "@assets/images/slots-3.png";
-
-
-const heroTitle = `Pin Up Casino: Experiência de Cassino Premium do Brasil. Jogue Agora!`;
-const heroDescription = `Tudo sobre Pin Up Bookmaker e quais opções de apostas ela oferece? Como preencher o formulário para cadastro na plataforma. Quais são as promoções e bônus. É fácil fazer um depósito e retirar dinheiro do site.`;
-const breadcrumb = [{key: 'home', name: 'Home'}];
 
 const bonus1pic = await getImage({ src: bonusCardPic1, format: 'webp' });
 const bonus2pic = await getImage({ src: bonusCardPic2, format: 'webp' });
@@ -47,48 +33,6 @@ const slots1pic = await getImage({ src: slotsPic1, width: 433, format: 'webp' })
 const slots2pic = await getImage({ src: slotsPic2, width: 433, format: 'webp' });
 const slots3pic = await getImage({ src: slotsPic3, width: 433, format: 'webp' });
 
-const slotsList = [
-    {
-        url: '/',
-        title: 'Hell Hot',
-        image: 'hell-hot',
-    },
-    {
-        url: '/',
-        title: 'Demi Gods II',
-        image: 'demi-gods-2',
-    },
-    {
-        url: '/',
-        title: 'Gates of Olympus',
-        image: 'gates-of-olympus',
-    },
-    {
-        url: '/',
-        title: 'Leprechaun Riches',
-        image: 'leprechaun-riches',
-    },
-    {
-        url: '/',
-        title: 'Majestic King',
-        image: 'majestic-king',
-    },
-    {
-        url: '/',
-        title: 'Wolf Strike',
-        image: 'wolf-strike',
-    },
-    {
-        url: '/',
-        title: 'Hot Fruits',
-        image: 'hot-fruits',
-    },
-    {
-        url: '/',
-        title: '9 coins',
-        image: 'coins',
-    },
-];
 const slotsList1 = [
     {
         name: 'Hell Hot',
@@ -106,38 +50,14 @@ const slotsList1 = [
         picObj: slots3pic,
     },
 ];
-const sliderBonuses= [
-    {
-        title: 'Avaliação Gratuita',
-        bonus: '100% up to €2,000',
-        pic: bonus1pic,
-    },
-    {
-        title: 'Descontos na compra de itens',
-        bonus: '€750',
-        pic: bonus2pic,
-    },
-    {
-        title: 'Assinaturas Mensais',
-        bonus: '€1,600',
-        pic: bonus3pic,
-    },
-];
 ---
 <Layout>
-    <Breadcrumbs
-        breadcrumb={breadcrumb}
-    />
-
-    <HeroBlock
-        title={heroTitle}
-        descriptoin={heroDescription}
-    />
-    <SpaceBlock>
-        <BannerItem1/>
-    </SpaceBlock>
-
-    <SpaceBlock>
+    <Breadcrumbs breadcrumb={[{key: 'home', name: 'Home'}]}/>
+    <BlockHero/>
+    <BlockConciseFormat/>
+    <BlockCasinoInfo/>
+    <BlockBonus/>
+    <div class="mr-4 mb-40px sm:mb-[80px] md:mb-[90px] ld:lg-[100px]">
         <Slider title="Promoções e Bônus do Pin Up Casino">
             { slotsList1.map(item=>(
                 <SliderItem3
@@ -147,102 +67,13 @@ const sliderBonuses= [
                 />
             ))}
         </Slider>
-    </SpaceBlock>
-    
-    <SpaceBlock>
-        <ArticlesList2/>
-    </SpaceBlock>
-    
-    <SpaceBlock>
-        <ArticlesList2/>
-    </SpaceBlock>
+    </div>
 
-    <SpaceBlock>
-        <TwoColumns/>
-    </SpaceBlock>
-    
-    <ArticlesList/>
-
-    <TextTopic1/>
-    <TextTopic2/>
-    <TextTopic3/>
-
-    <SpaceBlock>
-        <Slider title="Promoções e Bônus do Pin Up Casino">
-            { sliderBonuses.map(item=>(
-                <SliderItem2
-                    text={item.title} 
-                    amount={item.bonus}
-                    pic={item.pic}
-                />
-            ))}
-        </Slider>
-    </SpaceBlock>
-
-    <SpaceBlock>
-        <Slider title="Ofertas especiais">
-            <SliderItem
-                text='PRIVILÉGIOS VIP'
-                description='Tenha acesso a promoções exclusivas e bônus luxuosos!'
-            >
-                <Image
-                    src={bonusCardPic4}
-                    width={143}
-                    format='webp'
-                    alt="imagepng."
-                />
-            </SliderItem>
-        
-            <SliderItem
-                text='BEM-VINDO'
-                description='Receba seu bônus de inscrição!'
-            >
-                <Image
-                    src={bonusCardPic5}
-                    width={143}
-                    format='webp'
-                    quality={'high'}
-                    alt="imagepng."
-                />
-            </SliderItem>
-    
-            <SliderItem
-                text='BÔNUS EXCLUSIVO'
-                description='Dobre seu depósito para novos jogadores!'
-            >
-                <Image
-                    src={bonusCardPic6}
-                    width={143}
-                    format='webp'
-                    alt="imagepng."
-                />
-            </SliderItem>
-        </Slider>
-    </SpaceBlock>
-
-
-    <SpaceBlock>
-        <Providers/>
-    </SpaceBlock>
-
-    <SpaceBlockSlider>
-        <InfoInCol/>
-    </SpaceBlockSlider>
-    
-    <SpaceBlockSlider>
-        <InfoInCol2/>
-    </SpaceBlockSlider>
-        
-    <SpaceBlock>
-        <Slots
-            name="Avaliação de máquinas caça-níqueis"
-            list={slotsList}
-        />
-    </SpaceBlock>
-
-    <SpaceBlock>
-        <TwoColumns1/>
-    </SpaceBlock>
+    <BlockCasinoInfo2/>
+    <BlockCasinoProviders/>
+    <BlockList/>
+    <BlockSuporte/>
+    <BannerItem1/>
 
     <SpaceBlock>
         <Section
@@ -250,7 +81,5 @@ const sliderBonuses= [
             body='E ainda, é PinUp real ou falso? Nós sabemos a resposta para esta pergunta! Pin-Up Casino é uma ótima plataforma para todos os fãs de jogos de cassino e apostas. Uma ampla gama de serviços, bônus rentáveis, métodos de pagamento seguros e confiáveis, serviço de suporte de alta qualidade e grandes ganhos já estão esperando por você no PinUp Brasil ! Não perca tempo e inscreva-se logo! E não se esqueça dos bônus de boas-vindas!' 
         />
     </SpaceBlock>
-
-
 </Layout>
 

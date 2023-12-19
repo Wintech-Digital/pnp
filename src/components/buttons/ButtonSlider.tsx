@@ -1,43 +1,32 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
-type ButtonType = 'left' | 'right';
-type Colors = 'red' | 'green';
-
-interface Props {
-    type: ButtonType;
-    color: Colors;
-    className?: string;
-    onClick?: () => void;
-}
-const btnColors = {
-    red: 'hover:bg-pnp-red hover:border-pnp-red',
-    green: 'hover:bg-pnp-green hover:border-pnp-green',
+const CustomRightArrow = ({ onClick, ...rest }) => {
+  const {
+    onMove, // onMove means if dragging or swiping in progress.
+    carouselState: { currentSlide, deviceType },
+  } = rest;
+  return (
+    <button
+      onClick={() => onClick()}
+      className="absolute top-[40%] right-4 z-50 rounded-full border border-pnp transition-colors ease-in-out duration-300 bg-[#000]/[.2] hover:bg-pnp-green hover:border-pnp-green"
+    >
+      <ArrowRightIcon className={`h-10 w-10 px-[8px] py-[8px]`} />
+    </button>
+  );
+};
+const CustomLeftArrow = ({ onClick, ...rest }) => {
+  const {
+    onMove, // onMove means if dragging or swiping in progress.
+    carouselState: { currentSlide, deviceType },
+  } = rest;
+  return (
+    <button
+      onClick={() => onClick()}
+      className="absolute top-[40%] left-4 z-50 rounded-full border border-pnp transition-colors ease-in-out duration-300 bg-[#000]/[.2] hover:bg-pnp-green hover:border-pnp-green"
+    >
+      <ArrowLeftIcon className={`h-10 w-10 px-[8px] py-[8px]`} />
+    </button>
+  );
 };
 
-const classN = ({color, className}) => {
-    return `rounded-full border border-pnp transition-colors ease-in-out duration-300 ${btnColors[color]} ${className}`;
-}
-
-const icon = ({type}:{type: ButtonType}) => {
-    const isLeft = type === 'left';
-    const isRight = type === 'right';
-    const styles = `h-10 w-10 px-[8px] py-[8px]`;
-
-    if(isLeft){
-        return <ArrowLeftIcon className={styles}/>
-    }
-    if(isRight){
-        return <ArrowRightIcon className={styles}/>
-    }
-    return null;
-}
-const ButtonSlider = ({...props}: Props) => {
-    const {type, color, className, ...rest} = props;
-    return (
-      <button className={classN({color, className})} {...rest}>
-        {icon({type})}
-      </button>
-    )
-};
-
-export default ButtonSlider;
+export { CustomLeftArrow, CustomRightArrow };

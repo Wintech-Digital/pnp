@@ -9,9 +9,9 @@ interface Props {
   pic: GetImageResult;
 }
 const SliderItem2: FC<Props> = ({ text, amount, pic}) => (
-  <div className="card min-w-[323px] shadow-2xl transition duration-300 ease-in-out hover:gradient-red rounded-[32px] overflow-hidden">
+  <div className="card mx-[10px] sm:mx-2 min-w-[323px] shadow-2xl transition duration-300 ease-in-out hover:gradient-red rounded-[32px] overflow-hidden">
     <div
-        className="w-[433px] h-[164px]" 
+        className="w-[433px] h-[140px]" 
         style={{
             backgroundPosition: 'center',
             backgroundImage: `url('${pic.src}')`, 

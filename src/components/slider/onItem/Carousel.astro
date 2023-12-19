@@ -1,0 +1,119 @@
+---
+import { getImage } from "astro:assets";
+import bgHero1 from "@assets/images/bonus1-card.png";
+import bgHero2 from "@assets/images/bonus2-card.png";
+import bgHero3 from "@assets/images/bonus3-card.png";
+import bgHero4 from "@assets/images/bonus4-card.png";
+const bgImage1 = await getImage({ src: bgHero1, format: 'webp' });
+const bgImage2 = await getImage({ src: bgHero2, format: 'webp' });
+const bgImage3 = await getImage({ src: bgHero3, format: 'webp' });
+const bgImage4 = await getImage({ src: bgHero4, format: 'webp' });
+
+const list = [{ img: bgImage1 },{ img: bgImage2 },{ img: bgImage3 },{ img: bgImage4 }];
+
+const heights = 'h-56 sm:h-64 xl:h-80 2xl:h-96';
+---
+
+<div id="carousel-example" class="relative w-full" >
+        <!-- Slider controls -->
+        <button
+            id="data-carousel-prev"
+            type="button"
+            class="hidden group absolute left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+        >
+        <span
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+        >
+            <svg
+                class="h-4 w-4 text-white dark:text-gray-800"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+            >
+                <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 1 1 5l4 4"
+                />
+            </svg>
+            <span class="hidden">Previous</span>
+        </span>
+    </button>
+    <button
+        id="data-carousel-next"
+        type="button"
+        class="group absolute right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+    >
+        <span
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+        >
+            <svg
+                class="h-4 w-4 text-white dark:text-gray-800"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+            >
+                <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 9 4-4-4-4"
+                />
+            </svg>
+            <span class="hidden">Next</span>
+        </span>
+    </button>
+
+    <!-- Carousel wrapper -->
+    <div class=`${heights} relative overflow-hidden rounded-lg`>
+        <!-- Items -->
+        {
+            list.map((item, index) => (
+                <div id={`carousel-item-${index+1}`} class="hidden duration-300 ease-in-out border border-pnp-red">
+                    <img
+                        src={item.img.src}
+                        class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+                        alt="..."
+                    />
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    import { Carousel } from 'flowbite';
+    const carouselElement = document.getElementById('carousel-example');
+    const items = [
+        {
+            position: 0,
+            el: document.getElementById('carousel-item-1'),
+        },
+        {
+            position: 1,
+            el: document.getElementById('carousel-item-2'),
+        },
+        {
+            position: 2,
+            el: document.getElementById('carousel-item-3'),
+        },
+        {
+            position: 3,
+            el: document.getElementById('carousel-item-4'),
+        },
+    ];
+
+    const options = { defaultPosition: 0 };
+    const instanceOptions = { id: 'carousel-example'};
+    const carousel = new Carousel(carouselElement, items, options, instanceOptions);
+    const $prevButton = document.getElementById('data-carousel-prev');
+    const $nextButton = document.getElementById('data-carousel-next');
+    $prevButton.addEventListener('click', () => carousel.prev());
+    $nextButton.addEventListener('click', () => carousel.next());
+</script>
+

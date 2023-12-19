@@ -1,0 +1,129 @@
+---
+import { Image, getImage } from "astro:assets";
+import bonusCardPic1 from "@assets/images/bonus1-card.png";
+import bonusCardPic2 from "@assets/images/bonus2-card.png";
+import bonusCardPic3 from "@assets/images/bonus3-card.png";
+import bonusCardPic4 from "@assets/images/bonus4-card.png";
+import bonusCardPic5 from "@assets/images/bonus5-card.png";
+import bonusCardPic6 from "@assets/images/bonus6-card.png";
+
+import ButtonSlider from '@components/buttons/ButtonSlider';
+import SliderItem from '@components/slider/SliderItem';
+
+const title = 'Ofertas especiais';
+
+const wrap = "min-w-[323px] w-[300px]";
+const wrapMd = "md:w-[433px] md:h-[212px]";
+const blockFlex = "flex flex-col-reverse items-center md:flex-row";
+const blockSizes = "rounded-[24px] px-[16px] py-[16px]";
+const blockSizesMd = "md:rounded-[32px] md:px-[20px] md:py-[20px]";
+const blockBorder = "border border-pnp/[.1]";
+const blockBgTransition = "transition duration-300 ease-in-out";
+const blockBg = "bg-pnp/[.05] hover:gradient-green";
+const textBlockFlex = "flex flex-col items-start justify-between";
+
+const gridList = 'sm:grid sm:gap-6 sm:grid-cols-2 md:gap-6 md:grid-cols-3 lg:gap-6 lg:grid-cols-3 xl:gap-6 xl:grid-cols-4';
+const flexList = 'flex flex-row overflow-x-scroll gap-4';
+---
+<div>
+    <div class="flex flex-row items-center justify-between space-x-[30px] mb-[32px]">
+      <span class="text-[24px] leading-[36px] font-bold">
+        {title}
+      </span>
+    </div>
+
+    <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark relative">
+        <ul role="list" class=`${flexList} ${gridList} slider-container py-4 !mx-0`>
+            <SliderItem
+                text='PRIVILÉGIOS VIP'
+                description='Tenha acesso a promoções exclusivas e bônus luxuosos!'
+            >
+                <Image
+                    src={bonusCardPic4}
+                    width={143}
+                    format='webp'
+                    alt="imagepng."
+                />
+            </SliderItem>
+
+    <SliderItem
+        text='BEM-VINDO'
+        description='Receba seu bônus de inscrição!'
+    >
+        <Image
+            src={bonusCardPic5}
+            width={143}
+            format='webp'
+            quality={'high'}
+            alt="imagepng."
+        />
+    </SliderItem>
+
+    <SliderItem
+        text='BÔNUS EXCLUSIVO'
+        description='Dobre seu depósito para novos jogadores!'
+    >
+        <Image
+            src={bonusCardPic6}
+            width={143}
+            format='webp'
+            alt="imagepng."
+        />
+    </SliderItem>
+    <SliderItem
+    text='PRIVILÉGIOS VIP'
+    description='Tenha acesso a promoções exclusivas e bônus luxuosos!'
+>
+    <Image
+        src={bonusCardPic4}
+        width={143}
+        format='webp'
+        alt="imagepng."
+    />
+</SliderItem>
+
+<SliderItem
+    text='BEM-VINDO'
+    description='Receba seu bônus de inscrição!'
+>
+    <Image
+        src={bonusCardPic5}
+        width={143}
+        format='webp'
+        quality={'high'}
+        alt="imagepng."
+    />
+</SliderItem>
+
+<SliderItem
+    text='BÔNUS EXCLUSIVO'
+    description='Dobre seu depósito para novos jogadores!'
+>
+    <Image
+        src={bonusCardPic6}
+        width={143}
+        format='webp'
+        alt="imagepng."
+    />
+</SliderItem>
+
+    
+    </ul>
+
+    <div class="absolute -top-10 right-10">
+        <ButtonSlider type='left' color='green' className="slider-nav" />
+        <ButtonSlider type='right' color='green' className="slider-nav" />
+    </div>
+</div>
+
+</div>
+
+<script>
+    import { swiffyslider } from 'swiffy-slider'
+    
+    window.addEventListener("load", () => {
+        swiffyslider.init();
+    });
+
+    // import "swiffy-slider/css"
+</script>

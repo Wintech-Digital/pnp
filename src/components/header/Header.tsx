@@ -31,7 +31,7 @@ const Header = () => {
             if (item.title === "Slots") {
               return (
                 <Popover className="relative" key={key}>
-                  <Popover.Button className="flex items-center gap-x-1 text-[16px] font-semibold leading-[24px] text-pnp-grey30 hover:text-pnp">
+                  <Popover.Button className="flex items-center gap-x-1 text-[16px] font-semibold leading-[24px] outline-0 text-pnp-grey30 hover:text-pnp">
                     {item.icon}
                     {item.title}
                     <ChevronDownIcon
@@ -49,7 +49,7 @@ const Header = () => {
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 translate-y-1"
                   >
-                    <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-[24px] bg-[#202726] shadow-lg ring-1 ring-gray-900/5 border border-gray-300/[.5]">
+                    <Popover.Panel className="absolute -left-8 top-full z-[1001] mt-3 w-screen max-w-md overflow-hidden rounded-[24px] bg-[#202726] shadow-lg ring-1 ring-gray-900/5 border border-gray-300/[.5]">
                       <div className="p-4">
                         {slotsList.map((item) => (
                           <div
@@ -108,8 +108,8 @@ const Header = () => {
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
-        <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#202726] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="fixed inset-0 z-[999]" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-[999] w-full overflow-y-auto bg-[#202726] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Pin-Up</span>
