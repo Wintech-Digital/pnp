@@ -18,7 +18,7 @@ export const mainNav = [
   {
     title: "Betting",
     icon: <BettingIcon className="h-6 w-auto" />,
-    url: "/",
+    url: "/apostas",
   },
   {
     title: "Aviator",
@@ -133,7 +133,7 @@ export const slotsList = [
 export const navigationMap = [
   {
     title: "Betting",
-    url: "/",
+    url: "/apostas",
     icon: "betting.svg",
   },
   { title: "Aviator", icon: "aviator.svg", url: "/aviator" },

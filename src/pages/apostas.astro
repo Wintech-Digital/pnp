@@ -1,7 +1,105 @@
 ---
+import { Image, getImage } from "astro:assets";
 import Layout from '@layout/Layout.astro';
+import SpaceBlock4 from '@components/spaces/SpaceBlock4.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import BannerBlock from '@content/betting/BannerBlock/BannerBlock.astro';
+import Article from '@components/article/Article.astro';
+import ArticleItem from "@components/article/ArticleItem.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+import slide0 from "@assets/images/apo-slidr-0.png";
+import slide1 from "@assets/images/apo-slidr-1.png";
+import slide2 from "@assets/images/apo-slidr-2.png";
+import slide3 from "@assets/images/apo-slidr-3.png";
+import slide4 from "@assets/images/apo-slidr-4.png";
+import ButtonRounded from "@components/buttons/ButtonRounded";
+const breadcrumbList = [
+    {key: 'home', name: 'Home'}, 
+    {key: 'apostas', name: 'Betting'}
+];
+const images = {
+    'roulette': () => import('/src/assets/images/roulette1.png'),
+};
+
+const img1 = await getImage({ src: slide0, format: 'webp' });
+const img2 = await getImage({ src: slide1, format: 'webp' });
+const img3 = await getImage({ src: slide2, format: 'webp' });
+const img4 = await getImage({ src: slide3, width: 433, format: 'webp' });
+const img5 = await getImage({ src: slide4, width: 433, format: 'webp' });
+
+const slideList = [
+    {
+        text: 'eSports: Apostas em Jogos Eletrônicos Populares',
+        pic: img2.src,
+    },
+    {
+        text: 'Esportos: Apostas Pré-partida e Ao Vivo',
+        pic: img1.src,
+    },
+    {
+        text: 'Jogos e Apostas Ao Vivo: Experiência Imersiva',
+        pic: img3.src,
+    },
+    {
+        text: 'Pin Up Aviator: Estratégia e Sorte no Jogo Inovador',
+        description: 'Estes bónus especiais foram criados especialmente para os conhecedores do jogo Aviator',
+        pic: img4.src,
+    },
+    {
+        text: 'Jogos de TV e Esportes Virtuais: Diversão Garantida',
+        pic: img5.src,
+    },
+];
+
 ---
 <Layout title="About astro">
-    <h1>About title</h1>
-    <div>About description</div>
+    <Breadcrumbs breadcrumb={breadcrumbList}/>
+
+    <SpaceBlock4>
+        <BannerBlock/>
+    </SpaceBlock4>
+    
+    <div class="overflow-hidden pt-4 -pb-4">
+        <Article titleH1="Bônus de Boas-Vindas para Jogadores de Aviator">
+            <SliderContainer
+                client:load
+                itemsNum={5}
+                noInfiniti={true}
+                list={slideList}
+                itemComponentName="SliderItem8"
+            />
+            <SpaceBlock4>
+                <ButtonRounded size="xl" color="red" title="Começam a colocar" className="w-full sm:w-auto"/>
+            </SpaceBlock4>
+        </Article>
+    </div>
+    
+
+    <SpaceBlock4>
+        <Article titleH1='Ofertas atractivas e bónus na Pin Up Bet'>
+        <p class="text-16-24-400 text-pnp-grey20 mb-4">
+            Descubra um mundo de vantagens incríveis e bônus emocionantes ao fazer suas apostas e jogar na Pin Up Bet. Nossa plataforma oferece uma variedade de ofertas atraentes, desde bônus de boas-vindas generosos até promoções especiais que aumentarão a emoção do seu jogo
+        </p>
+        <p class="text-16-24-400 text-pnp-grey20 mb-6">
+            Aproveite oportunidades exclusivas de ganhar e eleve sua experiência de apostas a um novo nível com as ofertas irresistíveis da Pin Up Bet. Clique agora para descobrir as recompensas que esperam por você!
+        </p>        
+        <ArticleItem>
+            <Image src={images[`roulette`]()} format='webp' alt='roulette' class="rounded-[24px]" /> 
+        </ArticleItem>
+        <ArticleItem
+            titleH2='Bônus de Boas-Vindas Exclusivo'
+            description='Além do nosso generoso bônus de boas-vindas, oferecemos regularmente promoções especiais que incluem bônus de recarga, rodadas grátis e outras recompensas emocionantes'
+        />
+        <ArticleItem
+            titleH2='Outros Bônus e Ofertas Promocionais'
+            description='Além do nosso generoso bônus de boas-vindas, oferecemos regularmente promoções especiais que incluem bônus de recarga, rodadas grátis e outras recompensas emocionantes'
+        />
+        <ArticleItem
+            titleH2='Pincoins: O Programa de Fidelidade do Pin Up'
+            description='Cada aposta que você faz no Pin Up Bet contribui para a acumulação de Pincoins, que podem ser trocados por diversas recompensas, como bônus adicionais, rodadas grátis, ou até mesmo produtos exclusivos da nossa loja virtual'
+        />
+        <ButtonRounded size="xl" color="red" title="Começam a colocar" className="w-full sm:w-auto"/>
+        </Article>
+</SpaceBlock4>
+
 </Layout>

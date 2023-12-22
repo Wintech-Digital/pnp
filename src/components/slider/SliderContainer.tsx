@@ -9,6 +9,7 @@ import SliderItem4 from '@components/slider/SliderItem4';
 import SliderItem5 from '@components/slider/SliderItem5';
 import SliderItem6 from '@components/slider/SliderItem6';
 import SliderItem7Info from '@components/slider/SliderItem7Info';
+import SliderItem8 from '@components/slider/SliderItem8';
 import ButtonSliderHidden from '@components/buttons/ButtonSliderHidden';
 import {CustomButton} from '@components/buttons/ButtonSlider';
 
@@ -20,12 +21,13 @@ const componentMapping = {
     SliderItem5,
     SliderItem6,
     SliderItem7Info,
+    SliderItem8,
 }
 
 interface ListProps {
     text: string;
-    description: string;
     pic: GetImageResult | string;
+    description?: string;
     bgHoverStyle?: string;
 }
 interface Props {

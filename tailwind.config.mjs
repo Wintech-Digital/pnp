@@ -193,6 +193,11 @@ export default {
 					background: 'linear-gradient(18deg, rgba(6,186,159,0.2511379551820728) 0%, rgba(6,186,159,0) 41%, rgba(255,59,28,0) 63%, rgba(255,59,28,0.2007177871148459) 100%)',
 					backdropFilter: 'blur(1px)',
 				},
+				'.gr-red-green-coner-1': {
+					background: 'rgb(6,186,159)',
+					background: 'linear-gradient(18deg, rgba(6,186,159,0.7511379551820728) 0%, rgba(6,186,159,0) 41%, rgba(255,59,28,0) 63%, rgba(255,59,28,0.8007177871148459) 100%)',
+					backdropFilter: 'blur(1px)',
+				},
 
 			})
 		}),
