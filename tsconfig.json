@@ -6,6 +6,7 @@
       "@pages/*": ["src/pages/*"],
       "@assets/*": ["src/assets/*"],
       "@layout/*": ["src/layout/*"],
+      "@content/*": ["src/content/*"],
       "@components/*": ["src/components/*"]
     },
     "jsx": "react-jsx",

@@ -12,14 +12,16 @@ const {title,description,image} = Astro.props as Props;
 const rounded = `rounded-[32px] md:rounded-[48px]`;
 const paddings = `px-4 py-[80px] sm:px-[74px] sm:py-[74px]`;
 const margins = ' mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]';
-const bgImageSize = `bg-[length:auto_550px] sm:bg-[length:auto_650px]`;
-const bgImagePosition = `bg-[position:_right_0px_bottom_0px] sm:bg-[position:_right_0px_bottom_-100px]`;
+const bgImageSize = `bg-[length:auto_150px] sm:bg-[length:auto]`;
+const bgImagePosition1 = `bg-[position:_left_0px_bottom_-40px] sm:bg-[position:_right_0px_bottom_-60px]`;
 const border = `border border-[#000]/[.2]`;
 const hover = `hover:gr-red-green-coner`;
 const transition = 'transition duration-150 ease-in-out';
+
+// const bgImagePosition = `bg-[position:_right_0px_bottom_0px] sm:bg-[position:_right_0px_bottom_-100px]`;
 ---
 <div 
-    class=`relative box-shadow-1 bg-cover ${border} ${rounded} ${bgImageSize} ${bgImagePosition} ${margins}` 
+    class=`relative ${border} box-shadow-1 bg-top bg-no-repeat ${bgImagePosition1} ${bgImageSize}  ${rounded} ${margins}`
     style=`background-image: url('${image.src}')`
 >
     <div class=`w-full flex flex-col items-center text-center gap-4 ${transition} ${hover} ${paddings} ${rounded}`>

@@ -1,32 +1,49 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
-const CustomRightArrow = ({ onClick, ...rest }) => {
+interface Props {
+  [x: string]: any;
+}
+interface BtnProps extends Props {
+  onClick?: () => void;
+}
+type TypeArrow = "left" | "right";
+interface CutomBtnProps extends Props {
+  arrow: TypeArrow;
+  onClick?: () => void;
+}
+
+const transition = "transition-colors ease-in-out duration-300";
+const buttonHover = "bg-pnp/[.05] hover:bg-pnp-green hover:border-pnp-green";
+const buttonPosionTop = "absolute -top-[70px] z-50";
+const buttonPosionMiddle = "absolute top-[40%] z-50";
+const commonButtonStyle = `${transition} ${buttonHover}`;
+
+const CustomButton = ({ arrow, onClick, ...rest }: CutomBtnProps) => {
   const {
-    onMove, // onMove means if dragging or swiping in progress.
-    carouselState: { currentSlide, deviceType },
+    carouselState: { deviceType },
   } = rest;
+  const isLeft = arrow === "left";
+  const isMobile = !(deviceType !== "mobile");
+  const btnPosition = isMobile ? buttonPosionMiddle : buttonPosionTop;
+  const leftStyles = isMobile ? `left-8` : `right-20`;
+  const rightStyles = isMobile ? `right-8`: `right-4`;
+  const leftRight = isLeft ? leftStyles : rightStyles;
+  const btnStyles = `${commonButtonStyle} ${btnPosition} ${leftRight}`;
+  const size = isMobile
+    ? "h-14 w-14 px-[8px] py-[8px]"
+    : "h-10 w-10 px-[8px] py-[8px]";
   return (
     <button
       onClick={() => onClick()}
-      className="absolute top-[40%] right-4 z-50 rounded-full border border-pnp transition-colors ease-in-out duration-300 bg-[#000]/[.2] hover:bg-pnp-green hover:border-pnp-green"
+      className={`rounded-full border border-pnp/[.5] ${btnStyles}`}
     >
-      <ArrowRightIcon className={`h-10 w-10 px-[8px] py-[8px]`} />
-    </button>
-  );
-};
-const CustomLeftArrow = ({ onClick, ...rest }) => {
-  const {
-    onMove, // onMove means if dragging or swiping in progress.
-    carouselState: { currentSlide, deviceType },
-  } = rest;
-  return (
-    <button
-      onClick={() => onClick()}
-      className="absolute top-[40%] left-4 z-50 rounded-full border border-pnp transition-colors ease-in-out duration-300 bg-[#000]/[.2] hover:bg-pnp-green hover:border-pnp-green"
-    >
-      <ArrowLeftIcon className={`h-10 w-10 px-[8px] py-[8px]`} />
+      {isLeft ? (
+        <ArrowLeftIcon className={size} />
+      ) : (
+        <ArrowRightIcon className={size} />
+      )}
     </button>
   );
 };
 
-export { CustomLeftArrow, CustomRightArrow };
+export { CustomButton };

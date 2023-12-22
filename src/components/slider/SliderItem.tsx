@@ -7,11 +7,6 @@ interface Props {
   description: string;
   pic: GetImageResult,
 }
-/** 
- * bg-gradient-radial from-yellow-400 to-gray-9000
-*/
-const wrap = "min-w-[301px] w-[301px] mx-2";
-const wrapMd = "md:w-[434px] md:h-[212px]";
 const blockFlex = "flex flex-col-reverse items-center md:flex-row";
 const blockSizes = "rounded-[24px] px-[16px] py-[16px]";
 const blockSizesMd = "md:rounded-[32px] md:px-[20px] md:py-[20px]";
@@ -22,10 +17,8 @@ const textBlockFlex = "flex flex-col items-start justify-between";
 
 const SliderItem: FC<Props> = ({ ...props }) => {
   return (
-    <div className={`${wrap} ${wrapMd}`}>
-      <div
-        className={`${blockBgTransition} ${blockBg} ${blockFlex} ${blockSizes} ${blockBorder} ${blockSizesMd}`}
-      >
+    <div className={`w-full h-full`}>
+      <div className={`h-full ${blockBgTransition} ${blockBg} ${blockFlex} ${blockSizes} ${blockBorder} ${blockSizesMd}`}>
         <div className={`${textBlockFlex}`}>
           <span className="text-[12px] text-pnp/[.6] font-semibold leading-[20px] mb-[4px]">
             {props.text}
@@ -41,10 +34,8 @@ const SliderItem: FC<Props> = ({ ...props }) => {
           />
         </div>
         <div
-          className="grid w-full justify-items-start mb-[24px] md:justify-items-end md:mb-[0px] h-[172px] bg-no-repeat bg-left sm:bg-center"
-          style={{
-            backgroundImage: `url('${props.pic.src}')`
-          }}>
+          className="w-full grid justify-items-start mb-[24px] md:justify-items-end md:mb-[0px] h-[172px]">
+            <img src={props.pic.src} alt="" />
         </div>
       </div>
     </div>

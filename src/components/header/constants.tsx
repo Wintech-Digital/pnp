@@ -18,28 +18,28 @@ export const mainNav = [
   {
     title: "Betting",
     icon: <BettingIcon className="h-6 w-auto" />,
-    url: "/slots/game-1",
+    url: "/",
   },
   {
     title: "Aviator",
     icon: <AviatorIcon className="h-6 w-auto" />,
-    url: "/slots/game-2",
+    url: "/aviator",
   },
   {
     title: "Slots",
     icon: <SlotsIcon className="h-6 w-auto" />,
     icon2: SlotsIcon,
-    url: "/slots/game-3",
+    url: "/",
   },
   {
     title: "Mobile App",
     icon: <MobileAppIcon className="h-6 w-auto" />,
-    url: "/slots/game-4",
+    url: "/",
   },
   {
     title: "Bonus",
     icon: <BonusIcon className="h-6 w-auto" />,
-    url: "/slots/game-5",
+    url: "/",
   },
 ];
 
@@ -133,16 +133,16 @@ export const slotsList = [
 export const navigationMap = [
   {
     title: "Betting",
-    url: "/apostas",
+    url: "/",
     icon: "betting.svg",
   },
   { title: "Aviator", icon: "aviator.svg", url: "/aviator" },
   {
     title: "Slots",
     icon: "slots.svg",
-    url: "/slots",
+    url: "/",
     navigation: slotsNav,
   },
-  { title: "Mobile App", icon: "mobile.svg", url: "/applicativo" },
-  { title: "Bonus", icon: "bonus.svg", url: "/bonus" },
+  { title: "Mobile App", icon: "mobile.svg", url: "/" },
+  { title: "Bonus", icon: "bonus.svg", url: "/" },
 ];

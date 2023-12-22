@@ -1,33 +1,18 @@
 ---
 import Layout from '@layout/Layout.astro';
 
-/**
- * /api/home-banners
- * /api/page-header
- * /api/slots
-*/
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import BlockHero from '@content/aviator/BlockHero/BlockHero.astro';
+import BannerItem1 from "@components/banner/BannerItem1.astro";
 
-//const pre = 'populate=pageHeaderBanner';
-//const q = [ 'title', 'description', 'buttons', 'bannerImage'];
-//const modifyQ = q.map( (item,index) => `${pre}.${item}${index+1 !== q.length ? '&': ''}`).join('');
-//const pageHeaderData = await fetch(`https://strapi.wtech.co/api/page-header?${modifyQ}`);
-//const pageHeader = await pageHeaderData.json();
-//const { data } = pageHeader;
-// console.log('banner ---', data['attributes']['pageHeaderBanner']['bannerImage']['data'][0]['attributes']);
-
-// const homeBanners = await fetch('https://strapi.wtech.co/api/home-banners?populate=*');
-// const banner = await homeBanners.json();
-// const { data } = banner;
-// console.log('banner ---', data[0].attributes);
-
-// const slotsResponse = await fetch('https://strapi.wtech.co/api/slots?fields=name&fields=description&populate=image');
-// const slots = await slotsResponse.json();
-// const {data: slotsData} = slots;
-
+const breadcrumbList = [
+    {key: 'home', name: 'Home'}, 
+    {key: 'aviator', name: 'Pin Up Casino Aviator'}
+];
 ---
-<Layout title="astro Avitor page">
-    <div>
-        <!-- <div>{ bannerContent }</div> -->
-        <!-- <div>{ content }</div> -->
-    </div>
+<Layout>
+    <Breadcrumbs breadcrumb={breadcrumbList}/>
+    <BlockHero/>
+    <BannerItem1/>
 </Layout>
+

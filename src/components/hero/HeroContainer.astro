@@ -1,0 +1,55 @@
+---
+import type { GetImageResult } from 'astro';
+import ButtonRounded from '@components/buttons/ButtonRounded.tsx';
+import SpaceBlock from "@components/spaces/SpaceBlock.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    pics: GetImageResult[];
+}
+
+const {title, description, pics} = Astro.props as Props;
+const rounded = `rounded-[32px] md:rounded-[48px]`;
+const paddings = `px-4 pb-4 pt-[280px] sm:pt-[400px] md:py-[76px] md:px-[56px]`;
+const margins = ' mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]';
+const hover = `hover:gr-red-green-coner`;
+const transition = 'transition duration-150 ease-in-out';
+const border = `border border-[#fff]/[.2]`;
+const merge = `mr-0 bg-[#fff]/[.05]  ${border} ${margins} ${rounded}`;
+
+---
+<SpaceBlock>
+    <div class=`${merge} bg-right-top bg-no-repeat  hidden md:block`
+        style=`background-image: url('${pics[0].src}')`
+    >
+    <div class=`${hover} ${rounded}`>
+        <div class=`${paddings} ${transition} md:w-1/2 lg:w-3/4`>
+            <div class="max-w-[585px] flex flex-col items-start gap-8">
+                <h1 class="text-40-44-700 lg:text-50-56-700">  
+                    {title}
+                </h1>
+                <p class='text-16-24-400'>
+                    {description}
+                </p>
+                <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" />
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class=`${merge} bg-right-top bg-no-repeat bg-cover block md:hidden`
+        style=`background-image: url('${pics[1].src}')`
+    >
+        <div class=`${paddings} ${rounded} ${transition} ${hover} md:w-1/2 lg:w-3/4`>
+            <div class="max-w-[585px] flex flex-col items-start gap-8">
+                <h1 class="text-40-44-700 lg:text-50-56-700">  
+                    {title}
+                </h1>
+                <p class='text-16-24-400'>
+                    {description}
+                </p>
+                <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" />
+            </div>
+        </div>
+    </div>
+</SpaceBlock>

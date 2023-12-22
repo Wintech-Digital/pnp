@@ -1,0 +1,39 @@
+---
+import { getImage } from "astro:assets";
+import Article from "@components/article/Article.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+import infoPic1 from "@assets/svg/letter.svg";
+import infoPic2 from "@assets/images/star.png";
+import infoPic3 from "@assets/images/checked.png";
+
+const slideImage1 = await getImage({ src: infoPic1, height: 50, format: 'webp' });
+const slideImage2 = await getImage({ src: infoPic2, height: 50, format: 'webp' });
+const slideImage3 = await getImage({ src: infoPic3, height: 65, format: 'webp' });
+const infoData = [
+    {
+        text: 'História do Pin Up Casino',
+        pic: slideImage1,
+        description: 'Descubra a história fascinante por trás do Pin Up Casino. Fundado com a visão de criar uma plataforma de entretenimento excepcional, o Pin Up Casino surgiu como um ponto de referência na indústria de jogos online. Desde o seu início, a missão tem sido oferecer uma experiência de cassino online que combina diversão, inovação e uma variedade incomparável de jogos. O compromisso com a excelência e a constante evolução fez do Pin Up Casino um destino de confiança para entusiastas de jogos em todo o mundo.',
+    },
+    {
+        text: 'Reputação e Confiança',
+        pic: slideImage2,
+        description: 'A reputação do Pin Up Casino é construída sobre pilares sólidos de transparência, segurança e comprometimento com os jogadores. Com anos de experiência no setor, o casino estabeleceu-se como um padrão de confiança e integridade. A segurança dos jogadores é primordial, e cada aspecto da plataforma é projetado para garantir uma experiência segura e justa. A reputação do Pin Up Casino é respaldada pela satisfação dos jogadores e por uma abordagem transparente em todas as interações.',
+    },
+    {
+        text: 'Por Que Escolher o Pin Up Casino?',
+        pic: slideImage3,
+        description: 'O Pin Up Casino destaca-se como a escolha definitiva por várias razões convincentes. A diversidade de jogos é impressionante, oferecendo uma ampla gama de opções para todos os gostos. A segurança e a privacidade são prioridades absolutas, garantindo que os jogadores desfrutem de uma experiência confiável. Além disso, os bônus e promoções exclusivos, juntamente com um suporte ao cliente excepcional, solidificam o Pin Up Casino como a escolha preferida para quem busca uma experiência de jogo online excepcional.',
+    },
+];
+---
+<div class="overflow-hidden pt-4">
+    <Article titleH1 = 'Conheça o Pin Up Casino'>
+        <SliderContainer
+            client:load
+            list={infoData}
+            noInfiniti={false}
+            itemComponentName="SliderItem5"
+        />
+    </Article>
+</div>

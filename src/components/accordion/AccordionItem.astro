@@ -14,8 +14,8 @@ const transition = 'transition-all duration-150 ease-in-out';
 const hovers = 'hover:gradient-green-coner-4';
 
 ---
-<li class=`border border-zinc-700 rounded-[24px] sm:rounded-[30px] bg-gray-100 bg-opacity-5 ${transition} ${hovers}`>
-    <button class=`accordion flex items-start justify-between w-full pt-7 px-4 sm:pt-8 sm:px-8 ${classActive}`>
+<li class=`px-[24px] sm:px-[30px] border border-zinc-700 rounded-[24px] sm:rounded-[30px] bg-gray-100 bg-opacity-5 ${transition} ${hovers}`>
+    <button class=`accordion flex items-start justify-between w-full pt-7 sm:pt-8 ${classActive}`>
         <span class="text-18-28-600">
             {title}
         </span>
@@ -28,7 +28,7 @@ const hovers = 'hover:gradient-green-coner-4';
             />
         </span>
     </button>
-    <p class=`panel transition-max-height duration-150 ease-in-out overflow-hidden text-base font-normal px-[32px] mt-2 mb-[24px] ${classHeight}`>
+    <p class=`panel transition-max-height duration-150 ease-in-out overflow-hidden text-base font-normal mt-2 mb-[24px] ${classHeight}`>
         {body}
     </p>
 </li>

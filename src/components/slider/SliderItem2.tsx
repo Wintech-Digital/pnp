@@ -5,25 +5,18 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   text: string;
-  amount: string;
+  description: string;
   pic: GetImageResult;
 }
-const SliderItem2: FC<Props> = ({ text, amount, pic}) => (
-  <div className="card mx-[10px] sm:mx-2 min-w-[323px] shadow-2xl transition duration-300 ease-in-out hover:gradient-red rounded-[32px] overflow-hidden">
-    <div
-        className="w-[433px] h-[140px]" 
-        style={{
-            backgroundPosition: 'center',
-            backgroundImage: `url('${pic.src}')`, 
-            backgroundSize: 'cover',
-        }}
-    />
+const SliderItem2: FC<Props> = ({ text, description, pic}) => (
+  <div className="card h-full shadow-2xl transition duration-300 ease-in-out hover:gradient-red rounded-[32px] overflow-hidden">
+    <img src={pic.src} alt="" className="w-full" />
     <div className="py-[24px] px-[32px] flex flex-col justify-between">
         <div className="text-pnp/[.6] text-base font-semibold">
             {text}
         </div>
         <div className='text-[28px] font-bold leading-[34px] mb-6'>
-          {amount}
+          {description}
         </div>
         <div className="flex flex-col-reverse sm:flex-row sm:items-center gap-6">
             <ButtonRounded

@@ -1,0 +1,41 @@
+---
+import Article from "@components/article/Article.astro";
+import SpaceBlock4 from "@components/spaces/SpaceBlock4.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+
+const infoData = [
+    {
+        text: 'Jogar no Android: Guia e Dicas',
+        pic: 'ArrowTrendingUpIcon',
+        description: 'Pronto para mergulhar no mundo dos jogos de azar no seu Android? Conheça os melhores jogos, dicas e definições para se divertir ao máximo no seu dispositivo.',
+    },
+    {
+        text: 'Jogar no iOS: Vantagens e Facilidades',
+        pic: 'TrophyIcon',
+        description: 'Descubra o mundo dos jogos iOS com as suas vantagens únicas. As capacidades desta plataforma permitem-lhe desfrutar de jogos emocionantes criados especificamente para o seu dispositivo.',
+    },
+    {
+        text: 'Experiência de Jogo Móvel vs. Desktop',
+        pic: 'InformationCircleIcon',
+        description: 'Jogue em qualquer lugar! Desfrute da emoção num formato móvel conveniente ou mergulhe nos clássicos dos jogos de tabuleiro para uma experiência de jogo completa.',
+    },
+];
+
+---
+<SpaceBlock4>
+    <div class="overflow-hidden pt-4">
+        <Article
+            titleH1="Estratégias Eficazes para ganhar no Pin Up Casino"
+        >
+            <p class='w-3/4 text-16-24-400 text-pnp-grey20 mb-[32px]'>
+                Bem-vindo à seção dedicada às estratégias eficazes para maximizar suas chances de ganhar no Pin Up Casino. Aqui, compartilhamos insights valiosos e dicas práticas para aprimorar sua abordagem de jogo, proporcionando uma experiência mais gratificante e potencialmente aumentando seus ganhos. Explore as seguintes estratégias para elevar seu jogo a novos patamares:
+            </p>   
+            <SliderContainer
+                client:load
+                list={infoData}
+                noInfiniti={false}
+                itemComponentName="SliderItem7Info"
+            />
+        </Article>
+    </div>
+</SpaceBlock4>

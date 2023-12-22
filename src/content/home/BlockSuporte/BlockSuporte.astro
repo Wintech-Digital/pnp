@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import Article from "@components/article/Article.astro";
+import SpaceBlock4 from "@components/spaces/SpaceBlock4.astro";
+import TextTopic1 from '@components/topic/Topic1.astro';
+import TextTopic2 from '@components/topic/Topic2.astro';
+import TextTopic3 from '@components/topic/Topic3.astro';
+const images = {
+  'frame': () => import('/src/assets/images/Frame10000052481.png'),
+};
+---
+<Article titleH1="Suporte ao Cliente Pin-Up">
+    <SpaceBlock4>
+    <div class="flex flex-col sm:flex-row gap-[48px]">
+        <div>
+            <Image 
+                src={images['frame']()} 
+                format='webp'
+                width='460'
+                alt={'frame'}
+                class="block sm:hidden w-full h-auto"
+            />
+            <Image 
+                src={images['frame']()} 
+                format='webp'
+                width='392'
+                alt={'frame'}
+                class="min-w-[392px] h-auto hidden sm:block"
+            />
+        </div>
+        <div>
+            <p class='mb-6 sm:mb-8'>
+                Atendimento ao Cliente é um aspecto igualmente importante na avaliação de cassinos e apostas no Brasil. Se você acha que é impossível enfrentar problemas na Internet, está enganado. Claro, isso raramente ocorre, mas não é impossível. Além disso, o serviço de suporte funciona não só para solucionar problemas, mas também para auxiliar nos processos de cadastro, depósito e saque de dinheiro, e muito mais.
+            </p>
+            <p>
+                O suporte do Pin-Up Online Casino funciona 24 horas por dia, 7 dias por semana, para que você possa contatá-los a qualquer momento no modo de bate-papo ao vivo ou por e-mail. Certifique-se de que você receberá uma resposta significativa e de alta qualidade muito rapidamente. E não hesite em perguntar se você não entender alguma coisa. O serviço de suporte sempre está disponível para você!
+            </p>
+        </div>
+    </div>
+    </SpaceBlock4>
+
+    <TextTopic1/>
+    <TextTopic2/>
+    <TextTopic3/>
+</Article>
+</SpaceBlock4>
+

@@ -2,43 +2,39 @@ import type { FC } from "react";
 import type { GetImageResult } from "astro";
 
 interface Props {
-  num: number;
-  item: {
-    image: GetImageResult;
-    title: string;
-    description: string;
-  }
+  ind: number;
+  pic: GetImageResult;
+  text: string;
+  description: string;
 }
 
 const brd = 'border border-pnp/[.1] bg-pnp/[.05]'
 const transition = 'transition duration-300 ease-in-out';
 const rounded = 'rounded-[24px] sm:rounded-[30px]';
-const widthHeight = 'min-w-[300px] sm:min-[317px]';
 const gradient = 'hover:gradient-red';
 const paddings = 'px-[16px] py-[16px] sm:px-[16px] sm:py-[16px]';
 const flexCol = 'flex flex-col gap-4'
 
-
-const SliderItem3: FC<Props> = ({item, num}) => {
+const SliderItem4: FC<Props> = ({ind,pic,text, description}) => {
   return (
-    <li className={`shadow w-full relative ${brd} ${rounded} ${paddings} ${widthHeight} ${gradient} ${transition} ${flexCol}`}>
+    <li className={`shadow w-full h-full relative ${brd} ${rounded} ${paddings}  ${gradient} ${transition} ${flexCol}`}>
         <div className="bg-pnp-green absolute top-2 left-2 h-[50px] w-[50px] rounded-full flex items-center justify-center px-[11px] py-[10px]">
           <span className="text-16-24-600">
-            0{num}
+            0{ind+1}
           </span>
         </div>
-        <img className="pointer-events-none object-cover h-[170px] w-full flex-shrink-0 rounded-[16px]" src={item.image.src} alt={item.title}/>
+        <img className="pointer-events-none object-cover h-[170px] w-full flex-shrink-0 rounded-[16px]" src={pic.src} alt={text}/>
         <h3 className="text-pnp text-18-28-600">
-          {item.title}
+          {text}
         </h3>
         <p className="text-16-28-400 text-pnp-grey20">
-          {item.description}
+          {description}
         </p>
     </li>
   )
 };
 
-export default SliderItem3;
+export default SliderItem4;
 
 
 

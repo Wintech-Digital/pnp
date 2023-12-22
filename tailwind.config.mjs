@@ -5,18 +5,19 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 export default {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-		'./node_modules/flowbite/**/*.js'
 	],
 	theme: {
 		extend: {
 			screens: {
 				'pnplg': '1111px', 
+				'xsm': '430px',
 			},
 			fontFamily: {
 				sans: ['Poppins', ...defaultTheme.fontFamily.sans],
 			 },
 			colors: {
 				'pnp': {
+					
 
 					DEFAULT: '#FFFFFF',
 					'black': '#000000',
@@ -61,6 +62,17 @@ export default {
 			//   },
 			})
 			addComponents({
+				'.bred': {
+					border: '1px solid red',
+				},
+				'.bblue': {
+					border: '1px solid blue',
+				},
+			    '.text-24-30-700': {
+					fontSize: '24px',
+					lineHeight: '30px',
+					fontWeight: '700',
+			    },
 			    '.text-24-36-600': {
 					fontSize: '24px',
 					lineHeight: '36px',
@@ -137,6 +149,9 @@ export default {
 					flexDirection: 'flex-row',
 					alignItems: 'center',
 			    },
+				'.box-shadow-test': {
+					boxShadow: '0px 12px 34px 0px rgba(13, 10, 44, 0.08), 0px 34px 26px 0px rgba(13, 10, 44, 1)',
+				},
 				'.box-shadow-1': {
 					boxShadow: '0px 12px 34px 0px rgba(13, 10, 44, 0.08), 0px 34px 26px 0px rgba(13, 10, 44, 0.05)',
 				},
@@ -181,6 +196,5 @@ export default {
 
 			})
 		}),
-		require('flowbite/plugin'),
 	],
 }
