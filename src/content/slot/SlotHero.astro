@@ -1,0 +1,21 @@
+---
+import HeroContainer from "@components/hero/HeroContainer.astro";
+import ButtonRounded from '@components/buttons/ButtonRounded';
+import heroSlotD from '@assets/images/hero/hero-hell-hot-d.png';
+import heroSlotM from '@assets/images/hero/hero-hell-hot-m@2x.png';
+    
+const pictures = [ heroSlotM, heroSlotD];
+const title = `Caça-níqueis Black Rider: Uma Experiência Única de Caça-níqueis`;
+const description = `Black Rider é uma slot criada pela KA Gaming com um tema único de um futuro reino em África. A personagem principal é o Cavaleiro Negro, que apresenta o espetáculo juntamente com as suas duas belas assistentes. Os símbolos Wild e a funcionalidade Duplicate Wilds tornam esta slot excecional`;
+---
+    <HeroContainer
+        pictures={pictures}
+        title={title}
+        description={description}
+        textTopSpaceMobile={"mt-0"}
+        textBoxWidth={"w-[340px] sm:w-2/3 lg:w-[480px]"}
+    >
+        <div slot="btn-box">
+            <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" />
+        </div>
+    </HeroContainer>

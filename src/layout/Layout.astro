@@ -3,7 +3,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer.astro';
 import Accordion from '@components/accordion/Accordion.astro';
-import SpaceBlock from '@components/spaces/SpaceBlock.astro';
+import WithBottomSpace from '@components/spaces/WithBottom.astro';
  
 interface Props {
     title?: string;
@@ -31,20 +31,16 @@ const { title = 'Empty title' }: Props = props;
 		/>
 		<ViewTransitions />
 	</head>
-	<body class="py-4 pl-4 pr-0 sm:p-4 md:p-6 lg:p-10 bg-[#202726] text-pnp w-full">
+	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:p-10 bg-[#202726] text-pnp w-full">
 		<div class="max-w-[1360px] mx-auto">
-			<Header client:only="react"/>
+			<Header client:load />
 			<main>
 				<slot/>
 			</main>
-			<SpaceBlock>
-				<div class="mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]">
-					<Accordion/>
-				</div>
-			<SpaceBlock>
-			</SpaceBlock>
-				<Footer />
-			</SpaceBlock>
+			<WithBottomSpace>
+				<Accordion/>
+			</WithBottomSpace>
+			<Footer />
 		</div>
 	</body>
 </html>

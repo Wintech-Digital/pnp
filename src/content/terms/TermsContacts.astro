@@ -1,0 +1,35 @@
+---
+import Article from "@components/article/Article.astro";
+import ContactsContainer from "@components/contacts/ContactsContainer.astro";
+
+const contacsList = [
+    {
+        name: 'Suporte por e-mail',
+        email: 'suporte@pinupcasino.br',
+        tel: '+1 (555) 905-34-56'
+    },
+    {
+        name: 'Bate-papo on-line',
+        email: 'bate@pinupcasino.br',
+        tel: '+1 (555) 905-34-56'
+    },
+    {
+        name: 'Press',
+        email: 'press@pinupcasino.br',
+        tel: '+1 (555) 905-34-56'
+    },
+    {
+        name: 'Junte-se a nossa equipe',
+        email: 'suporte@pinupcasino.br',
+        tel: '+1 (555) 905-34-56'
+    },
+];
+---
+<Article 
+    id="contacts"
+    titleH1="Pin-Up contatado"  
+>
+    <ContactsContainer
+        list={contacsList}
+    />
+</Article>

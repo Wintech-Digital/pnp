@@ -15,12 +15,12 @@ const Header = () => {
   return (
     <header>
       <nav
-        className="mx-auto pr-4 sm:pr-0 flex items-center justify-between"
+        className="mx-auto flex items-center justify-between"
         aria-label="Global"
       >
         <div className="flex flex-row items-center space-x-6">
         <div className="flex pnplg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5 text-pnp-red">
+          <a href="/" className="-m-1.5 p-1.5 text-pnp-red">
             <span className="sr-only">Pin-Up</span>
             <Logo className="fill-pnp-logo h-8 w-auto" />
           </a>

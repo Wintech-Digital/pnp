@@ -1,0 +1,20 @@
+---
+import Layout from '@layout/Layout.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import TermsHero from '@content/terms/TermsHero.astro';
+import TermsArticles from '@content/terms/TermsArticles.astro';
+import TermsContacts from '@content/terms/TermsContacts.astro';
+
+const breadcrumbList = [
+    {key: 'apostas', name: 'Betting'}
+];
+---
+<Layout>
+    <Breadcrumbs breadcrumb={breadcrumbList}/>
+
+    <TermsHero/>
+
+    <TermsArticles/>
+
+    <TermsContacts/>
+</Layout>

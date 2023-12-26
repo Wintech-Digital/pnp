@@ -1,0 +1,23 @@
+---
+import ContactCard from './ContactCard.astro';
+interface CardProps {
+    name: string;
+    email: string;
+    tel: string;
+}
+interface ContainerProps{
+    list: CardProps[];
+}
+const {list} = Astro.props as ContainerProps;
+---
+<div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {
+        list.map(item => (
+            <ContactCard
+                name={item.name}
+                email={item.email}
+                tel={item.tel}
+            />
+        ))
+    }
+</div>

@@ -1,21 +1,17 @@
 ---
-import { getImage } from "astro:assets";
 import Banner from "./Banner.astro";
-import pic from "@assets/images/banner-1.png";
-import SpaceBlock4 from "@components/spaces/SpaceBlock4.astro";
+import pic from "@assets/images/Hero2.png";
+import picM from "@assets/images/Hero2-m.png";
 
 const title = 'Jogue e ganhe agora mesmo!';
 const description = 'Mergulhe no excitante mundo do jogo. Comece o jogo no modo de demonstração ou tente imediatamente a sua sorte com dinheiro real.';
-const bgImage = await getImage({ src: pic, format: 'webp' });
 ---
-<SpaceBlock4>
-    <Banner
-        title = {title}
-        description= {description}
-        image = {bgImage}
-        buttonName="Começam a colocar"
-    />
-</SpaceBlock4>
+<Banner
+    title = {title}
+    description= {description}
+    buttonName="Começam a colocar"
+    image = {[pic, picM]}
+/>
 
 
 <!-- 

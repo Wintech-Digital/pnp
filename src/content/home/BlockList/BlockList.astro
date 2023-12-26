@@ -6,7 +6,6 @@ import image1 from "@assets/images/img777_1.png";
 import image2 from "@assets/images/img777_2.png";
 import image3 from "@assets/images/img777_3.png";
 import image4 from "@assets/images/img777_4.png";
-import SpaceBlock4 from "@components/spaces/SpaceBlock4.astro";
 
 const list2 = [
     {
@@ -68,10 +67,8 @@ const list = [
     }
 ];
 ---
-<SpaceBlock4>
-
 <Article titleH1 = 'Jogos Disponíveis no Pin Up Casino'>
-    <section class=" border border-pnp/[.2] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] hover:bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
+    <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] hover:bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
         <ul class=" grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-700 lg:max-w-none lg:grid-cols-3">
             { list.map(item => (
                 <li>
@@ -86,32 +83,32 @@ const list = [
         </ul>
     </section>
 </Article>
+
 <Article titleH1 = 'Jogos Disponíveis no Pin Up Casino'>
-<section class="card border border-[#ffffff]/[.2] relative rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] hover:bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
-    <ul class="flex flex-col gap-[24px]">
-        { list2.map(item => (
-            <li class="flex flex-col sm:flex-row gap-4 border-t border-[#ffffff]/[.2] pt-4 first:border-t-0 first:pt-0">
-                <div class="relative bg-pnp-black/[.2] flex items-center justify-center h-[100px] w-[100px] min-w-[100px] rounded-full">
-                    <Image
-                        src={item.img}
-                        format='webp'
-                        alt="imagepng."
-                        class="z-10"
-                    />
-                </div>
-                <div>
-                    <h2 class="text-24-26-700 sm:text-28-34-700 text-pnp mb-4">
-                        {item.title}
-                    </h2>
-                    <p class="text-16-24-400 text-pnp-grey20">
-                        {item.body}
-                    </p>
-                </div>
-            </li>
-        ))}
-    </ul>
-</section>
+    <section class="bg-pnp/[.03] border border-pnp/[.1] relative rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] hover:bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
+        <ul class="flex flex-col gap-[24px]">
+            { list2.map(item => (
+                <li class="flex flex-col sm:flex-row gap-4 border-t border-[#ffffff]/[.2] pt-4 first:border-t-0 first:pt-0">
+                    <div class="relative bg-pnp-black/[.2] flex items-center justify-center h-[100px] w-[100px] min-w-[100px] rounded-full">
+                        <Image
+                            src={item.img}
+                            format='webp'
+                            alt="imagepng."
+                            class="z-10"
+                        />
+                    </div>
+                    <div>
+                        <h2 class="text-24-26-700 sm:text-28-34-700 text-pnp mb-4">
+                            {item.title}
+                        </h2>
+                        <p class="text-16-24-400 text-pnp-grey20">
+                            {item.body}
+                        </p>
+                    </div>
+                </li>
+            ))}
+        </ul>
+    </section>
 </Article>
-</SpaceBlock4>
 
 

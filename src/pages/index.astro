@@ -1,8 +1,9 @@
 ---
 import Layout from '@layout/Layout.astro';
-import SpaceBlock from "@components/spaces/SpaceBlock.astro";
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
-import BlockHero from '@content/home/BlockHero/BlockHero.astro';
+import HomeHero from '@content/home/HomeHero.astro';
+import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
+import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
 import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
 import BlockCasinoInfo from '@content/home/BlockCasinoInfo/BlockCasinoInfo.astro';
 import BlockBonus from '@content/home/BlockBonus/BlockBonus.astro';
@@ -15,43 +16,56 @@ import BlockInfo2 from '@content/home/BlockInfo2/BlockInfo2.astro';
 import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
 import Section from '@components/accordion/AccordionSection.astro';
 import BannerItem1 from "@components/banner/BannerItem1.astro";
-
-const home = [
-    {key: 'home', name: 'Home'}
-];
+import WithBottom from '@components/spaces/WithBottom.astro';
 ---
 <Layout>
-    <Breadcrumbs breadcrumb={home}/>
+    <Breadcrumbs breadcrumb={[]}/>
 
-    <BlockHero/>
+    <WithBottom>
+        <HomeHero/>
+    </WithBottom>
 
+
+    1
+    <BlockOfetas/>
+
+    2
+    <BlockSlotsList/>
+
+    3
     <BlockConciseFormat/>
 
+    4
     <BlockCasinoInfo/>
 
+    5
     <BlockBonus/>
 
+    6
     <BlockBonus2/>
 
+    7
     <BlockCasinoInfo2/>
 
+    8
     <BlockCasinoProviders/>
 
+    9
     <BlockList/>
 
+    10
     <BlockInfo2/>
 
+    11
     <BannerItem1/>
-    
+    12
     <BlockInfo3/>
-
-     <BlockSuporte/>
-
-    <SpaceBlock>
-        <Section
-            title="Conclusão"
-            body='E ainda, é PinUp real ou falso? Nós sabemos a resposta para esta pergunta! Pin-Up Casino é uma ótima plataforma para todos os fãs de jogos de cassino e apostas. Uma ampla gama de serviços, bônus rentáveis, métodos de pagamento seguros e confiáveis, serviço de suporte de alta qualidade e grandes ganhos já estão esperando por você no PinUp Brasil ! Não perca tempo e inscreva-se logo! E não se esqueça dos bônus de boas-vindas!' 
-        />
-    </SpaceBlock>
+    13
+    <BlockSuporte/>
+    14
+    <Section
+        title="Conclusão"
+        body='E ainda, é PinUp real ou falso? Nós sabemos a resposta para esta pergunta! Pin-Up Casino é uma ótima plataforma para todos os fãs de jogos de cassino e apostas. Uma ampla gama de serviços, bônus rentáveis, métodos de pagamento seguros e confiáveis, serviço de suporte de alta qualidade e grandes ganhos já estão esperando por você no PinUp Brasil ! Não perca tempo e inscreva-se logo! E não se esqueça dos bônus de boas-vindas!' 
+    />
 </Layout>
 

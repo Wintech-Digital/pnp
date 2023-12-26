@@ -9,7 +9,7 @@ interface Props {
   pic: GetImageResult;
 }
 const SliderItem2: FC<Props> = ({ text, description, pic}) => (
-  <div className="card h-full shadow-2xl transition duration-300 ease-in-out hover:gradient-red rounded-[32px] overflow-hidden">
+  <div className="bg-pnp/[.03] border border-pnp/[.1] h-full shadow-2xl transition duration-300 ease-in-out hover:gradient-red rounded-[32px] overflow-hidden">
     <img src={pic.src} alt="" className="w-full" />
     <div className="py-[24px] px-[32px] flex flex-col justify-between">
         <div className="text-pnp/[.6] text-base font-semibold">

@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import Article from "@components/article/Article.astro";
 import ArticleItem from "@components/article/ArticleItem.astro";
 import Providers from "@components/providers/Providers.astro";
-import SpaceBlock4 from "@components/spaces/SpaceBlock4.astro";
 const images = {
   'frame': () => import('/src/assets/images/Frame1000005248.png'),
 };
@@ -35,7 +34,6 @@ const list = [
 ]
 
 ---
-<SpaceBlock4>
     <Article titleH1 = 'Opções de Pagamento: Depósitos e Saques no Pin-Up Casino'>
         <div class="flex flex-col sm:flex-row gap-[48px] mb-[32px]">
             <div class='flex flex-col-reverse sm:flex-col'>
@@ -44,14 +42,14 @@ const list = [
                     format='webp'
                     width='460'
                     alt={'frame'}
-                    class="w-full block sm:hidden"
+                    class="w-full block sm:hidden border border-pnp/[.1] rounded-[32px]"
                 />
                 <Image 
                     src={images['frame']()} 
                     format='webp'
                     width='392'
                     alt={'frame'}
-                    class="w-full hidden min-w-[250px] sm:block"
+                    class="w-full hidden min-w-[250px] sm:block border border-pnp/[.1] rounded-[32px]"
                 />
                 <h2 class='text-pnp text-24-26-700 mb-[24px] sm:text-28-34-700 sm:mt-[32px]'>
                     Guia para Fazer Depósitos: Passos Simples e Seguros
@@ -77,4 +75,3 @@ const list = [
             <Providers/>
         </ArticleItem>
     </Article>
-</SpaceBlock4>

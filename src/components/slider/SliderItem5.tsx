@@ -14,7 +14,7 @@ const SliderItem5: FC<Props> = ({ ...props }) => {
   const paddings = 'pt-[82px] px-[24px]';
   return (
     <div
-      className={`relative w-full h-full mt-[42px] card-base border text-center hover:gradient-green-coner-1 ${rounded} ${paddings}`}
+      className={`relative w-full h-full mt-[42px] card-base text-center border bg-pnp/[.03] hover:bg-pnp/[.03] hover:gradient-green-coner-1 ${rounded} ${paddings}`}
     >
       <div className={`flex flex-wrap justify-center absolute left-0 top-0 right-0 -mt-12`}>
         <div

@@ -10,6 +10,7 @@ import SliderItem5 from '@components/slider/SliderItem5';
 import SliderItem6 from '@components/slider/SliderItem6';
 import SliderItem7Info from '@components/slider/SliderItem7Info';
 import SliderItem8 from '@components/slider/SliderItem8';
+import SliderItem9 from '@components/slider/SliderItem9';
 import ButtonSliderHidden from '@components/buttons/ButtonSliderHidden';
 import {CustomButton} from '@components/buttons/ButtonSlider';
 
@@ -22,6 +23,7 @@ const componentMapping = {
     SliderItem6,
     SliderItem7Info,
     SliderItem8,
+    SliderItem9,
 }
 
 interface ListProps {
@@ -31,13 +33,15 @@ interface ListProps {
     bgHoverStyle?: string;
 }
 interface Props {
-    itemsNum?: number; 
-    noInfiniti?: boolean | undefined;
     list: ListProps[];
     itemComponentName: string;
+
+    itemsNum?: number; 
+    noShadow?: boolean | undefined;
+    noInfiniti?: boolean | undefined;
 }
 
-const BlockHeroSlider: FC<Props> = ({itemsNum = 3, noInfiniti = false, list, itemComponentName}) => {
+const BlockHeroSlider: FC<Props> = ({itemsNum = 3, noShadow = false, noInfiniti = false, list, itemComponentName}) => {
     const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
     useEffect(()=>{
         if(window){
@@ -51,7 +55,7 @@ const BlockHeroSlider: FC<Props> = ({itemsNum = 3, noInfiniti = false, list, ite
     const sliders = list.map((item, index) => {
         const Component = componentMapping[itemComponentName];
         return (
-            <div key={index} className={`h-full box-shadow-1 rounded-[24px]`}>
+            <div key={index} className={`h-full ${ !noShadow ? 'shadow-1' : '' } rounded-[24px]`}>
                 <Component ind={index} {...item}/>
             </div>
         )

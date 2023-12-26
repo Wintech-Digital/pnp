@@ -1,0 +1,14 @@
+---
+interface Props {
+    name: string;
+    email: string;
+    tel: string;
+}
+
+const {name, email, tel} = Astro.props;
+---
+<div class="rounded-[24px] bg-pnp/[.03] px-3 py-3 flex flex-col gap-2 w-full">
+    <span class="text-18-28-600 text-pnp">{name}</span>
+    <span class="text-16-24-700 text-pnp-green">{email}</span>
+    <span class="text-16-24-400 text-pnp-grey20">{tel}</span>
+</div>

@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import Article from "@components/article/Article.astro";
+import ArticleItem from "@components/article/ArticleItem.astro";
+import slotImg1 from "@assets/images/slot-img-1.png";
+import slotImg2 from "@assets/images/slot-img-2.png";
+import slotImg3 from "@assets/images/slot-img-3.png";
+
+const images = [ slotImg1, slotImg2, slotImg3, slotImg1, slotImg2, slotImg3 ];
+---
+<Article
+    titleH1 = 'Conheça Black Rider: Sua Aventura de Caça-níqueis Começa Aqui'
+    description = 'Adentre o reino futurista da África com o Black Rider, um caça-níqueis envolvente criado pela KA Gaming. Este jogo apresenta uma história única protagonizada pelo Cavaleiro Negro, acompanhado por suas deslumbrantes assistentes. Prepare-se para uma experiência audiovisual emocionante, onde símbolos selvagens generosos e recursos especiais aguardam'
+>
+
+    <div class='flex flex-row gap-[30px] overflow-x-scroll mb-6'>
+        {
+            images.map(item => (
+                <Image
+                    src={item}
+                    alt=''
+                    widths={[312, 433]}
+                    sizes={`(max-width: 640px) 312px, 433px`}
+                    quality='low'
+                    loading="eager"
+                    class="w-full border border-pnp/[.2] rounded-[32px]"
+                    slot="second-col"
+                />
+            ))
+        }
+    </div>
+
+    <ArticleItem
+        titleH2 = 'Capturas de Tela:'
+        description = 'Veja o Black Rider ganhar vida através de uma série de imagens envolventes. Explore o cenário da densa floresta, observe os líderes do reino em ação e mergulhe na atmosfera única deste caça-níqueis. As capturas de tela proporcionam uma prévia visual do que o jogo tem a oferecer'
+    />
+    <ArticleItem
+        titleH2 = 'Como Jogar:'
+        description = 'Aprenda as mecânicas básicas do jogo Black Rider para uma experiência de jogo sem complicações. Esteja ciente das linhas de pagamento, símbolos especiais e recursos de jogo. Entenda como acionar os símbolos selvagens e aproveitar ao máximo cada rodada. Siga este guia para iniciar sua jornada no Black Rider'
+    />
+    <ArticleItem
+        titleH2 = 'Regras do Jogo:'
+        description = 'Explore as regras do caça-níqueis Black Rider, destacando qualquer mecânica ou rodada de bônus única. Descubra como as combinações vencedoras são formadas, quais símbolos oferecem os maiores pagamentos e como aproveitar ao máximo os recursos especiais. Este guia abrangente proporcionará uma compreensão sólida do jogo, permitindo que você jogue com confiança e entusiasmo'
+    />
+</Article>
+

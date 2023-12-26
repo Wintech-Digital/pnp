@@ -1,0 +1,54 @@
+---
+import { getImage } from 'astro:assets';
+import Article from '@components/article/Article.astro';
+import ButtonRounded from "@components/buttons/ButtonRounded";
+import SliderContainer from "@components/slider/SliderContainer";
+
+import slide0 from "@assets/images/apo-slidr-0.png";
+import slide1 from "@assets/images/apo-slidr-1.png";
+import slide2 from "@assets/images/apo-slidr-2.png";
+import slide3 from "@assets/images/apo-slidr-3.png";
+import slide4 from "@assets/images/apo-slidr-4.png";
+
+const img1 = await getImage({ src: slide0, format: 'webp' });
+const img2 = await getImage({ src: slide1, format: 'webp' });
+const img3 = await getImage({ src: slide2, format: 'webp' });
+const img4 = await getImage({ src: slide3, format: 'webp' });
+const img5 = await getImage({ src: slide4, format: 'webp' });
+
+const slideList = [
+    {
+        text: 'eSports: Apostas em Jogos Eletrônicos Populares',
+        pic: img2.src,
+    },
+    {
+        text: 'Esportos: Apostas Pré-partida e Ao Vivo',
+        pic: img1.src,
+    },
+    {
+        text: 'Jogos e Apostas Ao Vivo: Experiência Imersiva',
+        pic: img3.src,
+    },
+    {
+        text: 'Pin Up Aviator: Estratégia e Sorte no Jogo Inovador',
+        description: 'Estes bónus especiais foram criados especialmente para os conhecedores do jogo Aviator',
+        pic: img4.src,
+    },
+    {
+        text: 'Jogos de TV e Esportes Virtuais: Diversão Garantida',
+        pic: img5.src,
+    },
+];
+---
+<div class="overflow-hidden pt-4 -pb-4">
+    <Article titleH1="Bônus de Boas-Vindas para Jogadores de Aviator">
+        <SliderContainer
+            client:load
+            itemsNum={5}
+            noInfiniti={true}
+            list={slideList}
+            itemComponentName="SliderItem8"
+        />
+            <ButtonRounded size="xl" color="red" title="Começam a colocar" className="w-full sm:w-auto"/>
+    </Article>
+</div>

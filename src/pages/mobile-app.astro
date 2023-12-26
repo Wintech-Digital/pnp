@@ -1,0 +1,32 @@
+---
+import Layout from '@layout/Layout.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import MobAppHero from '@content/mobileApp/hero/MobAppHero.astro';
+import MobAppInfoList from '@content/mobileApp/MobAppInfoList.astro';
+import MobAppInfoArticle from '@content/mobileApp/MobAppInfoArticle.astro';
+import MobAppInfoSlider1 from '@content/mobileApp/infoSliders/MobAppInfoSlider1.astro';
+import MobAppInfoSlider2 from '@content/mobileApp/infoSliders/MobAppInfoSlider2.astro';
+import MobAppLinks from '@content/mobileApp/MobAppLinks/MobAppLinks.astro';
+import WithBottom from '@components/spaces/WithBottom.astro';
+
+const breadcrumbList = [
+    {key: 'mobile-app', name: 'Mobile App'}
+];
+---
+<Layout title="PinUp Betting">
+    <Breadcrumbs breadcrumb={breadcrumbList}/>
+
+    <WithBottom>
+        <MobAppHero/>
+    </WithBottom>
+    
+    <MobAppInfoSlider1/>
+
+    <MobAppInfoArticle/>
+
+    <MobAppInfoList/>
+
+    <MobAppInfoSlider2/>
+
+    <MobAppLinks/>
+</Layout>

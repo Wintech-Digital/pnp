@@ -1,0 +1,59 @@
+---
+import {getImage} from "astro:assets";
+import Article from "@components/article/Article.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+import bonusCardPic4 from "@assets/images/bonus4-card.png";
+import bonusCardPic5 from "@assets/images/bonus5-card.png";
+import bonusCardPic6 from "@assets/images/bonus6-card.png";
+
+const slideImage1 = await getImage({ src: bonusCardPic4, height: 172, format: 'webp' });
+const slideImage2 = await getImage({ src: bonusCardPic5, height: 172, format: 'webp' });
+const slideImage3 = await getImage({ src: bonusCardPic6, height: 172, format: 'webp' });
+
+const sliderList = [
+    {
+        text: 'PRIVILÉGIOS VIP',
+        description: 'Tenha acesso a promoções exclusivas e bônus luxuosos!',
+        pic: slideImage1
+    },
+    {
+        text: 'BEM-VINDO',
+        description: 'Receba seu bônus de inscrição!',
+        pic: slideImage2,
+    },
+    {
+        text: 'BÔNUS EXCLUSIVO',
+        description: 'Dobre seu depósito para novos jogadores!',
+        pic: slideImage3,
+    },
+    {
+        text: 'PRIVILÉGIOS VIP',
+        description: 'Tenha acesso a promoções exclusivas e bônus luxuosos!',
+        pic:  slideImage1,
+    },
+    {
+        text: 'BEM-VINDO',
+        description: 'Receba seu bônus de inscrição!',
+        pic:  slideImage2,
+    },
+    {
+        text: 'BÔNUS EXCLUSIVO',
+        description: 'Dobre seu depósito para novos jogadores!',
+        pic:  slideImage3,
+    },
+];
+---
+
+<div class="overflow-hidden pt-4">
+    <Article
+        titleH1='Bônus e Promoções Exclusivas para Conheça Black Rider'
+        titleH2="Bônus Exclusivos e Promoções Específicas"
+    >
+        <SliderContainer
+            client:load
+            list={sliderList}
+            noInfiniti={true}
+            itemComponentName="SliderItem"
+        />
+    </Article>
+</div>

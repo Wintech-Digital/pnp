@@ -68,20 +68,20 @@ export default {
 				'.bblue': {
 					border: '1px solid blue',
 				},
-			    '.text-24-30-700': {
-					fontSize: '24px',
-					lineHeight: '30px',
-					fontWeight: '700',
+			    '.text-16-24-400': {
+					fontSize: '16px',
+					lineHeight: '24px',
+					fontWeight: '400'
 			    },
-			    '.text-24-36-600': {
-					fontSize: '24px',
-					lineHeight: '36px',
-					fontWeight: '600',
-			    },
-			    '.text-16-24-600': {
+				'.text-16-24-600': {
 					fontSize: '16px',
 					lineHeight: '24px',
 					fontWeight: '600',
+			    },
+				'.text-16-24-700': {
+					fontSize: '16px',
+					lineHeight: '24px',
+					fontWeight: '700',
 			    },
 			    '.text-18-28-400': {
 					fontSize: '18px',
@@ -93,26 +93,40 @@ export default {
 					lineHeight: '28px',
 					fontWeight: '600',
 			    },
+			    '.text-24-26-700': {
+					fontSize: '24px',
+					lineHeight: '26px',
+					fontWeight: '700'
+			    },
+				'.text-24-30-700': {
+					fontSize: '24px',
+					lineHeight: '30px',
+					fontWeight: '700',
+			    },
+			    '.text-24-36-600': {
+					fontSize: '24px',
+					lineHeight: '36px',
+					fontWeight: '600',
+			    },
 			    '.text-24-36-700': {
 					fontSize: '24px',
 					lineHeight: '36px',
 					fontWeight: '700',
 			    },
+			    '.text-28-36-600': {
+					fontSize: '28px',
+					lineHeight: '36px',
+					fontWeight: '600',
+			    },
+			    '.text-28-34-700': {
+					fontSize: '28px',
+					lineHeight: '34px',
+					fontWeight: '700'
+			    },
 			    '.text-34-37-700': {
 					fontSize: '34px',
 					lineHeight: '37px',
 					fontWeight: '700',
-			    },
-				'.text-50-56-700': {
-					fontSize: '50px',
-					lineHeight: '56px',
-					fontWeight: '700',
-					letterSpacing: '1%'
-			    },
-			    '.text-16-24-400': {
-					fontSize: '16px',
-					lineHeight: '24px',
-					fontWeight: '400'
 			    },
 			    '.text-40-44-700': {
 					fontSize: '40px',
@@ -124,21 +138,17 @@ export default {
 					lineHeight: '48px',
 					fontWeight: '700'
 			    },
-			    '.text-28-34-700': {
-					fontSize: '28px',
-					lineHeight: '34px',
-					fontWeight: '700'
-			    },
-			    '.text-24-26-700': {
-					fontSize: '24px',
-					lineHeight: '26px',
-					fontWeight: '700'
+				'.text-50-56-700': {
+					fontSize: '50px',
+					lineHeight: '56px',
+					fontWeight: '700',
+					letterSpacing: '-1%'
 			    },
 			    '.card-shadow': {
 					boxShadow: '0px 12px 34px 0px rgba(13, 10, 44, 0.08), 0px 34px 26px 0px rgba(13, 10, 44, 0.05)',
 			    },
 			    '.card': {
-					backgroundColor: theme('colors.pnp.card-bg'),
+					backgroundColor: '',
 			    },
 			    '.card-base': {
 					borderColor: `${theme('colors.pnp.card-border')}`,
@@ -172,7 +182,6 @@ export default {
 					backdropFilter: 'blur(10px)',
 				},
 			    '.gradient-green-coner-1': {
-					border: '1px solid rgba(255, 255, 255, 0.00)',
 					background: 'radial-gradient(166.47% 156.43% at 9.35% 99.93%, rgba(255, 255, 255, 0.00) 31.61%, rgba(6, 186, 159, 0.20) 100%), rgba(255, 255, 255, 0.03)',
 				},
 			   '.gradient-green-coner-2': {
@@ -191,13 +200,18 @@ export default {
 				'.gr-red-green-coner': {
 					background: 'rgb(6,186,159)',
 					background: 'linear-gradient(18deg, rgba(6,186,159,0.2511379551820728) 0%, rgba(6,186,159,0) 41%, rgba(255,59,28,0) 63%, rgba(255,59,28,0.2007177871148459) 100%)',
-					backdropFilter: 'blur(1px)',
 				},
 				'.gr-red-green-coner-1': {
 					background: 'rgb(6,186,159)',
 					background: 'linear-gradient(18deg, rgba(6,186,159,0.7511379551820728) 0%, rgba(6,186,159,0) 41%, rgba(255,59,28,0) 63%, rgba(255,59,28,0.8007177871148459) 100%)',
 					backdropFilter: 'blur(1px)',
 				},
+				'.gr-rad-red-bt': {
+					background: 'radial-gradient(119.61% 79.66% at 50% 113.54%, rgba(255, 59, 28, 0.60) 0%, rgba(28, 28, 29, 0.00) 100%), rgba(255, 255, 255, 0.03)'
+				},
+				'.gr-rad-green-bt': {
+					background: 'radial-gradient(119.61% 79.66% at 50% 113.54%, rgba(15, 185, 160, 0.60) 0%, rgba(28, 28, 29, 0.00) 100%), rgba(255, 255, 255, 0.03)'
+				}
 
 			})
 		}),

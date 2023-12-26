@@ -9,7 +9,7 @@ interface Props {
 
 const SliderItem6: FC<Props> = ({ text, pic, description }) => {
   return (
-    <div className={`h-full w-full mt-12 card-base card-shadow rounded-[24px] sm:rounded-[32px] pt-[82px] px-[24px] border  text-center relative hover:gradient-green-coner-1`}
+    <div className={`bg-pnp/[.03] border border-pnp/[.1] h-full w-full mt-12 card-base card-shadow rounded-[24px] sm:rounded-[32px] pt-[82px] px-[24px] text-center relative hover:gradient-green-coner-1`}
     >
       <div className="flex flex-wrap justify-center absolute left-0 top-0 right-0 -mt-12">
         <div

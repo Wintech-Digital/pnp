@@ -1,5 +1,5 @@
 ---
-import Item from './Item.astro';
+import Item from './BreadcrumbItem.astro';
 
 interface ItemProps {
     key: string;
@@ -15,6 +15,7 @@ const { breadcrumb } = Astro.props as Props;
 ---
 <nav class="mt-[24px] mb-[32px]" aria-label="Breadcrumb">
     <ol role="list" class="flex items-center space-x-2">
+        <Item key='home' name='Home' path={breadcrumb.length ? '/': null} />
         {breadcrumb.map(item => (
             <li>
                 <Item {...item}/>

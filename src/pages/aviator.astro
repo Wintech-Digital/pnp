@@ -1,19 +1,26 @@
 ---
 import Layout from '@layout/Layout.astro';
-
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
-import BlockHero from '@content/aviator/BlockHero/BlockHero.astro';
+import WithBottomSpace from '@components/spaces/WithBottom.astro';
+import AviatorHero from '@content/aviator/AviatorHero.astro';
+import AviatorArticles from '@content/aviator/AviatorArticles.astro';
+import AviatorSlider from '@content/aviator/AviatorSlider.astro';
 import BannerItem1 from "@components/banner/BannerItem1.astro";
 
 const breadcrumbList = [
-    {key: 'home', name: 'Home'}, 
     {key: 'aviator', name: 'Pin Up Casino Aviator'}
 ];
 ---
 <Layout>
     <Breadcrumbs breadcrumb={breadcrumbList}/>
+    
+    <WithBottomSpace>
+        <AviatorHero/>
+    </WithBottomSpace>
 
-    <BlockHero/>
+    <AviatorArticles>
+        <AviatorSlider/>
+    </AviatorArticles/>
 
     <BannerItem1/>
 </Layout>

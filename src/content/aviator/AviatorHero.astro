@@ -1,0 +1,23 @@
+---
+import HeroContainer from "@components/hero/HeroContainer.astro";
+import ButtonRounded from '@components/buttons/ButtonRounded';
+import heroAviatorImageD from '@assets/images/hero/hero-aviator-Dx151kb.png';
+import heroAviatorImageM from '@assets/images/hero/hero-aviator-M@2x156kb.png';
+
+const pictures = [ heroAviatorImageM, heroAviatorImageD];
+
+const title = `Aviator Pin Up: Uma Aventura Única no Cassino Online`;
+const description = 'Nossa plataforma oferece não apenas um jogo, mas uma aventura repleta de emoções e possibilidades. Descubra a magia do Aviator Pin Up, onde a diversão se encontra com a inovação, e cada rodada é uma oportunidade para grandes conquistas';
+
+---
+<HeroContainer
+    pictures={pictures}
+    title={title}
+    description={description}
+    textTopSpaceMobile={"-mt-[10%]"}
+    textBoxWidth={"w-[315px] sm:w-2/3 lg:w-[480px]"}
+>
+    <div slot="btn-box">
+        <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" />
+    </div>
+</HeroContainer>

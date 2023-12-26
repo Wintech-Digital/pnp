@@ -29,12 +29,12 @@ export const mainNav = [
     title: "Slots",
     icon: <SlotsIcon className="h-6 w-auto" />,
     icon2: SlotsIcon,
-    url: "/",
+    url: "/slots",
   },
   {
     title: "Mobile App",
     icon: <MobileAppIcon className="h-6 w-auto" />,
-    url: "/",
+    url: "/mobile-app",
   },
   {
     title: "Bonus",
@@ -43,11 +43,63 @@ export const mainNav = [
   },
 ];
 
+export const slotsList = [
+  {
+    name: "Hell Hot",
+    description: "Shot description of Hell-Hot if needed.",
+    href: "/slots/hell-hot",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Demi Gods II",
+    description: "Demi Gods II description.",
+    href: "/slots/demi-gods-II",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Gates of Olympus",
+    description: "Gates of Olympus description.",
+    href: "/slots/gates-of-olympus",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Leprechaun Riches",
+    description: "Leprechaun Riches description if needed.",
+    href: "/slots/leprechaun-riches",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Majestic King",
+    description: "Majestic King description.",
+    href: "/slots/majestic-king",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Wolf Strike",
+    description: "Wolf Strike descriptionif needed.",
+    href: "/slots/wolf-strike",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "Hot Fruits",
+    description: "Hot Fruits description if needed.",
+    href: "/slots/hot-fruits",
+    icon: ChartPieIcon,
+  },
+  {
+    name: "9 coins",
+    description: "Shot description of 9 coins if needed.",
+    href: "/slots/9-coins",
+    icon: ChartPieIcon,
+  },
+];
+
+
 export const slotsNav = [
   {
     name: "Analytics",
     description: "Get a better understanding of your traffic",
-    href: "#",
+    href: "/",
     icon: ChartPieIcon,
   },
   {
@@ -75,74 +127,30 @@ export const slotsNav = [
     icon: ArrowPathIcon,
   },
 ];
-
-
-export const slotsList = [
-  {
-    name: "Hell Hot",
-    description: "Shot description of Hell-Hot if needed.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Demi Gods II",
-    description: "Demi Gods II description.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Gates of Olympus",
-    description: "Gates of Olympus description.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Leprechaun Riches",
-    description: "Leprechaun Riches description if needed.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Majestic King",
-    description: "Majestic King description.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Wolf Strike",
-    description: "Wolf Strike descriptionif needed.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Hot Fruits",
-    description: "Hot Fruits description if needed.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "9 coins",
-    description: "Shot description of 9 coins if needed.",
-    href: "/",
-    icon: ChartPieIcon,
-  },
-];
-
-
-
 export const navigationMap = [
   {
     title: "Betting",
-    url: "/apostas",
     icon: "betting.svg",
+    url: "/apostas",
   },
-  { title: "Aviator", icon: "aviator.svg", url: "/aviator" },
+  { 
+    title: "Aviator", 
+    icon: "aviator.svg", 
+    url: "/aviator" 
+  },
   {
     title: "Slots",
     icon: "slots.svg",
-    url: "/",
+    url: "/slots",
     navigation: slotsNav,
   },
-  { title: "Mobile App", icon: "mobile.svg", url: "/" },
-  { title: "Bonus", icon: "bonus.svg", url: "/" },
+  { 
+    title: "Mobile App", 
+    icon: "mobile.svg", 
+    url: "/mobile-app" },
+  { 
+    title: "Bonus", 
+    icon: "bonus.svg", 
+    url: "/" 
+  },
 ];

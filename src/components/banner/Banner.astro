@@ -5,39 +5,37 @@ import type { GetImageResult } from "astro";
 interface Props {
     title: string,
     description: string,
-    image: GetImageResult,
     buttonName?: string,
+    image: GetImageResult[],
 }
-const {title,description,image, buttonName = 'Jogue agora'} = Astro.props as Props;
 
-const rounded = `rounded-[32px] md:rounded-[48px]`;
-const paddings = `px-4 py-[80px] sm:px-[74px] sm:py-[74px]`;
-const margins = ' mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]';
-const bgImageSize = `bg-[length:auto_150px] sm:bg-[length:auto]`;
-const bgImagePosition1 = `bg-[position:_left_0px_bottom_-40px] sm:bg-[position:_right_0px_bottom_-60px]`;
-const border = `border border-[#000]/[.2]`;
-const hover = `hover:gr-red-green-coner`;
 const transition = 'transition duration-150 ease-in-out';
+const hover = `hover:gr-red-green-coner`;
+const bg = 'bg-pnp/[.03]'
+const border = `border border-pnp/[.1]`;
+const margins = ' mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]';
+const rounded = `rounded-[32px] md:rounded-[48px]`;
 
-// const bgImagePosition = `bg-[position:_right_0px_bottom_0px] sm:bg-[position:_right_0px_bottom_-100px]`;
+const common = `${rounded} ${margins} ${bg} ${border} ${hover}`;
+const scale = 'scale-100 sm:scale-[80%] mg:scale-[90%] lg:scale-100'
+const {title, description, image, buttonName = 'Jogue agora'} = Astro.props as Props;
 ---
-<div 
-    class=`relative ${border} box-shadow-1 bg-top bg-no-repeat ${bgImagePosition1} ${bgImageSize}  ${rounded} ${margins}`
-    style=`background-image: url('${image.src}')`
->
-    <div class=`w-full flex flex-col items-center text-center gap-4 ${transition} ${hover} ${paddings} ${rounded}`>
-        <h1 class="text-40-48-700 max-w-[960px]">
+
+<div class=`relative overflow-hidden ${common} ${transition} box-shadow-1`>
+    <div class=`${scale} px-4 py-4 absolute w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
+        <h1 class="max-w-[960px] text-28-34-700 lg:text-40-48-700 drop-shadow-lg">
             {title}
         </h1>
-        <p class='max-w-[657px]'>
+        <p class='max-w-[657px] text-16-24-400 text-pnp-grey20 drop-shadow-lg'>
             {description}
         </p>
         <ButtonRounded
             size="xl"
             color="red"
             title={buttonName}
-            className="w-full sm:w-auto mt-4"
+            className="w-full sm:w-auto xsm:py-2 xsm:mt-4"
         />
-
     </div>
+    <img src={image[0].src} alt="" class=" hidden sm:block" />
+    <img src={image[1].src} alt="" class="w-full block sm:hidden" />
 </div>

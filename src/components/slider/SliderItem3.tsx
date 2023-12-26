@@ -11,14 +11,25 @@ interface Props {
 const transition = "transition duration-300 ease-in-out";
 const rounded = "rounded-[24px] sm:rounded-[32px]";
 const gradient = "hover:gradient-red";
-
+const bg = 'bg-pnp/[.03]';
+const customBorder = 'border border-pnp/[.1]';
+const flexCol = 'flex flex-col gap-2 sm:gap-4 justify-between';
+const textPosition = 'text-center items-center';
+const common = `${bg} ${customBorder} ${flexCol} ${textPosition} ${rounded} ${gradient} ${transition}`;
+ 
 const SliderItem3: FC<Props> = ({ text, description, pic }) => (
   <div
-    className={`card flex flex-col gap-4 justify-between text-center items-center h-full overflow-hidden ${rounded} ${gradient} ${transition}`}
+    className={`h-full overflow-hidden ${common}`}
   >
-    <img src={pic.src} alt={text} className="w-full" />
-    <div className="text-24-36-600 px-[24px]">{text}</div>
-    <div className="text-16-24-400 px-[24px] text-pnp/[.6]">{description}</div>
+    <div className={`w-full h-[200px] bg-no-repeat bg-cover bg-top`} style={{
+      backgroundImage: `url('${pic.src}')`
+    }}/>
+    <div className="text-24-36-600 px-[24px]">
+      {text}
+    </div>
+    <div className="text-16-24-400 px-[24px] text-pnp/[.6]">
+      {description}
+    </div>
     <ButtonRounded
       size="xl"
       color="red"

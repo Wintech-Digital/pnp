@@ -18,9 +18,9 @@ import AccordionItem from "./AccordionItem.astro";
   </ol>
 <>
 
-<script>
+<script is:inline>
   const acc = document.getElementsByClassName("accordion");
-  let i: number;
+  let i;
 
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
