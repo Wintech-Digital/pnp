@@ -1,21 +1,22 @@
 ---
+import type { PageId, PageName } from '@constants';
 import ItemBody from './ItemBody.astro';
 export interface ItemProps {
-    key: string;
-    name: string;
-    path?: string | null;
+    id: PageId;
+    name: PageName;
+    url: string | null;
 }
-const { key, name, path } = Astro.props as ItemProps;
+const { id, name, url } = Astro.props as ItemProps;
 const classList = "flex items-center space-x-2 text-[14px] font-normal leading-[22px]";
 ---
-{ path 
+{ url 
     ? (
-        <a href={path} class={`${classList} text-pnp-grey20/[.5] hover:text-pnp hover:underline`}>
-            <ItemBody key={key} name={name} />
+        <a href={url} class={`${classList} text-pnp-grey20/[.5] hover:text-pnp hover:underline`}>
+            <ItemBody id={id} name={name} />
         </a>
     ) : (
         <span class={`${classList} text-pnp`}>
-            <ItemBody key={key} name={name} />
+            <ItemBody id={id} name={name} />
         </span>
     )
 }

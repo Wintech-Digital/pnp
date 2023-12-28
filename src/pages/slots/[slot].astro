@@ -1,6 +1,5 @@
 ---
 import Layout from '@layout/Layout.astro';
-import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
 import SlotHero from '@content/slot/SlotHero.astro';
 import SlotBonus from '@content/slot/SlotBonus.astro';
@@ -11,14 +10,14 @@ import SlotArticle from '@content/slot/SlotArticle.astro';
 import BannerItem1 from '@components/banner/BannerItem1.astro';
 
 export async function getStaticPaths() {
-  const slotPages =[
+  const slotPages = [
   {
     id: "hell-hot",
     name: "Hell Hot",
     description: "Shot description of Hell-Hot if needed.",
   },
   {
-    id: "demi-gods-II",
+    id: "demi-gods-2",
     name: "Demi Gods II",
     description: "Demi Gods II description.",
   },
@@ -56,16 +55,13 @@ export async function getStaticPaths() {
   return slotPages.map((item) =>({params: {slot: item.id}, props:{ name: item.name }}));
 }
 const { slot } = Astro.params;
-const { name } = Astro.props;
-const breadcrumbList = [
-  {key:  slot , name: name, path: null},
-];
 ---
-<Layout>
-    <Breadcrumbs breadcrumb={breadcrumbList}/>
 
+<Layout>
     <WithBottom>
-      <SlotHero/>
+      <SlotHero
+          id={slot}
+      />
     </WithBottom>
 
     <SlotArticle/>

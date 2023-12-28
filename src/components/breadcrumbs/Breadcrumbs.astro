@@ -1,22 +1,23 @@
 ---
 import Item from './BreadcrumbItem.astro';
+import { parsePathname, buildList } from './util';
+import { PageId, pagePreferencies } from '@constants';
 
-interface ItemProps {
-    key: string;
-    name: string;
-    path?: string;
-}
-
-interface Props {
-    breadcrumb: ItemProps[];
-}
-
-const { breadcrumb } = Astro.props as Props;
+const { pathname } = Astro.url;
+const listIds = parsePathname(pathname);
+const listItems = buildList(listIds);
 ---
 <nav class="mt-[24px] mb-[32px]" aria-label="Breadcrumb">
     <ol role="list" class="flex items-center space-x-2">
-        <Item key='home' name='Home' path={breadcrumb.length ? '/': null} />
-        {breadcrumb.map(item => (
+        <Item
+            id={PageId.HOME}
+            name={pagePreferencies[PageId.HOME]['name']}
+            url={ listIds.length 
+                ? pagePreferencies[PageId.HOME]['url'] 
+                : null
+            }
+        />
+        {listItems.map(item => (
             <li>
                 <Item {...item}/>
             </li>

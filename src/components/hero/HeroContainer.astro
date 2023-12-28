@@ -6,7 +6,7 @@ interface Props {
     description?: string,
     textTopSpaceMobile: string,
     textBoxWidth: string,
-    pictures: ImageMetadata[]
+    pictures: any[];
 }
 
 const {
@@ -14,7 +14,7 @@ const {
     description,
     textTopSpaceMobile,
     textBoxWidth,
-    pictures: [pictureM, pictureD]
+    pictures: [pictureM, pictureD, pictureCard]
 } = Astro.props as Props;
 
 // Styles:
@@ -33,6 +33,17 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
 // bg-[linear-gradient(to_right_bottom,rgba(49,84,44,0.8),rgba(16,71,52,0.8)),url('../src/images/icon-bg.jpg')]
 ---
 <div class=`hero-wrapper ${common} relative hover:gr-red-green-coner`>
+    { pictureCard && (
+        <Image
+            src={pictureCard}
+            widths={[364, 700]}
+            sizes={`(min-width: 640px) and (max-width: 768px) 364px, (max-width: 1024px) 700`}
+            quality='low'
+            loading="lazy"
+            class={`absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
+            alt=""
+        />
+    )}
     <Image
         src={pictureD}
         height='568'

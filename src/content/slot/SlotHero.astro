@@ -1,10 +1,19 @@
 ---
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import heroSlotD from '@assets/images/hero/hero-hell-hot-d.png';
-import heroSlotM from '@assets/images/hero/hero-hell-hot-m@2x.png';
+import heroSlotD from '@assets/images/hero/hero-slots-d.png';
+import heroSlotM from '@assets/images/hero/hero-slots-m.png';
     
-const pictures = [ heroSlotM, heroSlotD];
+const {id} = Astro.props;
+const images = await import.meta.glob('/src/assets/images/cards/*.png');
+const slotImage = images[`/src/assets/images/cards/card-${id}.png`];
+const slotCardImage = slotImage ? slotImage() : null;
+const pictures = [
+    heroSlotM,
+    heroSlotD,
+    slotCardImage
+];
+
 const title = `Caça-níqueis Black Rider: Uma Experiência Única de Caça-níqueis`;
 const description = `Black Rider é uma slot criada pela KA Gaming com um tema único de um futuro reino em África. A personagem principal é o Cavaleiro Negro, que apresenta o espetáculo juntamente com as suas duas belas assistentes. Os símbolos Wild e a funcionalidade Duplicate Wilds tornam esta slot excecional`;
 ---
@@ -12,7 +21,7 @@ const description = `Black Rider é uma slot criada pela KA Gaming com um tema �
         pictures={pictures}
         title={title}
         description={description}
-        textTopSpaceMobile={"mt-0"}
+        textTopSpaceMobile="-mt-[30%]"
         textBoxWidth={"w-[340px] sm:w-2/3 lg:w-[480px]"}
     >
         <div slot="btn-box">

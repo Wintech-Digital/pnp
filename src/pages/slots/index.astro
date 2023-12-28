@@ -1,0 +1,15 @@
+---
+import Layout from "@layout/Layout.astro";
+import BlockSlotsList from "@content/home/BlockSlotsList/BlockSlotsList.astro";
+import WithBottom from "@components/spaces/WithBottom.astro";
+import SlotHero from "@content/slot/SlotHero.astro";
+---
+<Layout>
+    <WithBottom>
+        <SlotHero
+            id='slots'
+        />
+      </WithBottom>
+  
+    <BlockSlotsList/>
+</Layout>  

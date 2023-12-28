@@ -2,6 +2,13 @@
 const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+
+// aspect-ratio: auto 400 / 224;
+// img {
+//    overflow-clip-margin: content-box;
+//    overflow: clip;
+// }
+
 export default {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
@@ -17,23 +24,17 @@ export default {
 			 },
 			colors: {
 				'pnp': {
-					
-
 					DEFAULT: '#FFFFFF',
 					'black': '#000000',
-
 					'logo': '#E23A1C',
 					'red': '#FF3B1C',
 					'green': '#06BA9F',
-
 					'dark-red': '#E52D10',
 					'dark-green': '#00A189',
-
 					'grey20': '#D2D2D2',
 					'grey30': '#B3B3B3',
 					'grey40': '#A5A5A5',
 					'grey80': '#333333',
-
 					'card-bg': '#202726',
 					'card-border': '#535958',
 					'tst': 'rgba(255 255 255 0.5)',
@@ -45,8 +46,7 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-			},
-			
+			},			
 		},
 	},
 	plugins: [
@@ -212,7 +212,6 @@ export default {
 				'.gr-rad-green-bt': {
 					background: 'radial-gradient(119.61% 79.66% at 50% 113.54%, rgba(15, 185, 160, 0.60) 0%, rgba(28, 28, 29, 0.00) 100%), rgba(255, 255, 255, 0.03)'
 				}
-
 			})
 		}),
 	],

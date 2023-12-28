@@ -4,9 +4,16 @@ import x from "@assets/svg/x.svg";
 import fb from "@assets/svg/fb.svg";
 import pinterest from "@assets/svg/pinterest.svg";
 import logoWhite from "@assets/svg/logo-white.svg";
+import { navigationFooterList, navigationMainList, pagePreferencies } from "@constants";
 
 ---
+<div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+  <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-pnp-red to-pnp-dark-red opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+</div>
 <footer class="border border-zinc-700 rounded-[32px] sm:rounded-[48px] gradient-red sm:gradient-green-coner-2" aria-labelledby="footer-heading">
+  <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-pnp-red to-pnp-dark-red opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+  </div>
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-6 pb-8 pt-[40px] sm:pt-[32px] lg:px-8 lg:pt-16">
       <div class="xl:grid xl:grid-cols-3 xl:gap-8 xl:justify-between">
@@ -35,38 +42,22 @@ import logoWhite from "@assets/svg/logo-white.svg";
           <div class="md:grid  md:gap-8">
             <div class="flex flex-row">
                 <ul class="flex flex-col flex-wrap space-y-6 mr-[50px]">
-                  <li>
-                    <a href="/apostas">Betting</a>
-                  </li>
-                  <li>
-                    <a href="/aviator">Aviator</a>
-                  </li>
-                  <li>
-                    <a href="/">Slots</a>
-                  </li>
-                  <li>
-                    <a href="/mobile-app">Mobile App</a>
-                  </li>
-                  <li>
-                    <a href="/">Bonus</a>
-                  </li>
+                  {
+                    navigationMainList.map(item=>(
+                      <li>
+                        <a href={pagePreferencies[item].url}>{pagePreferencies[item].name}</a>
+                      </li>
+                    ))
+                  }
                 </ul>
                 <ul class="flex flex-col flex-wrap space-y-6">
-                  <li>
-                    <a href="/terms#termmos">Payments</a>
-                  </li>
-                  <li>
-                    <a href="/terms#termmos">Responsible Gaming</a>
-                  </li>
-                  <li>
-                    <a href="/terms#support">Support</a>
-                  </li>
-                  <li>
-                    <a href="/terms#contacts">Contacts</a>
-                  </li>
+                  {navigationFooterList.map(item=>(
+                    <li>
+                      <a href={pagePreferencies[item].url}>{pagePreferencies[item].name}</a>
+                    </li>
+                  ))}
                 </ul>
               </div>
-        
           </div>
         </div>
       </div>

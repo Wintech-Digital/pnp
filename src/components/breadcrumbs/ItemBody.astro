@@ -1,15 +1,17 @@
 ---
 import Home from 'astro-heroicons/mini/Home.astro';
 import ChevronRight from 'astro-heroicons/mini/ChevronRight.astro';
+import { PageId, PageName } from '@constants';
 
 interface Props {
-    key: string;
-    name: string;
+    id: PageId;
+    name: PageName;
 }
-const { key, name } = Astro.props as Props;
+
+const { id, name } = Astro.props as Props;
 ---
 <> 
-    { (key !== 'home') 
+    { (id !== PageId.HOME) 
         ? <ChevronRight class="h-[20px]"/> 
         : <Home class="h-[20px]"/>
     }

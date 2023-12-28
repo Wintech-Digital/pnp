@@ -202,22 +202,24 @@ const list7DicasPara = [
         <li>8.1 Você se compromete a indenizar totalmente a Empresa contra quaisquer custos ou despesas (incluindo taxas legais) e quaisquer outras despesas incorridas como resultado de sua violação destes Termos.
         </li>
         <li>8.2 Se você violar os Termos, o Site legalmente pode:
-            <ul style="list-style-type:disc" class="pl-5">
-                <li>
-                    8.2.1 notificar que você está violando os Termos, exigindo que você cesse a violação;
-                </li>
-                <li>
-                    8.2.2 suspender sua conta a fim de impedi-lo de usar o Site;
-                </li>
-                <li>8.2.3 bloqueie sua conta, com ou sem aviso prévio;</li>
-                <li>8.2.4 remover de sua conta o valor de quaisquer pagamentos, bônus ou ganhos que você tenha recebido como resultado de qualquer infração.</li>
-            </ul>
         </li>
+    </ol>
+    <ul style="list-style-type:disc" class="pl-5 space-y-3 text-pnp-grey20">
+        <li>
+            8.2.1 notificar que você está violando os Termos, exigindo que você cesse a violação;
+        </li>
+        <li>
+            8.2.2 suspender sua conta a fim de impedi-lo de usar o Site;
+        </li>
+        <li>8.2.3 bloqueie sua conta, com ou sem aviso prévio;</li>
+        <li>8.2.4 remover de sua conta o valor de quaisquer pagamentos, bônus ou ganhos que você tenha recebido como resultado de qualquer infração.</li>
+    </ul>
+    <ol class="my-3 space-y-3 text-pnp-grey20">        
         <li>9 A Empresa se reserva o direito de encerrar sua conta sem a possibilidade de reativação se você não tiver cumprido qualquer uma das disposições dos Termos.
         </li>
         <li>10 Quando houver suspeita de que houve atividade fraudulenta na Conta e/ou violação dos Termos, a Empresa se reserva o direito de suspender a Conta enquanto o departamento de segurança da Empresa investiga o assunto. O período padrão, mas não final, de investigação pode variar de 7 a 30 dias úteis, excluindo fins de semana e feriados.
         </li>
-    </ol> 
+    </ol>
 </Article>
 
 <Article 
@@ -234,7 +236,7 @@ const list7DicasPara = [
 <Article 
     titleH1="7 dicas para jogo responsável"
 >
-    <ul role="list" class="">
+    <ul>
         {list7DicasPara.map((item, index)=>(
             <li class="flex gap-x-3 mb-[32px] last:mb-0">
                 <div class="bg-pnp-green h-[28px] w-[28px] rounded-full flex items-center justify-center px-[11px] py-[10px]">

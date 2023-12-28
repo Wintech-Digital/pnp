@@ -6,7 +6,6 @@ export const accItems = [
         dinheiro real e familiarizar-se com as suas regras e funcionalidades.
         Tenha em atenção que o modo de demonstração utiliza fundos virtuais que
         não são apresentados no seu saldo real.`,
-      isActive: true
     },
     {
       title: 'O site oficial está bloqueado, como contornar?',
@@ -15,7 +14,6 @@ export const accItems = [
         dinheiro real e familiarizar-se com as suas regras e funcionalidades.
         Tenha em atenção que o modo de demonstração utiliza fundos virtuais que
         não são apresentados no seu saldo real.`,
-      isActive: false
     },
     {
       title: 'Como retirar fundos para o cartão?',
@@ -24,7 +22,6 @@ export const accItems = [
         dinheiro real e familiarizar-se com as suas regras e funcionalidades.
         Tenha em atenção que o modo de demonstração utiliza fundos virtuais que
         não são apresentados no seu saldo real.`,
-      isActive: false
     },
   ];
   
