@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Popover } from "@headlessui/react";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
-import ButtonRounded from "@components/buttons/ButtonRounded";
+import {
+  pagePreferencies,
+  navigationMainList,
+  navigationWithNestedList,
+} from "@constants";
 
-import { navigationMainList, navigationWithNestedList, pagePreferencies } from "@constants";
-import { getIcon } from "./utils.tsx";
-import { NavLink, NavButton } from "./NavLink";
-import NavDropDown from "./NavDropDown.tsx";
-import MobileDialog from "./MobileDialog.tsx";
 import Logo from "./Logo.tsx";
+import NavDropDown from "./NavDropDown.tsx";
+import ButtonRounded from "@components/buttons/ButtonRounded";
+import MobileDialog from "./MobileDialog.tsx";
+import {
+  NavLink,
+  NavButton,
+} from "./NavLink";
+import { getIcon } from "./utils.tsx";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -20,38 +27,27 @@ const Header = () => {
       >
         <div className="flex flex-row items-center space-x-6">
           <div className="flex pnplg:flex-1">
-            <Logo/>
+            <Logo />
           </div>
 
           <Popover.Group className="hidden pnplg:flex pnplg:gap-x-[24px]">
             <>
-            {/* {({ open }) => (
+              {/* {({ open }) => (
               <div>Popover.Group: {open ? 'Open' : 'Not Open'}</div>
             )} */}
-            {navigationMainList.map(item => {
-              const {id, url, name} = pagePreferencies[item];
-              if(navigationWithNestedList.hasOwnProperty(item)){
+              {navigationMainList.map((item) => {
+                const { id, url, name } = pagePreferencies[item];
+                if (navigationWithNestedList.hasOwnProperty(item)) {
+                  return (
+                    <NavDropDown key={item} id={item}>
+                      <NavButton name={name} icon={getIcon(id)} />
+                    </NavDropDown>
+                  );
+                }
                 return (
-                  <NavDropDown
-                    key={item}
-                    id={item} 
-                  >
-                    <NavButton
-                      name={name}
-                      icon={getIcon(id)}
-                    />
-                  </NavDropDown>
-                )
-              }
-              return (
-                <NavLink
-                  key={id}
-                  url={url}
-                  name={name}
-                  icon={getIcon(id)}
-                />
-              )
-            })}
+                  <NavLink key={id} url={url} name={name} icon={getIcon(id)} />
+                );
+              })}
             </>
           </Popover.Group>
         </div>
@@ -77,10 +73,7 @@ const Header = () => {
        *  Mobile Menu
        * ***/}
 
-      <MobileDialog
-        isOpen = {mobileMenuOpen}
-        handlerToggle = {setMobileMenuOpen}
-      /> 
+      <MobileDialog isOpen={mobileMenuOpen} handlerToggle={setMobileMenuOpen} />
     </header>
   );
 };

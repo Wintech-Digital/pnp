@@ -1,12 +1,3 @@
-/* .accc {
-    transition: .5s;
-    background: linear-gradient(30deg, #ffffff08 0%, #ffffff08 45%, #06ba9f33 55%, #ffffff08  65%, #ffffff08 73%, #e1141413 95%, #e1141423 100% ) var(--x, 0%)/ 200%;
-}
-.accc:hover{
-    --x: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.00);
-} */
-
 .accc:after {
     transition: 0.3s;
     content: '';
@@ -15,11 +6,18 @@
     bottom:0;
     left: 0;
     right: 0;
-    background: linear-gradient(30deg, #06ba9f33 0%, #06ba9f23 55%, #ffffff08  65%, #ffffff08 73%, #e1141413 95%, #e1141423 100% ) var(--x, 100%)/ 200%;
-    opacity: .1;
+    background: radial-gradient(118.45% 144.98% at 8.58% 93.84%, rgba(255, 255, 255, 0.00) 0%, rgba(6, 186, 159, 0.20) 100%), rgba(255, 255, 255, 0.03);    opacity: 0;
     z-index: -1;
 }
 .accc:hover:after {
-     --x: 100%;  
     opacity: 1;
 }
+.accc button:focus-visible {
+    outline-width: 0px;
+}
+
+/* 
+   Example:
+   background: linear-gradient(30deg, #06ba9f33 0%, #06ba9f23 55%, #ffffff08  65%, #ffffff08 73%, #e1141413 95%, #e1141423 100% ) var(--x, 100%)/ 200%;
+   --x: 100%; 
+*/

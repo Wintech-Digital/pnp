@@ -1,18 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
-
+const { nextui } = require("@nextui-org/react");
 
 // aspect-ratio: auto 400 / 224;
 // img {
 //    overflow-clip-margin: content-box;
 //    overflow: clip;
 // }
-
+// './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
 export default {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-	],
+],
 	theme: {
 		extend: {
 			screens: {
@@ -50,6 +50,7 @@ export default {
 		},
 	},
 	plugins: [
+		nextui(),
 		plugin(function ({ addBase, addComponents, theme }) {
 			addBase({
 			//   'h1': { 

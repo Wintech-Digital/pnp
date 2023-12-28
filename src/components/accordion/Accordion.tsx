@@ -1,22 +1,8 @@
-import React, { type FC } from "react"; 
-import {
-  
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-
-} from '@material-tailwind/react';
+import type { FC } from "react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 import "./styles.css";
 
-type AccItem = {
-  title: string;
-  body: string;
-};
-interface Props {
-  data: AccItem[];
-}
-
-function Icon({ id, open }) {
+function Icon({ open }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +10,7 @@ function Icon({ id, open }) {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className={`${
-        id === open ? "rotate-180" : ""
-      } h-5 w-5 transition-transform`}
+      className={`${ open ? "rotate-180" : "rotate-0" } h-6 w-6 transition-transform`}
     >
       <path
         strokeLinecap="round"
@@ -37,40 +21,45 @@ function Icon({ id, open }) {
   );
 }
 
-const AccordionCustomStyles: FC<Props> = ({ data }) => {
-  const [open, setOpen] = React.useState(1);
-
-  const handleOpen = (value: any) => setOpen(open === value ? 0 : value);
-
-  return (
-    <ul className="flex flex-col gap-y-6">
-      {data.map((item, index) => {
-        const key = index + 1;
-        return (
-          <Accordion
-            key={key}
-            open={open === key}
-            className="accc overflow-hidden box-shadow-1 relative bg-pnp/[.01] border border-pnp/[.1] text-18-28-600 rounded-[24px] sm:rounded-[32px] px-4 py-4 sm:px-8 sm:py-4"
-            icon={<Icon id={1} open={open} />}
-            placeholder={undefined}
-          >
-            <AccordionHeader
-              onClick={() => handleOpen(key)}
-              className={`border-b-0 transition-colors ${
-                open === 1 ? "text-pnp hover:!text-pnp-grey20" : "text-pnp"
-              }`}
-              placeholder={undefined}
-            >
-              {item.title}
-            </AccordionHeader>
-            <AccordionBody className="pt-0 !text-[#D2D2D2] text-16-24-400">
-              {item.body}
-            </AccordionBody>
-          </Accordion>
-        );
-      })}
-    </ul>
-  );
+const box = 'border border-pnp/[.1] bg-pnp/[.03] box-shadow-1';
+const rounded = 'rounded-[24px] sm:rounded-[30px]';
+const padding = 'px-4 sm:px-8 py-4 sm:py-4';
+const margin = 'my-2';
+const itemClasses = {
+  base: `relative accc z-50 overflow-hidden ${box} ${rounded} ${padding} ${margin}`,
+  title: "text-18-28-600",
+  trigger: "flex flex-row justify-between",
+  indicator: "",
+  content: "relative z-50 text-16-24-400 text-pnp-grey20",
 };
 
+type AccItem = {
+  title: string;
+  body: string;
+};
+
+interface Props {
+  data: AccItem[];
+}
+
+const AccordionCustomStyles: FC<Props> = ({ data }) => {
+  return (
+    <Accordion
+      variant="splitted"
+      defaultExpandedKeys={["0"]}
+      itemClasses={itemClasses}
+    >
+      {data.map((item, index) => (
+        <AccordionItem
+          key={`${index}`}
+          aria-label={`acc${index}`}
+          title={item.title}
+          indicator={({ isOpen }) => ( <Icon open={isOpen}/> )}
+        >
+          {item.body}
+        </AccordionItem>
+      ))}
+    </Accordion>
+  );
+};
 export default AccordionCustomStyles;
