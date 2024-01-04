@@ -1,58 +1,38 @@
 ---
-import {getImage} from "astro:assets";
 import ArticleItem from "@components/article/ArticleItem.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import bonusCardPic4 from "@assets/images/bonus4-card.png";
-import bonusCardPic5 from "@assets/images/bonus5-card.png";
-import bonusCardPic6 from "@assets/images/bonus6-card.png";
+import { STRAPI_URL } from "@constants";
 
-const slideImage1 = await getImage({ src: bonusCardPic4, height: 172, format: 'webp' });
-const slideImage2 = await getImage({ src: bonusCardPic5, height: 172, format: 'webp' });
-const slideImage3 = await getImage({ src: bonusCardPic6, height: 172, format: 'webp' });
+const {data} = Astro.props;
+const title = data?.title || '';
+const offerData = data?.offer || [];
 
+const sliderList = offerData.map( item => {
+    const text = item?.title || '';
+    const description = item?.description || '';
+    const pic = item?.coverImage?.data?.attributes?.url;
+    const ext = item?.coverImage?.data?.attributes?.ext;
+    const slideImage = pic ? `${STRAPI_URL}${pic}` : '';
 
-const sliderList = [
-    {
-        text: 'PRIVILÉGIOS VIP',
-        description: 'Tenha acesso a promoções exclusivas e bônus luxuosos!',
-        pic: slideImage1
-    },
-    {
-        text: 'BEM-VINDO',
-        description: 'Receba seu bônus de inscrição!',
-        pic: slideImage2,
-    },
-    {
-        text: 'BÔNUS EXCLUSIVO',
-        description: 'Dobre seu depósito para novos jogadores!',
-        pic: slideImage3,
-    },
-    {
-        text: 'PRIVILÉGIOS VIP',
-        description: 'Tenha acesso a promoções exclusivas e bônus luxuosos!',
-        pic:  slideImage1,
-    },
-    {
-        text: 'BEM-VINDO',
-        description: 'Receba seu bônus de inscrição!',
-        pic:  slideImage2,
-    },
-    {
-        text: 'BÔNUS EXCLUSIVO',
-        description: 'Dobre seu depósito para novos jogadores!',
-        pic:  slideImage3,
-    },
-];
+    return ({
+        text,
+        description,
+        ext,
+        pic: slideImage
+    })
+})
 ---
-<ArticleItem>
-    <div class="overflow-hidden pt-4">
-        <ArticleItem titleH2="Ofertas especiais">
-            <SliderContainer
-                client:load
-                list={sliderList}
-                noInfiniti={true}
-                itemComponentName="SliderItem"
-            />
-        </ArticleItem>
-    </div>
-</ArticleItem>
+{!!sliderList?.length && 
+    <ArticleItem>
+        <div class="overflow-hidden pt-4">
+            <ArticleItem titleH2={title}>
+                <SliderContainer
+                    client:load
+                    list={sliderList}
+                    noInfiniti={true}
+                    itemComponentName="SliderItem"
+                />
+            </ArticleItem>
+        </div>
+    </ArticleItem>
+}

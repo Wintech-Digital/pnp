@@ -20,7 +20,9 @@ import {fetchApi, PageEndPoint} from '@api/index';
 const pageHomeSchema = await fetchApi({
     endpoint: `${PageEndPoint.HOME}`,
 });
+
 const dataHero = pageHomeSchema['data']['attributes']['hero'];
+const dataOfferSlider = pageHomeSchema['data']['attributes']['offerSlider'];
 ---
 <Layout>
     <WithBottom>
@@ -28,7 +30,9 @@ const dataHero = pageHomeSchema['data']['attributes']['hero'];
     </WithBottom>
 
     <!-- 1 -->
-    <BlockOfetas/>
+    <BlockOfetas
+        data={dataOfferSlider || []}
+    />
 
     <!-- 2 -->
     <BlockSlotsList/>
