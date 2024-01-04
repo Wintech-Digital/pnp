@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
+import vercel from '@astrojs/vercel/static';
 
 // https://astro.build/config;
 
@@ -16,5 +17,9 @@ export default defineConfig({
       { protocol: "http" },
       { protocol: "https" },
     ],
+    output: 'static',
+    adapter: vercel({
+      imageService: true,
+    }),
   },
 });
