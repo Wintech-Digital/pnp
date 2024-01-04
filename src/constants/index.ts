@@ -2,6 +2,7 @@
 export const BASE_URL = '/';
 export const SLOTS_URL = '/slots';
 export const TERMS_URL = '/terms';
+export const STRAPI_URL = 'https://strapi.wtech.co';
 
 export enum PageId {
     HOME = 'home',

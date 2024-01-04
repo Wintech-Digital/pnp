@@ -1,6 +1,5 @@
 ---
 import Layout from '@layout/Layout.astro';
-import HomeHero from '@content/home/HomeHero.astro';
 import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
 import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
@@ -16,10 +15,16 @@ import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
 import Section from '@components/accordion/AccordionSection.astro';
 import BannerItem1 from "@components/banner/BannerItem1.astro";
 import WithBottom from '@components/spaces/WithBottom.astro';
+import Hero from '@components/hero/Hero.astro';
+import {fetchApi, PageEndPoint} from '@api/index';
+const pageHomeSchema = await fetchApi({
+    endpoint: `${PageEndPoint.HOME}`,
+});
+const dataHero = pageHomeSchema['data']['attributes']['hero'];
 ---
 <Layout>
     <WithBottom>
-        <HomeHero/>
+        <Hero data={dataHero} />
     </WithBottom>
 
     <!-- 1 -->

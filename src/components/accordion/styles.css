@@ -6,7 +6,8 @@
     bottom:0;
     left: 0;
     right: 0;
-    background: radial-gradient(118.45% 144.98% at 8.58% 93.84%, rgba(255, 255, 255, 0.00) 0%, rgba(6, 186, 159, 0.20) 100%), rgba(255, 255, 255, 0.03);    opacity: 0;
+    background: radial-gradient(118.45% 144.98% at 8.58% 93.84%, rgba(255, 255, 255, 0.00) 0%, rgba(6, 186, 159, 0.20) 100%), rgba(255, 255, 255, 0.03);
+    opacity: 0;
     z-index: -1;
 }
 .accc:hover:after {

@@ -5,6 +5,7 @@
     "paths": {
       "@types": ["src/types"],
       "@constants": ["src/constants"],
+      "@api/*": ["src/api/*"],
       "@pages/*": ["src/pages/*"],
       "@assets/*": ["src/assets/*"],
       "@layout/*": ["src/layout/*"],
