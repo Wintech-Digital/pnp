@@ -45,10 +45,10 @@ const SliderItem: FC<Props> = ({ ...props }) => {
         </div>
         <div
           className="w-full grid justify-items-start mb-[24px] md:justify-items-end md:mb-[0px] h-[172px]">
-            {pic && 
+            {/* {pic &&
               <img src={pic} width='144' height='172' alt="" />
-            }
-            {/* <img src={props.pic} width='144' height='172' alt="" /> */}
+            } */}
+            <img src={props.pic} width='144' height='172' alt="" />
         </div>
       </div>
     </div>
