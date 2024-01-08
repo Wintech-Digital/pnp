@@ -1,7 +1,7 @@
 ---
 import Layout from '@layout/Layout.astro';
-import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
-// import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
+// import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
+import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
 // import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
 // import BlockCasinoInfo from '@content/home/BlockCasinoInfo/BlockCasinoInfo.astro';
 // import BlockBonus from '@content/home/BlockBonus/BlockBonus.astro';
@@ -15,27 +15,27 @@ import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 import Section from '@components/accordion/AccordionSection.astro';
 // import BannerItem1 from "@components/banner/BannerItem1.astro";
 import WithBottom from '@components/spaces/WithBottom.astro';
-import Hero from '@components/hero/Hero.astro';
-import {fetchApi, PageEndPoint} from '@api/index';
-const pageHomeSchema = await fetchApi({
-    endpoint: `${PageEndPoint.HOME}`,
-});
-
-const dataHero = pageHomeSchema['data']['attributes']['hero'];
-const dataOfferSlider = pageHomeSchema['data']['attributes']['offerSlider'];
+// import Hero from '@components/hero/Hero.astro';
+// import {fetchApi, PageEndPoint} from '@api/index';
+// const pageHomeSchema = await fetchApi({
+//     endpoint: `${PageEndPoint.HOME}`,
+// });
+// console.log('pageHomeSchema::::', pageHomeSchema);
+// const dataHero = pageHomeSchema['data']['attributes']['hero'];
+// const dataOfferSlider = pageHomeSchema['data']['attributes']['offerSlider'];
 ---
 <Layout>
     <WithBottom>
-        <Hero data={dataHero} />
+        <!-- <Hero data={dataHero} /> -->
     </WithBottom>
 
     <!-- 1 -->
-    <BlockOfetas
+    <!-- <BlockOfetas
         data={dataOfferSlider || []}
-    />
+    /> -->
 
     <!-- 2 -->
-    <!-- <BlockSlotsList/> -->
+    <BlockSlotsList/>
 
     <!-- 3 -->
     <!-- <BlockConciseFormat/> -->

@@ -39,10 +39,10 @@ async function fetchApi<T>({
       const res = await fetch(url.toString());
       data = await res.json();
       if(!data && data['data']['error']){
-        console.log('Fetch error::', data['data']['error'])
+        console.log('Fetch Data Error::', data['data']['error'])
       }
     } catch (error){
-      console.log('Fetch Error::', error);
+      console.log('Catched Fetch Error::', error);
     }
     
     if (data && wrappedByKey) {

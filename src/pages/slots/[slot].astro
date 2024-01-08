@@ -1,15 +1,46 @@
 ---
 import Layout from '@layout/Layout.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
-import SlotHero from '@content/slot/SlotHero.astro';
+// import SlotHero from '@content/slot/SlotHero.astro';
 import SlotBonus from '@content/slot/SlotBonus.astro';
-import SlotBonusList from '@content/slot/SlotBonusList.astro';
-import SlotCasinoInfo from '@content/slot/SlotCasinoInfo.astro';
+// import SlotBonusList from '@content/slot/SlotBonusList.astro';
+// import SlotCasinoInfo from '@content/slot/SlotCasinoInfo.astro';
 import SlotDetailsArticle from '@content/slot/SlotDetailsArticle.astro';
 import SlotArticle from '@content/slot/SlotArticle.astro';
 import BannerItem1 from '@components/banner/BannerItem1.astro';
 
 export async function getStaticPaths() {
+  return [
+    {params: {slot: 'hell_hot'}},
+  ];
+}
+const { slot } = Astro.params;
+// console.log('slot :::', slot);
+---
+<Layout>
+    <WithBottom>
+      <!-- <SlotHero
+          id={slot}
+      /> -->
+    </WithBottom>
+
+    <SlotArticle/>
+    
+    <!-- <SlotBonusList/> -->
+
+    <SlotBonus/>
+
+    <!-- <SlotCasinoInfo/> -->
+
+    <SlotDetailsArticle/>
+
+    <BannerItem1/>
+
+</Layout>
+
+
+
+<!-- export async function getStaticPaths() {
   const slotPages = [
   {
     id: "hell-hot",
@@ -47,34 +78,15 @@ export async function getStaticPaths() {
     description: "Hot Fruits description if needed.",
   },
   {
-    id: "9-coins",
+    id: "coins",
     name: "9 coins",
     description: "Shot description of 9 coins if needed.",
   },
 ]
-  return slotPages.map((item) =>({params: {slot: item.id}, props:{ name: item.name }}));
-}
-const { slot } = Astro.params;
----
-
-<Layout>
-    <WithBottom>
-      <SlotHero
-          id={slot}
-      />
-    </WithBottom>
-
-    <SlotArticle/>
-    
-    <SlotBonusList/>
-
-    <SlotBonus/>
-
-    <SlotCasinoInfo/>
-
-    <SlotDetailsArticle/>
-
-    <BannerItem1/>
-
-</Layout>
-
+  return slotPages.map((item) =>{
+    return {
+      params: {slot: item.id},
+      props: {name: item.name}
+    }
+  });
+} -->
