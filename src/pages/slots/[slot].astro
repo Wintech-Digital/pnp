@@ -1,92 +1,13 @@
 ---
 import Layout from '@layout/Layout.astro';
-import WithBottom from '@components/spaces/WithBottom.astro';
-// import SlotHero from '@content/slot/SlotHero.astro';
-import SlotBonus from '@content/slot/SlotBonus.astro';
-// import SlotBonusList from '@content/slot/SlotBonusList.astro';
-// import SlotCasinoInfo from '@content/slot/SlotCasinoInfo.astro';
-import SlotDetailsArticle from '@content/slot/SlotDetailsArticle.astro';
-import SlotArticle from '@content/slot/SlotArticle.astro';
-import BannerItem1 from '@components/banner/BannerItem1.astro';
-
 export async function getStaticPaths() {
   return [
     {params: {slot: 'hell_hot'}},
   ];
 }
 const { slot } = Astro.params;
-// console.log('slot :::', slot);
 ---
 <Layout>
-    <WithBottom>
-      <!-- <SlotHero
-          id={slot}
-      /> -->
-    </WithBottom>
-
-    <SlotArticle/>
-    
-    <!-- <SlotBonusList/> -->
-
-    <SlotBonus/>
-
-    <!-- <SlotCasinoInfo/> -->
-
-    <SlotDetailsArticle/>
-
-    <BannerItem1/>
-
+  <p>{slot}</p>
 </Layout>
 
-
-
-<!-- export async function getStaticPaths() {
-  const slotPages = [
-  {
-    id: "hell-hot",
-    name: "Hell Hot",
-    description: "Shot description of Hell-Hot if needed.",
-  },
-  {
-    id: "demi-gods-2",
-    name: "Demi Gods II",
-    description: "Demi Gods II description.",
-  },
-  {
-    id: "gates-of-olympus",
-    name: "Gates of Olympus",
-    description: "Gates of Olympus description.",
-  },
-  {
-    id: "leprechaun-riches",
-    name: "Leprechaun Riches",
-    description: "Leprechaun Riches description if needed.",
-  },
-  {
-    id: "majestic-king",
-    name: "Majestic King",
-    description: "Majestic King description.",
-  },
-  {
-    id: "wolf-strike",
-    name: "Wolf Strike",
-    description: "Wolf Strike descriptionif needed.",
-  },
-  {
-    id: "hot-fruits",
-    name: "Hot Fruits",
-    description: "Hot Fruits description if needed.",
-  },
-  {
-    id: "coins",
-    name: "9 coins",
-    description: "Shot description of 9 coins if needed.",
-  },
-]
-  return slotPages.map((item) =>{
-    return {
-      params: {slot: item.id},
-      props: {name: item.name}
-    }
-  });
-} -->
