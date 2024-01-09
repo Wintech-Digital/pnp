@@ -1,0 +1,11 @@
+---
+const {data} = Astro.props;
+// {
+//      url: 'https://pin-up.ua/',
+//      type: 'link',
+//      children: [Array]  // [ { text: 'Pin-Up Casino', type: 'text' } ]
+// },
+---
+<a href={data.url}>{data.children.map(item=>{
+    return item.text
+})}</a>

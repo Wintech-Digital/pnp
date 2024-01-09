@@ -1,0 +1,22 @@
+---
+import type { PageId, PageName } from '@constants';
+import ItemBody from './ItemBody.astro';
+export interface ItemProps {
+    id: PageId;
+    name: PageName;
+    url: string | null;
+}
+const { id, name, url } = Astro.props as ItemProps;
+const classList = "flex items-center space-x-2 text-[14px] font-normal leading-[22px]";
+---
+{ url 
+    ? (
+        <a href={url} class={`${classList} text-pnp-grey20/[.5] hover:text-pnp hover:underline`}>
+            <ItemBody id={id} name={name} />
+        </a>
+    ) : (
+        <span class={`${classList} text-pnp`}>
+            <ItemBody id={id} name={name} />
+        </span>
+    )
+}

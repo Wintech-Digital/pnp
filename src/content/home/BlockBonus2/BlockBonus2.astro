@@ -1,0 +1,34 @@
+---
+import Article from "@components/article/Article.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+import { STRAPI_URL } from "@constants";
+// import {  getImage } from "astro:assets";
+// import slotsPic1 from "@assets/images/slots-1.png";
+// import slotsPic2 from "@assets/images/slots-2.png";
+// import slotsPic3 from "@assets/images/slots-3.png";
+// const slots1pic = await getImage({ src: slotsPic1, width: 433, format: 'webp' });
+// const slots2pic = await getImage({ src: slotsPic2, width: 433, format: 'webp' });
+// const slots3pic = await getImage({ src: slotsPic3, width: 433, format: 'webp' });
+
+const {data} = Astro.props;
+const title = data?.title;
+const slider = data?.slider3;
+const promotionsList = slider.map(item => {
+    return ({
+        url: item?.url || '/',
+        text: item?.title || '',
+        buttonName: item?.buttonName || '',
+        description: item?.description || '',
+        pic: `${STRAPI_URL}${item?.coverImage['data'].attributes?.url}`,
+    })
+});
+---
+<div class="overflow-hidden pt-4">
+    <Article titleH1={title}>
+        <SliderContainer
+            client:load
+            list={promotionsList}
+            itemComponentName="SliderItem3"
+        />
+    </Article>
+</div>

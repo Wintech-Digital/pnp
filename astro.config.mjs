@@ -1,12 +1,21 @@
-import { defineConfig } from 'astro/config';
-import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// https://astro.build/config;
+// import sitemap from '@astrojs/sitemap'; //integrations: [ sitemap()];  
+import react from "@astrojs/react";
+import tailwind from '@astrojs/tailwind';
+import { defineConfig, squooshImageService } from 'astro/config';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  prefetch: true,
-  integrations: [react(), tailwind()],
+  output: 'static',
+
+  integrations: [
+    react(),
+    tailwind(),
+  ],
+
   image: {
     domains: [
       'http://localhost:1337',
@@ -16,5 +25,14 @@ export default defineConfig({
       { protocol: "http" },
       { protocol: "https" },
     ],
+    service: squooshImageService(),
+  },
+
+  vite: {
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
   },
 });

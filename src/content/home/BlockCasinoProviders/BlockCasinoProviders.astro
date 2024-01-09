@@ -1,0 +1,41 @@
+---
+import Providers from "@components/providers/Providers.astro";
+import RichText from "@components/richtext/RichText.astro";
+import TwoColomns75 from "@components/sections/TwoColomns75.astro";
+
+const {data} = Astro.props;
+const paymentarticle = data?.paymentarticle;
+// console.log('payment data 1:::', paymentarticle)
+
+const paymenthead = paymentarticle.filter(item => item.type === 'heading')
+const paymentlist = paymentarticle.filter(item => item.type === 'list')
+const paymentimage = paymentarticle.filter(item => item.type === 'image')
+// console.log('payment data :::', paymenthead)
+
+const providersarticle = data?.providersarticle;
+const providersslider = data?.providersslider;
+---
+
+<RichText
+    data={paymenthead}
+/>
+
+<TwoColomns75 stretch>
+    <RichText
+        data={paymentimage}
+        slot="first-col"
+    />
+    <RichText
+        data={paymentlist}
+        slot="second-col"
+        listBullet="numbered"
+    />
+</TwoColomns75>
+
+<RichText
+    data={providersarticle}
+/>
+
+<Providers
+    data={providersslider}
+/>

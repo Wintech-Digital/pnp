@@ -1,0 +1,34 @@
+---
+const {data} = Astro.props;
+const columns = data.columns;
+const rows = data.rows;
+const colWidth = `w-[${100 / columns?.lenght || 1}%]`;
+---
+<div class="">
+    <div class="mt-8">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full align-middle border border-white/[.15] rounded-[32px]">
+          <table class="table-fixed min-w-full divide-y divide-white/[.15] text-white mr-8">
+            <thead>
+              <tr class="divide-x divide-white/[.15]">
+                {columns.map(col=>(
+                    <th scope="col" class={`${colWidth} py-3.5 pl-8 pr-4 text-left text-18-28-400`}>{col}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[.15]">
+                {rows.map(row=>{
+                    return(
+                        <tr class="divide-x divide-white/[.15]">
+                            {row.map(item=>(
+                                <td class="whitespace-nowrap py-4 pl-8 pr-4 text-18-28-400">{item}</td>
+                            ))}
+                        </tr>
+                    )
+                })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>

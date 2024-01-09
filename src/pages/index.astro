@@ -1,7 +1,99 @@
 ---
 import Layout from '@layout/Layout.astro';
+import Hero from '@components/hero/Hero.astro';
+import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
+import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
+import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
+import BlockCasinoInfo from '@content/home/BlockCasinoInfo/BlockCasinoInfo.astro';
+import BlockBonus from '@content/home/BlockBonus/BlockBonus.astro';
+import BlockBonus2 from '@content/home/BlockBonus2/BlockBonus2.astro';
+import BlockCasinoInfo2 from '@content/home/BlockCasinoInfo2/BlockCasinoInfo2.astro';
+import BlockCasinoProviders from '@content/home/BlockCasinoProviders/BlockCasinoProviders.astro';
+import BlockList from '@content/home/BlockList/BlockList.astro';
+import BlockSuporte from '@content/home/BlockSuporte/BlockSuporte.astro';
+import BlockInfo2 from '@content/home/BlockInfo2/BlockInfo2.astro';
+import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
+import Section from '@components/accordion/AccordionSection.astro';
+import BannerItem1 from "@components/banner/BannerItem1.astro";
+import WithBottom from '@components/spaces/WithBottom.astro';
+import {fetchApi, endpoints} from '@api/index';
+
+const pageHomeSchema = await fetchApi({
+    endpoint: endpoints.home,
+});
+const dataHero = pageHomeSchema ? pageHomeSchema['data'].attributes?.hero : null;
+const dataOfferSlider = pageHomeSchema ? pageHomeSchema['data']?.attributes?.offerSlider : null;
+const dataSlotsList = pageHomeSchema ? pageHomeSchema['data']['attributes']['slotsList'] : null;
+const articleAnalises = pageHomeSchema ? pageHomeSchema['data']['attributes']['analisesArticle'] : null;
+const slider2 = pageHomeSchema ? pageHomeSchema['data']['attributes']['slider2'] : null;
+const bonuses = pageHomeSchema ? pageHomeSchema['data']['attributes']['bonuses'] : null;
+const promotions = pageHomeSchema ? pageHomeSchema['data']['attributes']['promotions'] : null;
+const guide = pageHomeSchema ? pageHomeSchema['data']['attributes']['guide'] : null;
+const payment = pageHomeSchema ? pageHomeSchema['data']['attributes']['payment'] : null;
+const availablegames = pageHomeSchema ? pageHomeSchema['data']['attributes']['availablegames'] : null;
+const appadvantages = pageHomeSchema ? pageHomeSchema['data']['attributes']['appadvantages'] : null;
+const banner = pageHomeSchema ? pageHomeSchema['data']['attributes']['banner'] : null;
+
 ---
 <Layout>
-    Home page
-</Layout>
+    <!-- 12 -->
+    <BlockInfo3/>
 
+    <WithBottom>
+        <Hero data={dataHero}/>
+    </WithBottom>
+
+    <!-- 1 -->
+    <BlockOfetas data={dataOfferSlider}/>
+
+    <!-- 2 -->
+    <BlockSlotsList data={dataSlotsList}/>
+
+    <!-- 3 -->
+    <BlockConciseFormat data={articleAnalises}/>
+
+    <!-- 4 -->
+    <BlockCasinoInfo data={slider2}/>
+
+    <!-- 5 -->
+    <BlockBonus data={bonuses}/>
+
+    6
+    <BlockBonus2
+        data={promotions}
+    />
+
+    <!-- 7 -->
+    <BlockCasinoInfo2
+        data={guide}
+    />
+    
+    <!-- 8 Payment -->
+    <BlockCasinoProviders
+        data={payment}
+    />
+
+   <!-- 9 -->
+    <BlockList
+        data={availablegames}
+    />
+
+    <!-- 10 -->
+    <BlockInfo2
+        data={appadvantages}
+    />
+
+    <!-- 11 -->
+    <BannerItem1
+        data={banner}
+    />
+     
+    <!-- 13 -->
+    <BlockSuporte/>
+
+    <!-- 14 -->
+    <Section
+        title="Conclusão"
+        body='E ainda, é PinUp real ou falso? Nós sabemos a resposta para esta pergunta! Pin-Up Casino é uma ótima plataforma para todos os fãs de jogos de cassino e apostas. Uma ampla gama de serviços, bônus rentáveis, métodos de pagamento seguros e confiáveis, serviço de suporte de alta qualidade e grandes ganhos já estão esperando por você no PinUp Brasil ! Não perca tempo e inscreva-se logo! E não se esqueça dos bônus de boas-vindas!' 
+    />
+</Layout>

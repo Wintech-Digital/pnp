@@ -1,0 +1,11 @@
+---
+const {data} = Astro.props;
+---
+<li>
+    {data.children.map(child => {
+        if(child.bold){
+            return child.text
+        }   
+        return child.text;
+    })}
+</li>

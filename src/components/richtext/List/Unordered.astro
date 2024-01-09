@@ -1,0 +1,18 @@
+---
+const {block} = Astro.props;
+console.log('Unordered ::: ', block);
+// [
+//     { type: 'list-item', children: [Array] },
+//     { type: 'list-item', children: [Array] },
+//     { type: 'list-item', children: [Array] }
+//   ]
+---
+<ul class="my-8 pl-6 space-y-3 text-pnp-grey20">
+    <li>list </li>
+    <li>list </li>
+    <!-- { data.map(item=> (
+        <li class='text-16-24-400'>
+            {item}
+        </li>
+    )) } -->
+</ul>

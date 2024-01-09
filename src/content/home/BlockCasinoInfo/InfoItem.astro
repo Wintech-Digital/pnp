@@ -1,0 +1,33 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+    bgStyle: string;
+    title: string;
+    image: ImageMetadata;
+    description: string;
+}
+
+const {title, image, description, bgStyle} = Astro.props as Props;
+---
+<div class=`${bgStyle} min-w-[330px] card-base card-shadow rounded-[24px] sm:rounded-[32px] border w-full text-center relative pt-[82px] px-[24px] pb-4 sm:pb-8`> 
+
+    <div class="flex flex-wrap justify-center absolute left-0 top-0 right-0 -mt-12">
+        <div class="relative bg-pnp-black/[.2] flex w-[100px] h-[100px] rounded-full items-center justify-center before:absolute before:h-[340px] before:w-[340px] before:rounded-full">
+            <Image
+                src={image}
+                format='webp'
+                alt="imagepng."
+                class="z-10"
+            />
+          </div>
+    </div>
+
+    <div class="text-28-34-700 text-pnp mb-4">
+        {title}
+    </div>
+    <div class="text-16-24-400 text-pnp-grey20">
+        {description}
+    </div>
+</div>

@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+const {block} = Astro.props;
+const {url, caption, alternativeText, width, height} = block.image;
+// console.log({url, caption, alternativeText, width, height})
+---
+<div class='flex flex-col-reverse sm:flex-col'>
+    <Image
+        src={url ? url : ""}
+        format='webp'
+        width={width}
+        height={height}
+        sizes={`(min-width: 640px) and (max-width: 768px) 382px, (max-width: 1024px) 392px`}
+        alt={alternativeText ? alternativeText : ''}
+        class="w-full min-w-[250px] border border-pnp/[.1] rounded-[32px]"
+    />
+    { caption &&
+        <h2 class='text-pnp text-24-26-700 mb-[24px] sm:text-28-34-700 sm:mt-[32px]'>
+            {caption}
+        </h2>
+    }
+</div>

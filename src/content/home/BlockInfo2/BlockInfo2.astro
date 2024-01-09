@@ -1,0 +1,35 @@
+---
+import { STRAPI_URL } from "@constants";
+import RichText from "@components/richtext/RichText.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+
+const {data} = Astro.props;
+const appAdvantagesTitle = data?.appAdvantagesTitle;
+const appAdvantagesSlider = data?.appAdvantagesSlider;
+
+const sliderList = appAdvantagesSlider.map(item => {
+    const text = item.title;
+    const description = item.description;
+    const isImage = item.coverImage.data;
+    const imageAttributes = isImage.attributes;
+    const pic = isImage ? `${STRAPI_URL}${imageAttributes.url}` : '';
+    return ({
+        text,
+        description,
+        pic,
+    })
+})
+
+// console.log('data :::', sliderList)
+---
+<div class="overflow-hidden pt-4">
+    <RichText
+        data={appAdvantagesTitle}
+    />
+    <SliderContainer
+        client:load
+        list={sliderList}
+        noInfiniti={true}
+        itemComponentName="SliderItem6"
+    />
+</div>

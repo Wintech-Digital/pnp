@@ -1,6 +1,25 @@
 ---
 import Layout from "@layout/Layout.astro";
+import BlockSlotsList from "@content/home/BlockSlotsList/BlockSlotsList.astro";
+import WithBottom from "@components/spaces/WithBottom.astro";
+import SlotHero from "@content/slot/SlotHero.astro";
+
+// import { strapiParse } from "src/helper";
+// const apiUrl = 'https://strapi.wtech.co/api';
+// const path = `${apiUrl}/slots/?populate=*`;
+// const pathBySlug = `${apiUrl}/slots?filters[name][$eq]=${`Gates of Olympus`}&populate=image`;
+// const response = await fetch(path);
+// const res = await response.json();
+// // console.log('data :', res.data[0].attributes.image.data.attributes.url);
+// console.log('data :', strapiParse(res));
+
 ---
 <Layout>
-    <p class="text-40-48-700">Slots page</p>
+    <WithBottom>
+        <SlotHero
+            id='slots'
+        />
+      </WithBottom>
+  
+    <BlockSlotsList/>
 </Layout>  

@@ -1,0 +1,111 @@
+---
+import { Image } from 'astro:assets';
+ 
+interface Props {
+    title: string,
+    description?: string,
+    textTopSpaceMobile: string,
+    textBoxWidth: string,
+    pictures: any[];
+}
+
+const {
+    title,
+    description,
+    textTopSpaceMobile,
+    textBoxWidth,
+    pictures: [pictureM, pictureD, pictureCard]
+} = Astro.props as Props;
+
+// Styles:
+const bgColor = 'bg-pnp/[.03]';
+const border = 'border border-pnp/[.1]';
+const margins = `mx-4 sm:mx-[4.6%] ${textTopSpaceMobile} sm:mt-[4%] sm:mb-[4%]`;
+const rounded = 'rounded-[24px] sm:rounded-[32px] md:rounded-[42px] md:rounded-[48px]';
+
+// Styles Debug Mode: ${debug}; 
+// const debug = 'border border-pnp-red/[.5] sm:border-pnp-green/[.5] md:border-black/[.5] lg:border-pnp/[.5]';
+
+// Common Styles: 
+const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  ${debug}
+
+// Test:
+// bg-[linear-gradient(to_right_bottom,rgba(49,84,44,0.8),rgba(16,71,52,0.8))]
+---
+     <div class=`hero-wrapper ${common} relative gr-red-green-coner`>
+        { pictureCard && (
+            <Image
+                src={pictureCard}
+                width='700'
+                height='332'
+                sizes={`(min-width: 640px) and (max-width: 768px) 364px, (max-width: 1024px) 700`}
+                quality='low'
+                loading="lazy"
+                class={`absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
+                alt=""
+            />
+        )}
+        <Image
+            src={pictureD}
+            width='1360'
+            height='569'
+            sizes={`(min-width: 640px) and (max-width: 768px) 768px, (max-width: 1024px) 1024px`}
+            loading="lazy"
+            class={`hero-img hidden sm:block w-full`}
+            alt=""
+        />
+        <Image
+            src={pictureM}
+            width="764"
+            height="413"
+            loading="lazy"
+            format='webp'
+            class={`hero-img block sm:hidden w-full`}
+            alt=""
+        />
+        <div class=`hero-content w-auto h-auto flex flex-col gap-8 justify-start sm:justify-between pb-4 ${margins}`>
+            <div class=`${textBoxWidth}`>
+                {title && 
+                    <h1
+                        transition:animate="fade"
+                        class="text-40-44-700 sm:text-34-37-700 md:text-40-44-700 lg:text-50-56-700 mb-4 sm:mb-8"
+                    >
+                    {title}
+                    </h1>
+                }
+                { description && 
+                    <p class="text-16-24-400 text-pnp-grey20">
+                        {description}
+                    </p>
+                }
+            </div>
+            <slot name="btn-box" />
+        </div>
+    </div>
+
+<style>
+    @media (min-width: 640px) { 
+        .hero-wrapper {
+            display: grid;
+            height: 100%;
+        }
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+        }
+        .gr {
+            z-index: 1;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+        .hero-wrapper .hero-img,
+        .hero-wrapper .hero-content {
+            grid-area: 1/-1;
+        }
+    }
+</style>

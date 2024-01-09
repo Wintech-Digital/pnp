@@ -1,0 +1,18 @@
+---
+interface Props {
+    reverse?: boolean;
+    stretch?: boolean;
+}
+const {reverse, stretch} = Astro.props;
+const isReverse = reverse ? 'flex-col-reverse' : 'flex-col'
+const isStretch = stretch ? 'stretch' : 'center'
+---
+<div class=`flex ${isReverse} sm:flex-row sm:items-${isStretch} gap-8 mb-[80px] sm:mb-[100px]`>
+        <div class='sm:max-w-[392px]'>
+            <slot name="first-col"/>
+        </div>
+        <div class='sm:w-2/3'>
+            <slot name="second-col"/>
+        </div>
+    </div>
+

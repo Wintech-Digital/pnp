@@ -1,0 +1,40 @@
+---
+import Article from "@components/article/Article.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+import bonusCardPic4 from "@assets/images/bonus4-card.png";
+import bonusCardPic5 from "@assets/images/bonus5-card.png";
+import bonusCardPic6 from "@assets/images/bonus6-card.png";
+
+const sliderList = [
+    {
+        text: 'PRIVILÉGIOS VIP',
+        description: 'Tenha acesso a promoções exclusivas e bônus luxuosos!',
+        pic: bonusCardPic4
+    },
+    {
+        text: 'BEM-VINDO',
+        description: 'Receba seu bônus de inscrição!',
+        pic: bonusCardPic5,
+    },
+    {
+        text: 'BÔNUS EXCLUSIVO',
+        description: 'Dobre seu depósito para novos jogadores!',
+        pic: bonusCardPic6,
+    },
+];
+
+---
+
+<div class="overflow-hidden pt-4">
+    <Article
+        titleH1='Bônus e Promoções Exclusivas para Conheça Black Rider'
+        titleH2="Bônus Exclusivos e Promoções Específicas"
+    >
+        <SliderContainer
+            client:load
+            list={sliderList}
+            noInfiniti={true}
+            itemComponentName="SliderItem"
+        />
+    </Article>
+</div>

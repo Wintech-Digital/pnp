@@ -1,0 +1,38 @@
+---
+import ArticleItem from "@components/article/ArticleItem.astro";
+import SliderContainer from "@components/slider/SliderContainer";
+import { STRAPI_URL } from "@constants";
+
+const {data} = Astro.props;
+const title = data?.title || '';
+const offerData = data?.offer || [];
+
+const sliderList = offerData.map((item) => {
+    const text = item?.title || '';
+    const description = item?.description || '';
+    const pic = item?.coverImage?.data?.attributes?.url;
+    const ext = item?.coverImage?.data?.attributes?.ext;
+    const slideImage = `${STRAPI_URL}${pic}` || '';
+    return ({
+        text,
+        description,
+        ext,
+        pic: slideImage
+    })
+})
+---
+
+{!!sliderList?.length &&
+    <ArticleItem>
+        <div class="overflow-hidden pt-4">
+            <ArticleItem titleH2={title}>
+                <SliderContainer
+                    client:load
+                    list={sliderList}
+                    noInfiniti={true}
+                    itemComponentName="SliderItem"
+                />
+            </ArticleItem>
+        </div>
+    </ArticleItem>
+}

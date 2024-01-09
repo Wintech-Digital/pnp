@@ -1,0 +1,12 @@
+---
+import Link from "./Link.astro";
+const {block} = Astro.props;
+---
+<p class='text-16-24-400 text-pnp-grey20 mb-[32px]' slot='first-col'>
+    {block.children.map(item => {
+        if(item.type === 'link'){
+            return <Link data={item} />
+        }
+        return item.text
+    })}
+</p>

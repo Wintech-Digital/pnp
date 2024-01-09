@@ -1,4 +1,3 @@
-
 export const BASE_URL = '/';
 export const SLOTS_URL = '/slots';
 export const TERMS_URL = '/terms';

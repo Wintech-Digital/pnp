@@ -1,0 +1,36 @@
+---
+import TwoColomns50 from "@components/sections/TwoColomns50.astro";
+import MobAppCard from "./MobAppCard.astro";
+import ButtonRounded from "@components/buttons/ButtonRounded";
+import MobApplePic from '@assets/images/MobApple.png';
+import MobAndroidPic from '@assets/images/MobAndroid.png';
+import appleIcon from "@assets/svg/apple.svg";
+import androidIcon from "@assets/svg/android.svg";
+import Article from "@components/article/Article.astro";
+---
+
+<Article titleH1 = 'Pin Up Casino App:'>
+    <TwoColomns50 stretch>
+        <MobAppCard
+            slot="first-col"
+            icon={appleIcon}
+            pic={MobApplePic}
+            title="IOS App"
+            description="Uma colorida slot infernal com símbolos ardentes e grandes prémios."
+            style="red"
+        >
+            <ButtonRounded size="xl" color="red" title="Ios Download" className="w-full sm:w-auto" />
+        </MobAppCard>
+        
+        <MobAppCard
+            slot="second-col"
+            icon={androidIcon}
+            pic={MobAndroidPic}
+            title="Android App"
+            description="Mergulhe numa aventura emocionante com personagens únicas e grandes prémios."
+            style="green"
+        >
+            <ButtonRounded size="xl" color="red" title="Android Download" className="w-full sm:w-auto" />
+        </MobAppCard>
+    </TwoColomns50>
+</Article>

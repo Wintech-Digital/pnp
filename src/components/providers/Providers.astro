@@ -1,0 +1,35 @@
+---
+/**
+    const providersName = ['bitcoin', 'mastercard', 'neteller'];
+    const images = {
+    'mastercard': () => import('/src/assets/svg/mastercard.svg'),
+    'neteller': () => import('/src/assets/svg/neteller.svg'),
+    'bitcoin': () => import('/src/assets/svg/bitcoin.svg'),
+    };
+
+Get all SVG files:
+   const providersList = providersName.map(item=> ({alt: item, key: `/src/assets/svg/${item}.svg`}));
+   const images = await import.meta.glob('/src/assets/svg/*.svg');
+*/
+
+import { STRAPI_URL } from '@constants';
+const {data} = Astro.props;
+---
+<div class="mt-6 grid gap-x-4 gap-y-4 grid-cols-2 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 lg:mx-0 lg:grid-cols-6">
+    {data.map(item => {
+        const coverImage = item.coverImage?.data;
+        const imgUrl = coverImage ? `${STRAPI_URL}${coverImage.attributes.url}` : '';
+        const h = "25";
+        const w = coverImage.attributes.width;
+        return (
+            <div class='flex justify-center items-center px-8 py-8 h-[120px] rounded-[24px] bg-pnp/[.05]'>
+                <img 
+                    src={imgUrl}
+                    width={w}
+                    height={h}
+                    alt=''
+                />
+            </div>
+        )
+    })}
+</div>

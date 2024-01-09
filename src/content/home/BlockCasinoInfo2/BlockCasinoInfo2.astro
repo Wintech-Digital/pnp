@@ -1,0 +1,53 @@
+---
+// import { getImage } from "astro:assets";
+// import img1 from "@assets/images/Image1.png";
+// const pic1 = await getImage({ src: img1, width: 270, format: 'webp' });
+
+import { STRAPI_URL } from "@constants";
+import SliderContainer from "@components/slider/SliderContainer";
+import SliderItem4 from '@components/slider/SliderItem4';
+import RichText from '@components/richtext/RichText.astro';
+import Table from "@components/table/TableDynamic.astro";
+
+const gridList = 'sm:grid sm:gap-6 sm:grid-cols-2 md:gap-6 md:grid-cols-3 lg:gap-6 lg:grid-cols-3 xl:gap-6 xl:grid-cols-4';
+const flexList = 'flex flex-row overflow-x-scroll gap-4';
+
+const {data} = Astro.props;
+const guidesteps = data?.guidesteps;
+const guidetitle = data?.guidetitle;
+const guideslider = data?.guideslider;
+const guidetable = data?.guidetable;
+const sliderData = guideslider.map(item=>{
+    const isImage = item.coverImage.data !== null;
+    const pic = isImage ? `${STRAPI_URL}${item.coverImage.data.attributes.url}` : ''; 
+    return({
+        text: item.title,
+        description: item.description,
+        pic,
+    })
+})
+---
+<RichText withSlots data={guidetitle}/>
+
+<div class="overflow-hidden pt-4 block sm:hidden">
+    <SliderContainer
+        client:load
+        list={sliderData}
+        itemComponentName="SliderItem4"
+    />
+</div>
+
+<ul class=`${flexList} ${gridList} mb-[32px] hidden sm:block`>
+    { sliderData.map((item, index)=> ( 
+        <SliderItem4
+            text={item.text}
+            description={item.description}
+            pic={item.pic}
+            ind={index}
+        />
+    ))}
+</ul>
+
+<RichText data={guidesteps}/>
+
+<Table data={guidetable}/>

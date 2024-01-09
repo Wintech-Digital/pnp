@@ -1,0 +1,10 @@
+---
+import Banner from "./Banner.astro";
+const {data} = Astro.props;
+const bannerdescription = data?.bannerdescription;
+const bannerbtn = data?.bannerbtn;
+---
+<Banner
+    btn = {bannerbtn}
+    description= {bannerdescription}
+/>

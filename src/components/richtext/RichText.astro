@@ -1,0 +1,42 @@
+---
+import List from '@components/richtext/List/List.astro';
+import Heading from '@components/richtext/Heading/Heading.astro';
+import Paragraph from '@components/richtext/Paragraph/Paragraph.astro';
+import ImageBlock from '@components/richtext/ImageBlock/ImageBlock.astro';
+const {data, listBullet = null, classList = ''} = Astro.props;
+// console.log('Rich text ::::', data)
+---
+{
+    data?.map(block => {
+        switch(block.type) {
+	    	case 'heading':
+                return (
+                    <Heading
+                        block={block}
+                        classList={classList}
+                    />
+                );
+	    	case 'paragraph':
+                return (
+                    <Paragraph
+                        block={block}
+                    />
+                );
+	    	case 'list':
+                return (
+                    <List
+                        block={block}
+                        bullet={listBullet}
+                    />
+                );
+	    	case 'image':
+                return (
+                    <ImageBlock
+                        block={block}
+                    />
+                );
+		    default:
+                return null;
+        }
+    })
+}
