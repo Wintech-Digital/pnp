@@ -36,8 +36,8 @@ const SliderItem: FC<Props> = ({ ...props }) => {
             className="mt-[24px] w-full md:w-auto"
           />
         </div>
-        <div className="w-full grid justify-items-start mb-[24px] md:justify-items-end md:mb-[0px] h-[172px]">
-            <img src={props.pic} width='144' height='172' alt="" />
+        <div className="h-[172px] w-full grid content-center justify-items-start md:justify-items-end mb-[24px] md:mb-[0px]">
+            <img src={props.pic} alt=""/>
         </div> 
       </div>
     </div>

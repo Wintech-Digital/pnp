@@ -33,12 +33,11 @@ const payment = pageHomeSchema ? pageHomeSchema['data']['attributes']['payment']
 const availablegames = pageHomeSchema ? pageHomeSchema['data']['attributes']['availablegames'] : null;
 const appadvantages = pageHomeSchema ? pageHomeSchema['data']['attributes']['appadvantages'] : null;
 const banner = pageHomeSchema ? pageHomeSchema['data']['attributes']['banner'] : null;
-
+const strategies = pageHomeSchema ? pageHomeSchema['data']['attributes']['strategies'] : null;
+const support = pageHomeSchema ? pageHomeSchema['data']['attributes']['support'] : null;
+const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoSection'] : null;
 ---
 <Layout>
-    <!-- 12 -->
-    <BlockInfo3/>
-
     <WithBottom>
         <Hero data={dataHero}/>
     </WithBottom>
@@ -58,7 +57,7 @@ const banner = pageHomeSchema ? pageHomeSchema['data']['attributes']['banner'] :
     <!-- 5 -->
     <BlockBonus data={bonuses}/>
 
-    6
+    <!-- 6 -->
     <BlockBonus2
         data={promotions}
     />
@@ -88,12 +87,18 @@ const banner = pageHomeSchema ? pageHomeSchema['data']['attributes']['banner'] :
         data={banner}
     />
      
+    <!-- 12 -->
+    <BlockInfo3
+        data={strategies}
+    />
+    
     <!-- 13 -->
-    <BlockSuporte/>
+    <BlockSuporte
+        data={support}
+    />
 
     <!-- 14 -->
     <Section
-        title="Conclusão"
-        body='E ainda, é PinUp real ou falso? Nós sabemos a resposta para esta pergunta! Pin-Up Casino é uma ótima plataforma para todos os fãs de jogos de cassino e apostas. Uma ampla gama de serviços, bônus rentáveis, métodos de pagamento seguros e confiáveis, serviço de suporte de alta qualidade e grandes ganhos já estão esperando por você no PinUp Brasil ! Não perca tempo e inscreva-se logo! E não se esqueça dos bônus de boas-vindas!' 
+        data={infoSection}
     />
 </Layout>

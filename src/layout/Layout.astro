@@ -13,6 +13,14 @@ interface Props {
 const {props, generator} = Astro;
 const { title = 'Empty title' }: Props = props;
 
+import {fetchApi, endpoints} from '@api/index';
+const pageLayoutSchema = await fetchApi({
+    endpoint: endpoints.layout,
+});
+const dataLayout = pageLayoutSchema ? pageLayoutSchema['data'].attributes : null;
+const faqData = dataLayout.faqBlock;
+
+
 // import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 // <GoogleFontsOptimizer url={'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap'}>
 // </GoogleFontsOptimizer>
@@ -48,7 +56,9 @@ const { title = 'Empty title' }: Props = props;
 				<slot/>
 			</main>
 			<WithBottomSpace>
-				<AccordionContainer/>
+				<AccordionContainer
+					data={faqData}
+				/>
 			</WithBottomSpace>
 			<Footer />
 		</div>

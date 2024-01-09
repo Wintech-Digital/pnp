@@ -1,20 +1,25 @@
 ---
-interface Props {
-    title: string;
-    body: string;
-}
-const {title, body} = Astro.props as Props;
+import RichText from "@components/richtext/RichText.astro";
+
 
 const transition = 'transition-all duration-150 ease-in-out';
-const hovers = 'hover:gradient-green-coner-4';
+const hovers = 'gradient-green-coner-4 hover:gradient-green-coner-2';
 const rounded = 'rounded-[24px] sm:rounded-[30px]';
 const paddings = 'px-4 py-4 sm:px-8 sm:py-8';
+
+const {data} = Astro.props;
+const title = data?.title;
+const info = data?.info;
+
 ---
-<>
-<h2 class="text-34-37-700 sm:text-40-48-700 mb-12 sm:mb-4">{title}</h2>
-<section class=`border border-zinc-700 bg-gray-100 bg-opacity-5 ${rounded} ${hovers} ${transition} ${paddings}`>
-    <p>
-        {body}
-    </p>
-</section>
-</>
+{data && 
+    <RichText
+        data={title}
+        // class="text-34-37-700 sm:text-40-48-700 mb-12 sm:mb-4"
+    />
+    <section class={`border border-zinc-700 bg-gray-100 bg-opacity-5 ${rounded} ${hovers} ${transition} ${paddings}`}>
+        <RichText
+            data={info}
+        />
+    </section>
+}

@@ -8,6 +8,7 @@ const {url, caption, alternativeText, width, height} = block.image;
     <Image
         src={url ? url : ""}
         format='webp'
+        quality="max"
         width={width}
         height={height}
         sizes={`(min-width: 640px) and (max-width: 768px) 382px, (max-width: 1024px) 392px`}

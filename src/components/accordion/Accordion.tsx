@@ -35,7 +35,7 @@ const itemClasses = {
 
 type AccItem = {
   title: string;
-  body: string;
+  body: string[];
 };
 
 interface Props {
@@ -43,6 +43,7 @@ interface Props {
 }
 
 const AccordionCustomStyles: FC<Props> = ({ data }) => {
+  if(!data) return null;
   return (
     <Accordion
       variant="splitted"
@@ -56,7 +57,11 @@ const AccordionCustomStyles: FC<Props> = ({ data }) => {
           title={item.title}
           indicator={({ isOpen }) => ( <Icon open={isOpen}/> )}
         >
-          {item.body}
+          {item?.body?.map((bItem, ind)=>(
+            <p key={`${index}-${ind}`} className={`${ind!==0?'mt-4':'mt-0'}`}>
+              {bItem}
+            </p>
+          ))}
         </AccordionItem>
       ))}
     </Accordion>
