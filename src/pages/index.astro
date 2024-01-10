@@ -39,7 +39,10 @@ const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoS
 ---
 <Layout>
     <WithBottom>
-        <Hero data={dataHero}/>
+        <Hero
+            data={dataHero}
+            mobileTopSpace="-mt-[50px]"
+        />
     </WithBottom>
 
     <!-- 1 -->
@@ -63,24 +66,32 @@ const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoS
     />
 
     <!-- 7 -->
-    <BlockCasinoInfo2
-        data={guide}
-    />
-    
+    <WithBottom>
+        <BlockCasinoInfo2
+            data={guide}
+        />
+    </WithBottom>    
+
     <!-- 8 Payment -->
-    <BlockCasinoProviders
-        data={payment}
-    />
+    <WithBottom>
+        <BlockCasinoProviders
+            data={payment}
+        />
+    </WithBottom>
 
    <!-- 9 -->
-    <BlockList
-        data={availablegames}
-    />
+   <WithBottom>
+        <BlockList
+            data={availablegames}
+        />
+    </WithBottom>
 
     <!-- 10 -->
-    <BlockInfo2
-        data={appadvantages}
-    />
+    <WithBottom>
+        <BlockInfo2
+            data={appadvantages}
+        />
+    </WithBottom>
 
     <!-- 11 -->
     <BannerItem1
@@ -98,7 +109,10 @@ const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoS
     />
 
     <!-- 14 -->
-    <Section
-        data={infoSection}
-    />
+    <WithBottom>
+        <Section
+            data={infoSection}
+        />
+    </WithBottom>
+
 </Layout>

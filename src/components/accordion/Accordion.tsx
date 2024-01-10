@@ -67,4 +67,5 @@ const AccordionCustomStyles: FC<Props> = ({ data }) => {
     </Accordion>
   );
 };
+
 export default AccordionCustomStyles;

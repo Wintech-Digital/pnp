@@ -30,11 +30,20 @@ enum BetQueries {
     SLIDER = 'populate[slider][populate][sliderItems][populate]=*&populate[slider][populate][commonBtn][populate]=*',
     ARTICLE = 'populate[betArticle][populate]=*',
 }
+enum AviatorQueries {
+    HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
+    ARTICLE_1 = 'populate[aviatorArticle1][populate]=*',
+    ARTICLE_2 = 'populate[aviatorArticle2][populate]=*',
+    ARTICLE_3 = 'populate[aviatorArticle3][populate]=*',
+    SLIDER = 'populate[aviatorSlider][populate][sliderItems][populate]=*',
+    BANNER = 'populate[aviatorBanner][populate]=*',
+}
 
 export const endpoints = {
     layout: `layout?${queries(LayoutQueries)}`,
     home: `page-${PageId.HOME}?${queries(HomeQueries)}`,
     bet: `page-${PageId.BET}?${queries(BetQueries)}`,
+    aviator: `page-${PageId.AVIATOR}?${queries(AviatorQueries)}`,
 }
 
 // export enum PageEndPoint {

@@ -18,9 +18,14 @@ const sliderData = strategiesSlider.map(item =>{
 });
 ---
 <div class="overflow-hidden pt-4">
+    <div class="mb-10">
     <RichText
         data = {strategiesTitle}
+        styles ={{
+            paragraph: 'w-full sm:w-2/3'
+        }}
     />
+    </div>
     <SliderContainer
         client:load
         list={sliderData}

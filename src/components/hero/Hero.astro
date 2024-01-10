@@ -5,11 +5,12 @@ import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
 import { btnIconUrl, getCover } from './util';
 import { heroMock } from "./mock";
-const { data } = Astro.props;
+const { data, mobileTopSpace="mt-0" } = Astro.props;
 const title = data?.title || heroMock.title;
 const description = data?.description || heroMock.description;
 const buttons = data?.btn || [];
 const coverImage = data?.coverImage?.data || [];
+
 const coverMobileImage = getCover(coverImage, 'mobile');
 const coverDesktopImage = getCover(coverImage, 'desktop');
 const coverCardImage = getCover(coverImage, 'card');
@@ -25,8 +26,8 @@ const pictures = [
         pictures={pictures}
         title={title}
         description={description}
-        textTopSpaceMobile={"mt-0"}
-        textBoxWidth={"w-[340px]( sm:: { type: string; name: string; })w-2/3 lg:w-[480px]"}
+        textTopSpaceMobile={mobileTopSpace}
+        textBoxWidth={"w-[340px] sm:w-2/3 lg:w-[480px]"}
     >
         <div class="flex flex-col sm:flex-row gap-4" slot="btn-box">
             {buttons.map(item => (

@@ -1,5 +1,4 @@
 import { type FC } from "react";
-import type { GetImageResult } from "astro";
 import ButtonRounded from "@components/buttons/ButtonRounded";
 import { SLOTS_URL } from "@constants";
 
@@ -7,7 +6,7 @@ interface Props {
   pic: string;
   text: string;
   description: string;
-  url?: string,
+  link?: string
   buttonName?: string,
 }
 
@@ -20,15 +19,13 @@ const flexCol = 'flex flex-col gap-2 sm:gap-4 justify-between';
 const textPosition = 'text-center items-center';
 const common = `${bg} ${customBorder} ${flexCol} ${textPosition} ${rounded} ${gradient} ${transition}`;
  
-const SliderItem3: FC<Props> = ({ text, description, pic, ...props }) => {
-  const link = props?.url ? `${ SLOTS_URL}/${props.url}` : "/";
-  console.log('link ::::', props?.url, link);
+const SliderItem3: FC<Props> = ({ text, description, pic, link = '#', ...props }) => {
   return (
     <div
       className={`h-full overflow-hidden ${common}`}
     >
       <div className="w-full grid justify-items-start mb-[24px] md:justify-items-center md:mb-[0px] max-h-[240px]">
-        <img src={pic} alt="" className="" /> 
+        <img src={pic} alt=""/> 
       </div> 
       <div className="text-24-36-600 px-[24px]">
         {text}

@@ -25,9 +25,7 @@ const aviFrame2pic = await getImage({ src: frame2, format: 'webp' });
         </TwoColomns>
 </Article>
 
-<slot/>   
-
-    <TwoColomns50 reverse>
+<TwoColomns50 reverse>
         <div slot="first-col">
             <h2 class="text-28-34-700 text-pnp">
                 Jogue Aviator no Aplicativo do Pin Up Casino
@@ -37,9 +35,9 @@ const aviFrame2pic = await getImage({ src: frame2, format: 'webp' });
             <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" slot="action" />
         </div>
         <img src={aviFrame2pic.src} alt='' class='w-full ' slot="second-col"/> 
-    </TwoColomns50>
+</TwoColomns50>
 
-    <TwoColomns50>
+<TwoColomns50>
         <div slot="second-col">
             <h2 class="text-28-34-700 text-pnp">
                 Jogue Aviator no Aplicativo do Pin Up Casino
@@ -49,6 +47,6 @@ const aviFrame2pic = await getImage({ src: frame2, format: 'webp' });
             <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" slot="action" />
         </div>
         <img src={aviFrame1pic.src} alt='' class='w-full' slot="first-col"/> 
-    </TwoColomns50>
+</TwoColomns50>
 
 

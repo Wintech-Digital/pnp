@@ -4,6 +4,7 @@ import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import aviBonus1 from "@assets/images/avi-bonus-1.png";
 import aviBonus2 from "@assets/images/avi-bonus-2.png";
+import { STRAPI_URL } from "@constants";
 
 
 const bonus1 = await getImage({ src: aviBonus1, width: 433, format: 'webp' });
@@ -30,7 +31,25 @@ const bonusList = [
         pic: bonus2,
     },
 ];
+const {data} = Astro.props;
+const sliderItems = data?.sliderItems;
+// console.log('data ::::', sliderItems);
 
+
+const sliderList =  sliderItems.map(item=> {
+    const text = item.title;
+    const description = item.description;
+    const link = item.url;
+    const isImage = item.coverImage.data;
+    const imgUrl = isImage ? `${STRAPI_URL}${isImage.attributes.url}` : '';
+
+    return ({
+        text,
+        link,
+        description,
+        pic: imgUrl,
+    })
+})
 ---
 <div class="overflow-hidden pt-4">
     <Article titleH1="Bônus de Boas-Vindas para Jogadores de Aviator">
@@ -38,7 +57,7 @@ const bonusList = [
             client:load
             itemsNum={2}
             noInfiniti={true}
-            list={bonusList}
+            list={sliderList}
             itemComponentName="SliderItem3"
         />
     </Article>

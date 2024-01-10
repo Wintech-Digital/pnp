@@ -1,8 +1,4 @@
 ---
-// import { getImage } from "astro:assets";
-// import img1 from "@assets/images/Image1.png";
-// const pic1 = await getImage({ src: img1, width: 270, format: 'webp' });
-
 import { STRAPI_URL } from "@constants";
 import SliderContainer from "@components/slider/SliderContainer";
 import SliderItem4 from '@components/slider/SliderItem4';
@@ -26,6 +22,7 @@ const sliderData = guideslider.map(item=>{
         pic,
     })
 })
+
 ---
 <RichText withSlots data={guidetitle}/>
 
@@ -48,6 +45,12 @@ const sliderData = guideslider.map(item=>{
     ))}
 </ul>
 
-<RichText data={guidesteps}/>
+<RichText
+    data={guidesteps}
+    styles={{
+        paragraph: 'mb-4',
+        list: 'mb-6'
+    }}
+/>
 
 <Table data={guidetable}/>
