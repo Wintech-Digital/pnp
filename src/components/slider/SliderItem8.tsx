@@ -2,13 +2,13 @@ import type { FC } from "react";
 
 interface Props {
   text: string;
+  link: string;
   pic: string;
-  description: string;
 }
 
-const SliderItem8: FC<Props> = ({ pic, text }) => {
+const SliderItem8: FC<Props> = ({ text, link, pic }) => {
   return (
-    <a href='#' className={`h-full w-full flex flex-col `}>
+    <a href={link} className={`h-full w-full flex flex-col `}>
       <div className='relative rounded-[24px] overflow-hidden w-full border border-pnp/[.2]'>
         <img src={pic} alt='' className="h-full w-full" />
         <div className="rounded-[24px] absolute top-0 bottom-0 w-full transition-all duration-200 ease-in-out gr-red-green-coner-1 opacity-0 hover:opacity-100"/>

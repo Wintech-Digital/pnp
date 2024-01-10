@@ -3,7 +3,7 @@ import List from '@components/richtext/List/List.astro';
 import Heading from '@components/richtext/Heading/Heading.astro';
 import Paragraph from '@components/richtext/Paragraph/Paragraph.astro';
 import ImageBlock from '@components/richtext/ImageBlock/ImageBlock.astro';
-const {data, listBullet = null, classList = ''} = Astro.props;
+const {data, listBullet = null, classList = '', styles = null} = Astro.props;
 // console.log('Rich text ::::', data)
 ---
 {
@@ -14,12 +14,14 @@ const {data, listBullet = null, classList = ''} = Astro.props;
                     <Heading
                         block={block}
                         classList={classList}
+                        styles={styles}
                     />
                 );
 	    	case 'paragraph':
                 return (
                     <Paragraph
                         block={block}
+                        styles={styles}
                     />
                 );
 	    	case 'list':
@@ -33,6 +35,7 @@ const {data, listBullet = null, classList = ''} = Astro.props;
                 return (
                     <ImageBlock
                         block={block}
+                        styles={styles}
                     />
                 );
 		    default:

@@ -1,10 +1,38 @@
 ---
+import {fetchApi, endpoints} from '@api/index';
 import Layout from '@layout/Layout.astro';
-import BlockBanner from '@content/betting/BlockBanner/BlockBanner.astro';
+import BlockLists from '@content/betting/BlockLists/BlockLists.astro';
 import BlockSlider from '@content/betting/BlockSlider/BlockSlider.astro';
+import BlockArticle from '@content/betting/BlockArticle/BlockArticle.astro';
+import BannerItem from '@components/banner/BannerItem1.astro';
+import WithBottom from '@components/spaces/WithBottom.astro';
+
+const pageBetSchema = await fetchApi({
+    endpoint: endpoints.bet,
+});
+const dataBanner = pageBetSchema ? pageBetSchema['data'].attributes?.banner : null;
+const dataOverviewSportBet = pageBetSchema ? pageBetSchema['data'].attributes?.listsBlock : null;
+const dataSlider = pageBetSchema ? pageBetSchema['data'].attributes?.slider : null;
+const dataArticle = pageBetSchema ? pageBetSchema['data'].attributes?.betArticle : null;
 ---
 <Layout title="PinUp Betting">
-    <BlockBanner/>
+    <BannerItem
+        data={dataBanner}
+    />
 
-    <BlockSlider/>
+    <BlockLists
+        data={dataOverviewSportBet}
+    />
+
+    <WithBottom>
+        <BlockSlider
+            data={dataSlider}
+        />
+    </WithBottom>
+
+    <WithBottom>
+        <BlockArticle
+            data={dataArticle}
+        />
+    </WithBottom>
 </Layout>

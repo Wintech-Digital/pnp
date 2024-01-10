@@ -1,0 +1,49 @@
+---
+import { getImage } from "astro:assets";
+import RichText from "@components/richtext/RichText.astro";
+import BannerItem from "../BlockBanner/BannerItem.astro";
+import TwoColomns100 from "@components/sections/TwoColomns100.astro";
+
+import pic1 from "@assets/svg/CheckedIcon.svg";
+import pic2 from "@assets/svg/ForbidenIcon.svg";
+
+const slideIcon1 = await getImage({ src: pic1, height: 50, format: 'webp' });
+const slideIcon2 = await getImage({ src: pic2, height: 50, format: 'webp' });
+
+const {data} = Astro.props;
+// console.log('bets daat:::', data)
+
+const listsBlockTitle = data?.listsBlockTitle;
+const listsBlockItem = data?.listsBlockItem;
+const firstList = listsBlockItem.find(item => item.id === 1); 
+const secondList = listsBlockItem.find(item => item.id === 2); 
+---
+
+<div class="flex flex-col items-center gap-8">
+    <div class="text-40-48-700 text-pnp max-w-[820px]">
+        <RichText
+            data={listsBlockTitle}
+            classList="text-center w-full"
+        />
+    </div>
+
+    <TwoColomns100>
+        <BannerItem pic={slideIcon1} slot="first-col">
+            <div class="flex flex-col gap-4 h-full">
+                <RichText
+                    data={firstList.list}
+                    classList="text-center w-full"
+                />
+            </div>
+        </BannerItem>
+        <BannerItem pic={slideIcon2} slot="second-col">
+            <div class="flex flex-col gap-4">
+                <RichText
+                    data={secondList.list}
+                    classList="text-center w-full"
+                />
+            </div>
+        </BannerItem>
+    </TwoColomns100>
+</div>
+

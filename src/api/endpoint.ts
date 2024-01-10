@@ -24,10 +24,17 @@ enum HomeQueries {
     SUPPORT = 'populate[support][populate]=*',
     INFO_SECTION = 'populate[infoSection][populate]=*',
 }
+enum BetQueries {
+    BANNER = 'populate[banner][populate]=*',
+    OVERVIEW_SPORT = 'populate[listsBlock][populate]=*',
+    SLIDER = 'populate[slider][populate][sliderItems][populate]=*&populate[slider][populate][commonBtn][populate]=*',
+    ARTICLE = 'populate[betArticle][populate]=*',
+}
 
 export const endpoints = {
     layout: `layout?${queries(LayoutQueries)}`,
     home: `page-${PageId.HOME}?${queries(HomeQueries)}`,
+    bet: `page-${PageId.BET}?${queries(BetQueries)}`,
 }
 
 // export enum PageEndPoint {
