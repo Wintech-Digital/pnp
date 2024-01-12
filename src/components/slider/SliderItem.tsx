@@ -11,18 +11,18 @@ interface Props {
   children: any;
 }
 
-const blockFlex = "flex flex-col-reverse items-center md:flex-row";
-const blockSizes = "rounded-[24px] px-[16px] py-[16px]";
-const blockSizesMd = "md:rounded-[32px] md:px-[20px] md:py-[20px]";
+const blockFlex = "flex gap-2 items-center flex-col-reverse md:flex-row";
+const blockSizes = "rounded-[24px] md:rounded-[32px]";
+const blockSizesMd = "px-4 py-4 md:px-[20px] md:py-4";
 const blockBorder = "border border-pnp/[.1]";
 const blockBgTransition = "transition duration-300 ease-in-out";
-const blockBg = "bg-pnp/[.05] hover:gradient-green";
+const blockBg = "bg-pnp/[.05] gradient-green";
 const textBlockFlex = "flex flex-col items-start justify-between";
 const SliderItem: FC<Props> = ({ ...props }) => {
   return (
     <div className={`w-full h-full`}>
       <div className={`h-full ${blockBgTransition} ${blockBg} ${blockFlex} ${blockSizes} ${blockBorder} ${blockSizesMd}`}>
-        <div className={`${textBlockFlex}`}>
+        <div className={`${textBlockFlex} w-full sm:w-1/2`}>
           <span className="text-[12px] text-pnp/[.6] font-semibold leading-[20px] mb-[4px]">
             {props.text}
           </span>
@@ -36,7 +36,7 @@ const SliderItem: FC<Props> = ({ ...props }) => {
             className="mt-[24px] w-full md:w-auto"
           />
         </div>
-        <div className="h-[172px] w-full grid content-center justify-items-start md:justify-items-end mb-[24px] md:mb-[0px]">
+        <div className="h-[172px] w-full sm:w-1/2 grid content-center justify-items-start md:justify-items-end mb-[24px] md:mb-[0px]">
             <img src={props.pic} alt=""/>
         </div> 
       </div>

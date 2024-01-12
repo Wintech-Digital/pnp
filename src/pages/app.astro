@@ -7,20 +7,61 @@ import MobAppInfoSlider1 from '@content/mobileApp/infoSliders/MobAppInfoSlider1.
 import MobAppInfoSlider2 from '@content/mobileApp/infoSliders/MobAppInfoSlider2.astro';
 import MobAppLinks from '@content/mobileApp/MobAppLinks/MobAppLinks.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
+import { endpoints, fetchApi } from '@api/index';
+const pageAppSchema = await fetchApi({
+    endpoint: endpoints.app,
+});
+const dataAppHero = pageAppSchema ? pageAppSchema['data'].attributes?.hero : null;
 
+const appSlider = pageAppSchema ? pageAppSchema['data'].attributes?.appSlider : null;
+// console.log('appSlider :::', appSlider)
+
+const appSlider2 = pageAppSchema ? pageAppSchema['data'].attributes?.appSlider2 : null;
+// console.log('appSlider2 :::', appSlider2)
+
+const appArticle = pageAppSchema ? pageAppSchema['data'].attributes?.appArticle : null;
+// console.log('appArticle :::', appArticle)
+
+const appBenefits = pageAppSchema ? pageAppSchema['data'].attributes?.appBenefits : null;
+// console.log('appBenefits :::', appBenefits)
+
+const card = pageAppSchema ? pageAppSchema['data'].attributes?.card : null;
+// console.log('pageAppSchema :::', card)
+
+const { appSliderTitle, appSliderItem } = appSlider;
+const { appSliderTitle: slider2Title, appSliderItem: slider2Data } = appSlider2;
 ---
 <Layout title="PinUp Betting">
     <WithBottom>
-        <MobAppHero/>
+        <MobAppHero
+            data={dataAppHero}
+        />
     </WithBottom>
     
-    <MobAppInfoSlider1/>
+    <WithBottom>
+        <MobAppInfoSlider1
+            sliderTitle = {appSliderTitle}
+            sliderData={appSliderItem}
+        />
+    </WithBottom>
 
-    <MobAppInfoArticle/>
+    <MobAppInfoArticle
+        data = {appArticle}
+    />
 
-    <MobAppInfoList/>
+    <WithBottom>
+        <MobAppInfoList
+            data={appBenefits}
+        />
+    </WithBottom>
 
-    <MobAppInfoSlider2/>
 
-    <MobAppLinks/>
+    <MobAppInfoSlider2
+        sliderTitle = {slider2Title}
+        sliderData = {slider2Data}
+    />
+
+    <MobAppLinks
+        data={card}
+    />
 </Layout>

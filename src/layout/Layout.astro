@@ -13,12 +13,12 @@ interface Props {
 const {props, generator} = Astro;
 const { title = 'Empty title' }: Props = props;
 
-import {fetchApi, endpoints} from '@api/index';
-const pageLayoutSchema = await fetchApi({
-    endpoint: endpoints.layout,
-});
-const dataLayout = pageLayoutSchema ? pageLayoutSchema['data'].attributes : null;
-const faqData = dataLayout.faqBlock;
+// import {fetchApi, endpoints} from '@api/index';
+// const pageLayoutSchema = await fetchApi({
+//     endpoint: endpoints.layout,
+// });
+// const dataLayout = pageLayoutSchema ? pageLayoutSchema['data'].attributes : null;
+// const faqData = dataLayout.faqBlock;
 // console.log('faqData :::', faqData);
 
 // import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
@@ -53,18 +53,18 @@ const faqData = dataLayout.faqBlock;
 			}
 		</style>
 	</head>
-	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:p-10 bg-pnp-card-bg text-pnp w-full">
+	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10 lg:px-20 bg-pnp-card-bg text-pnp w-full">
 			<div class="max-w-[1360px] mx-auto relative">
 			<Header client:load />
 			<Breadcrumbs />
 			<main>
 				<slot/>
 			</main>
-			<WithBottomSpace>
+			<!-- <WithBottomSpace>
 				<AccordionContainer
 					data={faqData}
 				/>
-			</WithBottomSpace>
+			</WithBottomSpace> -->
 			<Footer />
 		</div>
 	</body>

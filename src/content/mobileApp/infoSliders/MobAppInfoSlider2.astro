@@ -1,40 +1,28 @@
 ---
-import { getImage } from "astro:assets";
-import ArticleItem from "@components/article/ArticleItem.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import infoPic1 from "@assets/images/mobapp-1.png";
-import infoPic2 from "@assets/images/mobapp-2.png";
-import infoPic3 from "@assets/images/mobapp-3.png";
-
-const pic1 = await getImage({ src: infoPic1, width: 385, format: 'webp' });
-const pic2 = await getImage({ src: infoPic2, width: 385, format: 'webp' });
-const pic3 = await getImage({ src: infoPic3, width: 385, format: 'webp' });
-
-const list = [
-    {
-        text: 'Abrir o site oficial do Pin Up Casino',
-        description: 'Usando qualquer dispositivo, vá ao sítio oficial do agente de apostas e faça o login na sua conta',
-        pic: pic1,
-    },
-    {
-        text: 'Inicie sessão na sua conta Pin Up Casino',
-        description: 'Inicie sessão na sua conta clicando no botão ‘Entrar’ no canto superior direito, ou crie uma conta se ainda não o tiver feito',
-        pic: pic2,
-    },
-    {
-        text: 'Abrir a secção “Depósito',
-        description: 'Entre as secções apresentadas na janela, seleccione a secção Depósito;',
-        pic: pic3,
-    },
-];
+import RichText from "@components/richtext/RichText.astro";
+import { STRAPI_URL } from "@constants";
+const {sliderTitle,sliderData} = Astro.props;
+const infoData = sliderData.map(item=> {
+    const text = item.title; 
+    const description = item.description; 
+    const isImage = item.coverImage.data;
+    const pic = isImage ?  `${STRAPI_URL}${isImage.attributes.url}` : '';
+    return({
+        text,
+        description,
+        pic
+    })
+})
 ---
 <div class="overflow-hidden pt-4">
-     <ArticleItem titleH2 = 'Experiência de Jogo Aprimorada no App Móvel do Pin Up Casino'>
+    <RichText
+        data={sliderTitle}
+    />
         <SliderContainer
             client:load
-            list={list}
+            list={infoData}
             noInfiniti={true}
             itemComponentName="SliderItem9"
         />
-    </ArticleItem> 
 </div>

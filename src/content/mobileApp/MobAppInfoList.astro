@@ -9,51 +9,63 @@ import Article from "@components/article/Article.astro";
 import image1 from "@assets/svg/letter.svg";
 import image2 from "@assets/images/star.png";
 import image3 from "@assets/images/checked.png";
+import RichText from "@components/richtext/RichText.astro";
+import { STRAPI_URL } from "@constants";
 
 
-const list = [
-    {
-        img: image1,
-        title: 'Acesso a uma Vasta Gama de Jogos e Apostas',
-        body: 'O Pin Up Casino oferece uma variedade de slots online com temas que vão desde o clássico ao sci-fi. Os enredos variados incluem aventura, motivos culturais e muito mais para garantir que cada jogador encontre algo do seu agrado.'
-    },
-    {
-        img: image2,
-        title: ' Bônus de Boas-Vindas e Promoções Exclusivas no App',
-        body: 'O Pin Up Casino oferece uma variedade de slots online com temas que vão desde o clássico ao sci-fi. Os enredos variados incluem aventura, motivos culturais e muito mais para garantir que cada jogador encontre algo do seu agrado.'
-    },
-    {
-        img: image3,
-        title: 'Métodos de Depósito e Saque no Aplicativo',
-        body :'Descubra os jogos mais recentes e emocionantes do mundo do casino no Pin-Up Casino. As nossas últimas adições incluem jogos emocionantes prontos para o impressionar com histórias coloridas e a oportunidade de ganhar grandes prémios. Mergulhe nas novas aventuras do mundo dos jogos agora mesmo!'
-    },
-];
-
+const {data} = Astro.props;
+const availablegamestitle = data?.availablegamestitle;
+const availablegameslist = data?.availablegameslist;
+const dataList = availablegameslist.map(item=>{
+    const description = item.description;
+    const isImage = item.coverImage.data;
+    const imgUrl = isImage? `${STRAPI_URL}${isImage.attributes.url}` : '';
+    return({
+        description,
+        img: {
+            url: imgUrl,
+            w: isImage.attributes.width,
+            h: isImage.attributes.height,
+            alt: isImage.attributes.alternativeText || '',
+            format: isImage.attributes.ext,
+        }
+        
+    })
+})
 ---
-<Article titleH1 = ' Benefícios e Funcionalidades do App do Pin Up Casino'>
-    <section class="bg-pnp/[.03] border border-[#fff]/[.2] relative rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] hover:bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
-        <ul class="flex flex-col gap-[24px]">
-            { list.map(item => (
+<RichText
+    data = {availablegamestitle}
+/>
+<section class="bg-pnp/[.03] border border-[#fff]/[.2] relative rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
+    <ul class="flex flex-col gap-[24px]">
+        { dataList.map(item => {
+            return (
                 <li class="flex flex-col sm:flex-row gap-4 border-t border-[#ffffff]/[.2] pt-4 first:border-t-0 first:pt-0">
                     <div class="relative flex items-center justify-center h-[100px] w-[100px] min-w-[100px] rounded-full">
-                        <Image
-                            src={item.img}
-                            format='webp'
-                            alt="imagepng."
-                            class="z-10 border"
+                        { item.img.format !== '.svg' 
+                            ? (
+                                <Image
+                                    src={item.img.url}
+                                    width={item.img.w}
+                                    height={item.img.h}
+                                    alt={item.img.alt}
+                                    class="z-10"
+                                /> )
+                            : (
+                                <img
+                                    src={item.img.url}
+                                    alt={item.img.alt}
+                                />
+                            )
+                        }
+                        </div>
+                    <div>
+                        <RichText
+                            data = {item.description}
                         />
                     </div>
-                    <div>
-                        <h2 class="text-24-26-700 sm:text-28-34-700 text-pnp mb-4">
-                            {item.title}
-                        </h2>
-                        <p class="text-16-24-400 text-pnp-grey20">
-                            {item.body}
-                        </p>
-                    </div>
                 </li>
-            ))}
-        </ul>
-    </section>
-    </Article>
-    
+            )    
+        })}
+    </ul>
+</section>

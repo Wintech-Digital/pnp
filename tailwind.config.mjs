@@ -52,6 +52,11 @@ export default {
 				'.bblue': {
 					border: '1px solid blue',
 				},
+			    '.text-14-24-600': {
+					fontSize: '14px',
+					lineHeight: '22px',
+					fontWeight: '600'
+			    },
 			    '.text-16-24-400': {
 					fontSize: '16px',
 					lineHeight: '24px',
@@ -76,6 +81,11 @@ export default {
 					fontSize: '18px',
 					lineHeight: '28px',
 					fontWeight: '600',
+			    },
+			    '.text-24-24-700': {
+					fontSize: '24px',
+					lineHeight: '24px',
+					fontWeight: '700'
 			    },
 			    '.text-24-26-700': {
 					fontSize: '24px',

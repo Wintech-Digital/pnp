@@ -1,11 +1,104 @@
 ---
+import { Image } from "astro:assets";
 import Layout from '@layout/Layout.astro';
 import TermsHero from '@content/terms/TermsHero.astro';
-import TermsArticles from '@content/terms/TermsArticles.astro';
 import TermsContacts from '@content/terms/TermsContacts.astro';
+import { endpoints, fetchApi } from '@api/index';
+import RichText from '@components/richtext/RichText.astro';
+import GenerateText from '@components/richtext/GenerateText/GenerateText.astro';
+import TwoColomns50 from '@components/sections/TwoColomns50.astro';
+import ButtonRounded from "@components/buttons/ButtonRounded";
+import { getFields, parseImageData } from "@utils";
+import SliderContainer from "@components/slider/SliderContainer";
+import WithBottom from "@components/spaces/WithBottom.astro";
+
+const pageTermsSchema = await fetchApi({
+    endpoint: endpoints.terms,
+});
+
+const dataBanner = pageTermsSchema ? pageTermsSchema['data'].attributes?.banner : null;
+const dataArticles = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsArticles : null;
+const dataContacts = pageTermsSchema ? pageTermsSchema['data'].attributes?.contacts : null;
+const termsColArtical = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsColArtical : null;
+const termsSlider = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsSlider : null;
+
+const termsColArticalImage = termsColArtical.articleBody.find(item => item.type === 'image');
+const termsColArticalTexts = termsColArtical.articleBody.filter(item => item.type !== 'image');
+const termsColArticalButton = termsColArtical.articleButton;
+const imgProps = getFields(termsColArticalImage.image);
+
+const termsSliderList = termsSlider.appSliderItem.map(item => {
+    const text = item?.title;
+    const description = item?.description;
+    const pic = getFields(item.coverImage.data.attributes).url
+    return ({
+        text,
+        pic,
+        description
+    });
+})
 ---
 <Layout>
-    <TermsHero/>
-    <TermsArticles/>
-    <TermsContacts/>
+    <TermsHero
+        data={dataBanner}
+    />
+    { (dataArticles &&  dataArticles.length) && 
+        dataArticles.map(article => { 
+            return (
+                <GenerateText 
+                    data = {article}
+                />
+            )
+        })
+    }
+
+    <WithBottom>
+        <div class="overflow-hidden pt-4">
+            <RichText
+                data={termsSlider.appSliderTitle}
+            />
+            <SliderContainer
+                client:load
+                itemsNum={4}
+                noInfiniti={true}
+                list={termsSliderList}
+                itemComponentName="SliderItem4"
+            />
+        </div>
+    </WithBottom>
+
+    <TwoColomns50 reverse>
+        <div slot="first-col">
+            <RichText
+                data={termsColArticalTexts}
+                styles={{
+                    h1: 'w-full'
+                }}
+            />
+    
+            <div slot="action" class="flex justify-center sm:justify-start mt-10">
+                <ButtonRounded
+                    size="xl"
+                    color={termsColArticalButton.type || 'red'}
+                    title={termsColArticalButton.name || 'Jogue agora'}
+                    link={termsColArticalButton.link || '#'}
+                    className="w-full sm:w-auto"
+                />
+            </div>
+        </div>
+        <Image
+            src={imgProps.url}
+            width={imgProps.w}
+            height={imgProps.h}
+            alt={imgProps.alternativeText}
+            slot="second-col"
+            class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
+        />
+    </TwoColomns50>
+
+    <TermsContacts
+        data = {dataContacts}
+    />
+
+    <!-- <TermsArticles/> -->
 </Layout>

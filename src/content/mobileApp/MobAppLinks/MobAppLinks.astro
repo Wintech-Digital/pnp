@@ -7,6 +7,21 @@ import MobAndroidPic from '@assets/images/MobAndroid.png';
 import appleIcon from "@assets/svg/apple.svg";
 import androidIcon from "@assets/svg/android.svg";
 import Article from "@components/article/Article.astro";
+
+const {data} = Astro.props;
+const cards = data.map((item) => {
+    const texts = item.texts;
+    const images = item.images;
+    const button = item.button[0];
+    return ({
+        texts,
+        images,
+        button,
+    })
+})
+
+const iosCard = cards[0]; 
+const andriodCard = cards[1];
 ---
 
 <Article titleH1 = 'Pin Up Casino App:'>
@@ -19,7 +34,13 @@ import Article from "@components/article/Article.astro";
             description="Uma colorida slot infernal com símbolos ardentes e grandes prémios."
             style="red"
         >
-            <ButtonRounded size="xl" color="red" title="Ios Download" className="w-full sm:w-auto" />
+            <ButtonRounded
+                size="xl"
+                color={iosCard.button.type}
+                title={iosCard.button.name}
+                link={iosCard.button.link}
+                className="w-full sm:w-auto"
+            />
         </MobAppCard>
         
         <MobAppCard
@@ -30,7 +51,13 @@ import Article from "@components/article/Article.astro";
             description="Mergulhe numa aventura emocionante com personagens únicas e grandes prémios."
             style="green"
         >
-            <ButtonRounded size="xl" color="red" title="Android Download" className="w-full sm:w-auto" />
-        </MobAppCard>
+        <ButtonRounded
+        size="xl"
+        color={andriodCard.button.type}
+        title={andriodCard.button.name}
+        link={andriodCard.button.link}
+        className="w-full sm:w-auto"
+    />
+</MobAppCard>
     </TwoColomns50>
 </Article>

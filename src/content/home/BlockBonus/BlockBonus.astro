@@ -14,6 +14,7 @@ const {data}=Astro.props;
 const title = data?.data;
 const slider = data?.slider;
 const pictures = [pic1, pic2, pic3];
+// console.log(slider)
 const sliderBonusesList = slider.map((item, index)=>{
     return({
         text: item.title,

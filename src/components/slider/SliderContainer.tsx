@@ -73,7 +73,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                 containerClass="-ml-4 -mr-[15px]"
                 className="aaaa !overflow-visible pb-[32px]"
                 sliderClass="ulllll"
-                itemClass="liiii px-4"
+                itemClass="liiii px-4 mb-4"
                 dotListClass=""
                 customLeftArrow={<CustomButton arrow='left'/>}
                 customRightArrow={<CustomButton arrow='right'/>}

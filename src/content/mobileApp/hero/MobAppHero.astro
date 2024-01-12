@@ -1,32 +1,51 @@
 ---
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import {getImage} from 'astro:assets';
-import appleIcon from "@assets/svg/apple.svg";
-import androidIcon from "@assets/svg/android-white.svg";
 import heroMobileAppImageD from '@assets/images/hero/hero-mob-app-Dx181.png';
 import heroMobileAppImageM from '@assets/images/hero/hero-mob-app-M@2x172kb.png';
+import { STRAPI_URL } from "@constants";
+import { getCover } from "@components/hero/util";
 
-const pictures = [ heroMobileAppImageM, heroMobileAppImageD];
-const title = 'Pin Up Casino App: Sua Experiência de Cassino e Apostas no seu celular';
-const description = '';
-
-const appleI = await getImage({ src: appleIcon, quality: 'low', height: 20, format: 'webp' });
-const androI = await getImage({ src: androidIcon, quality: 'low', height: 20, format: 'webp' });
+const {data} = Astro.props;
+const btns = data?.btn;
+const title = data?.title;
+const coverImage = data?.coverImage?.data || [];
+const coverMobileImage = getCover(coverImage, 'mobile');
+const coverDesktopImage = getCover(coverImage, 'desktop');
+const pictures = [
+    coverMobileImage || heroMobileAppImageM,
+    coverDesktopImage || heroMobileAppImageD
+];
 ---
 <HeroContainer
     pictures={pictures}
     title={title}
-    description={description}
+    description=''
     textTopSpaceMobile={"-mt-[35%]"}
     textBoxWidth={"w-[380px] sm:w-2/3 lg:w-[480px]"}
 >
     <div class="flex flex-col sm:flex-row gap-4" slot="btn-box">
-        <ButtonRounded size="xl" color="transparent" title="Ios Download" className="w-full sm:w-auto flex flex-row gap-4 justify-center z-50">
-            <img src={appleI.src} alt="" class="h-[20px]"/>
-        </ButtonRounded>
-        <ButtonRounded size="xl" color="transparent" title="Android Download" className="w-full sm:w-auto flex flex-row gap-4 justify-center z-50">
-            <img src={androI.src} alt="" class="h-[20px]"/>
-        </ButtonRounded>
+        {
+            btns.map(item => {
+                const name = item.name;
+                const link = item.link;
+                const color = item.type;
+                const isIcon = item.btnIcon.data;
+                const btnIcon = isIcon?.attributes?.url;
+                return(
+                    <ButtonRounded 
+                        size="xl"
+                        link={link}
+                        title={name}
+                        color={color}
+                        className="w-full sm:w-auto flex flex-row gap-4 justify-center z-50"
+                    >
+                        {isIcon && (
+                            <img src={`${STRAPI_URL}${btnIcon}`} alt="" class="h-[20px]"/>
+                        )}
+                    </ButtonRounded>
+                )
+            })
+        }
     </div>
 </HeroContainer>

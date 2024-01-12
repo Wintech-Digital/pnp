@@ -79,3 +79,24 @@ const Header = () => {
 };
 
 export default Header;
+
+
+{/***
+  *  ToDo: async dropdown menu;
+  * ***/}
+
+// const [nestedMenu, setNestedMenu] = useState({
+//   bonus: null,
+//   slots: null
+// });
+
+// useEffect(()=> {
+//   const fetchData = async () => {
+//     const pageItems = await fetchApi({
+//       endpoint: endpoints.slots, 
+//     });
+//     setNestedMenu({...nestedMenu, slots: pageItems});
+//   }
+//   fetchData();
+// },[]);
+// const nestedListSlots = nestedMenu.slots?.data.map(i => ({ name: i.attributes.name, id: i.attributes.slug })) || [];

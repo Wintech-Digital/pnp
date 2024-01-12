@@ -2,53 +2,46 @@
 import { Image } from "astro:assets";
 import ButtonRounded from "@components/buttons/ButtonRounded";
 import TwoColomns50 from "@components/sections/TwoColomns50.astro";
-import ArticleImg from "@assets/images/MobAppArticleImg.png";
-import CheckCircleIcon from "@heroicons/react/16/solid/CheckCircleIcon";
+import RichText from "@components/richtext/RichText.astro";
 
-const list = [
-    {
-        title: 'Instruções de Download para Usuários Android',
-        description: 'Inicie sessão na sua conta no nosso casino utilizando as suas credenciais.',
-    },
-    {
-        title: 'Guia Rápido de Instalação em 1 Minuto',
-        description: 'Inicie sessão na sua conta no nosso casino utilizando as suas credenciais.',
-    },
-    {
-        title: 'Segurança e Confiabilidade do Aplicativo Oficial',
-        description: 'Inicie sessão na sua conta no nosso casino utilizando as suas credenciais.',
-    },
-]
+const {data} = Astro.props;
+const articleTitle = data?.articleTitle;
+const articleBody = data?.articleBody;
+const articleButton = data?.articleButton;
+const textArticle1 = articleBody.filter(item=>item.type!=='image');
+const imgArticle1 = articleBody.find(item=>item.type==='image');
 
 ---
 
+<RichText
+    data={articleTitle}
+/>
 <TwoColomns50 reverse>
     <div slot="first-col">
-        <h2 class="text-28-34-700 text-pnp">
-            Como Baixar o Aplicativo do Pin Up Casino em Seu Smartphone
-        </h2>
-        <ul role="list" class="my-8 max-w-xl space-y-8 text-gray-600">
-            {list.map(item=>(
-            <li class="flex gap-x-3">
-                <CheckCircleIcon className="h-7 w-7 text-[#06BA9F]"/>
-                <p>
-                    <strong class="font-semibold text-pnp">{item.title}</strong><br/>
-                    <span class="text-pnp-grey20">{item.description}</span>
-                </p>
-            </li>
-            ))}
-        </ul>
-        <ButtonRounded size="xl" color="red" title="Jogue agora" className="w-full sm:w-auto" slot="action" />
+        <RichText
+            data={textArticle1}
+            styles={{
+                h1: 'w-full'
+            }}
+        />
+
+        <div slot="action" class="flex justify-center sm:justify-start mt-10">
+            <ButtonRounded
+                size="xl"
+                color={articleButton.type || 'red'}
+                title={articleButton.name || 'Jogue agora'}
+                link={articleButton.link || '#'}
+                className="w-full sm:w-auto"
+            />
+        </div>
     </div>
     <Image
-        src={ArticleImg}
-        alt=''
-        widths={[382, ArticleImg.width]}
-        sizes={`(max-width: 640px) 382px, ${ArticleImg.width}px`}
-        quality='low'
-        loading="eager"
-        class="w-full border border-pnp/[.2] rounded-[32px]"
+        src={imgArticle1.image.url}
+        width={imgArticle1.image.width}
+        height={imgArticle1.image.height}
+        alt={imgArticle1.image.alternativeText}
         slot="second-col"
+        class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
     />
 </TwoColomns50>
 

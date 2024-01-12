@@ -3,33 +3,31 @@ import { getImage } from "astro:assets";
 import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import infoPic2 from "@assets/images/star.png"; // letter.png | star.png | checked.png;
+import RichText from "@components/richtext/RichText.astro";
+// import { STRAPI_URL } from "@constants";
 
 const slideImage2 = await getImage({ src: infoPic2, height: 50, format: 'webp' });
-const infoData = [
-    {
-        text: 'Jogos e Emuladores Completos no Aplicativo',
-        pic: slideImage2,
-        description: 'Descubra a história fascinante por trás do Pin Up Casino',
-    },
-    {
-        text: 'Torneios e Eventos de Bônus Acessíveis pelo App',
-        pic: slideImage2,
-        description: 'A reputação do Pin Up Casino é construída sobre pilares sólidos de transparência, segurança e comprometimento com os jogadores.',
-    },
-    {
-        text: 'Torneios e Eventos de Bônus Acessíveis pelo App',
-        pic: slideImage2,
-        description: 'O Pin Up Casino destaca-se como a escolha definitiva por várias razões convincentes.',
-    },
-];
+const { sliderTitle, sliderData } = Astro.props;
+const infoData = sliderData.map(item=> {
+    const text = item.title; 
+    const description = item.description; 
+    //const isImage = item.coverImage.data;
+    // const pic = isImage ?  `${STRAPI_URL}${isImage.attributes.url}` : '';
+    return({
+        text,
+        description,
+        pic: slideImage2
+    })
+})
 ---
-<div class="overflow-hidden pt-4">
-    <Article titleH1 = 'Por Que Baixar o Aplicativo Oficial do Pin Up Casino?'>
-        <SliderContainer
-            client:load
-            list={infoData}
-            noInfiniti={true}
-            itemComponentName="SliderItem5"
-        />
-    </Article>
+<div class="overflow-hidden">
+    <RichText
+        data={sliderTitle}
+    />
+    <SliderContainer
+        client:load
+        list={infoData}
+        noInfiniti={true}
+        itemComponentName="SliderItem5"
+    />
 </div>

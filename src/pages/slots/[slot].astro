@@ -1,4 +1,5 @@
 ---
+ 
 import Layout from '@layout/Layout.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
 import SlotHero from '@content/slot/SlotHero.astro';
@@ -7,77 +8,135 @@ import SlotBonusList from '@content/slot/SlotBonusList.astro';
 import SlotCasinoInfo from '@content/slot/SlotCasinoInfo.astro';
 import SlotDetailsArticle from '@content/slot/SlotDetailsArticle.astro';
 import SlotArticle from '@content/slot/SlotArticle.astro';
+import { endpoints, fetchApi } from '@api/index';
+import { queries } from '@api/endpoint';
+import { SlotQueries } from '@api/endpoint';
+import GenerateText from '@components/richtext/GenerateText/GenerateText.astro';
+import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 import BannerItem1 from '@components/banner/BannerItem1.astro';
+import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 
 export async function getStaticPaths() {
-  const slotPages = [
-  {
-  id: "hell-hot",
-  name: "Hell Hot",
-  description: "Shot description of Hell-Hot if needed.",
-},
-{
-  id: "demi-gods-2",
-  name: "Demi Gods II",
-  description: "Demi Gods II description.",
-},
-{
-  id: "gates-of-olympus",
-  name: "Gates of Olympus",
-  description: "Gates of Olympus description.",
-},
-{
-  id: "leprechaun-riches",
-  name: "Leprechaun Riches",
-  description: "Leprechaun Riches description if needed.",
-},
-{
-  id: "majestic-king",
-  name: "Majestic King",
-  description: "Majestic King description.",
-},
-{
-  id: "wolf-strike",
-  name: "Wolf Strike",
-  description: "Wolf Strike descriptionif needed.",
-},
-{
-  id: "hot-fruits",
-  name: "Hot Fruits",
-  description: "Hot Fruits description if needed.",
-},
-{
-  id: "9-coins",
-  name: "9 coins",
-  description: "Shot description of 9 coins if needed.",
-}
-];
+//   const slotPages = [
+//   {
+//   id: "hell-hot",
+//   name: "Hell Hot",
+//   description: "Shot description of Hell-Hot if needed.",
+// },
+// {
+//   id: "demi-gods-2",
+//   name: "Demi Gods II",
+//   description: "Demi Gods II description.",
+// },
+// {
+//   id: "gates-of-olympus",
+//   name: "Gates of Olympus",
+//   description: "Gates of Olympus description.",
+// },
+// {
+//   id: "leprechaun-riches",
+//   name: "Leprechaun Riches",
+//   description: "Leprechaun Riches description if needed.",
+// },
+// {
+//   id: "majestic-king",
+//   name: "Majestic King",
+//   description: "Majestic King description.",
+// },
+// {
+//   id: "wolf-strike",
+//   name: "Wolf Strike",
+//   description: "Wolf Strike descriptionif needed.",
+// },
+// {
+//   id: "hot-fruits",
+//   name: "Hot Fruits",
+//   description: "Hot Fruits description if needed.",
+// },
+// {
+//   id: "9-coins",
+//   name: "9 coins",
+//   description: "Shot description of 9 coins if needed.",
+// }
+//   ];
+// return slotPages.map((item) => ({
+//     params: { slot: item.id },
+//     props: { name: item.name }
+//   }));
 
-  return slotPages.map((item) => ({
-      params: { slot: item.id },
-      props: { name: item.name }
-    }));
+  const pageItems = await fetchApi({
+    endpoint: endpoints.slots, 
+  });
+
+  return pageItems['data'].map(item => {
+    const {slug, name} = item.attributes;
+    return ({
+      params: { slot: slug },
+      props: { name: name }
+    })
+  })
 }
 const { slot } = Astro.params;
+// console.log('slot :::', slot)
+
+const pageSlotSchema = await fetchApi({
+    endpoint: `page-slot-${slot}?${queries(SlotQueries)}`,
+});
+const faqData = pageSlotSchema ? pageSlotSchema['data']['attributes']?.faqBlock: null;
+// console.log('faqData :::', faqData);
+const dataBanner = pageSlotSchema ? pageSlotSchema['data'].attributes?.banner : null;
+const dataOfferSlider = pageSlotSchema ? pageSlotSchema['data']?.attributes?.offerSlider : null;
+
+const dataHero = pageSlotSchema['data'].attributes.hero;
+const dataArticleMain = pageSlotSchema['data'].attributes.articleMain;
+const dataArticleList = pageSlotSchema['data'].attributes.articleList;
+// console.log('dataArticleList', dataArticleList )
+
 ---
 
 <Layout>
     <WithBottom>
       <SlotHero
-          id={slot}
+          data={dataHero}
       />
     </WithBottom>
 
-    <SlotArticle/>
+    <!-- 1 -->
+    <BlockOfetas data={dataOfferSlider}/>
+    
+    <SlotArticle
+      data={dataArticleMain}
+    />
 
+    { (dataArticleList &&  dataArticleList.length) && 
+        dataArticleList.map(article => { 
+            return (
+                <GenerateText
+                    data = {article}
+                    blockStyle={'mb-4'}
+                    textStyle={{
+                      h3: 'my-4',
+                    }}
+                />
+            )
+        })
+  }
+  
     <!-- <SlotBonusList/> -->
 
-    <SlotBonus/>
+    <!-- <SlotBonus/> -->
 
     <!-- <SlotCasinoInfo/> -->
 
-    <SlotDetailsArticle/> 
+    <!-- <SlotDetailsArticle/>  -->
 
-    <BannerItem1/>
+    <BannerItem1
+        data={dataBanner}
+    />
 
+    <WithBottom>
+      <AccordionContainer
+          data={faqData}
+      />
+    </WithBottom>
 </Layout>

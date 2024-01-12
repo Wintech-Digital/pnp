@@ -2,17 +2,25 @@
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import WithBottom from "@components/spaces/WithBottom.astro";
 import heroTermImageD from '@assets/images/hero/banner-3-dx58kb.png';
-import heroTermImageM from '@assets/images/hero/banner-3-m.png';
+import heroTermImageM from '@assets/images/hero/banner-3-m_copy.png';
+import {parseImageData} from '@utils';
 
-const pictures = [ heroTermImageM, heroTermImageD];
-const title = 'Termos e Condições';
-const description = 'Ao utilizar e/ou visitar qualquer página do www.pin-up.bet (doravante denominado Website ou Site) operado por B.W.I. BLACK-WOOD LIMITED ou ao abrir uma conta';
+const {data} = Astro.props;
+const bannerdescription = data?.bannerdescription;
+const bannerCover = data?.bannerCover;
+const coverMobile = parseImageData(bannerCover.data, 'mobile');
+const coverDesktop = parseImageData(bannerCover.data, 'desktop');
+
+const pictures = [ 
+    coverMobile.url || heroTermImageM,
+    coverDesktop.url || heroTermImageD
+];
+
 ---
 <WithBottom>
     <HeroContainer
+        heroText={bannerdescription}
         pictures={pictures}
-        title={title}
-        description={description}
         textTopSpaceMobile={"-mt-[65%]"}
         textBoxWidth={"w-[350px] sm:w-2/3 lg:w-[480px]"}
     />

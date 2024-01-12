@@ -1,6 +1,10 @@
 ---
-import Layout from '@layout/Layout.astro';
 import Hero from '@components/hero/Hero.astro';
+import Layout from '@layout/Layout.astro';
+import Section from '@components/accordion/AccordionSection.astro';
+import WithBottom from '@components/spaces/WithBottom.astro';
+import BannerItem1 from "@components/banner/BannerItem1.astro";
+
 import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
 import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
@@ -13,14 +17,14 @@ import BlockList from '@content/home/BlockList/BlockList.astro';
 import BlockSuporte from '@content/home/BlockSuporte/BlockSuporte.astro';
 import BlockInfo2 from '@content/home/BlockInfo2/BlockInfo2.astro';
 import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
-import Section from '@components/accordion/AccordionSection.astro';
-import BannerItem1 from "@components/banner/BannerItem1.astro";
-import WithBottom from '@components/spaces/WithBottom.astro';
+
 import {fetchApi, endpoints} from '@api/index';
+import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 
 const pageHomeSchema = await fetchApi({
     endpoint: endpoints.home,
 });
+
 const dataHero = pageHomeSchema ? pageHomeSchema['data'].attributes?.hero : null;
 const dataOfferSlider = pageHomeSchema ? pageHomeSchema['data']?.attributes?.offerSlider : null;
 const dataSlotsList = pageHomeSchema ? pageHomeSchema['data']['attributes']['slotsList'] : null;
@@ -36,6 +40,9 @@ const banner = pageHomeSchema ? pageHomeSchema['data']['attributes']['banner'] :
 const strategies = pageHomeSchema ? pageHomeSchema['data']['attributes']['strategies'] : null;
 const support = pageHomeSchema ? pageHomeSchema['data']['attributes']['support'] : null;
 const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoSection'] : null;
+const faqData = pageHomeSchema ? pageHomeSchema['data']['attributes']['faqBlock']: null;
+// console.log('faqData :::', faqData);
+
 ---
 <Layout>
     <WithBottom>
@@ -46,7 +53,9 @@ const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoS
     </WithBottom>
 
     <!-- 1 -->
-    <BlockOfetas data={dataOfferSlider}/>
+    <div class="block sm:hidden" >
+        <BlockOfetas data={dataOfferSlider}/>
+    </div>
 
     <!-- 2 -->
     <BlockSlotsList data={dataSlotsList}/>
@@ -112,6 +121,12 @@ const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoS
     <WithBottom>
         <Section
             data={infoSection}
+        />
+    </WithBottom>
+
+    <WithBottom>
+        <AccordionContainer
+            data={faqData}
         />
     </WithBottom>
 

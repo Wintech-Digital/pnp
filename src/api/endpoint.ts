@@ -1,6 +1,6 @@
 import { PageId } from "@constants";
 
-const queries = (obj): string => {
+export const queries = (obj): string => {
     return Object.values(obj).map((item,index) =>`${(index!==0)?'&':''}${item}`).join('');
 }
 
@@ -23,6 +23,7 @@ enum HomeQueries {
     STRATEGIES = 'populate[strategies][populate][strategiesSlider][populate]=*',
     SUPPORT = 'populate[support][populate]=*',
     INFO_SECTION = 'populate[infoSection][populate]=*',
+    FAQ = 'populate[faqBlock][populate]=*',
 }
 enum BetQueries {
     BANNER = 'populate[banner][populate]=*',
@@ -37,6 +38,30 @@ enum AviatorQueries {
     ARTICLE_3 = 'populate[aviatorArticle3][populate]=*',
     SLIDER = 'populate[aviatorSlider][populate][sliderItems][populate]=*',
     BANNER = 'populate[aviatorBanner][populate]=*',
+    FAQ = 'populate[faqBlock][populate]=*',
+}
+enum AppQueries {
+    HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
+    SLIDER_1 = 'populate[appSlider][populate][appSliderItem][populate]=*',
+    SLIDER_2 = 'populate[appSlider2][populate][appSliderItem][populate]=*',
+    ARTICLE_1 = 'populate[appArticle][populate]=*',
+    BENEFITS = 'populate[appBenefits][populate][availablegameslist][populate]=*',
+    CARDS = 'populate[card][populate]=*',
+}
+enum TermsQueries {
+    BANNER = 'populate[banner][populate]=*',
+    ARTICLES = 'populate[termsArticles][populate]=*',
+    ARTICLE_WITH_COLS = 'populate[termsColArtical][populate]=*',
+    CONTACTS = 'populate[contacts][populate]=*',
+    SLIDER = 'populate[termsSlider][populate][appSliderItem][populate]=*',
+}
+export enum SlotQueries {
+    HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
+    OFFERS = 'populate[offerSlider][populate][offer][populate]=*',
+    ARTICLE_MAIN = 'populate[articleMain][populate]=*',
+    ARTICLE_LIST = 'populate[articleList][populate]=*',
+    BANNER = 'populate[banner][populate]=*',
+    FAQ = 'populate[faqBlock][populate]=*',
 }
 
 export const endpoints = {
@@ -44,8 +69,8 @@ export const endpoints = {
     home: `page-${PageId.HOME}?${queries(HomeQueries)}`,
     bet: `page-${PageId.BET}?${queries(BetQueries)}`,
     aviator: `page-${PageId.AVIATOR}?${queries(AviatorQueries)}`,
-}
+    app: `page-${PageId.APP}?${queries(AppQueries)}`,
+    terms: `page-${PageId.TERMS}?${queries(TermsQueries)}`,
+    slots: 'slots-lists',
 
-// export enum PageEndPoint {
-//     HOME = `page-${PageId.HOME}?${HomeQueries.HERO}&${HomeQueries.OFFERS}&${HomeQueries.SLOTS}&${HomeQueries.ANALISES}&${HomeQueries.SLIDER2}&${HomeQueries.BONUSES}&${HomeQueries.PROMOTIONS}`,
-// }
+}

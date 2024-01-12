@@ -1,20 +1,16 @@
 ---
-import Layout from '@layout/Layout.astro';
-import WithBottomSpace from '@components/spaces/WithBottom.astro';
-import AviatorHero from '@content/aviator/AviatorHero.astro';
 import { Image } from "astro:assets";
+import Layout from '@layout/Layout.astro';
 import Hero from '@components/hero/Hero.astro';
-
-import AviatorArticles from '@content/aviator/AviatorArticles.astro';
 import AviatorSlider from '@content/aviator/AviatorSlider.astro';
 import BannerItem1 from "@components/banner/BannerItem1.astro";
-import {fetchApi, endpoints} from '@api/index';
 import WithBottom from '@components/spaces/WithBottom.astro';
-import Article from '@components/article/Article.astro';
 import ButtonRounded from '@components/buttons/ButtonRounded';
 import TwoColomns from '@components/sections/TwoColomns.astro';
 import RichText from '@components/richtext/RichText.astro';
 import TwoColomns50 from '@components/sections/TwoColomns50.astro';
+import {fetchApi, endpoints} from '@api/index';
+import AccordionContainer from "@components/accordion/AccordionContainer.astro";
 
 const pageAviatorSchema = await fetchApi({
     endpoint: endpoints.aviator,
@@ -27,6 +23,8 @@ const dataArticle2 = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.a
 const dataArticle3 = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorArticle3 : null;
 const sliderItems = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorSlider : null;
 const aviatorBanner = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorBanner : null;
+const faqData = pageAviatorSchema ? pageAviatorSchema['data']['attributes']['faqBlock']: null;
+// console.log('faqData :::', faqData);
 
 const textArticle1 = dataArticle1.aviatorArticleContent.filter(item=>item.type!=='image');
 const imgArticle1 = dataArticle1.aviatorArticleContent.find(item=>item.type==='image');
@@ -170,5 +168,12 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
     <BannerItem1
         data={aviatorBanner}
     />
+
+    <WithBottom>
+        <AccordionContainer
+            data={faqData}
+        />
+    </WithBottom>
+
 </Layout>
 

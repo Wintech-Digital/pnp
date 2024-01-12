@@ -1,6 +1,8 @@
 ---
 import Article from "@components/article/Article.astro";
 import ContactsContainer from "@components/contacts/ContactsContainer.astro";
+import RichText from "@components/richtext/RichText.astro";
+import WithBottom from "@components/spaces/WithBottom.astro";
 
 const contacsList = [
     {
@@ -24,12 +26,15 @@ const contacsList = [
         tel: '+1 (555) 905-34-56'
     },
 ];
+const {data} = Astro.props;
+const titleContacts = data.title;
+const listContacs = data.list;
 ---
-<Article 
-    id="contacts"
-    titleH1="Pin-Up contatado"  
->
-    <ContactsContainer
-        list={contacsList}
+<WithBottom>
+    <RichText
+        data = {titleContacts}
     />
-</Article>
+    <ContactsContainer
+        data={listContacs}
+    />
+</WithBottom>

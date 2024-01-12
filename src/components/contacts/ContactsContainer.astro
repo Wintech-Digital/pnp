@@ -1,22 +1,22 @@
 ---
 import ContactCard from './ContactCard.astro';
-interface CardProps {
-    name: string;
-    email: string;
-    tel: string;
-}
-interface ContainerProps{
-    list: CardProps[];
-}
-const {list} = Astro.props as ContainerProps;
+const {data} = Astro.props;
+
+// {
+//       id: 1,
+//       contactName: 'Suporte por e-mail',
+//       contactEmail: 'suporte@pinupcasino.br',
+//       contactTel: '+1 (555) 905-34-56'
+//     },
+
 ---
 <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {
-        list.map(item => (
+        data.map(item => (
             <ContactCard
-                name={item.name}
-                email={item.email}
-                tel={item.tel}
+                name={item.contactName}
+                email={item.contactEmail}
+                tel={item.contactTel}
             />
         ))
     }

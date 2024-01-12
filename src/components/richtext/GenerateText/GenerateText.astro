@@ -1,0 +1,62 @@
+---
+import ButtonRounded from '@components/buttons/ButtonRounded';
+import RichText from '@components/richtext/RichText.astro';
+import TableDynamic from '@components/table/TableDynamic.astro';
+
+// data: {
+//  articleTitle,
+//  articleBody,
+//  articleTable,
+//  articleButton:
+// }
+const {data, blockStyle = '', textStyle = null} = Astro.props;
+
+const articleTitle = data?.articleTitle;
+const articleBody = data?.articleBody;
+const articleTable = data?.articleTable;
+const articleButton = data?.articleButton;
+
+function isBlock(data){
+    if(data){
+        if(Array.isArray(data)){
+            return data.length
+        }
+        if(Object.keys(data).length){
+            return true;
+        }
+    }
+    return null;
+} 
+---
+
+<div class={`${blockStyle}`}>
+    { isBlock(articleTitle) && 
+        <RichText
+            data = {articleTitle}
+            styles={textStyle}
+        />
+    }
+    { isBlock(articleBody) && 
+        <RichText
+            data = {articleBody}
+            styles={textStyle}
+        />
+    }
+    {
+        isBlock(articleTable) && 
+            <TableDynamic
+                data = {articleTable}
+            />
+    }
+    { isBlock(articleButton) &&
+        <div class='flex flex-row justify-center sm:justify-start my-4'>
+            <ButtonRounded
+                size="xl"
+                color={articleButton?.type || 'red'}
+                title={articleButton?.name || 'Empty'}
+                link={articleButton?.link || '#'}
+                className="w-full sm:w-auto flex flex-row gap-4 justify-center z-50"
+            />
+        </div>
+    }
+</div>
