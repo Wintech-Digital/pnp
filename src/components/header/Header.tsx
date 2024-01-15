@@ -87,7 +87,11 @@ const Header = () => {
        *  Mobile Menu
        * ***/}
 
-      <MobileDialog isOpen={mobileMenuOpen} handlerToggle={setMobileMenuOpen} />
+      <MobileDialog
+        isOpen={mobileMenuOpen}
+        handlerToggle={setMobileMenuOpen}
+        nestedMenu={nestedMenu}
+      />
     </header>
   );
 };

@@ -11,7 +11,7 @@ import { MobileNavButton, MobileNavLink } from "./NavLink";
 import Logo from "./Logo";
 import { Fragment } from "react";
 
-const MobileDialog = ({ isOpen, handlerToggle }) => {
+const MobileDialog = ({ isOpen, handlerToggle, nestedMenu }) => {
   return (
 
     <Transition appear show={isOpen} as={Fragment}>
@@ -49,9 +49,11 @@ const MobileDialog = ({ isOpen, handlerToggle }) => {
             <div className="space-y-2 py-6">
               {navigationMainList.map((item) => {
                 const { id, url, name } = pagePreferencies[item];
-                if (navigationWithNestedList.hasOwnProperty(item)) {
-                  return (
-                    <Disclosure key={id} as="div" className="-mx-3">
+                if(nestedMenu){
+                  const menuList = Object.keys(nestedMenu);
+                  if(menuList.includes(id)){
+                    return (
+                      <Disclosure key={id} as="div" className="-mx-3">
 
                       {({ open }) => (
                         <>
@@ -62,17 +64,15 @@ const MobileDialog = ({ isOpen, handlerToggle }) => {
                           />
 
                           <Disclosure.Panel className="mt-2 space-y-2">
-                            {navigationWithNestedList[item].map((i) => {
-                              const { id, url, name } = pagePreferencies[i];
-
+                            {nestedMenu[id].map((i) => {
                               return (
                                 <Disclosure.Button
-                                  key={id}
+                                  key={i.slug}
                                   as="a"
-                                  href={url}
+                                  href={`/${id}/${i.slug}`}
                                   className="flex flex-row rounded-lg py-2 pl-[60px] pr-3 text-sm font-semibold leading-7 text-grey30 hover:text-pnp hover:bg-[#06BA9F]/[.2]"
                                 >
-                                  {name}
+                                  {i.name}
                                 </Disclosure.Button>
                               );
                             })}
@@ -80,7 +80,8 @@ const MobileDialog = ({ isOpen, handlerToggle }) => {
                         </>
                       )}
                     </Disclosure>
-                  );
+                      )
+                  }
                 }
                 return (
                   <MobileNavLink
