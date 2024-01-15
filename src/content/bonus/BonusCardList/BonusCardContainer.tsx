@@ -46,7 +46,12 @@ const BonusCardContainer = ({...props}) => {
         })
     }, [data]);
     const cardList = useMemo(()=>{
-        return cardData.filter(item => item.category === cardFilter)
+        return cardData.filter(item => {
+            if(cardFilter === 'todos'){
+                return true;
+            }
+            return item.category === cardFilter;
+        })
     }, [cardFilter, cardData])
 
     return (
