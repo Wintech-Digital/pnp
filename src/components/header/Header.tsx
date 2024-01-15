@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Popover } from "@headlessui/react";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import {
   pagePreferencies,
   navigationMainList,
-  navigationWithNestedList,
 } from "@constants";
 
 import Logo from "./Logo.tsx";
@@ -16,9 +15,24 @@ import {
   NavButton,
 } from "./NavLink";
 import { getIcon } from "./utils.tsx";
+import { endpoints } from "@api/endpoint.ts";
+import { fetchApi } from "@api/index.ts";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [nestedMenu, setNestedMenu] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const slotsPages = await fetchApi({ endpoint: endpoints.slots });
+      const slotsList = slotsPages['data'].map(item => item.attributes);
+      setNestedMenu({
+        slots: slotsList,
+      });
+    }
+    fetchData();
+  },[]);
+
   return (
     <header>
       <nav
@@ -32,17 +46,17 @@ const Header = () => {
 
           <Popover.Group className="hidden pnplg:flex pnplg:gap-x-[24px]">
             <>
-              {/* {({ open }) => (
-              <div>Popover.Group: {open ? 'Open' : 'Not Open'}</div>
-            )} */}
               {navigationMainList.map((item) => {
                 const { id, url, name } = pagePreferencies[item];
-                if (navigationWithNestedList.hasOwnProperty(item)) {
-                  return (
-                    <NavDropDown key={item} id={item}>
-                      <NavButton name={name} icon={getIcon(id)} />
-                    </NavDropDown>
-                  );
+                if(nestedMenu){
+                  const menuList = Object.keys(nestedMenu);
+                  if(menuList.includes(id)){
+                    return (
+                        <NavDropDown key={id} id={id} menu={nestedMenu}>
+                          <NavButton name={name} icon={getIcon(id)} />
+                        </NavDropDown>
+                    )
+                  }
                 }
                 return (
                   <NavLink key={id} url={url} name={name} icon={getIcon(id)} />
@@ -79,24 +93,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-{/***
-  *  ToDo: async dropdown menu;
-  * ***/}
-
-// const [nestedMenu, setNestedMenu] = useState({
-//   bonus: null,
-//   slots: null
-// });
-
-// useEffect(()=> {
-//   const fetchData = async () => {
-//     const pageItems = await fetchApi({
-//       endpoint: endpoints.slots, 
-//     });
-//     setNestedMenu({...nestedMenu, slots: pageItems});
-//   }
-//   fetchData();
-// },[]);
-// const nestedListSlots = nestedMenu.slots?.data.map(i => ({ name: i.attributes.name, id: i.attributes.slug })) || [];

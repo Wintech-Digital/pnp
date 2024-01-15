@@ -1,5 +1,4 @@
 ---
-// import { accItems } from './mock';
 import AccordionCustomStyles from "./Accordion";
 import RichText from '@components/richtext/RichText.astro';
 const {data} = Astro.props;
@@ -17,12 +16,15 @@ const accItems = faqList?.map(item=>{
 });
 
 ---
-<!-- <h2 class="text-34-37-700 sm:text-40-48-700 my-7" /> -->
-<RichText
-  data={faqTitle}
-/>
-<AccordionCustomStyles
-    client:load
-    data={accItems}
-/>
+{ !!faqTitle?.length && 
+  <RichText
+    data={faqTitle}
+  />
+}
+{ !!accItems?.length &&
+  <AccordionCustomStyles
+      client:load
+      data={accItems}
+  />
+}
 

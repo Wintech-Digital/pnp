@@ -8,6 +8,7 @@ import img1 from "@assets/images/Image1.png";
 import img2 from "@assets/images/Image2.png";
 import img3 from "@assets/images/Image3.png";
 import SliderContainer from "@components/slider/SliderContainer";
+import { getFields } from "@utils";
 
 const pic1 = await getImage({ src: img1, width: 270, format: 'webp' });
 const pic2 = await getImage({ src: img2, width: 270, format: 'webp' });
@@ -57,26 +58,36 @@ const list = [
 ];
 const gridList = 'sm:grid sm:gap-6 sm:grid-cols-2 md:gap-6 md:grid-cols-3 lg:gap-6 lg:grid-cols-3 xl:gap-6 xl:grid-cols-4';
 const flexList = 'flex flex-row overflow-x-scroll gap-4';
+
+const {data} = Astro.props;
+// {
+//     title: 'Confirmar a transacção',
+//     description: 'Leia atentamente os seus dados e confirme o seu depósito;',
+//     url: null,
+//     coverImage: { data: [Object] }
+// }
+const sliderItems = data.map(item => {
+    return ({
+        text: item?.title || '',
+        description: item?.description || '',
+        pic: getFields(item?.coverImage?.data?.attributes) || ''
+    })
+})
 ---
-<Article titleH1 = 'Como Jogar Conheça Black Rider no Pin-Up Casino'>
-    <div class="overflow-hidden pt-4 block sm:hidden">
-        <ArticleItem titleH2 = 'Guia Passo a Passo: Como Iniciar sua Jornada com o Black Rider'>
-            <SliderContainer
-                client:load
-                list={list}
-                itemComponentName="SliderItem4"
-            />
-        </ArticleItem>
-    </div>
-    <ul class=`${flexList} ${gridList} mb-[32px] hidden sm:block`>
-        { list.map((item, index)=> ( 
+<div class="overflow-hidden pt-4 block sm:hidden">
+    <SliderContainer
+        client:load
+        list={sliderItems}
+        itemComponentName="SliderItem4"
+    />
+</div>
+<ul class=`${flexList} ${gridList} my-8 hidden sm:block`>
+    { sliderItems.map((item, index)=> ( 
             <SliderItem4
                 text={item.text}
                 description={item.description}
                 pic={item.pic}
                 ind={index}
             />
-        ))}
-    </ul>
-   
-</Article>
+    ))}
+</ul>

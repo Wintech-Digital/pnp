@@ -1,14 +1,66 @@
 ---
+import { fetchApi, endpoints } from "@api/index";
 import Layout from "@layout/Layout.astro";
 import BlockSlotsList from "@content/home/BlockSlotsList/BlockSlotsList.astro";
+import BonusCardContainer from "@content/bonus/BonusCardList/BonusCardContainer";
 import WithBottom from "@components/spaces/WithBottom.astro";
+import BonusHero from "@content/bonus/BonusHero.astro";
+import AccordionContainer from "@components/accordion/AccordionContainer.astro";
+import RichText from "@components/richtext/RichText.astro";
+
+const pageBonusSchema = await fetchApi({ endpoint: endpoints.bonus });
+// console.log('pageBonusSchema', pageBonusSchema) // Obter Bônus | Saiba mais
+const bonusCardsData = await fetchApi({ endpoint: endpoints.bonusCards });
+const pageBlocks = pageBonusSchema['data']?.attributes;
+const dataHero = pageBlocks?.hero;
+const pageTitle = pageBlocks?.pageTitle;
+const dataBonusList = pageBlocks?.bonusList;
+const faqData = pageBlocks?.faqBlock;
 ---
 <Layout>
-    <WithBottom>
-        <div>
-            Bonus page...
-        </div>
-    </WithBottom>
-  
+    { dataHero &&
+        <WithBottom>
+          <BonusHero data={dataHero}/>
+        </WithBottom>
+    }
+
+    { bonusCardsData['data'] &&
+      <BonusCardContainer
+          client:load
+          title={pageTitle}
+          data={bonusCardsData['data']}
+      />
+    }
+
+    {!!dataBonusList?.length && 
+      <WithBottom>
+        <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
+          <ul class=" grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-700 lg:max-w-none lg:grid-cols-3">
+              { dataBonusList.map(item =>{
+                return (
+                    <li>
+                      <RichText
+                          data={item.descrition}
+                          styles={{
+                            h3: '!text-24-26-700 mb-4 text-pnp',
+                            paragraph: '!text-16-24-400 text-pnp-grey20'
+                          }}
+                      />
+                    </li>
+                )
+              })}
+          </ul>
+        </section>
+      </WithBottom>
+    }
+
     <BlockSlotsList/>
-</Layout>  
+
+    { faqData &&
+        <WithBottom>
+          <AccordionContainer
+              data={faqData}
+          />
+        </WithBottom>
+      }
+    </Layout>  

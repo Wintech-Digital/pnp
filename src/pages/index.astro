@@ -30,7 +30,10 @@ const dataOfferSlider = pageHomeSchema ? pageHomeSchema['data']?.attributes?.off
 const dataSlotsList = pageHomeSchema ? pageHomeSchema['data']['attributes']['slotsList'] : null;
 const articleAnalises = pageHomeSchema ? pageHomeSchema['data']['attributes']['analisesArticle'] : null;
 const slider2 = pageHomeSchema ? pageHomeSchema['data']['attributes']['slider2'] : null;
-const bonuses = pageHomeSchema ? pageHomeSchema['data']['attributes']['bonuses'] : null;
+const bonuses = pageHomeSchema ? pageHomeSchema['data']['attributes']['bonusSlider'] : null;
+const bonusDescription = pageHomeSchema ? pageHomeSchema['data']['attributes']['bonusDescription'] : null;
+// console.log('bonuses', bonuses);
+
 const promotions = pageHomeSchema ? pageHomeSchema['data']['attributes']['promotions'] : null;
 const guide = pageHomeSchema ? pageHomeSchema['data']['attributes']['guide'] : null;
 const payment = pageHomeSchema ? pageHomeSchema['data']['attributes']['payment'] : null;
@@ -41,8 +44,6 @@ const strategies = pageHomeSchema ? pageHomeSchema['data']['attributes']['strate
 const support = pageHomeSchema ? pageHomeSchema['data']['attributes']['support'] : null;
 const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoSection'] : null;
 const faqData = pageHomeSchema ? pageHomeSchema['data']['attributes']['faqBlock']: null;
-// console.log('faqData :::', faqData);
-
 ---
 <Layout>
     <WithBottom>
@@ -53,7 +54,7 @@ const faqData = pageHomeSchema ? pageHomeSchema['data']['attributes']['faqBlock'
     </WithBottom>
 
     <!-- 1 -->
-    <div class="block sm:hidden" >
+    <div class="block sm:hidden">
         <BlockOfetas data={dataOfferSlider}/>
     </div>
 
@@ -67,7 +68,10 @@ const faqData = pageHomeSchema ? pageHomeSchema['data']['attributes']['faqBlock'
     <BlockCasinoInfo data={slider2}/>
 
     <!-- 5 -->
-    <BlockBonus data={bonuses}/>
+    <BlockBonus
+        data={bonuses}
+        bonusDescription={bonusDescription}
+    />
 
     <!-- 6 -->
     <BlockBonus2
@@ -129,5 +133,4 @@ const faqData = pageHomeSchema ? pageHomeSchema['data']['attributes']['faqBlock'
             data={faqData}
         />
     </WithBottom>
-
 </Layout>

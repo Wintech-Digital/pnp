@@ -4,6 +4,7 @@ import SliderContainer from "@components/slider/SliderContainer";
 import SliderItem4 from '@components/slider/SliderItem4';
 import RichText from '@components/richtext/RichText.astro';
 import Table from "@components/table/TableDynamic.astro";
+import { getFields } from "@utils";
 
 const gridList = 'sm:grid sm:gap-6 sm:grid-cols-2 md:gap-6 md:grid-cols-3 lg:gap-6 lg:grid-cols-3 xl:gap-6 xl:grid-cols-4';
 const flexList = 'flex flex-row overflow-x-scroll gap-4';
@@ -14,14 +15,14 @@ const guidetitle = data?.guidetitle;
 const guideslider = data?.guideslider;
 const guidetable = data?.guidetable;
 const sliderData = guideslider.map(item=>{
-    const isImage = item.coverImage.data !== null;
-    const pic = isImage ? `${STRAPI_URL}${item.coverImage.data.attributes.url}` : ''; 
     return({
-        text: item.title,
-        description: item.description,
-        pic,
+        text: item?.title || '',
+        description: item?.description || '',
+        pic: getFields(item?.coverImage?.data?.attributes) || ''
     })
 })
+
+
 
 ---
 <RichText withSlots data={guidetitle}/>

@@ -8,7 +8,7 @@ export function getFields(data){
             : data.url;
         return ({
             url: withPath,
-            alternativeText: data.alternativeText,
+            alternativeText: data.alternativeText || '',
             w: data.width,
             h: data.height,
             format: data.ext,

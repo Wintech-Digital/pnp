@@ -5,8 +5,9 @@ import slotImg2 from "@assets/images/slot-img-2.png";
 import slotImg3 from "@assets/images/slot-img-3.png";
 import RichText from "@components/richtext/RichText.astro";
 import { getFields } from "@utils";
+import BlockOfetas from "@content/home/BlockOfetas/BlockOfetas.astro";
 
-const images = [ slotImg1, slotImg2, slotImg3, slotImg1, slotImg2, slotImg3 ];
+// const images = [ slotImg1, slotImg2, slotImg3, slotImg1, slotImg2, slotImg3 ];
 const {data} = Astro.props;
 const articleTitle = data?.articleTitle; 
 const articleBody = data?.articleBody; 

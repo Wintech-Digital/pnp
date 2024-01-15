@@ -42,7 +42,7 @@ const ButtonRounded = ({ ...props }: Props) => {
       return(
         <a
           href={rest.link}
-          className={`${classN({ size: 'empty', color, className })} inline-flex flex-col border border-pnp/[.1] px-6 pb-2 sm:py-0 my-0`}
+          className={`${classN({ size: 'empty', color, className })} inline-flex flex-col justify-center border border-pnp/[.1] px-6 pb-2 sm:py-0 my-0`}
           onClick={rest?.onClick}
           {...rest}
         >

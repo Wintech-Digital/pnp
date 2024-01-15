@@ -1,38 +1,46 @@
 ---
-import ArticleItem from "@components/article/ArticleItem.astro";
+import RichText from "@components/richtext/RichText.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import { STRAPI_URL } from "@constants";
+import { getFields } from "@utils";
 
 const {data} = Astro.props;
-const title = data?.title || '';
-const offerData = data?.offer || [];
+const title = data?.title;
+const slides = data?.slides;
 
-const sliderList = offerData.map((item) => {
+const sliderList = slides.map((item) => {
+    // TODO: index page is text field | Slots page RichText. Move index page to RichText;
     const text = item?.title || '';
+    // TODO: index page is text field | Slots page RichText. Move index page to RichText;
+
+    const link = item?.url || '';
     const description = item?.description || '';
-    const pic = item?.coverImage?.data?.attributes?.url;
-    const ext = item?.coverImage?.data?.attributes?.ext;
-    const slideImage = `${STRAPI_URL}${pic}` || '';
+    const pic = getFields(item?.coverImage?.data?.attributes);
     return ({
+        pic,
         text,
+        link,
         description,
-        ext,
-        pic: slideImage
     })
 })
 ---
 
-{!!sliderList?.length &&
-    <ArticleItem>
-        <div class="overflow-hidden pt-4">
-            <ArticleItem titleH2={title}>
-                <SliderContainer
-                    client:load
-                    list={sliderList}
-                    noInfiniti={true}
-                    itemComponentName="SliderItem"
-                />
-            </ArticleItem>
-        </div>
-    </ArticleItem>
+{  Array.isArray(title) 
+    ? (<RichText
+            data={title}
+            styles={{
+                h2: 'w-full',
+                h3: 'w-full'
+            }}
+        />)
+    : ( <h2 class="text-24-36-700 text-pnp">{title}</h2> )
 }
+<div class="overflow-hidden pt-4 mt-4">
+    {!!sliderList?.length &&
+        <SliderContainer
+            client:load
+            list={sliderList}
+            noInfiniti={true}
+            itemComponentName="SliderItem"
+        />
+    }
+</div>

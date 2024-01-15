@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { id, name } = Astro.props as Props;
+const modeName = id !== PageId.BONUS ? name : 'Bonus Do Pin Up Casino';
 ---
 <> 
     { (id !== PageId.HOME) 
@@ -16,6 +17,6 @@ const { id, name } = Astro.props as Props;
         : <Home class="h-[20px]"/>
     }
     <span>
-        {name}
+        {modeName}
     </span>
 </>

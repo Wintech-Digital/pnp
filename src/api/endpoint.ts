@@ -9,11 +9,12 @@ enum LayoutQueries {
 }
 enum HomeQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
-    OFFERS = 'populate[offerSlider][populate][offer][populate]=*',
+    OFFERS = 'populate[offerSlider][populate][slides][populate]=*',
     SLOTS = 'populate[slotsList][populate][slots][populate]=*',
     ANALISES = 'populate[analisesArticle][populate][table][populate]=*',
     SLIDER2 = 'populate[slider2][populate]=*',
-    BONUSES = 'populate[bonuses][populate]=*',
+    BONUSES = 'populate[bonusSlider][populate][bonusItem][populate]=*',
+    BONUSES_DESCRIPTION = 'populate[bonusDescription][populate]=*',
     PROMOTIONS = 'populate[promotions][populate][slider3][populate]=*',
     GUIDE = 'populate[guide][populate][guideslider][populate]=*',
     PAYMENT = 'populate[payment][populate][providersslider][populate]=*',
@@ -57,11 +58,22 @@ enum TermsQueries {
 }
 export enum SlotQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
-    OFFERS = 'populate[offerSlider][populate][offer][populate]=*',
+    OFFERS = 'populate[slotsSlider][populate][slides][populate]=*',
     ARTICLE_MAIN = 'populate[articleMain][populate]=*',
+    ARTICLE_BLACK_RIDER = 'populate[blackRiderArticle][populate][slider][populate]=*',
     ARTICLE_LIST = 'populate[articleList][populate]=*',
     BANNER = 'populate[banner][populate]=*',
+    BONUS_SLIDER = 'populate[bonusSlider][populate][bonusItem][populate][imageCover][populate]=*&populate[bonusSlider][populate][bonusItem][populate][buttons][populate]=*',
+    BONUSES_ARTICLES = 'populate[bonusList][populate]=*',
     FAQ = 'populate[faqBlock][populate]=*',
+}
+export enum BonusQueries {
+    HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
+    BONUSES_ARTICLES = 'populate[bonusList][populate]=*',
+    FAQ = 'populate[faqBlock][populate]=*',
+}
+export enum BonusCardsQueries {
+    BONUSE_CARDS = 'populate[coverImage][populate]=*&populate[btnList][populate]=*',
 }
 
 export const endpoints = {
@@ -71,6 +83,12 @@ export const endpoints = {
     aviator: `page-${PageId.AVIATOR}?${queries(AviatorQueries)}`,
     app: `page-${PageId.APP}?${queries(AppQueries)}`,
     terms: `page-${PageId.TERMS}?${queries(TermsQueries)}`,
-    slots: 'slots-lists',
-
+    slots: 'page-slots', // 'slots-lists'
+    slot: 'page-slots?filters[slug][$eq]=',
+    bonus: `page-${PageId.BONUS}?${queries(BonusQueries)}`,
+    bonusCards: `bonus-cards?${queries(BonusCardsQueries)}`,
+}
+export function getSlotsBySlug(slug){
+    // console.log(`${endpoints.slot}${slug}&${queries(SlotQueries)}`)
+    return `${endpoints.slot}${slug}&${queries(SlotQueries)}`;
 }

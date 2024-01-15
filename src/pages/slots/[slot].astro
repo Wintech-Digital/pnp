@@ -1,114 +1,75 @@
 ---
- 
+// API TEMPLATE:
+//// const pathBySlug = `${apiUrl}/slots?filters[name][$eq]=${`Gates of Olympus`}&populate=image`;
+//   const testPageItems = await fetchApi({
+//       endpoint: `page-slots?filters[slug][$eq]=hell-hot&populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*`
+//   });
+//   console.log('testPageItems::::', testPageItems['data'])
+
+// OLD:
+// const pageSlotSchema = await fetchApi({
+//     endpoint: `page-slot-${slot}?${queries(SlotQueries)}`,
+// });
+// const faqData = pageSlotSchema ? pageSlotSchema['data']['attributes']?.faqBlock: null;
+
+import { endpoints, fetchApi } from '@api/index';
+import { getSlotsBySlug } from '@api/endpoint';
 import Layout from '@layout/Layout.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
 import SlotHero from '@content/slot/SlotHero.astro';
 import SlotBonus from '@content/slot/SlotBonus.astro';
-import SlotBonusList from '@content/slot/SlotBonusList.astro';
-import SlotCasinoInfo from '@content/slot/SlotCasinoInfo.astro';
 import SlotDetailsArticle from '@content/slot/SlotDetailsArticle.astro';
 import SlotArticle from '@content/slot/SlotArticle.astro';
-import { endpoints, fetchApi } from '@api/index';
-import { queries } from '@api/endpoint';
-import { SlotQueries } from '@api/endpoint';
 import GenerateText from '@components/richtext/GenerateText/GenerateText.astro';
 import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 import BannerItem1 from '@components/banner/BannerItem1.astro';
 import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
+import RichText from '@components/richtext/RichText.astro';
 
 export async function getStaticPaths() {
-//   const slotPages = [
-//   {
-//   id: "hell-hot",
-//   name: "Hell Hot",
-//   description: "Shot description of Hell-Hot if needed.",
-// },
-// {
-//   id: "demi-gods-2",
-//   name: "Demi Gods II",
-//   description: "Demi Gods II description.",
-// },
-// {
-//   id: "gates-of-olympus",
-//   name: "Gates of Olympus",
-//   description: "Gates of Olympus description.",
-// },
-// {
-//   id: "leprechaun-riches",
-//   name: "Leprechaun Riches",
-//   description: "Leprechaun Riches description if needed.",
-// },
-// {
-//   id: "majestic-king",
-//   name: "Majestic King",
-//   description: "Majestic King description.",
-// },
-// {
-//   id: "wolf-strike",
-//   name: "Wolf Strike",
-//   description: "Wolf Strike descriptionif needed.",
-// },
-// {
-//   id: "hot-fruits",
-//   name: "Hot Fruits",
-//   description: "Hot Fruits description if needed.",
-// },
-// {
-//   id: "9-coins",
-//   name: "9 coins",
-//   description: "Shot description of 9 coins if needed.",
-// }
-//   ];
-// return slotPages.map((item) => ({
-//     params: { slot: item.id },
-//     props: { name: item.name }
-//   }));
-
-  const pageItems = await fetchApi({
-    endpoint: endpoints.slots, 
-  });
-
-  return pageItems['data'].map(item => {
-    const {slug, name} = item.attributes;
+  const pageSlots = await fetchApi({ endpoint: endpoints.slots });
+  return pageSlots['data']?.map(item=> {
     return ({
-      params: { slot: slug },
-      props: { name: name }
+      params: { slot: item.attributes.slug },
+      props: { name: item.attributes.name }
     })
   })
 }
+
 const { slot } = Astro.params;
-// console.log('slot :::', slot)
-
-const pageSlotSchema = await fetchApi({
-    endpoint: `page-slot-${slot}?${queries(SlotQueries)}`,
-});
-const faqData = pageSlotSchema ? pageSlotSchema['data']['attributes']?.faqBlock: null;
-// console.log('faqData :::', faqData);
-const dataBanner = pageSlotSchema ? pageSlotSchema['data'].attributes?.banner : null;
-const dataOfferSlider = pageSlotSchema ? pageSlotSchema['data']?.attributes?.offerSlider : null;
-
-const dataHero = pageSlotSchema['data'].attributes.hero;
-const dataArticleMain = pageSlotSchema['data'].attributes.articleMain;
-const dataArticleList = pageSlotSchema['data'].attributes.articleList;
-// console.log('dataArticleList', dataArticleList )
-
+const pageSlotData = await fetchApi({ endpoint: getSlotsBySlug(slot) });
+const pageSlotSchema = pageSlotData['data']?.find(item => item.attributes.slug === slot);
+const pageBlocks = pageSlotSchema?.attributes;
+const dataHero = pageBlocks?.hero;
+const dataOfferSlider = pageBlocks?.slotsSlider;
+const dataArticleMain = pageBlocks?.articleMain;
+const dataArticleList = pageBlocks?.articleList;
+const dataBonusSlider = pageBlocks?.bonusSlider;
+const dataBonusList = pageBlocks?.bonusList;
+const dataBlackRiderArticle = pageBlocks?.blackRiderArticle;
+const dataBanner = pageBlocks?.banner;
+const faqData = pageBlocks?.faqBlock;
 ---
-
 <Layout>
-    <WithBottom>
-      <SlotHero
-          data={dataHero}
-      />
-    </WithBottom>
+  { dataHero &&
+      <WithBottom>
+        <SlotHero data={dataHero}/>
+      </WithBottom>
+  }
 
-    <!-- 1 -->
-    <BlockOfetas data={dataOfferSlider}/>
+  { dataOfferSlider &&
+    <BlockOfetas
+      data={dataOfferSlider}
+    />
+  }
     
+  {dataArticleMain && 
     <SlotArticle
       data={dataArticleMain}
     />
+  }
 
-    { (dataArticleList &&  dataArticleList.length) && 
+  { (!!dataArticleList?.length) && 
         dataArticleList.map(article => { 
             return (
                 <GenerateText
@@ -120,23 +81,108 @@ const dataArticleList = pageSlotSchema['data'].attributes.articleList;
                 />
             )
         })
+    }
+
+    {dataBonusSlider &&
+      <SlotBonus
+        data={dataBonusSlider}
+      />
+    }
+
+    {!!dataBonusList?.length && 
+    <WithBottom>
+      <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
+        <ul class=" grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-700 lg:max-w-none lg:grid-cols-3">
+            { dataBonusList.map(item =>{
+              return (
+                  <li>
+                    <RichText
+                        data={item.descrition}
+                        styles={{
+                          h3: '!text-24-26-700 mb-4 text-pnp',
+                          paragraph: '!text-16-24-400 text-pnp-grey20'
+                        }}
+                    />
+                  </li>
+              )
+            })}
+        </ul>
+      </section>
+    </WithBottom>
   }
-  
-    <!-- <SlotBonusList/> -->
 
-    <!-- <SlotBonus/> -->
 
-    <!-- <SlotCasinoInfo/> -->
+{dataBlackRiderArticle && 
+    <SlotDetailsArticle
+        data={dataBlackRiderArticle}
+    />
+}
 
-    <!-- <SlotDetailsArticle/>  -->
-
+  {dataBanner && 
     <BannerItem1
         data={dataBanner}
     />
+  }
 
+  {faqData &&
     <WithBottom>
       <AccordionContainer
           data={faqData}
       />
     </WithBottom>
+  }
 </Layout>
+
+
+<!-- 
+    const testPageItems = await fetchApi({endpoint: `page-slots`});
+    console.log('testPageItems::::', testPageItems['data']) 
+-->
+
+<!-- 
+const slotPages = [
+{
+id: "hell-hot",
+name: "Hell Hot",
+description: "Shot description of Hell-Hot if needed.",
+},
+{
+id: "demi-gods-2",
+name: "Demi Gods II",
+description: "Demi Gods II description.",
+},
+{
+id: "gates-of-olympus",
+name: "Gates of Olympus",
+description: "Gates of Olympus description.",
+},
+{
+id: "leprechaun-riches",
+name: "Leprechaun Riches",
+description: "Leprechaun Riches description if needed.",
+},
+{
+id: "majestic-king",
+name: "Majestic King",
+description: "Majestic King description.",
+},
+{
+id: "wolf-strike",
+name: "Wolf Strike",
+description: "Wolf Strike descriptionif needed.",
+},
+{
+id: "hot-fruits",
+name: "Hot Fruits",
+description: "Hot Fruits description if needed.",
+},
+{
+id: "9-coins",
+name: "9 coins",
+description: "Shot description of 9 coins if needed.",
+}
+];
+return slotPages.map((item) => ({
+  params: { slot: item.id },
+  props: { name: item.name }
+})); -->

@@ -23,7 +23,11 @@ const SliderItem4: FC<Props> = ({ind,pic,text, description}) => {
             0{ind+1}
           </span>
         </div>
-        <img className="pointer-events-none object-cover h-[170px] w-full flex-shrink-0 rounded-[16px]" src={pic} alt={text}/>
+        <img
+          src={pic.url}
+          alt={pic.alternativeText}
+          className="pointer-events-none object-cover h-[170px] w-full flex-shrink-0 rounded-[16px]"
+        />
         <h3 className="text-pnp text-18-28-600">
           {text}
         </h3>

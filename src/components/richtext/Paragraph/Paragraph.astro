@@ -1,13 +1,45 @@
 ---
 import Link from "./Link.astro";
+import CheckCircleIcon from "@heroicons/react/16/solid/CheckCircleIcon";
+
 const {block, styles} = Astro.props;
-const stylesP = styles ? styles['paragraph'] : '';
+const stylesP = styles ? styles['paragraph'] : ''; // checked-bullet |
 ---
-<p class={`text-16-24-400 text-pnp-grey20 ${stylesP}`} slot='first-col'>
+{
+     (stylesP && stylesP.includes('checked-bullet')) ? (
+        <section class="flex gap-x-3">
+            <div class="bg-pnp h-7 w-7 rounded-full relative block self-center">
+                <CheckCircleIcon className="h-8 w-8 text-[#06BA9F] absolute -top-[2px] -left-[2px]"/>
+            </div>
+            <p class={`text-16-24-400 text-pnp-grey20 ${stylesP}`} slot='first-col'>
+                <strong>
+                    {block.children.map(item => {
+                        if(item.type === 'link'){
+                            return <Link data={item} />
+                        }
+                        return item.text
+                    })}
+                </strong>
+            </p>
+        </section>
+    ) : (
+        <p class={`text-16-24-400 text-pnp-grey20 ${stylesP}`} slot='first-col'>
+            {block.children.map(item => {
+                if(item.type === 'link'){
+                    return <Link data={item} />
+                }
+                return item.text
+            })}
+        </p>
+     )
+}
+
+
+<!-- <p class={`text-16-24-400 text-pnp-grey20 ${stylesP}`} slot='first-col'>
     {block.children.map(item => {
         if(item.type === 'link'){
             return <Link data={item} />
         }
         return item.text
     })}
-</p>
+</p> -->

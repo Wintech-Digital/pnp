@@ -1,10 +1,13 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { navigationWithNestedList } from "@constants";
 import NavDropDownList from "./NavDropDownList";
 
-const NavDropDown = ({children, id}) => {
-    const nestedList = navigationWithNestedList[id];
+const NavDropDown = ({children, id, menu}) => {
+    const list = menu[id].map(item=>({
+        slug: item.slug,
+        url: `/${id}/${item.slug}`,
+        name: item.name
+    }))
     return (
         <Popover className="relative">
             {children}
@@ -19,12 +22,12 @@ const NavDropDown = ({children, id}) => {
             >
             <Popover.Panel className="absolute -left-8 top-full z-[1001] mt-3 w-screen max-w-md overflow-hidden rounded-[24px] bg-[#202726]/[.97] shadow-lg ring-1 ring-gray-900/5 border border-pnp/[.1]">
                 <NavDropDownList
-                    nestedList={nestedList}
+                    nestedList={list}
                 />
             </Popover.Panel>
             </Transition>
       </Popover>
-)
+    )
 }
 
 export default NavDropDown;
