@@ -8,8 +8,8 @@ import { defineConfig, squooshImageService } from 'astro/config';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// output: 'static',
 export default defineConfig({
-  output: 'server', // 
 
   integrations: [
     react(),
