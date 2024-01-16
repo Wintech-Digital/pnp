@@ -36,7 +36,7 @@ async function fetchApi<T>({
 
     let data = null;
     try {
-      const res = await fetch(url.toString());
+      const res = await fetch(url.toString(), { cache: 'no-store' });
       data = await res.json();
       if(!data && data['data']['error']){
         console.log('Fetch error::', data['data']['error'])
