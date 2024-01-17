@@ -35,13 +35,15 @@ const sliderData = guideslider.map(item=>{
 </div>
 
 <ul class=`${flexList} ${gridList} mb-[32px] hidden sm:block`>
-    { sliderData.map((item, index)=> ( 
-        <SliderItem4
-            text={item.text}
-            description={item.description}
-            pic={item.pic}
-            ind={index}
-        />
+    { sliderData.map((item, index)=> (
+        <li>
+            <SliderItem4
+                text={item.text}
+                description={item.description}
+                pic={item.pic}
+                ind={index}
+            />
+        </li>
     ))}
 </ul>
 
