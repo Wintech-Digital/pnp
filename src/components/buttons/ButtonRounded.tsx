@@ -8,8 +8,8 @@ const sizes = {
 };
 
 const btnColors = {
-  red: "bg-pnp-red hover:bg-pnp-dark-red active:ring-pnp-dark-red",
-  green: "bg-pnp-green hover:bg-pnp-dark-green active:ring-pnp-dark-green",
+  red: "bg-pnp-dark-red hover:bg-pnp-red active:ring-pnp-red",
+  green: "bg-pnp-dark-green hover:bg-pnp-green active:ring-pnp-green",
   transparent: "bg-pnp/[.05] hover:bg-pnp/[.20] active:ring-pnp-white",
   info: "bg-pnp/[.03] hover:bg-pnp/[.10] active:ring-pnp-white",
 };

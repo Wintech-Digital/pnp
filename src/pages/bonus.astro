@@ -16,8 +16,10 @@ const dataHero = pageBlocks?.hero;
 const pageTitle = pageBlocks?.pageTitle;
 const dataBonusList = pageBlocks?.bonusList;
 const faqData = pageBlocks?.faqBlock;
+const dataSeo = pageBlocks?.seo;
+
 ---
-<Layout>
+<Layout seo={dataSeo}>
     { dataHero &&
         <WithBottom>
           <BonusHero data={dataHero}/>

@@ -73,7 +73,7 @@ const Header = () => {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
+            <Bars3BottomLeftIcon className="h-6 w-6"/>
           </button>
         </div>
 

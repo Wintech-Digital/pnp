@@ -21,6 +21,7 @@ const dataArticles = pageTermsSchema ? pageTermsSchema['data'].attributes?.terms
 const dataContacts = pageTermsSchema ? pageTermsSchema['data'].attributes?.contacts : null;
 const termsColArtical = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsColArtical : null;
 const termsSlider = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsSlider : null;
+const dataSeo = pageTermsSchema ? pageTermsSchema['data'].attributes?.seo : null;
 
 const termsColArticalImage = termsColArtical.articleBody.find(item => item.type === 'image');
 const termsColArticalTexts = termsColArtical.articleBody.filter(item => item.type !== 'image');
@@ -38,7 +39,7 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
     });
 })
 ---
-<Layout>
+<Layout seo={dataSeo}>
     <TermsHero
         data={dataBanner}
     />

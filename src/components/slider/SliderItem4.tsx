@@ -18,7 +18,7 @@ const flexCol = 'flex flex-col gap-4'
 const SliderItem4: FC<Props> = ({ind,pic,text, description}) => {
   return (
     <div className={`shadow w-full h-full relative ${brd} ${rounded} ${paddings}  ${gradient} ${transition} ${flexCol}`}>
-        <div className="bg-pnp-green absolute top-2 left-2 h-[50px] w-[50px] rounded-full flex items-center justify-center px-[11px] py-[10px]">
+        <div className="bg-pnp-dark-green absolute top-2 left-2 h-[50px] w-[50px] rounded-full flex items-center justify-center px-[11px] py-[10px]">
           <span className="text-16-24-600">
             0{ind+1}
           </span>

@@ -24,6 +24,7 @@ const dataArticle3 = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.a
 const sliderItems = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorSlider : null;
 const aviatorBanner = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorBanner : null;
 const faqData = pageAviatorSchema ? pageAviatorSchema['data']['attributes']['faqBlock']: null;
+const dataSeo = pageAviatorSchema ? pageAviatorSchema['data']['attributes']['seo']: null;
 // console.log('faqData :::', faqData);
 
 const textArticle1 = dataArticle1.aviatorArticleContent.filter(item=>item.type!=='image');
@@ -35,7 +36,7 @@ const imgArticle2 = dataArticle2.aviatorArticleContent.find(item=>item.type==='i
 const textArticle3 = dataArticle3.aviatorArticleContent.filter(item=>item.type!=='image');
 const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='image');
 ---
-<Layout>    
+<Layout seo={dataSeo}>
     <WithBottom>
         <Hero
             data={dataHero}
