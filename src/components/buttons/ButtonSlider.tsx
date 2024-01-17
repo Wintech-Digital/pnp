@@ -33,7 +33,7 @@ const CustomButton = ({ arrow, onClick, ...rest }: CutomBtnProps) => {
     ? "h-14 w-14 px-[8px] py-[8px]"
     : "h-10 w-10 px-[8px] py-[8px]";
   return (
-    <button
+    <div
       onClick={() => onClick()}
       className={`rounded-full border border-pnp/[.5] ${btnStyles}`}
     >
@@ -42,7 +42,7 @@ const CustomButton = ({ arrow, onClick, ...rest }: CutomBtnProps) => {
       ) : (
         <ArrowRightIcon className={size} />
       )}
-    </button>
+    </div>
   );
 };
 

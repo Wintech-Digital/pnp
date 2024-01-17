@@ -42,7 +42,6 @@ const MobileNavButton = ({ isOpen, name, icon }) => (
       </span>
       <ChevronDownIcon
         className={classNames(isOpen ? "rotate-180" : "", "h-5 w-5 flex-none")}
-        aria-hidden="true"
       />
     </div>
   </Disclosure.Button>

@@ -1,17 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import Article from "@components/article/Article.astro";
-
-// import image1 from "@assets/images/img777_1.png";
-// import image2 from "@assets/images/img777_2.png";
-// import image3 from "@assets/images/img777_3.png";
-// import image4 from "@assets/images/img777_4.png";
-import image1 from "@assets/svg/letter.svg";
-import image2 from "@assets/images/star.png";
-import image3 from "@assets/images/checked.png";
 import RichText from "@components/richtext/RichText.astro";
 import { STRAPI_URL } from "@constants";
-
+import WithBottom from "@components/spaces/WithBottom.astro";
 
 const {data} = Astro.props;
 const availablegamestitle = data?.availablegamestitle;
@@ -33,9 +24,14 @@ const dataList = availablegameslist.map(item=>{
     })
 })
 ---
-<RichText
-    data = {availablegamestitle}
-/>
+<WithBottom>
+    <RichText
+        data = {availablegamestitle}
+        styles={{
+            list: 'my-4'
+        }}
+    />
+</WithBottom>
 <section class="bg-pnp/[.03] border border-[#fff]/[.2] relative rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
     <ul class="flex flex-col gap-[24px]">
         { dataList.map(item => {
@@ -62,6 +58,8 @@ const dataList = availablegameslist.map(item=>{
                     <div>
                         <RichText
                             data = {item.description}
+                            styles={{
+                            }}
                         />
                     </div>
                 </li>

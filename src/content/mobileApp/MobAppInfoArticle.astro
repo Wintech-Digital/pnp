@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import ButtonRounded from "@components/buttons/ButtonRounded";
 import TwoColomns50 from "@components/sections/TwoColomns50.astro";
 import RichText from "@components/richtext/RichText.astro";
+import WithBottom from "@components/spaces/WithBottom.astro";
 
 const {data} = Astro.props;
 const articleTitle = data?.articleTitle;
@@ -10,18 +11,21 @@ const articleBody = data?.articleBody;
 const articleButton = data?.articleButton;
 const textArticle1 = articleBody.filter(item=>item.type!=='image');
 const imgArticle1 = articleBody.find(item=>item.type==='image');
-
 ---
+<WithBottom>
+    <RichText
+        data={articleTitle}
+        class={'w-full mb-6'}
+    />
+</WithBottom>
 
-<RichText
-    data={articleTitle}
-/>
 <TwoColomns50 reverse>
     <div slot="first-col">
         <RichText
             data={textArticle1}
             styles={{
-                h1: 'w-full'
+                h1: 'w-full',
+                paragraph: 'mb-4'
             }}
         />
 

@@ -1,11 +1,23 @@
 ---
+import { endpoints, fetchApi } from "@api/index";
 import ArticleItem from "@components/article/ArticleItem.astro";
 import Slots from "@components/slots/Slots.astro";
+import { getFields } from "@utils";
 
 const {data} = Astro.props;
 const title = data?.title || '';
-const slotsList = data?.slots || [];
+
+const slotsPages = await fetchApi({ endpoint: endpoints.slotsSlide });
+const slotsAttributes = slotsPages['data'];
+const slotsSliderList = slotsAttributes.map(item => {
+    const attrs = item?.attributes;
+    const imagePath = attrs?.slotInSlide?.coverImage?.data?.attributes;
+    return({
+        ...attrs?.slotInSlide,
+        coverImage: getFields(imagePath)
+    })
+})
 ---
 <ArticleItem titleH2={title}>
-    <Slots list={slotsList} />
+    <Slots list={slotsSliderList} />
 </ArticleItem>

@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+const { data, classList } = Astro.props;
+const {format= '.png', url= '', w = 0, h = 0, alternativeText = ''} = data;
+const isPNG = format === '.png';
+const isWEBP = format === '.webp';
+---
+{isPNG && 
+    <Image
+        src={url}
+        width={w}
+        height={h}
+        loading="lazy"
+        alt={alternativeText}
+        class={`${classList}`}
+    />
+}
+{isWEBP && 
+    <img
+        src={url}
+        width={w}
+        height={h}
+        alt={alternativeText}
+        class={`${classList}`}
+    />
+}

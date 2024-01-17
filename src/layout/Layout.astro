@@ -4,24 +4,17 @@ import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
  
-interface Props {
-    title?: string;
-}
-
-const {props, generator} = Astro;
-const { title = 'Empty title' }: Props = props;
-
-// import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
-// <GoogleFontsOptimizer url={'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap'}>
-// </GoogleFontsOptimizer>
+const {seo=[{metaTitle: '', metaDescription: ''}]} = Astro.props;
+const metaTitle = seo[0]?.metaTitle;
+const metaDescription = seo[0]?.metaDescription;
 ---
-<html lang="en" class="w-full bg-pnp-card-bg">
+<html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
 		<meta name="robots" content="nofollow" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-		<meta name="generator" content={generator} />
-		<title>{ title }</title>
+		<meta name="description" content={metaDescription}>
+		<title>{ metaTitle }</title>
 		<link
 			rel="icon"
 			type="image/svg+xml"
@@ -43,8 +36,9 @@ const { title = 'Empty title' }: Props = props;
 			}
 		</style>
 	</head>
-	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10 lg:px-20 bg-pnp-card-bg text-pnp w-full">
-			<div class="max-w-[1360px] mx-auto relative">
+	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10  lg:px-20 bg-pnp-card-bg text-pnp w-full">
+			<!-- <div class="max-w-[1360px] mx-auto relative"> -->
+			<div class="max-w-[1160px] mx-auto relative">
 			<Header client:load />
 			<Breadcrumbs />
 			<main>

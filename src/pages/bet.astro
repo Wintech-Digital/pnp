@@ -14,8 +14,9 @@ const dataBanner = pageBetSchema ? pageBetSchema['data'].attributes?.banner : nu
 const dataOverviewSportBet = pageBetSchema ? pageBetSchema['data'].attributes?.listsBlock : null;
 const dataSlider = pageBetSchema ? pageBetSchema['data'].attributes?.slider : null;
 const dataArticle = pageBetSchema ? pageBetSchema['data'].attributes?.betArticle : null;
+const dataSeo = pageBetSchema ? pageBetSchema['data'].attributes?.seo : null;
 ---
-<Layout title="PinUp Betting">
+<Layout seo={dataSeo}>
     <BannerItem
         data={dataBanner}
     />

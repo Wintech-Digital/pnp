@@ -4,6 +4,7 @@ import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import infoPic2 from "@assets/images/star.png"; // letter.png | star.png | checked.png;
 import RichText from "@components/richtext/RichText.astro";
+import WithBottom from "@components/spaces/WithBottom.astro";
 // import { STRAPI_URL } from "@constants";
 
 const slideImage2 = await getImage({ src: infoPic2, height: 50, format: 'webp' });
@@ -20,10 +21,16 @@ const infoData = sliderData.map(item=> {
     })
 })
 ---
-<div class="overflow-hidden">
+<WithBottom>
     <RichText
         data={sliderTitle}
+        styles={{
+            list:"my-4"
+        }}
     />
+</WithBottom>
+
+<div class="overflow-hidden">
     <SliderContainer
         client:load
         list={infoData}

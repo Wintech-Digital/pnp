@@ -40,7 +40,7 @@ const MobileDialog = ({ isOpen, handlerToggle, nestedMenu }) => {
             onClick={() => handlerToggle(false)}
           >
             <span className="sr-only">Close menu</span>
-            <XMarkIcon className="h-6 w-6 text-pnp" aria-hidden="true" />
+            <XMarkIcon className="h-6 w-6 text-pnp"/>
           </button>
         </div>
 

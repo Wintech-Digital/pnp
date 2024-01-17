@@ -25,12 +25,14 @@ enum HomeQueries {
     SUPPORT = 'populate[support][populate]=*',
     INFO_SECTION = 'populate[infoSection][populate]=*',
     FAQ = 'populate[faqBlock][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 enum BetQueries {
     BANNER = 'populate[banner][populate]=*',
     OVERVIEW_SPORT = 'populate[listsBlock][populate]=*',
     SLIDER = 'populate[slider][populate][sliderItems][populate]=*&populate[slider][populate][commonBtn][populate]=*',
     ARTICLE = 'populate[betArticle][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 enum AviatorQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
@@ -40,6 +42,7 @@ enum AviatorQueries {
     SLIDER = 'populate[aviatorSlider][populate][sliderItems][populate]=*',
     BANNER = 'populate[aviatorBanner][populate]=*',
     FAQ = 'populate[faqBlock][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 enum AppQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
@@ -48,6 +51,7 @@ enum AppQueries {
     ARTICLE_1 = 'populate[appArticle][populate]=*',
     BENEFITS = 'populate[appBenefits][populate][availablegameslist][populate]=*',
     CARDS = 'populate[card][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 enum TermsQueries {
     BANNER = 'populate[banner][populate]=*',
@@ -55,6 +59,7 @@ enum TermsQueries {
     ARTICLE_WITH_COLS = 'populate[termsColArtical][populate]=*',
     CONTACTS = 'populate[contacts][populate]=*',
     SLIDER = 'populate[termsSlider][populate][appSliderItem][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 export enum SlotQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
@@ -66,14 +71,26 @@ export enum SlotQueries {
     BONUS_SLIDER = 'populate[bonusSlider][populate][bonusItem][populate][imageCover][populate]=*&populate[bonusSlider][populate][bonusItem][populate][buttons][populate]=*',
     BONUSES_ARTICLES = 'populate[bonusList][populate]=*',
     FAQ = 'populate[faqBlock][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 export enum BonusQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
     BONUSES_ARTICLES = 'populate[bonusList][populate]=*',
     FAQ = 'populate[faqBlock][populate]=*',
+    SEO = 'populate[seo][populate]=*',
 }
 export enum BonusCardsQueries {
     BONUSE_CARDS = 'populate[coverImage][populate]=*&populate[btnList][populate]=*',
+}
+export enum SlotsPageQueries {
+    HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
+    SLOTS_DESCRIPTION = 'populate[slotsDescription][populate]=*',
+    BONUSES_ARTICLES = 'populate[bonusList][populate]=*',
+    FAQ = 'populate[faqBlock][populate]=*',
+    SEO = 'populate[seo][populate]=*',
+}
+export enum SlotSlideQueries {
+    SLIDE = 'populate[slotInSlide][populate]=*',
 }
 
 export const endpoints = {
@@ -83,10 +100,14 @@ export const endpoints = {
     aviator: `page-${PageId.AVIATOR}?${queries(AviatorQueries)}`,
     app: `page-${PageId.APP}?${queries(AppQueries)}`,
     terms: `page-${PageId.TERMS}?${queries(TermsQueries)}`,
-    slots: 'page-slots', // 'slots-lists'
-    slot: 'page-slots?filters[slug][$eq]=',
     bonus: `page-${PageId.BONUS}?${queries(BonusQueries)}`,
+    slots:'page-slots',
+    slot: 'page-slots?filters[slug][$eq]=',
+    slotsSlide:`page-slots?${queries(SlotSlideQueries)}`,
+
     bonusCards: `bonus-cards?${queries(BonusCardsQueries)}`,
+    slotsCommonPage: `slots-common-page?${queries(SlotsPageQueries)}`,
+
 }
 export function getSlotsBySlug(slug){
     // console.log(`${endpoints.slot}${slug}&${queries(SlotQueries)}`)

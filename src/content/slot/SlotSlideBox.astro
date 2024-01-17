@@ -1,0 +1,62 @@
+---
+import { PageId } from "@constants";
+import { Image } from 'astro:assets';
+import ButtonRounded from "@components/buttons/ButtonRounded";
+const {data} = Astro.props;
+const slug = data?.slug || '';
+const title = data?.title || '';
+const description = data?.description || '';
+const coverImageLink = data?.coverImageLink || '';
+const coverImage = data?.coverImage || {
+    w: 0,
+    h: 0,
+    url: '',
+    format: '.webp',
+    alternativeText: '',
+};
+const buttons = data?.buttons || [];
+---
+<div class={`bg-pnp/[.03] border border-pnp/[.1] shadow-2xl gradient-red rounded-[24px] sm:rounded-[32px] overflow-hidden flex flex-col justify-between`}>
+    <a href={coverImageLink} class="">
+        { coverImage?.format !== '.webp' 
+            ? <Image
+                src={coverImage?.url}
+                width={coverImage?.w}
+                height={coverImage?.h}
+                loading="lazy"
+                alt={coverImage?.alternativeText}
+                class={`w-full`} />
+            : <img
+                width={coverImage?.w}
+                height={coverImage?.h}
+                src={coverImage?.url}
+                alt={coverImage?.alternativeText}
+                class="" />
+        }
+    </a>
+    <div class="py-4 sm:py-4 px-4 sm:px-6 flex flex-col gap-4 justify-between h-full">
+        <h3 class="text-pnp text-24-24-700">
+            <a href={`${PageId.SLOTS}/${slug}`}>
+                {title}
+            </a>
+        </h3>
+        <div>
+            <p class='text-pnp-grey20 text-14-24-600'>
+            {description}  
+            </p>
+            <div class="flex flex-col-reverse sm:flex-row sm:items-center gap-4 mt-4">
+                {!!buttons?.length && buttons?.map((item) =>{
+                    return (
+                        <ButtonRounded
+                            size="lg"
+                            color={item?.type || 'red'}
+                            title={item?.name || ''}
+                            link={item?.link || '#'}
+                            className="w-auto"
+                        />
+                    )
+                })}
+            </div>
+        </div>
+    </div>
+</div>

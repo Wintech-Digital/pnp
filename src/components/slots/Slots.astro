@@ -1,26 +1,54 @@
 ---
 import { Image } from "astro:assets";
-import { STRAPI_URL } from "@constants";
 import SlotsItem from "./SlotsItem.astro";
 
 const {list} = Astro.props;
 ---
 <ul class="grid grid-cols-2 gap-4 sm:gap-[30px] md:grid-cols-3 lg:grid-cols-4">
     { list.map(item => {
+        const slug = item?.slug || '';
+        const title = item?.title || '';
+        const coverImage = item?.coverImage || {
+            w: 0,
+            h: 0,
+            url: '',
+            format: '.webp',
+            alternativeText: '',
+        };
+        // const coverImageLink = item?.coverImageLink || '';
+        // const buttons = item?.buttons || [];
         return (
         <li class="col-span-1 flex flex-col rounded-lg text-center" >
-            <SlotsItem url={item.slug} name={item.name}>
-                <Image
-                    src={`${STRAPI_URL}${item?.coverImage['data'].attributes?.url}`}
-                    width='317'
-                    height='208'
-                    format='webp'
-                    class="w-full rounded-[24px] sm:rounded-[32px] border border-gray-500 mb-4"
-                    alt={item.name}
-                />
+            <SlotsItem url={slug} name={title}>
+                { coverImage?.format !== '.webp' 
+                    ? <Image
+                        src={coverImage?.url}
+                        width={coverImage?.w}
+                        height={coverImage?.h}
+                        loading="lazy"
+                        alt={coverImage?.alternativeText}
+                        class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
+                        />
+                    : <img
+                        width={coverImage?.w}
+                        height={coverImage?.h}
+                        src={coverImage?.url}
+                        alt={coverImage?.alternativeText}
+                        class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
+                        />
+                }
             </SlotsItem>
         </li>
     )
     } )}
 </ul>
+<!-- 
+<Image
+src={`${STRAPI_URL}${item?.coverImage['data'].attributes?.url}`}
+width='317'
+height='208'
+format='webp'
+class="w-full rounded-[24px] sm:rounded-[32px] border border-gray-500 mb-4"
+alt={item.name}
+/> -->
 

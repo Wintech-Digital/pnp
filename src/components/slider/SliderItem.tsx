@@ -16,9 +16,9 @@ const SliderItem = ({ ...props }) => {
           <span className="text-[12px] text-pnp/[.6] font-semibold leading-[20px] mb-[4px]">
             {props.text}
           </span>
-          <h4 className="text-[18px] font-semibold leading-[28px]">
+          <p className="text-[18px] font-semibold leading-[28px]">
             {props.description}
-          </h4>
+          </p>
           <ButtonRounded
             size="md"
             color="red"
