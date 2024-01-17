@@ -1,5 +1,4 @@
 ---
-import Media from '@components/media/Media.astro';
 import RichText from '@components/richtext/RichText.astro';
 import { Image } from 'astro:assets';
  
@@ -43,7 +42,7 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
                 width={pictureCard.w}
                 height={pictureCard.h}
                 alt={pictureCard.alternativeText}
-                loading="lazy"
+                loading="eager"
                 class={`block sm:hidden absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
             />
         )}
@@ -51,7 +50,7 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
             src={pictureD.url}
             width={pictureD.w}
             height={pictureD.h}
-            loading="lazy"
+            loading="eager"
             alt={pictureD.alternativeText}
             class={`hero-img hidden sm:block w-full`}
         />
@@ -59,7 +58,7 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
             src={pictureM.url}
             width={pictureM.w}
             height={pictureM.h}
-            loading="lazy"
+            loading="eager"
             alt={pictureM.alternativeText}
             class={`hero-img block sm:hidden w-full`}
         />

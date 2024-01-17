@@ -9,14 +9,16 @@ const listItems = buildList(listIds);
 ---
 <nav class="mt-[24px] mb-[32px]" aria-label="Breadcrumb">
     <ul class="flex items-center space-x-2">
-        <Item
-            id={PageId.HOME}
-            name={pagePreferencies[PageId.HOME]['name']}
-            url={ listIds.length 
-                ? pagePreferencies[PageId.HOME]['url'] 
-                : null
-            }
-        />
+        <li>
+            <Item
+                id={PageId.HOME}
+                name={pagePreferencies[PageId.HOME]['name']}
+                url={ listIds.length 
+                    ? pagePreferencies[PageId.HOME]['url'] 
+                    : null
+                }
+            />
+        </li>
         {listItems.map(item => (
             <li>
                 <Item {...item}/>

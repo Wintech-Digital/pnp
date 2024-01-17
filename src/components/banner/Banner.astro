@@ -1,9 +1,9 @@
 ---
 import ButtonRounded from "@components/buttons/ButtonRounded";
-import type { GetImageResult } from "astro";
 import pic from "@assets/images/Hero2.png";
 import picM from "@assets/images/Hero2-m.png";
 import RichText from "@components/richtext/RichText.astro";
+import { Image } from 'astro:assets';
 
 const transition = 'transition duration-150 ease-in-out';
 const hover = `gr-red-green-coner hover:gr-red-green-coner`;
@@ -38,6 +38,20 @@ const buttonType = btn?.type;
             className="w-full sm:w-auto xsm:py-2 xsm:mt-4"
         />
     </div>
-    <img src={pic.src} alt="" class=" hidden sm:block" />
-    <img src={picM.src} alt="" class="w-full block sm:hidden" />
+    <Image
+        src={pic}
+        width={pic.width}
+        height={pic.height}
+        loading="lazy"
+        alt={''}
+        class="hidden sm:block"
+        />
+    <Image
+        src={picM}
+        width={picM.width}
+        height={picM.height}
+        loading="lazy"
+        alt={''}
+        class="w-full block sm:hidden"
+        />
 </div>
