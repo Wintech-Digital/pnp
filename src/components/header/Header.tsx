@@ -106,6 +106,7 @@ const Header = ({data}) => {
         isOpen={mobileMenuOpen}
         handlerToggle={setMobileMenuOpen}
         nestedMenu={nestedMenu}
+        logoLink={logoLink}
       />
     </header>
   );

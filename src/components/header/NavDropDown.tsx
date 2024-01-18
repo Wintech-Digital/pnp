@@ -1,13 +1,24 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import NavDropDownList from "./NavDropDownList";
+import { PageId, pagePreferencies } from "@constants";
 
 const NavDropDown = ({children, id, menu}) => {
-    const list = menu[id].map(item=>({
-        slug: item.slug,
-        url: `/${id}/${item.slug}`,
-        name: item.name
-    }))
+    const listData = menu[id].map(item => {
+        return ({
+            slug: item.slug,
+            url: `/${id}/${item.slug}`,
+            name: item.name
+        })
+    });
+    const isMain = pagePreferencies[id] !== undefined?pagePreferencies[id]:{};
+    const list = [
+        {
+            slug: id,
+            ...isMain,
+        },
+        ...listData
+    ]
     return (
         <Popover className="relative">
             {children}

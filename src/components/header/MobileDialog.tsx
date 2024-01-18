@@ -11,7 +11,7 @@ import { MobileNavButton, MobileNavLink } from "./NavLink";
 import Logo from "./Logo";
 import { Fragment } from "react";
 
-const MobileDialog = ({ isOpen, handlerToggle, nestedMenu }) => {
+const MobileDialog = ({ isOpen, handlerToggle, nestedMenu, logoLink }) => {
   return (
 
     <Transition appear show={isOpen} as={Fragment}>
@@ -33,7 +33,7 @@ const MobileDialog = ({ isOpen, handlerToggle, nestedMenu }) => {
               >
       <Dialog.Panel className="fixed inset-y-0 right-0 z-[999] w-full overflow-y-auto bg-[#202726] px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div className="flex items-center justify-between">
-          <Logo />
+          <Logo link={logoLink} />
           <button
             type="button"
             className="-m-2.5 rounded-md p-2.5 text-gray-700"
