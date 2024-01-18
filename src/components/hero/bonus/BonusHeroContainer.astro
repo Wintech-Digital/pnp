@@ -1,6 +1,8 @@
 ---
 import RichText from '@components/richtext/RichText.astro';
 import { Image } from 'astro:assets';
+import heroSlotD from '@assets/images/hero/hero-slots-d.png';
+import heroSlotM from '@assets/images/hero/hero-mob-test_copy.png';
  
 interface Props {
     heroText?: any;
@@ -36,32 +38,73 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
 // bg-[linear-gradient(to_right_bottom,rgba(49,84,44,0.8),rgba(16,71,52,0.8))]
 ---
      <div class=`hero-wrapper ${common} relative`>
-        { pictureCard && (
-            <Image
-                src={pictureCard.url}
-                width={pictureCard.w}
-                height={pictureCard.h}
-                alt={pictureCard.alternativeText}
+        { pictureCard ? pictureCard?.format !== '.webp'
+            ? <Image
+                src={pictureCard?.url || 0}
+                width={pictureCard?.w || 0}
+                height={pictureCard?.h || 0}
+                alt={pictureCard?.alternativeText || ''}
                 loading="eager"
                 class={`block sm:hidden absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
             />
-        )}
-        <Image
-            src={pictureD.url}
-            width={pictureD.w}
-            height={pictureD.h}
-            loading="eager"
-            alt={pictureD.alternativeText}
-            class={`hero-img hidden sm:block w-full`}
-        />
-        <Image
-            src={pictureM.url}
-            width={pictureM.w}
-            height={pictureM.h}
-            loading="eager"
-            alt={pictureM.alternativeText}
-            class={`hero-img block sm:hidden w-full`}
-        />
+            : <img
+                src={pictureCard.url}
+                width={pictureCard.w}
+                height={pictureCard.h}
+                alt={pictureCard.alternativeText || ''} 
+                loading="eager"
+                class={`block sm:hidden absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
+            />
+            : null
+        }
+        {pictureD ? pictureD.format !== '.webp'
+            ? <Image
+                src={pictureD.url }
+                width={pictureD.w}
+                height={pictureD.h}
+                loading="eager"
+                alt={pictureD.alternativeText || ''} 
+                class={`hero-img hidden sm:block w-full`}
+            />
+            : <img
+                src={pictureD.url}
+                width={pictureD.w}
+                height={pictureD.h}
+                alt={pictureD.alternativeText || ''} 
+                loading="eager"
+                class={`hero-img hidden sm:block w-full`}
+            />
+            : <Image
+                src={heroSlotD}
+                loading="eager"
+                alt={''} 
+                class={`hero-img hidden sm:block w-full`}
+            />
+        }
+        {pictureM ? pictureM.format !== '.webp' 
+            ? <Image
+                src={pictureM.url}
+                width={pictureM.w}
+                height={pictureM.h}
+                loading="eager"
+                alt={pictureM.alternativeText || ''}
+                class={`hero-img block sm:hidden w-full`}
+            /> 
+            : <img
+                src={pictureM.url}
+                width={pictureM.w}
+                height={pictureM.h}
+                loading="eager"
+                alt={pictureM.alternativeText || ''} 
+                class={`hero-img hidden sm:block w-full`}
+            />
+            : <Image
+                src={heroSlotM}
+                loading="eager"
+                alt={''} 
+                class={`hero-img hidden sm:block w-full`}
+            />
+        }
         <div class=`hero-content w-auto h-auto flex flex-col gap-8 justify-start sm:justify-between pb-4 ${margins}`>
             <div class=`${textBoxWidth}`>
                 {heroText && (

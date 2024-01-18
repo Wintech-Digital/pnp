@@ -16,7 +16,6 @@ import { endpoints, fetchApi } from '@api/index';
 import { getSlotsBySlug } from '@api/endpoint';
 import Layout from '@layout/Layout.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
-import SlotHero from '@content/slot/SlotHero.astro';
 import SlotBonus from '@content/slot/SlotBonus.astro';
 import SlotDetailsArticle from '@content/slot/SlotDetailsArticle.astro';
 import SlotArticle from '@content/slot/SlotArticle.astro';
@@ -25,6 +24,8 @@ import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 import BannerItem1 from '@components/banner/BannerItem1.astro';
 import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 import RichText from '@components/richtext/RichText.astro';
+import BonusHero from "@content/bonus/BonusHero.astro";
+// import SlotHero from '@content/slot/SlotHero.astro';
 
 export async function getStaticPaths() {
   const pageSlots = await fetchApi({ endpoint: endpoints.slots });
@@ -53,9 +54,10 @@ const dataSeo = pageBlocks?.seo;
 
 ---
 <Layout seo={dataSeo}>
+  <!-- <SlotHero data={dataHero}/>-->
   { dataHero &&
       <WithBottom>
-        <SlotHero data={dataHero}/>
+        <BonusHero data={dataHero}/>
       </WithBottom>
   }
 

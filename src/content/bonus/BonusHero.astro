@@ -1,8 +1,6 @@
 ---
 import HeroContainer from "@components/hero/bonus/BonusHeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import heroSlotD from '@assets/images/hero/hero-slots-d.png';
-import heroSlotM from '@assets/images/hero/hero-mob-test_copy.png';
 import { parseImageData } from "@utils";
     
 const {data} = Astro.props;
@@ -13,12 +11,7 @@ const description = data?.description || '';
 const desktop = parseImageData(data?.coverImage.data, 'desktop')
 const mobile = parseImageData(data?.coverImage.data, 'mobile')
 const card = parseImageData(data?.coverImage.data, 'card')
-
-const pictures = [
-    mobile || heroSlotM,
-    desktop || heroSlotD,
-    card || null
-];
+const pictures = [ mobile, desktop, card || null];
 ---
 <HeroContainer
     pictures={pictures}
