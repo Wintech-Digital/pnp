@@ -24,27 +24,26 @@ import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 const pageHomeSchema = await fetchApi({
     endpoint: endpoints.home,
 });
+const pageAttributes = pageHomeSchema['data']?.attributes;
 
-const dataHero = pageHomeSchema ? pageHomeSchema['data'].attributes?.hero : null;
-const dataOfferSlider = pageHomeSchema ? pageHomeSchema['data']?.attributes?.offerSlider : null;
-const dataSlotsList = pageHomeSchema ? pageHomeSchema['data']['attributes']['slotsList'] : null;
-const articleAnalises = pageHomeSchema ? pageHomeSchema['data']['attributes']['analisesArticle'] : null;
-const slider2 = pageHomeSchema ? pageHomeSchema['data']['attributes']['slider2'] : null;
-const bonuses = pageHomeSchema ? pageHomeSchema['data']['attributes']['bonusSlider'] : null;
-const bonusDescription = pageHomeSchema ? pageHomeSchema['data']['attributes']['bonusDescription'] : null;
-// console.log('bonuses', bonuses);
-
-const promotions = pageHomeSchema ? pageHomeSchema['data']['attributes']['promotions'] : null;
-const guide = pageHomeSchema ? pageHomeSchema['data']['attributes']['guide'] : null;
-const payment = pageHomeSchema ? pageHomeSchema['data']['attributes']['payment'] : null;
-const availablegames = pageHomeSchema ? pageHomeSchema['data']['attributes']['availablegames'] : null;
-const appadvantages = pageHomeSchema ? pageHomeSchema['data']['attributes']['appadvantages'] : null;
-const banner = pageHomeSchema ? pageHomeSchema['data']['attributes']['banner'] : null;
-const strategies = pageHomeSchema ? pageHomeSchema['data']['attributes']['strategies'] : null;
-const support = pageHomeSchema ? pageHomeSchema['data']['attributes']['support'] : null;
-const infoSection = pageHomeSchema ? pageHomeSchema['data']['attributes']['infoSection'] : null;
-const faqData = pageHomeSchema ? pageHomeSchema['data']['attributes']['faqBlock']: null;
-const dataSeo = pageHomeSchema ? pageHomeSchema['data']['attributes']['seo']: null;
+const dataHero = pageAttributes?.hero;
+const dataOfferSlider = pageAttributes?.offerSlider;
+const dataSlotsList = pageAttributes?.slotsList;
+const articleAnalises = pageAttributes?.analisesArticle;
+const slider2 = pageAttributes?.slider2;
+const bonuses = pageAttributes?.bonusSlider;
+const bonusDescription = pageAttributes?.bonusDescription;
+const promotions = pageAttributes?.promotions;
+const guide = pageAttributes?.guide;
+const payment = pageAttributes?.payment;
+const availablegames = pageAttributes?.availablegames;
+const appadvantages = pageAttributes?.appadvantages;
+const banner = pageAttributes?.banner;
+const strategies = pageAttributes?.strategies;
+const support = pageAttributes?.support;
+const infoSection = pageAttributes?.infoSection;
+const faqData = pageAttributes?.faqBlock;
+const dataSeo = pageAttributes?.seo;
 ---
 <Layout seo={dataSeo}>
     <WithBottom>
@@ -56,17 +55,27 @@ const dataSeo = pageHomeSchema ? pageHomeSchema['data']['attributes']['seo']: nu
 
     <!-- 1 -->
     <div class="block sm:hidden">
-        <BlockOfetas data={dataOfferSlider}/>
+        <BlockOfetas 
+            data={dataOfferSlider}
+        />
     </div>
 
     <!-- 2 -->
-    <BlockSlotsList data={dataSlotsList}/>
+    <BlockSlotsList
+        data={dataSlotsList}
+    />
 
     <!-- 3 -->
-    <BlockConciseFormat data={articleAnalises}/>
+    <BlockConciseFormat
+        data={articleAnalises}
+    />
 
     <!-- 4 -->
-    <BlockCasinoInfo data={slider2}/>
+    <WithBottom>
+        <BlockCasinoInfo
+            data={slider2}
+        />
+    </WithBottom>
 
     <!-- 5 -->
     <BlockBonus
@@ -108,9 +117,11 @@ const dataSeo = pageHomeSchema ? pageHomeSchema['data']['attributes']['seo']: nu
     </WithBottom>
 
     <!-- 11 -->
-    <BannerItem1
-        data={banner}
-    />
+    <div class="mb-[32px]">
+        <BannerItem1
+            data={banner}
+        />
+    </div>
      
     <!-- 12 -->
     <BlockInfo3
@@ -118,9 +129,11 @@ const dataSeo = pageHomeSchema ? pageHomeSchema['data']['attributes']['seo']: nu
     />
     
     <!-- 13 -->
-    <BlockSuporte
-        data={support}
-    />
+    <div class="mb-[32px]">
+        <BlockSuporte
+            data={support}
+        />
+    </div>
 
     <!-- 14 -->
     <WithBottom>

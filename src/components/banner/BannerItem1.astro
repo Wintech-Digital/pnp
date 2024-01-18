@@ -1,11 +1,32 @@
 ---
-import Banner from "./Banner.astro";
+import RichText from "@components/richtext/RichText.astro";
+import BannerHomeWrapper from "./BannerHomeWrapper.astro";
+import ButtonRounded from "@components/buttons/ButtonRounded";
 const {data} = Astro.props;
-const bannerdescription = data?.bannerdescription;
-const bannerbtn = data?.bannerbtn;
-// console.log('data :::', data)
+const bannerdescription = data?.bannerdescription || [];
+const bannerbtn = data?.bannerbtn || null;
+const buttonLink = bannerbtn?.link || '';
+const buttonName = bannerbtn?.name || '';
+const buttonType = bannerbtn?.type || 'red';
 ---
-<Banner
-    btn = {bannerbtn}
-    description= {bannerdescription}
-/>
+<BannerHomeWrapper>
+    <div class=`px-4 py-4 w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
+        { bannerdescription &&
+            <div class="max-w-[700px] drop-shadow-lg">
+                <RichText
+                    data={bannerdescription}
+                />
+            </div>
+        }
+        { bannerbtn &&
+            <ButtonRounded
+                size="xl"
+                color="red"
+                link={buttonLink}
+                title={buttonName}
+                color={buttonType}
+                className="w-full sm:w-auto"
+            />
+        }
+    </div>
+</BannerHomeWrapper>

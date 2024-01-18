@@ -1,9 +1,16 @@
 import ButtonRounded from "@components/buttons/ButtonRounded";
 
+const bg = 'bg-pnp/[.03]';
+const border = 'border border-pnp/[.1]';
+const shadow = 'shadow-2xl';
+const gradient = 'gradient-red';
+const rounded = 'rounded-[24px] sm:rounded-[32px]';
+const flex = 'flex flex-col justify-between';
+const common = ` ${rounded} ${bg} ${gradient} ${shadow} ${border}`;
 const SliderItem2 = ({ ...props}) => { 
   // console.log('SliderItem2 props ::::', props)
   return (
-    <div className="bg-pnp/[.03] border border-pnp/[.1] h-full shadow-2xl transition duration-300 ease-in-out gradient-red rounded-[32px] overflow-hidden">
+    <div className={`h-full overflow-hidden ${common}`}>
       <a href={props.imageLink}>
         <img
           width={props.imageData.w}
@@ -12,7 +19,7 @@ const SliderItem2 = ({ ...props}) => {
           className="w-full" 
         />
       </a>
-      <div className="py-[24px] px-[32px] flex flex-col justify-between">
+      <div className="py-[24px] px-[24px] h-[250px] sm:h-[180px] flex flex-col justify-between">
           <div className="text-pnp/[.6] text-base font-semibold">
               {props.text}
           </div>
@@ -24,7 +31,7 @@ const SliderItem2 = ({ ...props}) => {
               return (
                   <ButtonRounded
                     key={index}
-                    size="xl"
+                    size="lg"
                     color={item?.type || 'red'}
                     title={item?.name || ''}
                     link={item?.link || '#'}
@@ -32,21 +39,6 @@ const SliderItem2 = ({ ...props}) => {
                   />
               )
             })}
-
-              {/* <ButtonRounded
-                size="xl"
-                color="transparent"
-                title="Saiba mais"
-                link='#'
-                className="w-auto"
-              /> */}
-
-              {/* <div className='flex flex-row items-center sm:items-start text-pnp/[.6]'>
-                  <span>Saiba mais</span>
-                  <span>
-                    <InformationCircleIcon className="h-6 ml-2"/>
-                  </span>
-              </div> */}
           </div>
       </div>
     </div>

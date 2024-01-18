@@ -1,0 +1,44 @@
+---
+import { getImage } from 'astro:assets';
+import coinYellow from "@assets/images/hero/coin-yellow.png";
+import coinGreen from "@assets/images/hero/coin-green.png";
+import coinsLeft from "@assets/images/hero/coins-left.png";
+import coinsRight from "@assets/images/hero/coins-right.png";
+
+const coinYellowBg = await getImage({src: coinYellow, format: 'webp'})
+const coinGreenBg = await getImage({src: coinGreen, format: 'webp'})
+const coinsLeftBg = await getImage({src: coinsLeft, format: 'webp'})
+const coinsRightBg = await getImage({src: coinsRight, format: 'webp'})
+const bg = 'bg-pnp/[.03]'
+const hover = `gr-red-green-coner hover:gr-red-green-coner`;
+const border = `border border-pnp/[.1]`;
+const rounded = `rounded-[32px] md:rounded-[48px]`;
+const common = `overflow-hidden box-shadow-1 ${rounded} ${bg} ${border}`;
+---
+<div
+    class=`hidden sm:block ${common}`
+    style={`
+        background-image: url(${coinsLeftBg.src}), url(${coinsRightBg.src});
+        background-repeat: no-repeat;
+        background-position-y: 100%;
+        background-position-x: 0%, 100%;
+    `}
+>
+    <div class=`${hover} px-4 py-4  w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
+        <slot/>
+    </div>
+</div>
+
+<div
+    class=`block sm:hidden ${common}`
+    style={`
+        background-image: url(${coinYellowBg.src}), url(${coinGreenBg.src});
+        background-repeat: no-repeat;
+        background-position-y: 25%, 75%;
+        background-position-x: 0%, 100%;
+    `}
+>
+    <div class=`${hover} px-4 py-4  w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
+        <slot/>
+    </div>
+</div>

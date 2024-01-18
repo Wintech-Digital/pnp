@@ -49,8 +49,10 @@ const dataBonusList = pageBlocks?.bonusList;
 const dataBlackRiderArticle = pageBlocks?.blackRiderArticle;
 const dataBanner = pageBlocks?.banner;
 const faqData = pageBlocks?.faqBlock;
+const dataSeo = pageBlocks?.seo;
+
 ---
-<Layout>
+<Layout seo={dataSeo}>
   { dataHero &&
       <WithBottom>
         <SlotHero data={dataHero}/>

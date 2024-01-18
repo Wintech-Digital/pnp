@@ -11,7 +11,7 @@ enum HomeQueries {
     HERO = 'populate[hero][populate][btn][populate]=*&populate[hero][populate][coverImage][populate]=*',
     OFFERS = 'populate[offerSlider][populate][slides][populate]=*',
     SLOTS = 'populate[slotsList][populate][slots][populate]=*',
-    ANALISES = 'populate[analisesArticle][populate][table][populate]=*',
+    ANALISES = 'populate[analisesArticle][populate][table][populate]=*&populate[analisesArticle][populate][buttons][populate]=*',
     SLIDER2 = 'populate[slider2][populate]=*',
     BONUSES = 'populate[bonusSlider][populate][bonusItem][populate]=*',
     BONUSES_DESCRIPTION = 'populate[bonusDescription][populate]=*',
@@ -92,6 +92,9 @@ export enum SlotsPageQueries {
 export enum SlotSlideQueries {
     SLIDE = 'populate[slotInSlide][populate]=*',
 }
+export enum HeaderControlsQueries {
+    CONTROLS = 'populate[buttons][populate]=*',
+}
 
 export const endpoints = {
     layout: `layout?${queries(LayoutQueries)}`,
@@ -104,10 +107,9 @@ export const endpoints = {
     slots:'page-slots',
     slot: 'page-slots?filters[slug][$eq]=',
     slotsSlide:`page-slots?${queries(SlotSlideQueries)}`,
-
     bonusCards: `bonus-cards?${queries(BonusCardsQueries)}`,
     slotsCommonPage: `slots-common-page?${queries(SlotsPageQueries)}`,
-
+    controls: `header-control?${queries(HeaderControlsQueries)}`,
 }
 export function getSlotsBySlug(slug){
     // console.log(`${endpoints.slot}${slug}&${queries(SlotQueries)}`)

@@ -3,10 +3,13 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import { endpoints, fetchApi } from '@api/index';
  
 const {seo=[{metaTitle: '', metaDescription: ''}]} = Astro.props;
 const metaTitle = seo[0]?.metaTitle;
 const metaDescription = seo[0]?.metaDescription;
+const controls = await fetchApi({ endpoint: endpoints.controls });
+const dataControls = controls['data']?.attributes;
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
@@ -39,7 +42,10 @@ const metaDescription = seo[0]?.metaDescription;
 	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10  lg:px-20 bg-pnp-card-bg text-pnp w-full">
 			<!-- <div class="max-w-[1360px] mx-auto relative"> -->
 			<div class="max-w-[1160px] mx-auto relative">
-			<Header client:load />
+			<Header
+				client:load
+				data={dataControls}
+			/>
 			<Breadcrumbs />
 			<main>
 				<slot/>

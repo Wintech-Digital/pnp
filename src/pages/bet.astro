@@ -10,27 +10,31 @@ import WithBottom from '@components/spaces/WithBottom.astro';
 const pageBetSchema = await fetchApi({
     endpoint: endpoints.bet,
 });
-const dataBanner = pageBetSchema ? pageBetSchema['data'].attributes?.banner : null;
-const dataOverviewSportBet = pageBetSchema ? pageBetSchema['data'].attributes?.listsBlock : null;
-const dataSlider = pageBetSchema ? pageBetSchema['data'].attributes?.slider : null;
-const dataArticle = pageBetSchema ? pageBetSchema['data'].attributes?.betArticle : null;
-const dataSeo = pageBetSchema ? pageBetSchema['data'].attributes?.seo : null;
+const pageAttributes = pageBetSchema['data']?.attributes;
+const dataBanner = pageAttributes?.banner;
+const dataOverviewSportBet = pageAttributes?.listsBlock;
+const dataSlider = pageAttributes?.slider;
+const dataArticle = pageAttributes?.betArticle;
+const dataSeo = pageAttributes?.seo;
 ---
 <Layout seo={dataSeo}>
-    <BannerItem
-        data={dataBanner}
-    />
-
+<!-- 1 -->
+    <WithBottom>
+        <BannerItem
+            data={dataBanner}
+        />
+    </WithBottom>
+<!-- 2 -->
     <BlockLists
         data={dataOverviewSportBet}
     />
-
+<!-- 3 -->
     <WithBottom>
         <BlockSlider
             data={dataSlider}
         />
     </WithBottom>
-
+<!-- 4 -->
     <WithBottom>
         <BlockArticle
             data={dataArticle}

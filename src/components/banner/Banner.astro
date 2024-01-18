@@ -1,29 +1,16 @@
 ---
-import ButtonRounded from "@components/buttons/ButtonRounded";
-import pic from "@assets/images/Hero2.png";
-import picM from "@assets/images/Hero2-m.png";
 import RichText from "@components/richtext/RichText.astro";
-import { Image } from 'astro:assets';
-
-const transition = 'transition duration-150 ease-in-out';
-const hover = `gr-red-green-coner hover:gr-red-green-coner`;
-const bg = 'bg-pnp/[.03]'
-const border = `border border-pnp/[.1]`;
-const margins = ' mb-[80px] sm:mb-[80px] md:mb-[90px] lg:mb-[100px]';
-const rounded = `rounded-[32px] md:rounded-[48px]`;
-
-const common = `${rounded} ${margins} ${bg} ${border} ${hover}`;
-const scale = 'scale-100 sm:scale-[80%] mg:scale-[90%] lg:scale-100'
+import BannerWrapper from "./BannerWrapper.astro";
+import ButtonRounded from "@components/buttons/ButtonRounded";
 
 const { btn, description } = Astro.props;
 const buttonLink = btn?.link;
 const buttonName = btn?.name;
 const buttonType = btn?.type;
 ---
-
-<div class=`relative overflow-hidden ${common} ${transition} box-shadow-1`>
-    <div class=`${scale} px-4 py-4 absolute w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
-        <div class="max-w-[660px] drop-shadow-lg">
+<BannerWrapper>
+    <div class=` px-4 py-4  w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
+        <div class="max-w-[820px] drop-shadow-lg">
             <RichText
                 data={description}
                 classList="w-full"
@@ -35,23 +22,7 @@ const buttonType = btn?.type;
             link={buttonLink}
             title={buttonName}
             color={buttonType}
-            className="w-full sm:w-auto xsm:py-2 xsm:mt-4"
+            className="w-full sm:w-auto"
         />
     </div>
-    <Image
-        src={pic}
-        width={pic.width}
-        height={pic.height}
-        loading="lazy"
-        alt={''}
-        class="hidden sm:block"
-        />
-    <Image
-        src={picM}
-        width={picM.width}
-        height={picM.height}
-        loading="lazy"
-        alt={''}
-        class="w-full block sm:hidden"
-        />
-</div>
+</BannerWrapper>

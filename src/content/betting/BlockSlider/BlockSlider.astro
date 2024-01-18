@@ -20,10 +20,15 @@ const slideList = sliderItems.map(item=>{
     })
 })
 ---
-<div class="overflow-hidden pt-4 -pb-4">
-    <RichText
-        data={sliderTitle}
-    />
+<RichText
+    data={sliderTitle}
+    styles={{
+        h2: 'mb-2',
+        h3: 'mb-2',
+        paragraph: 'mb-6'
+    }}
+/>
+<div class="overflow-hidden -mb-8">
     <SliderContainer
         client:load
         itemsNum={5}
