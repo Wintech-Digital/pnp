@@ -4,12 +4,17 @@ import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import { endpoints, fetchApi } from '@api/index';
+import { parseImageData } from '@utils';
  
-const {seo=[{metaTitle: '', metaDescription: ''}]} = Astro.props;
+const {seo=[{metaTitle: '', metaDescription: ''}], heroPreload = null} = Astro.props;
 const metaTitle = seo[0]?.metaTitle;
 const metaDescription = seo[0]?.metaDescription;
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
+
+const mobile = heroPreload
+	? parseImageData(heroPreload?.coverImage?.data, 'mobile')
+	: null;
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
@@ -30,6 +35,9 @@ const dataControls = controls['data']?.attributes;
 			sizes="32x32"
 			href="./images/p.svg"
 		/>
+		{ heroPreload && mobile &&
+			<link rel="preload" href={mobile?.url} as="image"> 
+		}
 		<ViewTransitions />
 		<style>
 			html, body {
