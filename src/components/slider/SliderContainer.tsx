@@ -65,7 +65,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
         )
     });
 
-    const isInfinity = !isMobile && noInfiniti ? false : !isMobile;
+    // const isInfinity = !isMobile && noInfiniti ? false : !isMobile;
     return (
         <div className='relative'>
             { !isMobile && (<ButtonSliderHidden/>)}
@@ -84,7 +84,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                 swipeable
                 pauseOnHover
 
-                infinite={isInfinity}
+                infinite={!noInfiniti}
 
                 rewind={true}
                 focusOnSelect={false}

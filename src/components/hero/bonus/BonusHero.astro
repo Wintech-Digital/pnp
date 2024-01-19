@@ -1,24 +1,17 @@
 ---
-import heroHomeD from '@assets/images/hero/hero-home-Dx145kb.png';
-import heroHomeM from '@assets/images/hero/hero-home-M@2x97kb.png';
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import { btnIconUrl, getCover } from './util';
-import { heroMock } from "./mock";
+import { btnIconUrl, getCover } from '../util';
 const { data, mobileTopSpace="mt-0" } = Astro.props;
-const title = data?.title || heroMock.title;
-const description = data?.description || heroMock.description;
+const title = data?.title || '';
+const description = data?.description || '';
 const buttons = data?.btn || [];
 const coverImage = data?.coverImage?.data || [];
 
-const coverMobileImage = getCover(coverImage, 'mobile');
-const coverDesktopImage = getCover(coverImage, 'desktop');
-const coverCardImage = getCover(coverImage, 'card');
-const pictures = [
-    coverMobileImage || heroHomeM,
-    coverDesktopImage || heroHomeD,
-    coverCardImage || null
-];
+const mobile = getCover(coverImage, 'mobile');
+const desktop = getCover(coverImage, 'desktop');
+const card = getCover(coverImage, 'card');
+const pictures = [ mobile, desktop, card || null];
 ---
 
 { data &&

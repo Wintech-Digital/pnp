@@ -1,21 +1,15 @@
 ---
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import heroMobileAppImageD from '@assets/images/hero/hero-mob-app-Dx181.png';
-import heroMobileAppImageM from '@assets/images/hero/hero-mob-app-M@2x172kb.png';
 import { STRAPI_URL } from "@constants";
-import { getCover } from "@components/hero/util";
+import { parseImageData } from "@utils";
 
 const {data} = Astro.props;
 const btns = data?.btn;
 const title = data?.title;
-const coverImage = data?.coverImage?.data || [];
-const coverMobileImage = getCover(coverImage, 'mobile');
-const coverDesktopImage = getCover(coverImage, 'desktop');
-const pictures = [
-    coverMobileImage || heroMobileAppImageM,
-    coverDesktopImage || heroMobileAppImageD
-];
+const desktop = parseImageData(data?.coverImage.data, 'desktop')
+const mobile = parseImageData(data?.coverImage.data, 'mobile')
+const pictures = [mobile, desktop]; 
 ---
 <HeroContainer
     pictures={pictures}
@@ -24,7 +18,7 @@ const pictures = [
     textTopSpaceMobile={"-mt-[35%]"}
     textBoxWidth={"w-[380px] sm:w-2/3 lg:w-[480px]"}
 >
-    <div class="flex flex-col sm:flex-row gap-4" slot="btn-box">
+    <div class="flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0" slot="btn-box">
         {
             btns.map(item => {
                 const name = item.name;

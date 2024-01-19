@@ -15,17 +15,15 @@ import AccordionContainer from "@components/accordion/AccordionContainer.astro";
 const pageAviatorSchema = await fetchApi({
     endpoint: endpoints.aviator,
 });
-// console.log('sliderItems :::', sliderItems);
-
-const dataHero = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.hero : null;
-const dataArticle1 = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorArticle1 : null;
-const dataArticle2 = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorArticle2 : null;
-const dataArticle3 = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorArticle3 : null;
-const sliderItems = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorSlider : null;
-const aviatorBanner = pageAviatorSchema ? pageAviatorSchema['data'].attributes?.aviatorBanner : null;
-const faqData = pageAviatorSchema ? pageAviatorSchema['data']['attributes']['faqBlock']: null;
-const dataSeo = pageAviatorSchema ? pageAviatorSchema['data']['attributes']['seo']: null;
-// console.log('faqData :::', faqData);
+const pageAttributes = pageAviatorSchema['data']?.attributes;
+const dataHero = pageAttributes?.hero;
+const dataArticle1 = pageAttributes?.aviatorArticle1;
+const dataArticle2 = pageAttributes?.aviatorArticle2;
+const dataArticle3 = pageAttributes?.aviatorArticle3;
+const sliderItems = pageAttributes?.aviatorSlider;
+const aviatorBanner = pageAttributes?.aviatorBanner;
+const faqData = pageAttributes?.faqBlock;
+const dataSeo = pageAttributes?.seo;
 
 const textArticle1 = dataArticle1.aviatorArticleContent.filter(item=>item.type!=='image');
 const imgArticle1 = dataArticle1.aviatorArticleContent.find(item=>item.type==='image');
@@ -44,8 +42,8 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
         />
         <!-- <AviatorHero/> -->
     </WithBottom>
-
-    <div>
+<!-- 1 -->
+    <WithBottom>
         <RichText
             data={dataArticle1.aviatorArticleTitle}
             styles={{
@@ -81,9 +79,9 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
                 />
             </div>
         </TwoColomns>
-    </div>
-
-    <div>
+    </WithBottom>
+    <!-- 2 -->
+    <WithBottom>
         <RichText
             data={dataArticle2.aviatorArticleTitle}
             styles={{
@@ -119,9 +117,9 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
                 class={'w-full border border-pnp/[.1] rounded-[40px]'}
             />
         </TwoColomns50>
-    </div>
-
-    <div>
+    </WithBottom>
+ <!-- 3 -->
+    <WithBottom>
         <RichText
             data={dataArticle3.aviatorArticleTitle}
             styles={{
@@ -159,22 +157,22 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
                 class={'w-full border border-pnp/[.1] rounded-[40px]'}
             />
         </TwoColomns50>
-    </div>
-
-    <!-- <AviatorArticles /> -->
+    </WithBottom>
+<!-- 4 -->
     <AviatorSlider
         data={sliderItems}
     />
-
-    <BannerItem1
-        data={aviatorBanner}
-    />
-
+<!-- 5 -->
+    <WithBottom>
+        <BannerItem1
+            data={aviatorBanner}
+        />
+    </WithBottom>
+<!-- 6 -->
     <WithBottom>
         <AccordionContainer
             data={faqData}
         />
     </WithBottom>
-
 </Layout>
 

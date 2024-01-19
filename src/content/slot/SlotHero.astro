@@ -1,42 +1,28 @@
 ---
-import HeroContainer from "@components/hero/HeroContainer.astro";
+import HeroContainer from "@components/hero/bonus/BonusHeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import heroSlotD from '@assets/images/hero/hero-slots-d.png';
-// import heroSlotM from '@assets/images/hero/hero-slots-m.png';
-// import heroSlotM from '@assets/images/hero/hero-mob-test.png';
-import heroSlotM from '@assets/images/hero/hero-mob-test_copy.png';
-
 import { parseImageData } from "@utils";
     
 const {data} = Astro.props;
-
-// coverImage: { data: [ [Object], [Object], [Object] ] }
-
 const heroButton = data?.btn;
 const title = data?.title || '';
 const description = data?.description || '';
-
 const desktop = parseImageData(data?.coverImage.data, 'desktop')
 const mobile = parseImageData(data?.coverImage.data, 'mobile')
 const card = parseImageData(data?.coverImage.data, 'card')
-
-const pictures = [
-    mobile?.url || heroSlotM,
-    desktop?.url || heroSlotD,
-    card?.url || null
-];
+const pictures = [ mobile, desktop, card || null];
 ---
-    <HeroContainer
-        pictures={pictures}
-        title={title}
-        description={description}
-        textTopSpaceMobile="-mt-[115%]"
-        textBoxWidth={"w-[340px] sm:w-2/3 lg:w-[480px]"}
-    >
-        <div slot="btn-box" class="flex flex-col sm:flex-row gap-4">
-            {
-              heroButton.length ? heroButton.map(item =>{
-                return(
+<HeroContainer
+    pictures={pictures}
+    title={title}
+    description={description}
+    textTopSpaceMobile="-mt-[115%]"
+    textBoxWidth={"w-full sm:w-[51%]"}
+>
+    <div slot="btn-box" class="flex flex-col sm:flex-row gap-4">
+        { !!heroButton?.length && 
+            heroButton.map(item =>{
+                return (
                     <ButtonRounded
                         size="xl"
                         color={item?.type || 'red'}
@@ -46,7 +32,7 @@ const pictures = [
                         className="w-full sm:w-auto"
                     />
                 )
-              }) : null
-            }
-        </div>
-    </HeroContainer>
+            })
+        }
+    </div>
+</HeroContainer>

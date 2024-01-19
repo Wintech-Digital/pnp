@@ -1,27 +1,27 @@
 ---
-import { Image } from "astro:assets";
 import Layout from '@layout/Layout.astro';
 import TermsHero from '@content/terms/TermsHero.astro';
 import TermsContacts from '@content/terms/TermsContacts.astro';
-import { endpoints, fetchApi } from '@api/index';
 import RichText from '@components/richtext/RichText.astro';
 import GenerateText from '@components/richtext/GenerateText/GenerateText.astro';
 import TwoColomns50 from '@components/sections/TwoColomns50.astro';
 import ButtonRounded from "@components/buttons/ButtonRounded";
-import { getFields, parseImageData } from "@utils";
 import SliderContainer from "@components/slider/SliderContainer";
 import WithBottom from "@components/spaces/WithBottom.astro";
+import { Image } from "astro:assets";
+import { getFields } from "@utils";
+import { endpoints, fetchApi } from '@api/index';
 
 const pageTermsSchema = await fetchApi({
     endpoint: endpoints.terms,
 });
-
-const dataBanner = pageTermsSchema ? pageTermsSchema['data'].attributes?.banner : null;
-const dataArticles = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsArticles : null;
-const dataContacts = pageTermsSchema ? pageTermsSchema['data'].attributes?.contacts : null;
-const termsColArtical = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsColArtical : null;
-const termsSlider = pageTermsSchema ? pageTermsSchema['data'].attributes?.termsSlider : null;
-const dataSeo = pageTermsSchema ? pageTermsSchema['data'].attributes?.seo : null;
+const pageAttributes = pageTermsSchema['data']?.attributes;
+const dataBanner = pageAttributes?.banner;
+const dataArticles = pageAttributes?.termsArticles;
+const dataContacts = pageAttributes?.contacts;
+const termsColArtical = pageAttributes?.termsColArtical;
+const termsSlider = pageAttributes?.termsSlider;
+const dataSeo = pageAttributes?.seo;
 
 const termsColArticalImage = termsColArtical.articleBody.find(item => item.type === 'image');
 const termsColArticalTexts = termsColArtical.articleBody.filter(item => item.type !== 'image');
@@ -31,7 +31,7 @@ const imgProps = getFields(termsColArticalImage.image);
 const termsSliderList = termsSlider.appSliderItem.map(item => {
     const text = item?.title;
     const description = item?.description;
-    const pic = getFields(item.coverImage.data.attributes).url
+    const pic = getFields(item.coverImage.data.attributes)
     return ({
         text,
         pic,
@@ -40,9 +40,11 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
 })
 ---
 <Layout seo={dataSeo}>
+    <!-- 1 -->
     <TermsHero
         data={dataBanner}
     />
+    <!-- 2 -->
     { (dataArticles &&  dataArticles.length) && 
         dataArticles.map(article => { 
             return (
@@ -53,6 +55,7 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
         })
     }
 
+<!-- 3 -->
     <WithBottom>
         <div class="overflow-hidden pt-4">
             <RichText
@@ -67,7 +70,7 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
             />
         </div>
     </WithBottom>
-
+<!-- 4 -->
     <TwoColomns50 reverse>
         <div slot="first-col">
             <RichText
@@ -96,7 +99,7 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
             class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
         />
     </TwoColomns50>
-
+<!-- 5 -->
     <TermsContacts
         data = {dataContacts}
     />

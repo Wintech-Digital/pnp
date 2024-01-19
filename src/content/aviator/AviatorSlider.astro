@@ -1,40 +1,10 @@
 ---
-import { getImage } from "astro:assets";
 import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import aviBonus1 from "@assets/images/avi-bonus-1.png";
-import aviBonus2 from "@assets/images/avi-bonus-2.png";
 import { STRAPI_URL } from "@constants";
 
-
-const bonus1 = await getImage({ src: aviBonus1, width: 433, format: 'webp' });
-const bonus2 = await getImage({ src: aviBonus2, width: 433, format: 'webp' });
-const bonusList = [
-    {
-        text: 'Aproveite o Bônus',
-        description: 'Obtenha fundos extra para jogar, aumente as suas hipóteses de grandes vitórias',
-        pic: bonus1,
-    },
-    {
-        text: 'Bônus Especiais para Jogadores de Aviator',
-        description: 'Estes bónus especiais foram criados especialmente para os conhecedores do jogo Aviator',
-        pic: bonus2,
-    },
-    {
-        text: 'Aproveite o Bônus',
-        description: 'Obtenha fundos extra para jogar, aumente as suas hipóteses de grandes vitórias',
-        pic: bonus1,
-    },
-    {
-        text: 'Bônus Especiais para Jogadores de Aviator',
-        description: 'Estes bónus especiais foram criados especialmente para os conhecedores do jogo Aviator',
-        pic: bonus2,
-    },
-];
 const {data} = Astro.props;
 const sliderItems = data?.sliderItems;
-// console.log('data ::::', sliderItems);
-
 
 const sliderList =  sliderItems.map(item=> {
     const text = item.title;

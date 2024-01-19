@@ -39,30 +39,33 @@ const { appSliderTitle: slider2Title, appSliderItem: slider2Data } = appSlider2;
             data={dataAppHero}
         />
     </WithBottom>
-    
+    <!-- 1 -->
     <WithBottom>
         <MobAppInfoSlider1
             sliderTitle = {appSliderTitle}
             sliderData={appSliderItem}
         />
     </WithBottom>
+<!-- 2 -->
+    <WithBottom>
+        <MobAppInfoArticle
+            data = {appArticle}
+        />
+    </WithBottom>
 
-    <MobAppInfoArticle
-        data = {appArticle}
-    />
-
+<!-- 3 -->
     <WithBottom>
         <MobAppInfoList
             data={appBenefits}
         />
     </WithBottom>
-
+<!-- 4 -->
 
     <MobAppInfoSlider2
         sliderTitle = {slider2Title}
         sliderData = {slider2Data}
     />
-
+<!-- 5 -->
     <MobAppLinks
         data={card}
     />

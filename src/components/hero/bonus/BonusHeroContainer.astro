@@ -1,8 +1,8 @@
 ---
 import RichText from '@components/richtext/RichText.astro';
-import { Image } from 'astro:assets';
 import heroSlotD from '@assets/images/hero/hero-slots-d.png';
 import heroSlotM from '@assets/images/hero/hero-mob-test_copy.png';
+import { Image } from 'astro:assets';
  
 interface Props {
     heroText?: any;
@@ -118,7 +118,7 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
                 )}
                 {!heroText && title && 
                     <h1
-                        class="text-40-44-700 sm:text-34-37-700 md:text-40-44-700 lg:text-50-56-700 mb-4 sm:mb-8"
+                        class="text-40-44-700 sm:text-34-37-700 md:text-40-44-700 lg:text-48-48-700 mb-4 sm:mb-8"
                     >
                         {title}
                     </h1>

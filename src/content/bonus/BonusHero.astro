@@ -7,7 +7,6 @@ const {data} = Astro.props;
 const heroButton = data?.btn;
 const title = data?.title || '';
 const description = data?.description || '';
-
 const desktop = parseImageData(data?.coverImage.data, 'desktop')
 const mobile = parseImageData(data?.coverImage.data, 'mobile')
 const card = parseImageData(data?.coverImage.data, 'card')
@@ -18,7 +17,7 @@ const pictures = [ mobile, desktop, card || null];
     title={title}
     description={description}
     textTopSpaceMobile="-mt-[115%]"
-    textBoxWidth={"w-[340px] sm:w-2/3 lg:w-[480px]"}
+    textBoxWidth={"w-full sm:w-[40%]"}
 >
     <div slot="btn-box" class="flex flex-col sm:flex-row gap-4">
         { !!heroButton?.length && 

@@ -24,7 +24,8 @@ import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 import BannerItem1 from '@components/banner/BannerItem1.astro';
 import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 import RichText from '@components/richtext/RichText.astro';
-import BonusHero from "@content/bonus/BonusHero.astro";
+// import BonusHero from "@content/bonus/BonusHero.astro";
+import SlotHero from "@content/slot/SlotHero.astro";
 // import SlotHero from '@content/slot/SlotHero.astro';
 
 export async function getStaticPaths() {
@@ -57,22 +58,24 @@ const dataSeo = pageBlocks?.seo;
   <!-- <SlotHero data={dataHero}/>-->
   { dataHero &&
       <WithBottom>
-        <BonusHero data={dataHero}/>
+        <SlotHero data={dataHero}/>
       </WithBottom>
   }
-
+<!-- 1 -->
   { dataOfferSlider &&
-    <BlockOfetas
-      data={dataOfferSlider}
-    />
+        <BlockOfetas
+          data={dataOfferSlider}
+        />
   }
-    
+    <!-- 2 -->
   {dataArticleMain && 
-    <SlotArticle
-      data={dataArticleMain}
-    />
+    <WithBottom>
+      <SlotArticle
+        data={dataArticleMain}
+      />
+    </WithBottom>
   }
-
+<!-- 3 -->
   { (!!dataArticleList?.length) && 
         dataArticleList.map(article => { 
             return (
@@ -86,13 +89,13 @@ const dataSeo = pageBlocks?.seo;
             )
         })
     }
-
+<!-- 4 -->
     {dataBonusSlider &&
       <SlotBonus
         data={dataBonusSlider}
       />
     }
-
+<!-- 5 -->
     {!!dataBonusList?.length && 
     <WithBottom>
       <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
@@ -115,19 +118,21 @@ const dataSeo = pageBlocks?.seo;
     </WithBottom>
   }
 
-
+<!-- 6 -->
 {dataBlackRiderArticle && 
     <SlotDetailsArticle
         data={dataBlackRiderArticle}
     />
 }
-
+<!-- 7 -->
   {dataBanner && 
-    <BannerItem1
+    <WithBottom>
+      <BannerItem1
         data={dataBanner}
-    />
+      />
+    </WithBottom>
   }
-
+<!-- 8 -->
   {faqData &&
     <WithBottom>
       <AccordionContainer

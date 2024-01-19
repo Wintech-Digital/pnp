@@ -9,7 +9,6 @@ import AccordionContainer from "@components/accordion/AccordionContainer.astro";
 import RichText from "@components/richtext/RichText.astro";
 
 const pageBonusSchema = await fetchApi({ endpoint: endpoints.bonus });
-// console.log('pageBonusSchema', pageBonusSchema) // Obter Bônus | Saiba mais
 const bonusCardsData = await fetchApi({ endpoint: endpoints.bonusCards });
 const pageBlocks = pageBonusSchema['data']?.attributes;
 const dataHero = pageBlocks?.hero;

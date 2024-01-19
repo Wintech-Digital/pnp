@@ -1,21 +1,14 @@
 ---
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import WithBottom from "@components/spaces/WithBottom.astro";
-import heroTermImageD from '@assets/images/hero/banner-3-dx58kb.png';
-import heroTermImageM from '@assets/images/hero/banner-3-m_copy.png';
 import {parseImageData} from '@utils';
 
 const {data} = Astro.props;
 const bannerdescription = data?.bannerdescription;
 const bannerCover = data?.bannerCover;
-const coverMobile = parseImageData(bannerCover.data, 'mobile');
-const coverDesktop = parseImageData(bannerCover.data, 'desktop');
-
-const pictures = [ 
-    coverMobile.url || heroTermImageM,
-    coverDesktop.url || heroTermImageD
-];
-
+const mobile = parseImageData(bannerCover.data, 'mobile');
+const desktop = parseImageData(bannerCover.data, 'desktop');
+const pictures = [ mobile, desktop];
 ---
 <WithBottom>
     <HeroContainer
