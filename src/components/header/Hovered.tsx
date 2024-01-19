@@ -39,7 +39,7 @@ const Hovered = ({ id, menu, name, icon }) => {
   };
   const handletClick = (ev) => {
     ev.preventDefault();
-    window.location.href = `${window.location.href}${ITEM_URL}`;
+    window.location.href = `${window.location.origin}${ITEM_URL}`;
   };
 
   return (
