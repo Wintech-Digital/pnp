@@ -3,7 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import NavDropDownList from "./NavDropDownList";
 import { PageId, pagePreferencies } from "@constants";
 
-const NavDropDown = ({children, id, menu}) => {
+const NavDropDown = ({children = null, id, menu}) => {
     const listData = menu[id].map(item => {
         return ({
             slug: item.slug,
@@ -11,17 +11,8 @@ const NavDropDown = ({children, id, menu}) => {
             name: item.name
         })
     });
-    const isMain = pagePreferencies[id] !== undefined?pagePreferencies[id]:{};
-    const list = [
-        {
-            slug: id,
-            ...isMain,
-        },
-        ...listData
-    ]
     return (
         <Popover className="relative">
-            {children}
             <Transition
                 as={Fragment}
                 enter="transition ease-out duration-75"
@@ -33,7 +24,7 @@ const NavDropDown = ({children, id, menu}) => {
             >
             <Popover.Panel className="absolute -left-8 top-full z-[1001] mt-3 w-screen max-w-md overflow-hidden rounded-[24px] bg-[#202726]/[.97] shadow-lg ring-1 ring-gray-900/5 border border-pnp/[.1]">
                 <NavDropDownList
-                    nestedList={list}
+                    nestedList={listData}
                 />
             </Popover.Panel>
             </Transition>

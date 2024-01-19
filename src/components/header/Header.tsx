@@ -17,6 +17,7 @@ import {
 import { getIcon } from "./utils.tsx";
 import { endpoints } from "@api/endpoint.ts";
 import { fetchApi } from "@api/index.ts";
+import Hovered from "./Hovered.tsx";
 
 const Header = ({data}) => {
   const logoLink = data?.logoLink || '#';
@@ -56,10 +57,16 @@ const Header = ({data}) => {
                   const menuList = Object.keys(nestedMenu);
                   if(menuList.includes(id)){
                     return (
-                        <NavDropDown key={id} id={id} menu={nestedMenu}>
-                          <NavButton name={name} icon={getIcon(id)} />
-                        </NavDropDown>
-                    )
+                      <Hovered
+                        key={id}
+                        id={id}
+                        name={name}
+                        icon={getIcon(id)} menu={nestedMenu}
+                      />
+                      // <NavDropDown id={id} menu={nestedMenu}>
+                      //   <NavButton name={name} icon={getIcon(id)} />
+                      // </NavDropDown>
+                )
                   }
                 }
                 return (
