@@ -132,6 +132,11 @@ export default {
 					lineHeight: '48px',
 					fontWeight: '700'
 			    },
+			    '.text-48-48-700': {
+					fontSize: '48px',
+					lineHeight: '48px',
+					fontWeight: '700'
+			    },
 				'.text-50-56-700': {
 					fontSize: '50px',
 					lineHeight: '56px',
