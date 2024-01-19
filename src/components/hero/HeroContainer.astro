@@ -62,8 +62,9 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
         { pictureM ? pictureM.format !== '.webp' 
             ? <Image
                 src={pictureM.url}
-                width={pictureM.w}
-                height={pictureM.h}
+                width={pictureM.w/2}
+                height={pictureM.h/2}
+                sizes={`(max-width: 430px) 430px, (max-width: 640px) 640px`}
                 loading="eager"
                 alt={pictureM.alternativeText || ''}
                 class={`hero-img block sm:hidden w-full`}
