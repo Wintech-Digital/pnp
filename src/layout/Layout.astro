@@ -17,8 +17,8 @@ let optimizedImage = null;
 if (mobileHero) {
   optimizedImage = await getImage({
     src: mobileHero.url,
-    width: mobileHero.w,
-	height: mobileHero.h,
+    width: mobileHero.w / 1.6,
+	height: mobileHero.h / 1.6,
     format: 'webp',
   });
 }

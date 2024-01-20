@@ -38,8 +38,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureD ? pictureD.format !== '.webp'
             ? <Image
                 src={pictureD.url}
-                width={pictureD.w}
-                height={pictureD.h}
+                width={pictureD.w / 1.6}
+                height={pictureD.h / 1.6}
                 sizes={`(min-width: 641px) 768px, (max-width: 1024px) 1024px, 1160px`}
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
@@ -63,8 +63,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureM ? pictureM.format !== '.webp' 
             ? <Image
                 src={pictureM.url}
-                width={pictureM.w}
-                height={pictureM.h}
+                width={pictureM.w / 1.6}
+                height={pictureM.h / 1.6}
                 sizes={`(max-width: 430px) 430px, (max-width: 640px) 640px`}
                 loading="eager"
                 alt={pictureM.alternativeText || ''}
