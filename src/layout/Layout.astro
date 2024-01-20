@@ -1,23 +1,32 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
 import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import { ViewTransitions } from 'astro:transitions';
+import { getImage } from "astro:assets";
 import { endpoints, fetchApi } from '@api/index';
 import { parseImageData } from '@utils';
- 
+
 const {seo=[{metaTitle: '', metaDescription: ''}], heroPreload = null} = Astro.props;
+
+const mobileHero = heroPreload
+		? parseImageData(heroPreload?.coverImage?.data, 'mobile')
+		: null;
+
+let optimizedImage = null;
+if (mobileHero) {
+  optimizedImage = await getImage({
+    src: mobileHero.url,
+    width: mobileHero.w,
+	height: mobileHero.h,
+    format: 'webp',
+  });
+}
 const metaTitle = seo[0]?.metaTitle;
 const metaDescription = seo[0]?.metaDescription;
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
 
-const mobileHero = heroPreload
-	? parseImageData(heroPreload?.coverImage?.data, 'mobile')
-	: null;
-const desktopHero = heroPreload
-	? parseImageData(heroPreload?.coverImage?.data, 'desktop')
-	: null;
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
@@ -38,11 +47,8 @@ const desktopHero = heroPreload
 			sizes="32x32"
 			href="./images/p.svg"
 		/>
-		{ heroPreload && mobileHero &&
-			<link rel="preload" href={mobileHero?.url} as="image"> 
-		}
-		{ heroPreload && desktopHero &&
-			<link rel="preload" href={desktopHero?.url} as="image"> 
+		{ optimizedImage !== null && 
+			<link rel="preload" href={optimizedImage?.src} as="image"/>
 		}
 		<ViewTransitions />
 		<style>
@@ -53,6 +59,7 @@ const desktopHero = heroPreload
 			}
 		</style>
 	</head>
+
 	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10  lg:px-20 bg-pnp-card-bg text-pnp w-full">
 			<!-- <div class="max-w-[1360px] mx-auto relative"> -->
 			<div class="max-w-[1160px] mx-auto relative">
