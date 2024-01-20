@@ -32,14 +32,15 @@ const rounded = 'rounded-[24px] sm:rounded-[32px] md:rounded-[42px] md:rounded-[
 // const debug = 'border border-pnp-red/[.5] sm:border-pnp-green/[.5] md:border-black/[.5] lg:border-pnp/[.5]';
 
 // Common Styles: 
-const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  ${debug}
+const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${debug}
 ---
      <div class=`hero-wrapper ${common} relative gr-red-green-coner`>
         { pictureD ? pictureD.format !== '.webp'
             ? <Image
-                src={pictureD.url }
+                src={pictureD.url}
                 width={pictureD.w}
                 height={pictureD.h}
+                sizes={`(min-width: 641px) 768px, (max-width: 1024px) 1024px, 1160px`}
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
                 class={`hero-img hidden sm:block w-full`}
@@ -62,8 +63,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
         { pictureM ? pictureM.format !== '.webp' 
             ? <Image
                 src={pictureM.url}
-                width={pictureM.w/2}
-                height={pictureM.h/2}
+                width={pictureM.w}
+                height={pictureM.h}
                 sizes={`(max-width: 430px) 430px, (max-width: 640px) 640px`}
                 loading="eager"
                 alt={pictureM.alternativeText || ''}

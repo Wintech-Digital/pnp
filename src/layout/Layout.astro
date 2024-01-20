@@ -12,8 +12,11 @@ const metaDescription = seo[0]?.metaDescription;
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
 
-const mobile = heroPreload
+const mobileHero = heroPreload
 	? parseImageData(heroPreload?.coverImage?.data, 'mobile')
+	: null;
+const desktopHero = heroPreload
+	? parseImageData(heroPreload?.coverImage?.data, 'desktop')
 	: null;
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
@@ -35,8 +38,11 @@ const mobile = heroPreload
 			sizes="32x32"
 			href="./images/p.svg"
 		/>
-		{ heroPreload && mobile &&
-			<link rel="preload" href={mobile?.url} as="image"> 
+		{ heroPreload && mobileHero &&
+			<link rel="preload" href={mobileHero?.url} as="image"> 
+		}
+		{ heroPreload && desktopHero &&
+			<link rel="preload" href={desktopHero?.url} as="image"> 
 		}
 		<ViewTransitions />
 		<style>
