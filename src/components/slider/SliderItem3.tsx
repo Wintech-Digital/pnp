@@ -1,14 +1,4 @@
-import { type FC } from "react";
 import ButtonRounded from "@components/buttons/ButtonRounded";
-import { SLOTS_URL } from "@constants";
-
-interface Props {
-  pic: string;
-  text: string;
-  description: string;
-  link?: string
-  buttonName?: string,
-}
 
 const transition = "transition duration-300 ease-in-out";
 const rounded = "rounded-[24px] sm:rounded-[32px]";
@@ -19,13 +9,18 @@ const flexCol = 'flex flex-col gap-2 sm:gap-4 justify-between';
 const textPosition = 'text-center items-center';
 const common = `${bg} ${customBorder} ${flexCol} ${textPosition} ${rounded} ${gradient} ${transition}`;
  
-const SliderItem3: FC<Props> = ({ text, description, pic, link = '#', ...props }) => {
+const SliderItem3 = ({ text, description, pic, link = '#', ...props }) => {
   return (
     <div
       className={`h-full overflow-hidden ${common}`}
     >
       <div className="w-full grid justify-items-start mb-[24px] md:justify-items-center md:mb-[0px] max-h-[240px]">
-        <img src={pic} alt=""/> 
+        <img
+          width='100%'
+          height='100%'
+          src={pic?.url}
+          alt={pic?.alternativeText}
+        /> 
       </div> 
       <div className="text-24-36-600 px-[24px]">
         {text}

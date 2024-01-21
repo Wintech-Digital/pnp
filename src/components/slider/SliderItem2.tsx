@@ -5,18 +5,17 @@ const border = 'border border-pnp/[.1]';
 const shadow = 'shadow-2xl';
 const gradient = 'gradient-red';
 const rounded = 'rounded-[24px] sm:rounded-[32px]';
-const flex = 'flex flex-col justify-between';
+// const flex = 'flex flex-col justify-between';
 const common = ` ${rounded} ${bg} ${gradient} ${shadow} ${border}`;
 const SliderItem2 = ({ ...props}) => { 
-  // console.log('SliderItem2 props ::::', props)
   return (
     <div className={`h-full overflow-hidden ${common}`}>
       <a href={props.imageLink}>
         <img
-          width={props.imageData.w}
+          width="100%"
+          height="100%"
           src={props.imageData.url}
-          alt={props.imageData.alternativeText}
-          className="w-full" 
+          alt={props.imageData.alternativeText || ''}
         />
       </a>
       <div className="py-[24px] px-[24px] h-[250px] sm:h-[180px] flex flex-col justify-between">

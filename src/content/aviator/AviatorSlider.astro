@@ -1,23 +1,21 @@
 ---
 import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import { STRAPI_URL } from "@constants";
+import { getFields } from "@utils";
 
 const {data} = Astro.props;
 const sliderItems = data?.sliderItems;
 
 const sliderList =  sliderItems.map(item=> {
-    const text = item.title;
-    const description = item.description;
+    const text = item?.title || '';
+    const description = item.description || '';
     const link = item.url;
-    const isImage = item.coverImage.data;
-    const imgUrl = isImage ? `${STRAPI_URL}${isImage.attributes.url}` : '';
 
     return ({
         text,
         link,
         description,
-        pic: imgUrl,
+        pic: getFields(item?.coverImage?.data?.attributes),
     })
 })
 ---

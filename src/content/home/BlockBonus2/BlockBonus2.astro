@@ -1,21 +1,17 @@
 ---
-import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import { SLOTS_URL, STRAPI_URL } from "@constants";
+import { getFields } from "@utils";
 
 const {data} = Astro.props;
 const title = data?.title;
 const slider = data?.slider3;
 const promotionsList = slider.map(item => {
-    const isImage = item?.coverImage.data;
-    const pic = isImage ? `${STRAPI_URL}${isImage.attributes?.url}` : '';
-    const link = item?.url ? `${item.url}` : null;
     return ({
         text: item?.title || '',
         buttonName: item?.buttonName || '',
         description: item?.description || '',
-        pic,
-        link,
+        link: item?.url || '#',
+        pic: getFields(item?.coverImage.data?.attributes) || null,
     })
 });
 ---

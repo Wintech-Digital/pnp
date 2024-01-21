@@ -7,7 +7,7 @@ import WithBottom from "@components/spaces/WithBottom.astro";
 const {data, bonusDescription}=Astro.props;
 const title = data?.bonusSliderTitle;
 const bonusItem = data?.bonusItem;
-const sliderBonusesList = bonusItem?.map((item, index)=>{
+const sliderBonusesList = bonusItem?.map((item)=>{
     return({
         text: item?.title || '',
         description: item?.description || '',
@@ -17,7 +17,7 @@ const sliderBonusesList = bonusItem?.map((item, index)=>{
     })
 });
 ---
-<div class="overflow-hidden pt-4">
+<div class="overflow-hidden pt-5">
     {!!title?.length &&
         <RichText
             data={title}
@@ -27,7 +27,7 @@ const sliderBonusesList = bonusItem?.map((item, index)=>{
         <SliderContainer
             client:load
             list={sliderBonusesList}
-            noInfiniti={true}
+            noInfiniti={false}
             itemComponentName="SliderItem2"
         />
     }
