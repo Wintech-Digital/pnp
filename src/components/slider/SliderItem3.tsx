@@ -16,14 +16,15 @@ const SliderItem3 = ({ text, description, pic, link = '#', ...props }) => {
     >
       <div className="w-full grid justify-items-start mb-[24px] md:justify-items-center md:mb-[0px] max-h-[240px]">
         <img
-          width='100%'
-          height='100%'
           src={pic?.url}
-          alt={pic?.alternativeText}
+          width={pic?.w}
+          height={pic?.h}
+          alt={pic?.alternativeText || ''}
+          className="w-full"
         /> 
       </div> 
       <div className="text-24-36-600 px-[24px]">
-        {text}
+        123 {text}
       </div>
       <div className="text-16-24-400 px-[24px] text-pnp/[.6]">
         {description}

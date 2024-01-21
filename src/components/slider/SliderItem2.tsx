@@ -12,10 +12,11 @@ const SliderItem2 = ({ ...props}) => {
     <div className={`h-full overflow-hidden ${common}`}>
       <a href={props.imageLink}>
         <img
-          width="100%"
-          height="100%"
           src={props.imageData.url}
+          width={props.imageData.w}
+          height={props.imageData.h}
           alt={props.imageData.alternativeText || ''}
+          className="w-full"
         />
       </a>
       <div className="py-[24px] px-[24px] h-[250px] sm:h-[180px] flex flex-col justify-between">
