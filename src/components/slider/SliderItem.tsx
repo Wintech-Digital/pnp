@@ -30,6 +30,8 @@ const SliderItem = ({ ...props }) => {
         <div className="h-[172px] w-full sm:w-1/2 grid content-center justify-items-start md:justify-items-end mb-[24px] md:mb-[0px]">
             <img
               src={props.pic.url}
+              width={props.pic.w}
+              height={props.pic.h}
               alt={props.pic.alternativeText}
             />
         </div> 

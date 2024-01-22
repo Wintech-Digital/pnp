@@ -3,7 +3,7 @@ import type { ImageMetadata } from "astro";
 
 interface Props {
   text: string;
-  pic: ImageMetadata;
+  pic: any;
   description: string;
 }
 
@@ -16,7 +16,13 @@ const SliderItem6: FC<Props> = ({ text, pic, description }) => {
             "relative bg-pnp-black/[.2] flex w-[100px] h-[100px] rounded-full items-center justify-center before:absolute before:h-[340px] before:w-[340px] before:rounded-full"
           }
         >
-          <img src={`${pic}`} alt="imagepng." className="z-10" />
+          <img 
+            src={pic.url}
+            width={pic.w}
+            height={pic.h}
+            alt={pic.alternativeText}
+            className="z-10"
+          />
         </div>
       </div>
 

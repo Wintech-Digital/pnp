@@ -1,6 +1,5 @@
 ---
 import { getImage } from "astro:assets";
-import Article from "@components/article/Article.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import infoPic1 from "@assets/svg/letter.svg";
 import infoPic2 from "@assets/images/star.png";
@@ -37,9 +36,9 @@ const infoData = slide?.map((sld: any,index: any)=>{
 </h1>
 <div class="overflow-hidden pt-4">
     <SliderContainer
-    client:load
-    list={infoData}
-    noInfiniti={true}
-    itemComponentName="SliderItem5"
-/>
+        client:load
+        list={infoData}
+        noInfiniti={true}
+        itemComponentName="SliderItem5"
+    />
 </div>

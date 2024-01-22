@@ -15,13 +15,14 @@ const promotionsList = slider.map(item => {
     })
 });
 ---
-<h2 class="text-24-36-700 sm:text-34-37-700  w-full sm:w-3/4">
+<h2 class="text-24-36-700 sm:text-34-37-700 w-full sm:w-3/4">
     {title}
 </h2>
 <div class="overflow-hidden pt-4">
     <SliderContainer
         client:load
         list={promotionsList}
+        noInfiniti={true}
         itemComponentName="SliderItem3"
     />
 </div>

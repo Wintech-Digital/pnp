@@ -44,6 +44,8 @@ const support = pageAttributes?.support;
 const infoSection = pageAttributes?.infoSection;
 const faqData = pageAttributes?.faqBlock;
 const dataSeo = pageAttributes?.seo;
+
+const debug = false;
 ---
 <Layout seo={dataSeo} heroPreload={dataHero}>
     <WithBottom>
@@ -53,89 +55,89 @@ const dataSeo = pageAttributes?.seo;
         />
     </WithBottom>
 
-    1
+    {debug && 1}
     <div class="block sm:hidden">
-        <BlockOfetas 
+        <BlockOfetas
             data={dataOfferSlider}
         />
     </div>
 
-    2
+    {debug && 2}
     <BlockSlotsList
         data={dataSlotsList}
     />
 
-    3
+    {debug && 3}
     <BlockConciseFormat
         data={articleAnalises}
     />
 
-    4
+    {debug && 4}
     <WithBottom>
         <BlockCasinoInfo
             data={slider2}
         />
     </WithBottom>
 
-    5
+    {debug && 5}
     <BlockBonus
         data={bonuses}
         bonusDescription={bonusDescription}
     />
 
-    6
+    {debug && 6}
     <BlockBonus2
         data={promotions}
     />
 
-    7
+    {debug && 7}
     <WithBottom>
         <BlockCasinoInfo2
             data={guide}
         />
     </WithBottom>    
 
-    8 Payment
+    {debug && 8}
     <WithBottom>
         <BlockCasinoProviders
             data={payment}
         />
     </WithBottom>
 
-   9
+   {debug && 9}
    <WithBottom>
         <BlockList
             data={availablegames}
         />
     </WithBottom>
 
-    10
+    {debug && 10}
     <WithBottom>
         <BlockInfo2
             data={appadvantages}
         />
     </WithBottom>
 
-    11
+    {debug && 11}
     <div class="mb-[32px]">
         <BannerItem1
             data={banner}
         />
     </div>
      
-    12
+    {debug && 12}
     <BlockInfo3
         data={strategies}
     />
     
-    13
+    {debug && 13}
     <div class="mb-[32px]">
         <BlockSuporte
             data={support}
         />
     </div>
 
-    14
+    {debug && 14}
     <WithBottom>
         <Section
             data={infoSection}

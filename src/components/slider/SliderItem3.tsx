@@ -24,7 +24,7 @@ const SliderItem3 = ({ text, description, pic, link = '#', ...props }) => {
         /> 
       </div> 
       <div className="text-24-36-600 px-[24px]">
-        123 {text}
+        {text}
       </div>
       <div className="text-16-24-400 px-[24px] text-pnp/[.6]">
         {description}
