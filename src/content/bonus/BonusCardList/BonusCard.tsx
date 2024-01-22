@@ -6,6 +6,7 @@ const BonusCard = ({ ...props}) => {
       <a href={props.imageLink}>
         <img
           width={props.imageData.w}
+          height={props.imageData.h}
           src={props.imageData.url}
           alt={props.imageData.alternativeText}
           className="w-full" 
