@@ -1,39 +1,18 @@
 ---
-import Article from "@components/article/Article.astro";
 import ContactsContainer from "@components/contacts/ContactsContainer.astro";
 import RichText from "@components/richtext/RichText.astro";
 import WithBottom from "@components/spaces/WithBottom.astro";
 
-const contacsList = [
-    {
-        name: 'Suporte por e-mail',
-        email: 'suporte@pinupcasino.br',
-        tel: '+1 (555) 905-34-56'
-    },
-    {
-        name: 'Bate-papo on-line',
-        email: 'bate@pinupcasino.br',
-        tel: '+1 (555) 905-34-56'
-    },
-    {
-        name: 'Press',
-        email: 'press@pinupcasino.br',
-        tel: '+1 (555) 905-34-56'
-    },
-    {
-        name: 'Junte-se a nossa equipe',
-        email: 'suporte@pinupcasino.br',
-        tel: '+1 (555) 905-34-56'
-    },
-];
 const {data} = Astro.props;
 const titleContacts = data.title;
 const listContacs = data.list;
 ---
 <WithBottom>
-    <RichText
-        data = {titleContacts}
-    />
+    <div id="#contacts" class="mb-6">
+        <RichText
+            data = {titleContacts}
+        />
+    </div>
     <ContactsContainer
         data={listContacs}
     />

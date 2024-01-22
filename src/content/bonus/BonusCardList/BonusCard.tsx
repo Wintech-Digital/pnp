@@ -24,7 +24,7 @@ const BonusCard = ({ ...props}) => {
               return (
                   <ButtonRounded
                     key={index}
-                    size="xl"
+                    size="lg"
                     color={item?.type || 'red'}
                     title={item?.name || ''}
                     link={item?.link || '#'}

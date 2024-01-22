@@ -45,15 +45,17 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
         data={dataBanner}
     />
     <!-- 2 -->
-    { (dataArticles &&  dataArticles.length) && 
-        dataArticles.map(article => { 
-            return (
-                <GenerateText 
-                    data = {article}
-                />
-            )
-        })
-    }
+    <WithBottom>
+        { (dataArticles &&  dataArticles.length) && 
+            dataArticles.map(article => { 
+                return (
+                    <GenerateText 
+                        data = {article}
+                    />
+                )
+            })
+        }
+    </WithBottom>
 
 <!-- 3 -->
     <WithBottom>
@@ -70,39 +72,43 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
             />
         </div>
     </WithBottom>
-<!-- 4 -->
-    <TwoColomns50 reverse>
-        <div slot="first-col">
-            <RichText
-                data={termsColArticalTexts}
-                styles={{
-                    h1: 'w-full'
-                }}
-            />
-    
-            <div slot="action" class="flex justify-center sm:justify-start mt-10">
-                <ButtonRounded
-                    size="xl"
-                    color={termsColArticalButton.type || 'red'}
-                    title={termsColArticalButton.name || 'Jogue agora'}
-                    link={termsColArticalButton.link || '#'}
-                    className="w-full sm:w-auto"
+
+    <WithBottom>
+        <div id="centralDeAjuda"/>
+
+        <TwoColomns50 reverse>
+            <div slot="first-col">
+                <RichText
+                    data={termsColArticalTexts}
+                    styles={{
+                        h1: 'w-full'
+                    }}
                 />
+        
+                <div slot="action" class="flex justify-center sm:justify-start mt-10">
+                    <ButtonRounded
+                        size="xl"
+                        color={termsColArticalButton.type || 'red'}
+                        title={termsColArticalButton.name || 'Jogue agora'}
+                        link={termsColArticalButton.link || '#'}
+                        className="w-full sm:w-auto"
+                    />
+                </div>
             </div>
-        </div>
-        <Image
-            src={imgProps.url}
-            width={imgProps.w}
-            height={imgProps.h}
-            alt={imgProps.alternativeText}
-            slot="second-col"
-            class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
-        />
-    </TwoColomns50>
-<!-- 5 -->
+            <Image
+                src={imgProps.url}
+                width={imgProps.w}
+                height={imgProps.h}
+                alt={imgProps.alternativeText}
+                slot="second-col"
+                class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
+            />
+        </TwoColomns50>
+    </WithBottom>
+
+    <!-- 5 -->
     <TermsContacts
         data = {dataContacts}
     />
-
     <!-- <TermsArticles/> -->
 </Layout>

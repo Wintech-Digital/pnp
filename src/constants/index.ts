@@ -101,8 +101,9 @@ export const pagePreferencies = {
     [PageId.SUPPORT]: {
         id: PageId.SUPPORT,
         name: PageName.SUPPORT,
-        url: `${TERMS_URL}#support`
-    }, 
+        url: `${TERMS_URL}#centralDeAjuda`
+    },
+    
     [PageId.PAYMENTS] : {
         id: PageId.PAYMENTS,
         name: PageName.PAYMENTS,
@@ -222,8 +223,8 @@ export const navigationWithNestedList = {
 };
 
 export const navigationFooterList = [
-    PageId.PAYMENTS,
-    PageId.RESPONSIBLE_GAMBLING,
+    // PageId.PAYMENTS,
+    // PageId.RESPONSIBLE_GAMBLING,
     PageId.SUPPORT,
     PageId.TERMS,
     PageId.CONTACTS,

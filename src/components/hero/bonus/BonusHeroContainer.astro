@@ -40,7 +40,7 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
      <div class=`hero-wrapper ${common} relative`>
         { pictureCard ? pictureCard?.format !== '.webp'
             ? <Image
-                src={pictureCard?.url || 0}
+                src={pictureCard?.url || ''}
                 width={pictureCard?.w || 0}
                 height={pictureCard?.h || 0}
                 alt={pictureCard?.alternativeText || ''}
@@ -59,9 +59,9 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
         }
         {pictureD ? pictureD.format !== '.webp'
             ? <Image
-                src={pictureD.url }
-                width={pictureD.w}
-                height={pictureD.h}
+                src={ pictureD.url }
+                width={ pictureD.w }
+                height={ pictureD.h }
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
                 class={`hero-img hidden sm:block w-full`}
