@@ -74,7 +74,7 @@ const MobileDialog = ({ isOpen, handlerToggle, nestedMenu, logoLink }) => {
                   })}
                 </div>
 
-                <div className="py-6">
+                <div className="py-6 flex flex-col">
                   <ButtonRounded size="lg" color="green" title="Entrada" className="w-full mb-2" />
                   <ButtonRounded size="lg" color="red" title="Cadastro" className="w-full" />
                 </div>

@@ -35,20 +35,27 @@ interface Props {
   onClick?: () => void;
 }
 
+const _DEFAULT = 'https://try.pi1pur.com/C3wx7K';
+const getLink = (param) => {
+  if(param && param !== '#'){
+    return param;
+  }
+  return _DEFAULT;
+}
+
 const ButtonRounded = ({ ...props }: Props) => {
   const { size, color, title, details, className, ...rest } = props;
   if(rest.link){
     if(color === 'info'){
       return(
         <a
-          href={rest.link}
+          href={getLink(rest.link)}
           className={`${classN({ size: 'empty', color, className })} inline-flex flex-col justify-center border border-pnp/[.1] px-6 pb-2 sm:py-0 my-0`}
           onClick={rest?.onClick}
-          {...rest}
         >
-            <span className="text-pnp-grey20 text-14-24-600">{title}</span>
+            <span className="text-pnp-grey20 text-14-24-600 text-nowrap">{title}</span>
             { details && 
-              <span className="text-pnp text-24-24-700">{details}</span>
+              <span className="text-pnp text-24-24-700 text-nowrap">{details}</span>
             }
             {rest?.children &&
               <span className="text-pnp">{rest?.children}</span>
@@ -58,12 +65,11 @@ const ButtonRounded = ({ ...props }: Props) => {
     }
     return (
       <a
-        href={rest.link}
+        href={getLink(rest.link)}
         className={classN({ size, color, className })}
         onClick={rest?.onClick}
-        {...rest}
       >
-        <span className="text-pnp">{title}</span>
+        <span className="text-pnp text-nowrap">{title}</span>
         { details && 
           <span className="text-pnp text-24-36-700">{details}</span>
         }
@@ -74,14 +80,15 @@ const ButtonRounded = ({ ...props }: Props) => {
     )
   }
   return (
-    <button
+    <a
       className={classN({ size, color, className })}
+      href={getLink(rest.link)}
       onClick={rest?.onClick}
-      {...rest}
     >
-      <span className="text-pnp">{title}</span>
+
+      <span className="text-pnp text-nowrap">{rest.link}-{title}</span>
       {rest?.children && <span className="text-pnp">{rest?.children}</span>}
-    </button>
+    </a>
   );
 };
 

@@ -24,18 +24,21 @@ const pictures = [mobile, desktop];
         textBoxWidth={"w-full sm:w-[53%]"}
     >
         <div class={`flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0`} slot="btn-box">
-            {buttons.map(item => (
+            {buttons.map(item => {
+                return (
                 <ButtonRounded
                     size="xl"
                     color={item?.type || 'red'}
                     title={item?.name || 'Empty'}
-                    className={`w-full sm:w-auto flex flex-row gap-4 justify-center z-50`}
+                    link={item?.link || ''}
+                    className={`w-full sm:w-auto flex flex-row text-center justify-center z-50`}
                 >
                     {item?.btnIcon?.data && (
                         <img src={btnIconUrl(item)} alt="" class="h-[20px]"/>
                     )}
                 </ButtonRounded>
-            ))}
+            )
+            })}
         </div>
     </HeroContainer>
 }
