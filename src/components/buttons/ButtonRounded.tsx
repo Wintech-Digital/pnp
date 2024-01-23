@@ -32,7 +32,6 @@ interface Props {
   details?: string;
   className?: string;
   children?: React.ReactNode;
-  onClick?: () => void;
 }
 
 const _DEFAULT = 'https://try.pi1pur.com/C3wx7K';
@@ -51,7 +50,6 @@ const ButtonRounded = ({ ...props }: Props) => {
         <a
           href={getLink(rest.link)}
           className={`${classN({ size: 'empty', color, className })} inline-flex flex-col justify-center border border-pnp/[.1] px-6 pb-2 sm:py-0 my-0`}
-          onClick={rest?.onClick}
         >
             <span className="text-pnp-grey20 text-14-24-600 text-nowrap">{title}</span>
             { details && 
@@ -67,7 +65,6 @@ const ButtonRounded = ({ ...props }: Props) => {
       <a
         href={getLink(rest.link)}
         className={classN({ size, color, className })}
-        onClick={rest?.onClick}
       >
         <span className="text-pnp text-nowrap">{title}</span>
         { details && 
@@ -83,7 +80,6 @@ const ButtonRounded = ({ ...props }: Props) => {
     <a
       className={classN({ size, color, className })}
       href={getLink(rest.link)}
-      onClick={rest?.onClick}
     >
 
       <span className="text-pnp text-nowrap">{rest.link}-{title}</span>
