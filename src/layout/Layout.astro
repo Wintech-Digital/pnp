@@ -8,7 +8,6 @@ import { endpoints, fetchApi } from '@api/index';
 import { parseImageData } from '@utils';
 
 const {seo=[{metaTitle: '', metaDescription: ''}], heroPreload = null} = Astro.props;
-
 const mobileHero = heroPreload
 		? parseImageData(heroPreload?.coverImage?.data, 'mobile')
 		: null;
@@ -24,6 +23,7 @@ if (mobileHero) {
 }
 const metaTitle = seo[0]?.metaTitle;
 const metaDescription = seo[0]?.metaDescription;
+const relCanonical = seo[0]?.relCanonical;
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
 
@@ -47,6 +47,9 @@ const dataControls = controls['data']?.attributes;
 			sizes="32x32"
 			href="./images/p.svg"
 		/>
+		{ relCanonical !== null && 
+			<link rel="canonical" href={relCanonical}/>
+		}
 		{ optimizedImage !== null && 
 			<link rel="preload" href={optimizedImage?.src} as="image"/>
 		}
@@ -61,8 +64,7 @@ const dataControls = controls['data']?.attributes;
 	</head>
 
 	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10  lg:px-20 bg-pnp-card-bg text-pnp w-full">
-			<!-- <div class="max-w-[1360px] mx-auto relative"> -->
-			<div class="max-w-[1160px] mx-auto relative">
+		<div class="max-w-[1160px] mx-auto relative">
 			<Header
 				client:load
 				data={dataControls}
