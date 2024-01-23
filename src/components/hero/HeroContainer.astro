@@ -1,6 +1,6 @@
 ---
 import RichText from '@components/richtext/RichText.astro';
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import heroSlotD from '@assets/images/hero/hero-slots-d.png';
 import heroSlotM from '@assets/images/hero/hero-mob-test_copy.png';
  
@@ -38,9 +38,11 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureD ? pictureD.format !== '.webp'
             ? <Image
                 src={pictureD.url}
-                width={pictureD.w / 1.6}
-                height={pictureD.h / 1.6}
-                sizes={`(min-width: 641px) 768px, (max-width: 1024px) 1024px, 1160px`}
+                width={pictureD.w/2}
+                height={pictureD.h/2}
+                densities={[1.5, 2]}
+                sizes={`(min-width: 769px) 768px, 1160px`}
+                quality={'mid'}
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
                 class={`hero-img hidden sm:block w-full`}
@@ -61,15 +63,18 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
             />
         }
         { pictureM ? pictureM.format !== '.webp' 
-            ? <Image
+            ?  <Image
                 src={pictureM.url}
-                width={pictureM.w / 1.6}
-                height={pictureM.h / 1.6}
-                sizes={`(max-width: 430px) 430px, (max-width: 640px) 640px`}
+                width={pictureM.w/2}
+                height={pictureM.h/2}
+                densities={[1.5, 2]}
+                sizes={`(max-width: 430px) 430px, (max-width: 768px) 768px`}
                 loading="eager"
+                format='webp'
+                quality={'mid'}
                 alt={pictureM.alternativeText || ''}
                 class={`hero-img block sm:hidden w-full`}
-            /> 
+            />
             : <img
                 src={pictureM.url}
                 width={pictureM.w}
@@ -139,3 +144,13 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         }
     }
 </style>
+<!-- <Image
+                src={pictureM.url}
+                width={pictureM.w/1.6}
+                height={pictureM.h/1.6}
+                loading="eager"
+                alt={pictureM.alternativeText || ''}
+                class={`hero-img block sm:hidden w-full`}
+            /> -->
+
+            <!-- sizes={`(max-width: 430px) 200px, (max-width: 768px) 350px, ${pictureM.w}px`} -->
