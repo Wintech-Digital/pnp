@@ -1,4 +1,3 @@
-import { PageId, pagePreferencies } from "@constants";
 import { Logo as LogoIcon } from "@components/Icons";
 
 const Logo = ({link}) => (

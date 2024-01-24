@@ -7,12 +7,14 @@ import { getImage } from "astro:assets";
 import { endpoints, fetchApi } from '@api/index';
 import { parseImageData } from '@utils';
 import { SEO } from "astro-seo";
-
-const {seo=[{metaTitle: '', metaDescription: ''}], heroPreload = null} = Astro.props;
+const {
+	seo = null,
+	heroPreload = null
+} = Astro.props;
+const structuredData = seo[0]?.structuredData;
 const mobileHero = heroPreload
 		? parseImageData(heroPreload?.coverImage?.data, 'mobile')
 		: null;
-
 let optimizedImage = null;
 if (mobileHero) {
   optimizedImage = await getImage({
@@ -22,34 +24,26 @@ if (mobileHero) {
     format: 'webp',
   });
 }
-const metaTitle = seo[0]?.metaTitle;
-const metaDescription = seo[0]?.metaDescription;
-const relCanonical = seo[0]?.relCanonical;
-const structuredData = seo[0]?.structuredData;
-const jsonLd = JSON.stringify(structuredData);
 
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
-		<meta name="robots" content="noindex, nofollow" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={metaDescription}>
-		<title>{ metaTitle }</title>
-		<SEO
-		extend={{
-			meta: [
-			  {
-				property: "og:title",
-				content: "Pin Up Casino - Melhor Experiência de Jogo Online no Brasil",
-			  },
-			  { name: "og:type", content: "Tinker Tailor Soldier Spy" },
-			  { name: "og:image", content: "Agent" },
-			],
-		  }}
-		/>
+
+		{!!structuredData?.length !==null &&
+			structuredData.map(item => {
+				const jsonLd = JSON.stringify(item.structuredItem);
+				return <script type="application/ld+json" set:html={jsonLd}></script>
+			}) 
+		}
+
+		{seo[0]?.metaData && 
+			<SEO {...seo[0]?.metaData} />
+		}
+
 		<link
 			rel="icon"
 			type="image/webp"
@@ -62,9 +56,6 @@ const dataControls = controls['data']?.attributes;
 			sizes="32x32"
 			href="./images/favicon-pinup-300x300.webp"
 		/>
-		{ relCanonical !== null && 
-			<link rel="canonical" href={relCanonical}/>
-		}
 		{ optimizedImage !== null && 
 			<link rel="preload" href={optimizedImage?.src} as="image"/>
 		}
@@ -76,9 +67,6 @@ const dataControls = controls['data']?.attributes;
 				background-color: #00A189;
 			}
 		</style>
-		{structuredData!==null && jsonLd && 
-			<script type="application/ld+json" set:html={jsonLd}></script>
-		}
 	</head>
 
 	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10  lg:px-20 bg-pnp-card-bg text-pnp w-full">
