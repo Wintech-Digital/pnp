@@ -22,7 +22,7 @@ export default {
 					'logo': '#E23A1C',
 					'red': '#FF3B1C',
 					'green': '#06BA9F',
-					'dark-red': '#E52D10',
+					'dark-red': '#A92614', // E52D10; 
 					'dark-green': '#00A189',
 					'grey20': '#D2D2D2',
 					'grey30': '#B3B3B3',
