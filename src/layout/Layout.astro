@@ -6,6 +6,7 @@ import { ViewTransitions } from 'astro:transitions';
 import { getImage } from "astro:assets";
 import { endpoints, fetchApi } from '@api/index';
 import { parseImageData } from '@utils';
+import { SEO } from "astro-seo";
 
 const {seo=[{metaTitle: '', metaDescription: ''}], heroPreload = null} = Astro.props;
 const mobileHero = heroPreload
@@ -37,6 +38,18 @@ const dataControls = controls['data']?.attributes;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={metaDescription}>
 		<title>{ metaTitle }</title>
+		<SEO
+		extend={{
+			meta: [
+			  {
+				property: "og:title",
+				content: "Pin Up Casino - Melhor Experiência de Jogo Online no Brasil",
+			  },
+			  { name: "og:type", content: "Tinker Tailor Soldier Spy" },
+			  { name: "og:image", content: "Agent" },
+			],
+		  }}
+		/>
 		<link
 			rel="icon"
 			type="image/webp"
