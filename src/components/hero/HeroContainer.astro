@@ -38,10 +38,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureD ? pictureD.format !== '.webp'
             ? <Image
                 src={pictureD.url}
-                width={pictureD.w/3}
-                height={pictureD.h/3}
-                densities={[1.5, 2]}
-                sizes={`(min-width: 769px) 50vw, 100vw`}
+                width={pictureD.w/2}
+                height={pictureD.h/2}
                 quality={'mid'}
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
@@ -49,8 +47,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
             />
             : <img
                 src={pictureD.url}
-                width={pictureD.w}
-                height={pictureD.h}
+                width={pictureD.w/2}
+                height={pictureD.h/2}
                 alt={pictureD.alternativeText || ''} 
                 loading="eager"
                 class={`hero-img hidden sm:block w-full`}
@@ -65,14 +63,10 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureM ? pictureM.format !== '.webp' 
             ?  <Image
                 src={pictureM.url}
-                width={pictureM.w/3}
-                height={pictureM.h/3}
-                densities={[1.5, 2]}
-                sizes={`(max-width: 430px) 13.3vw, (max-width: 768px) 100vw`}
-                quality={'mid'}
+                width={pictureM.w/2}
+                height={pictureM.h/2}
                 loading="eager"
                 format='webp'
-                quality={'mid'}
                 alt={pictureM.alternativeText || ''}
                 class={`hero-img block sm:hidden w-full`}
             />
