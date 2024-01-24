@@ -24,9 +24,11 @@ if (mobileHero) {
 const metaTitle = seo[0]?.metaTitle;
 const metaDescription = seo[0]?.metaDescription;
 const relCanonical = seo[0]?.relCanonical;
+const structuredData = seo[0]?.structuredData;
+const jsonLd = JSON.stringify(structuredData);
+
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
-
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
@@ -61,6 +63,9 @@ const dataControls = controls['data']?.attributes;
 				background-color: #00A189;
 			}
 		</style>
+		{structuredData!==null && jsonLd && 
+			<script type="application/ld+json" set:html={jsonLd}></script>
+		}
 	</head>
 
 	<body class="py-4 pl-4 pr-4 sm:p-4 md:p-6 lg:py-10  lg:px-20 bg-pnp-card-bg text-pnp w-full">

@@ -7,12 +7,10 @@ import {
 } from "@constants";
 
 import Logo from "./Logo.tsx";
-import NavDropDown from "./NavDropDown.tsx";
 import ButtonRounded from "@components/buttons/ButtonRounded";
 import MobileDialog from "./MobileDialog.tsx";
 import {
   NavLink,
-  NavButton,
 } from "./NavLink";
 import { getIcon } from "./utils.tsx";
 import { endpoints } from "@api/endpoint.ts";
@@ -63,10 +61,7 @@ const Header = ({data}) => {
                         name={name}
                         icon={getIcon(id)} menu={nestedMenu}
                       />
-                      // <NavDropDown id={id} menu={nestedMenu}>
-                      //   <NavButton name={name} icon={getIcon(id)} />
-                      // </NavDropDown>
-                )
+                    )
                   }
                 }
                 return (

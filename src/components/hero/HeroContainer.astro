@@ -38,10 +38,10 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureD ? pictureD.format !== '.webp'
             ? <Image
                 src={pictureD.url}
-                width={pictureD.w/2}
-                height={pictureD.h/2}
+                width={pictureD.w/3}
+                height={pictureD.h/3}
                 densities={[1.5, 2]}
-                sizes={`(min-width: 769px) 769px, 1160px`}
+                sizes={`(min-width: 769px) 50vw, 100vw`}
                 quality={'mid'}
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
@@ -65,10 +65,10 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureM ? pictureM.format !== '.webp' 
             ?  <Image
                 src={pictureM.url}
-                width={pictureM.w/2}
-                height={pictureM.h/2}
+                width={pictureM.w/3}
+                height={pictureM.h/3}
                 densities={[1.5, 2]}
-                sizes={`(max-width: 430px) 430px, (max-width: 768px) 768px`}
+                sizes={`(max-width: 430px) 13.3vw, (max-width: 768px) 100vw`}
                 quality={'mid'}
                 loading="eager"
                 format='webp'
