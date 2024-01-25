@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run rename-sitemap",
+    "rename-sitemap": "mv dist/sitemap-index.xml dist/sitemap.xml",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
