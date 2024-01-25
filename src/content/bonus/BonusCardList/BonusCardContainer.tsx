@@ -57,7 +57,7 @@ const BonusCardContainer = ({...props}) => {
     return (
         <div className="mb-[30px]">
             <div className="flex flex-col sm:flex-row justify-between mb-[30px]">
-                <h2 className="text-40-48-700 mb-6 sm:mb-0">{title}</h2>
+                <h2 className="text-24-36-700 sm:text-34-37-700 mb-4 sm:mb-0">{title}</h2>
                 <div className="flex gap-6">
                     {
                         filters.map(item => {

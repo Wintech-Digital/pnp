@@ -6,9 +6,10 @@ import MobApplePic from '@assets/images/MobApple.png';
 import MobAndroidPic from '@assets/images/MobAndroid.png';
 import appleIcon from "@assets/svg/apple.svg";
 import androidIcon from "@assets/svg/android.svg";
-import Article from "@components/article/Article.astro";
+import RichText from "@components/richtext/RichText.astro";
 
-const {data} = Astro.props;
+const {cardTitle = [], data = []} = Astro.props;
+console.log('cardTitle', cardTitle)
 const cards = data.map((item) => {
     const texts = item.texts;
     const images = item.images;
@@ -24,8 +25,12 @@ const iosCard = cards[0];
 const andriodCard = cards[1];
 ---
 
-<Article titleH1 = 'Pin Up Casino App:'>
-    <TwoColomns50 stretch>
+{!!cardTitle?.length && 
+    <RichText
+        data={cardTitle}
+    >
+}
+<TwoColomns50 stretch>
         <MobAppCard
             slot="first-col"
             icon={appleIcon}
@@ -51,13 +56,12 @@ const andriodCard = cards[1];
             description="Mergulhe numa aventura emocionante com personagens únicas e grandes prémios."
             style="green"
         >
-        <ButtonRounded
-        size="xl"
-        color={andriodCard.button.type}
-        title={andriodCard.button.name}
-        link={andriodCard.button.link}
-        className="w-full sm:w-auto"
-    />
-</MobAppCard>
+            <ButtonRounded
+                size="xl"
+                color={andriodCard.button.type}
+                title={andriodCard.button.name}
+                link={andriodCard.button.link}
+                className="w-full sm:w-auto"
+            />
+        </MobAppCard>
     </TwoColomns50>
-</Article>

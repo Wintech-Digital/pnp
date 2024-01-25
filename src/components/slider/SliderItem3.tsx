@@ -23,9 +23,9 @@ const SliderItem3 = ({ text, description, pic, link = '#', ...props }) => {
           className="w-full"
         /> 
       </div> 
-      <div className="text-24-36-600 px-[24px]">
+      <h3 className="text-24-36-600 px-[24px]">
         {text}
-      </div>
+      </h3>
       <div className="text-16-24-400 px-[24px] text-pnp/[.6]">
         {description}
       </div>

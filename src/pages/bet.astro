@@ -16,25 +16,30 @@ const dataOverviewSportBet = pageAttributes?.listsBlock;
 const dataSlider = pageAttributes?.slider;
 const dataArticle = pageAttributes?.betArticle;
 const dataSeo = pageAttributes?.seo;
+const debug = false;
+
 ---
 <Layout seo={dataSeo}>
-<!-- 1 -->
+    {debug && 1}
     <WithBottom>
         <BannerItem
             data={dataBanner}
         />
     </WithBottom>
-<!-- 2 -->
+    
+    {debug && 2}
     <BlockLists
         data={dataOverviewSportBet}
     />
-<!-- 3 -->
+
+    {debug && 3}
     <WithBottom>
         <BlockSlider
             data={dataSlider}
         />
     </WithBottom>
-<!-- 4 -->
+
+    {debug && 4}
     <WithBottom>
         <BlockArticle
             data={dataArticle}

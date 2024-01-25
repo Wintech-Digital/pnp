@@ -51,6 +51,7 @@ enum AppQueries {
     ARTICLE_1 = 'populate[appArticle][populate]=*',
     BENEFITS = 'populate[appBenefits][populate][availablegameslist][populate]=*',
     CARDS = 'populate[card][populate]=*',
+    CARDS_TITLE = 'populate[cardTitle][populate]=*',
     SEO = 'populate[seo][populate]=*',
 }
 enum TermsQueries {

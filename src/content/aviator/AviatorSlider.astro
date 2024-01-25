@@ -1,9 +1,11 @@
 ---
 import Article from "@components/article/Article.astro";
+import RichText from "@components/richtext/RichText.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import { getFields } from "@utils";
 
 const {data} = Astro.props;
+const sliderTitle = data?.sliderTitle;
 const sliderItems = data?.sliderItems;
 
 const sliderList =  sliderItems.map(item=> {
@@ -19,14 +21,23 @@ const sliderList =  sliderItems.map(item=> {
     })
 })
 ---
+
+{!!sliderTitle?.length &&
+    <RichText
+        data={sliderTitle}
+        listBullet="checked"
+        styles={{
+            h3: 'mb-2',
+            paragraph: 'mb-2' 
+        }}
+    />
+}
 <div class="overflow-hidden pt-4">
-    <Article titleH1="123 Bônus de Boas-Vindas para Jogadores de Aviator">
-        <SliderContainer
-            client:load
-            itemsNum={2}
-            noInfiniti={true}
-            list={sliderList}
-            itemComponentName="SliderItem3"
-        />
-    </Article>
+    <SliderContainer
+        client:load
+        itemsNum={2}
+        noInfiniti={true}
+        list={sliderList}
+        itemComponentName="SliderItem3"
+    />
 </div>

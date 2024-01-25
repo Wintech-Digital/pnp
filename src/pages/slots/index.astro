@@ -26,6 +26,8 @@ const dataHero = pageAttributes?.hero;
 const dataTitle = pageAttributes?.title;
 const dataSlotsDescription = pageAttributes?.slotsDescription;
 const faqData = pageAttributes?.faqBlock;
+const debug = false;
+
 ---
 <Layout seo={dataSeo}>
     { dataHero &&
@@ -34,6 +36,7 @@ const faqData = pageAttributes?.faqBlock;
         </WithBottom>
     }
 
+    {debug && 1}
     {!!dataTitle.length &&
         <WithBottom>        
             <RichText
@@ -42,11 +45,12 @@ const faqData = pageAttributes?.faqBlock;
         </WithBottom>
     }
 
-
+    {debug && 2}
     <h2 class="text-34-37-700 mb-5">
         Pin-Up Slots
     </h2>
-  
+
+    {debug && 3}
     { !!slotsSliderList.length && 
         <div class="grid gap-[30px] mb-8 mx-auto lg:mx-0 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {slotsSliderList?.map(item => {
@@ -59,7 +63,7 @@ const faqData = pageAttributes?.faqBlock;
         </div>
     }
 
-
+    {debug && 4}
     {!!dataSlotsDescription?.length && 
         <WithBottom>
           <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
@@ -80,8 +84,9 @@ const faqData = pageAttributes?.faqBlock;
             </ul>
           </section>
         </WithBottom>
-      }
+    }
     
+    {debug && 5}
     { faqData &&
         <WithBottom>
             <AccordionContainer
@@ -89,5 +94,4 @@ const faqData = pageAttributes?.faqBlock;
             />
         </WithBottom>
     }
-</Layout>  
-
+</Layout>

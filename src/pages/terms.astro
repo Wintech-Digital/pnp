@@ -38,13 +38,16 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
         description
     });
 })
+
+const debug = false;
+
 ---
 <Layout seo={dataSeo}>
-    <!-- 1 -->
+    {debug && 1}
     <TermsHero
         data={dataBanner}
     />
-    <!-- 2 -->
+    {debug && 2}
     <WithBottom>
         { (dataArticles &&  dataArticles.length) && 
             dataArticles.map(article => { 
@@ -57,7 +60,7 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
         }
     </WithBottom>
 
-<!-- 3 -->
+    {debug && 3}
     <WithBottom>
         <div class="overflow-hidden pt-4">
             <RichText
@@ -73,9 +76,9 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
         </div>
     </WithBottom>
 
+    {debug && 4}
     <WithBottom>
         <div id="centralDeAjuda"/>
-
         <TwoColomns50 reverse>
             <div slot="first-col">
                 <RichText
@@ -106,9 +109,8 @@ const termsSliderList = termsSlider.appSliderItem.map(item => {
         </TwoColomns50>
     </WithBottom>
 
-    <!-- 5 -->
+    {debug && 5}
     <TermsContacts
         data = {dataContacts}
     />
-    <!-- <TermsArticles/> -->
 </Layout>

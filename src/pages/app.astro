@@ -11,27 +11,21 @@ import { endpoints, fetchApi } from '@api/index';
 const pageAppSchema = await fetchApi({
     endpoint: endpoints.app,
 });
-const dataAppHero = pageAppSchema ? pageAppSchema['data'].attributes?.hero : null;
+const pageAttributes = pageAppSchema['data']?.attributes;
 
-const appSlider = pageAppSchema ? pageAppSchema['data'].attributes?.appSlider : null;
-// console.log('appSlider :::', appSlider)
-
-const appSlider2 = pageAppSchema ? pageAppSchema['data'].attributes?.appSlider2 : null;
-// console.log('appSlider2 :::', appSlider2)
-
-const appArticle = pageAppSchema ? pageAppSchema['data'].attributes?.appArticle : null;
-// console.log('appArticle :::', appArticle)
-
-const appBenefits = pageAppSchema ? pageAppSchema['data'].attributes?.appBenefits : null;
-// console.log('appBenefits :::', appBenefits)
-
-const card = pageAppSchema ? pageAppSchema['data'].attributes?.card : null;
-// console.log('pageAppSchema :::', card)
-
-const dataSeo = pageAppSchema ? pageAppSchema['data'].attributes?.seo : null;
+const dataAppHero = pageAttributes?.hero;
+const appSlider = pageAttributes?.appSlider;
+const appSlider2 = pageAttributes?.appSlider2;
+const appArticle = pageAttributes?.appArticle;
+const appBenefits = pageAttributes?.appBenefits;
+const cardTitle = pageAttributes?.cardTitle;
+const card = pageAttributes?.card;
+const dataSeo = pageAttributes?.seo;
 
 const { appSliderTitle, appSliderItem } = appSlider;
 const { appSliderTitle: slider2Title, appSliderItem: slider2Data } = appSlider2;
+const debug = false;
+
 ---
 <Layout seo={dataSeo}>
     <WithBottom>
@@ -39,34 +33,39 @@ const { appSliderTitle: slider2Title, appSliderItem: slider2Data } = appSlider2;
             data={dataAppHero}
         />
     </WithBottom>
-    <!-- 1 -->
+    {debug && 1}
     <WithBottom>
         <MobAppInfoSlider1
             sliderTitle = {appSliderTitle}
             sliderData={appSliderItem}
         />
     </WithBottom>
-<!-- 2 -->
+
+    {debug && 2}
     <WithBottom>
         <MobAppInfoArticle
             data = {appArticle}
         />
     </WithBottom>
 
-<!-- 3 -->
+    {debug && 3}
     <WithBottom>
         <MobAppInfoList
             data={appBenefits}
         />
     </WithBottom>
-<!-- 4 -->
 
+    {debug && 4}
     <MobAppInfoSlider2
         sliderTitle = {slider2Title}
         sliderData = {slider2Data}
     />
-<!-- 5 -->
-    <MobAppLinks
-        data={card}
-    />
+
+    {debug && 5}
+    <WithBottom>
+        <MobAppLinks
+            cardTitle={cardTitle}
+            data={card}
+        />
+    </WithBottom>
 </Layout>

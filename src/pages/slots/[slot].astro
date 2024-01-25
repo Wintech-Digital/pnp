@@ -37,6 +37,7 @@ const dataBlackRiderArticle = pageBlocks?.blackRiderArticle;
 const dataBanner = pageBlocks?.banner;
 const faqData = pageBlocks?.faqBlock;
 const dataSeo = pageBlocks?.seo;
+const debug = false;
 
 ---
 <Layout seo={dataSeo}>
@@ -45,13 +46,15 @@ const dataSeo = pageBlocks?.seo;
         <SlotHero data={dataHero}/>
       </WithBottom>
   }
-<!-- 1 -->
+
+  {debug && 1}
   { dataOfferSlider &&
         <BlockOfetas
           data={dataOfferSlider}
         />
   }
-    <!-- 2 -->
+
+  {debug && 2}
   {dataArticleMain && 
     <WithBottom>
       <SlotArticle
@@ -59,7 +62,8 @@ const dataSeo = pageBlocks?.seo;
       />
     </WithBottom>
   }
-<!-- 3 -->
+
+  {debug && 3}
   { (!!dataArticleList?.length) && 
         dataArticleList.map(article => { 
             return (
@@ -73,13 +77,15 @@ const dataSeo = pageBlocks?.seo;
             )
         })
     }
-<!-- 4 -->
-    {dataBonusSlider &&
-      <SlotBonus
-        data={dataBonusSlider}
-      />
-    }
-<!-- 5 -->
+
+  {debug && 4}
+  {dataBonusSlider &&
+    <SlotBonus
+      data={dataBonusSlider}
+    />
+  }
+
+  {debug && 5}
     {!!dataBonusList?.length && 
     <WithBottom>
       <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
@@ -102,13 +108,14 @@ const dataSeo = pageBlocks?.seo;
     </WithBottom>
   }
 
-<!-- 6 -->
-{dataBlackRiderArticle && 
-    <SlotDetailsArticle
-        data={dataBlackRiderArticle}
-    />
-}
-<!-- 7 -->
+  {debug && 6}
+  {dataBlackRiderArticle && 
+      <SlotDetailsArticle
+          data={dataBlackRiderArticle}
+      />
+  }
+
+  {debug && 7}
   {dataBanner && 
     <WithBottom>
       <BannerItem1
@@ -116,7 +123,8 @@ const dataSeo = pageBlocks?.seo;
       />
     </WithBottom>
   }
-<!-- 8 -->
+  
+  {debug && 8}
   {faqData &&
     <WithBottom>
       <AccordionContainer

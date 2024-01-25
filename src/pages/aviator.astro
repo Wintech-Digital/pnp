@@ -33,6 +33,9 @@ const imgArticle2 = dataArticle2.aviatorArticleContent.find(item=>item.type==='i
 
 const textArticle3 = dataArticle3.aviatorArticleContent.filter(item=>item.type!=='image');
 const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='image');
+
+const debug = false;
+
 ---
 <Layout seo={dataSeo}>
     <WithBottom>
@@ -42,7 +45,7 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
         />
         <!-- <AviatorHero/> -->
     </WithBottom>
-<!-- 1 -->
+    {debug && 1}
     <WithBottom>
         <RichText
             data={dataArticle1.aviatorArticleTitle}
@@ -80,7 +83,7 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
             </div>
         </TwoColomns>
     </WithBottom>
-    <!-- 2 -->
+    {debug && 2}
     <WithBottom>
         <RichText
             data={dataArticle2.aviatorArticleTitle}
@@ -88,7 +91,7 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
                 h2: 'mb-10',
             }}
         />
-        <TwoColomns50 reverse>
+        <TwoColomns50 stretch reverse>
             <div slot="first-col">
                 <RichText
                     data={textArticle2}
@@ -118,15 +121,22 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
             />
         </TwoColomns50>
     </WithBottom>
- <!-- 3 -->
+
+    {debug && 2.1}
     <WithBottom>
         <RichText
             data={dataArticle3.aviatorArticleTitle}
             styles={{
                 h2: 'mb-10',
+                list: 'my-4'
             }}
         />
-        <TwoColomns50>
+    </WithBottom>
+
+
+    {debug && 3}
+    <WithBottom>
+        <TwoColomns50 stretch>
             <div slot="second-col">
                 <RichText
                     data={textArticle3}
@@ -135,6 +145,7 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
                         h3: 'mb-2',
                         paragraph: 'mb-2' 
                     }}
+
                 />
                 <div class="flex justify-center sm:justify-start mt-10" slot="action">
                     <ButtonRounded
@@ -157,18 +168,22 @@ const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='i
                 class={'w-full border border-pnp/[.1] rounded-[40px]'}
             />
         </TwoColomns50>
+    </div>
     </WithBottom>
-<!-- 4 -->
+
+    {debug && 4}
     <AviatorSlider
         data={sliderItems}
     />
-<!-- 5 -->
+
+    {debug && 5}
     <WithBottom>
         <BannerItem1
             data={aviatorBanner}
         />
     </WithBottom>
-<!-- 6 -->
+
+    {debug && 6}
     <WithBottom>
         <AccordionContainer
             data={faqData}
