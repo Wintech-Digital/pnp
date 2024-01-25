@@ -11,6 +11,9 @@ const {
 	seo = null,
 	heroPreload = null
 } = Astro.props;
+
+const noindex = seo[0]?.noindex !== null ? seo[0]?.noindex : true; 
+const nofollow = seo[0]?.nofollow !== null ? seo[0]?.nofollow : true; 
 const structuredData = seo[0]?.structuredData;
 const mobileHero = heroPreload
 		? parseImageData(heroPreload?.coverImage?.data, 'mobile')
@@ -24,9 +27,9 @@ if (mobileHero) {
     format: 'webp',
   });
 }
-
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
+
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
@@ -40,9 +43,15 @@ const dataControls = controls['data']?.attributes;
 			}) 
 		}
 
+		<!-- SEO start -->
 		{seo[0]?.metaData && 
-			<SEO {...seo[0]?.metaData} />
+			<SEO 
+				noindex = {noindex}
+				nofollow = {nofollow}
+				{...seo[0]?.metaData}
+			/>
 		}
+		<!-- SEO end -->
 
 		<link
 			rel="icon"

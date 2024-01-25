@@ -82,7 +82,7 @@ const ButtonRounded = ({ ...props }: Props) => {
       href={getLink(rest.link)}
     >
 
-      <span className="text-pnp text-nowrap">{rest.link}-{title}</span>
+      <span className="text-pnp text-nowrap">{title}</span>
       {rest?.children && <span className="text-pnp">{rest?.children}</span>}
     </a>
   );
