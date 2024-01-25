@@ -24,27 +24,13 @@ const hover = `gr-red-green-coner hover:gr-red-green-coner`;
 const border = `border border-pnp/[.1]`;
 const rounded = `rounded-[32px] md:rounded-[48px]`;
 const common = `overflow-hidden box-shadow-1 ${rounded} ${bg} ${border}`;
+const bgMobilePos = 'bg-[position:_left_-180px_top_-100px,_left_-150px_bottom_0px,_right_-120px_top_-100px,_right_-200px_bottom_0px]'
+const bgDesktopPos = 'sm:bg-[position:_left_-50px_top_0,_left_0px_bottom_0px,_right_0px_top_0px,_right_0px_bottom_0px]'
 ---
 <div
-    class=`hidden sm:block ${common}`
+    class=`${common} bg-no-repeat ${bgMobilePos} ${bgDesktopPos}`
     style={`
-        background-repeat: no-repeat;
         background-image: url(${ltDesktopBg.src}), url(${lbDesktopBg.src}),  url(${rtDesktopBg.src}), url(${rbDesktopBg.src});
-        background-position: -50px 0, 0 100%, 100% 0, 100% 100%;
-    `}
->
-    <div class=`${hover} px-4 py-4  w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>
-        <slot/>
-    </div>
-</div>
-
-<div
-    class=`block sm:hidden ${common}`
-    style={`
-        background-repeat: no-repeat;
-        background-image: url(${ltMobileBg.src}), url(${lbMobileBg.src}),  url(${rtMobileBg.src}), url(${rbMobileBg.src});
-        background-position: -10% 0, 0 100%, 100% -10%, 105% 105%;
-        background-repeat: no-repeat;
     `}
 >
     <div class=`${hover} px-4 py-4  w-full h-full flex flex-col gap-2 md:gap-4 items-center justify-center text-center`>

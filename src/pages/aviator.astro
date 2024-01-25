@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Layout from '@layout/Layout.astro';
 import Hero from '@components/hero/Hero.astro';
 import AviatorSlider from '@content/aviator/AviatorSlider.astro';
-import BannerItem1 from "@components/banner/BannerItem1.astro";
+import BannerAviator from "@components/banner/BannerAviator.astro";
 import WithBottom from '@components/spaces/WithBottom.astro';
 import ButtonRounded from '@components/buttons/ButtonRounded';
 import TwoColomns from '@components/sections/TwoColomns.astro';
@@ -178,7 +178,7 @@ const debug = false;
 
     {debug && 5}
     <WithBottom>
-        <BannerItem1
+        <BannerAviator
             data={aviatorBanner}
         />
     </WithBottom>

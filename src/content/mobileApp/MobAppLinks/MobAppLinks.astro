@@ -9,7 +9,6 @@ import androidIcon from "@assets/svg/android.svg";
 import RichText from "@components/richtext/RichText.astro";
 
 const {cardTitle = [], data = []} = Astro.props;
-console.log('cardTitle', cardTitle)
 const cards = data.map((item) => {
     const texts = item.texts;
     const images = item.images;
