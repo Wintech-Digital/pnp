@@ -36,12 +36,12 @@ const dataControls = controls['data']?.attributes;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<!-- {!!structuredData?.length !==null &&
+		{!!structuredData?.length !==null &&
 			structuredData.map(item => {
 				const jsonLd = JSON.stringify(item.structuredItem);
 				return <script type="application/ld+json" set:html={jsonLd}></script>
 			}) 
-		} -->
+		}
 
 		<!-- SEO start -->
 		{seo[0]?.metaData && 
