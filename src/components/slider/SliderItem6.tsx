@@ -26,9 +26,9 @@ const SliderItem6: FC<Props> = ({ text, pic, description }) => {
         </div>
       </div>
 
-      <div className="text-28-34-700 text-pnp mb-4">
+      <h3 className="text-28-34-700 text-pnp mb-4">
         {text}
-      </div>
+      </h3>
       <div className="text-16-24-400 text-pnp-grey20">
         {description}
       </div>

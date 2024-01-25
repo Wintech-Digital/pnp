@@ -54,7 +54,7 @@ const AccordionCustomStyles: FC<Props> = ({ data }) => {
         <AccordionItem
           key={`${index}`}
           aria-label={`acc${index}`}
-          title={item.title}
+          title={<h3>{item.title}</h3>}
           indicator={({ isOpen }) => ( <Icon open={isOpen}/> )}
         >
           {item?.body?.map((bItem, ind)=>(
