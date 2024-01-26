@@ -3,30 +3,15 @@ import Header from '@components/header/Header';
 import Footer from '@components/footer/Footer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import { ViewTransitions } from 'astro:transitions';
-import { getImage } from "astro:assets";
 import { endpoints, fetchApi } from '@api/index';
-import { parseImageData } from '@utils';
 import { SEO } from "astro-seo";
 const {
 	seo = null,
-	heroPreload = null
 } = Astro.props;
 
 const noindex = seo[0]?.noindex !== null ? seo[0]?.noindex : true; 
 const nofollow = seo[0]?.nofollow !== null ? seo[0]?.nofollow : true; 
 const structuredData = seo[0]?.structuredData;
-const mobileHero = heroPreload
-		? parseImageData(heroPreload?.coverImage?.data, 'mobile')
-		: null;
-let optimizedImage = null;
-if (mobileHero) {
-  optimizedImage = await getImage({
-    src: mobileHero.url,
-    width: mobileHero.w / 1.6,
-	height: mobileHero.h / 1.6,
-    format: 'webp',
-  });
-}
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
 
@@ -65,9 +50,6 @@ const dataControls = controls['data']?.attributes;
 			sizes="32x32"
 			href="/images/favicon-pinup-300x300.webp"
 		/>
-		{ optimizedImage !== null && 
-			<link rel="preload" href={optimizedImage?.src} as="image"/>
-		}
 		<ViewTransitions />
 		<style>
 			html, body {
