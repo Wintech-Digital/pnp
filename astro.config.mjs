@@ -10,8 +10,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   output: 'static',
-
-  site: 'https://pnp-a5kn.vercel.app',
+  trailingSlash: 'never',
+  site: 'https://pinupcasinobonus.com.br',
   integrations: [
     react(),
     tailwind(),
