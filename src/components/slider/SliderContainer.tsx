@@ -70,10 +70,10 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
         <div className='relative'>
             { !isMobile && (<ButtonSliderHidden/>)}
             <Carousel
-                containerClass=""
-                className="aaaa !overflow-visible pb-[32px]"
-                sliderClass="ulllll"
-                itemClass="liiii mb-4 mr-4"
+                containerClass="-ml-4 -mr-[15px]"
+                className="!overflow-visible pb-[32px]"
+                sliderClass=""
+                itemClass="px-4 mb-4"
                 dotListClass=""
                 customLeftArrow={<CustomButton arrow='left'/>}
                 customRightArrow={<CustomButton arrow='right'/>}
@@ -122,8 +122,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                             max: 430,
                             min: 0
                         },
-                        items: 1,
-                        partialVisibilityGutter: 0
+                        items: 1.3,
                     },
                 }}
             >
