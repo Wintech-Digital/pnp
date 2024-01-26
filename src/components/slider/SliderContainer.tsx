@@ -122,7 +122,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                             max: 430,
                             min: 0
                         },
-                        items: 1.3,
+                        items: 1,
                         // partialVisibilityGutter: 30
                     },
                 }}
