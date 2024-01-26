@@ -73,7 +73,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                 containerClass=""
                 className="aaaa !overflow-visible pb-[32px]"
                 sliderClass="ulllll"
-                itemClass="liiii px-4 mb-4 mr-4"
+                itemClass="liiii mb-4 mr-4"
                 dotListClass=""
                 customLeftArrow={<CustomButton arrow='left'/>}
                 customRightArrow={<CustomButton arrow='right'/>}
@@ -87,7 +87,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                 infinite={!noInfiniti}
 
                 rewind={true}
-                focusOnSelect={false}
+                focusOnSelect={true}
                 renderDotsOutside={false}
                 rewindWithAnimation={false}
                 renderArrowsWhenDisabled={false}
@@ -107,7 +107,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                             min: 1024
                         },
                         items: itemsNum || 3,
-                        // partialVisibilityGutter: 0,
+                        partialVisibilityGutter: 0,
                     },
                     tablet: {
                         breakpoint: {
@@ -115,7 +115,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                             min: 431
                         },
                         items: 2,
-                    //     partialVisibilityGutter: 30
+                        partialVisibilityGutter: 0
                     },
                     mobile: {
                         breakpoint: {
@@ -123,7 +123,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                             min: 0
                         },
                         items: 1,
-                        // partialVisibilityGutter: 30
+                        partialVisibilityGutter: 0
                     },
                 }}
             >
