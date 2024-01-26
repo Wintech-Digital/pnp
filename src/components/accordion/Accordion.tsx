@@ -54,13 +54,13 @@ const AccordionCustomStyles: FC<Props> = ({ data }) => {
         <AccordionItem
           key={`${index}`}
           aria-label={`acc${index}`}
-          title={<h3>{item.title}</h3>}
+          title={item.title}
           indicator={({ isOpen }) => ( <Icon open={isOpen}/> )}
         >
           {item?.body?.map((bItem, ind)=>(
-            <p key={`${index}-${ind}`} className={`${ind!==0?'mt-4':'mt-0'}`}>
+            <h3 key={`${index}-${ind}`} className={`${ind!==0?'mt-4':'mt-0'}`}>
               {bItem}
-            </p>
+            </h3>
           ))}
         </AccordionItem>
       ))}
