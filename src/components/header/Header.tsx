@@ -25,14 +25,32 @@ const Header = ({data}) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const slotsPages = await fetchApi({ endpoint: endpoints.slots });
-      const slotsList = slotsPages['data'].map(item => item.attributes);
+      // Check if the data is already in local storage
+      const storedData = localStorage.getItem('slotsData');
+      
+      let slotsList = [];
+  
+      if (storedData) {
+        // If data is in local storage, parse it and use that
+        slotsList = JSON.parse(storedData);
+      } else {
+        // Data is not in local storage, fetch it from the API
+        const slotsPages = await fetchApi({ endpoint: endpoints.slots });
+        slotsList = slotsPages['data'].map(item => item.attributes);
+        
+        // Store the fetched data in local storage for future use
+        localStorage.setItem('slotsData', JSON.stringify(slotsList));
+      }
+  
+      // Set your state with either the fetched data or the data from local storage
       setNestedMenu({
         slots: slotsList,
       });
     }
+  
     fetchData();
-  },[]);
+  }, []);
+  
 
   return (
     <header>
