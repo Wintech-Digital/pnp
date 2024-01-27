@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import type { GetImageResult } from 'astro';
+import { useEffect, useState, useRef } from 'react';
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import SliderItem from '@components/slider/SliderItem';
@@ -12,7 +11,8 @@ import SliderItem7Info from '@components/slider/SliderItem7Info';
 import SliderItem8 from '@components/slider/SliderItem8';
 import SliderItem9 from '@components/slider/SliderItem9';
 import ButtonSliderHidden from '@components/buttons/ButtonSliderHidden';
-import {CustomButton} from '@components/buttons/ButtonSlider';
+import { CustomButton } from '@components/buttons/ButtonSlider';
+import type { GetImageResult } from 'astro';
 
 const componentMapping = {
     SliderItem,
@@ -24,7 +24,7 @@ const componentMapping = {
     SliderItem7Info,
     SliderItem8,
     SliderItem9,
-}
+};
 
 interface ListProps {
     text: string;
@@ -32,43 +32,49 @@ interface ListProps {
     description?: string;
     bgHoverStyle?: string;
 }
-// interface Props {
-//     list: ListProps[];
-//     itemComponentName: string;
 
-//     itemsNum?: number; 
-//     noShadow?: boolean | undefined;
-//     noInfiniti?: boolean | undefined;
-//     children?: any;
-//     img0: any;
-//     img1: any;
-// }
-
-//: FC<Props>
-const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, list, itemComponentName}) => {
+const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, list, itemComponentName }) => {
     const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
-    useEffect(()=>{
-        if(window){
-            const isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
+    const carouselRef = useRef(null);
+
+    useEffect(() => {
+        if (window) {
+            const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
             setIsMobile(isMobileDevice);
         }
-    },[]);
-    if(isMobile === undefined){
+        adjustTabIndex(); // Adjust tabIndex when the component mounts or updates
+    }, [isMobile]); // Dependency array; add other dependencies as necessary
+
+    // Define the function to adjust tabIndex for interactive elements
+    const adjustTabIndex = () => {
+        setTimeout(() => {
+            carouselRef.current.querySelectorAll('.react-multi-carousel-item').forEach(item => {
+                // Assuming .react-multi-carousel-item--active indicates the currently visible slide
+                const isActive = item.classList.contains('react-multi-carousel-item--active');
+                item.querySelectorAll('a, button, input, textarea, select, [tabindex]').forEach(el => {
+                    el.tabIndex = isActive ? '0' : '-1';
+                });
+            });
+        }, 100); // A slight delay to ensure the DOM has updated
+    };
+
+    if (isMobile === undefined) {
         return null;
     }
-    const sliders = list.map((item, index) => {
+
+    const sliderComponents = list.map((item, index) => {
         const Component = componentMapping[itemComponentName];
         return (
-            <div key={index} className={`h-full ${ !noShadow ? 'shadow-1' : '' } rounded-[24px]`}>
-                <Component ind={index} {...item}/>
+            <div key={index} className={`h-full ${!noShadow ? 'shadow-1' : ''} rounded-[24px]`}>
+                <Component ind={index} {...item} />
             </div>
-        )
+        );
     });
 
-    // const isInfinity = !isMobile && noInfiniti ? false : !isMobile;
+    // Carousel component with all configured props
     return (
-        <div className='relative'>
-            { !isMobile && (<ButtonSliderHidden/>)}
+        <div className='relative' ref={carouselRef}>
+            {!isMobile && (<ButtonSliderHidden />)}
             <Carousel
                 containerClass="-ml-4 -mr-[15px]"
                 className="!overflow-visible pb-[32px]"
@@ -85,7 +91,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                 pauseOnHover
 
                 infinite={!noInfiniti}
-
+                
                 rewind={true}
                 focusOnSelect={true}
                 renderDotsOutside={false}
@@ -106,7 +112,7 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                             max: 3000,
                             min: 1024
                         },
-                        items: itemsNum || 3,
+                        items: itemsNum || 3, // Adjusted to use the provided itemsNum or default to 3
                         partialVisibilityGutter: 0,
                     },
                     tablet: {
@@ -126,10 +132,10 @@ const BlockHeroSlider = ({itemsNum = 3, noShadow = false, noInfiniti = false, li
                     },
                 }}
             >
-                { sliders }
+                {sliderComponents}
             </Carousel>
-        </div>        
+        </div>
     );
-}
+};
 
 export default BlockHeroSlider;
