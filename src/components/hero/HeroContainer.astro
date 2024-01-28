@@ -40,7 +40,6 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
                 src={pictureD.url}
                 width={pictureD.w}
                 height={pictureD.h}
-                quality={'mid'}
                 loading="eager"
                 alt={pictureD.alternativeText || ''} 
                 class={`hero-img hidden sm:block w-full`}
@@ -63,8 +62,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
         { pictureM ? pictureM.format !== '.webp' 
             ?  <Image
                 src={pictureM.url}
-                width={pictureM.w/2}
-                height={pictureM.h/2}
+                width={pictureM.w}
+                height={pictureM.h}
                 loading="eager"
                 format='webp'
                 alt={pictureM.alternativeText || ''}
