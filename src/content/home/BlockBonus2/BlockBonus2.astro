@@ -1,17 +1,28 @@
 ---
 import SliderContainer from "@components/slider/SliderContainer";
 import { getFields } from "@utils";
+import slideimg1 from '@assets/images/slides/promo/promotions-card-1.webp';
+import slideimg2 from '@assets/images/slides/promo/promotions-card-2.webp';
+import slideimg3 from '@assets/images/slides/promo/promotions-card-3.webp';
 
 const {data} = Astro.props;
 const title = data?.title;
 const slider = data?.slider3;
-const promotionsList = slider.map(item => {
+const slidesList = [ slideimg1, slideimg2, slideimg3 ];
+const promotionsList = slider.map((item,index) => {
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    const pic = {
+        url: slidesList[index].src,
+        alternativeText: picinfo.alternativeText,
+        w: 434,
+        h: 240,
+    }
     return ({
         text: item?.title || '',
         buttonName: item?.buttonName || '',
         description: item?.description || '',
         link: item?.url || '#',
-        pic: getFields(item?.coverImage.data?.attributes) || null,
+        pic,
     })
 });
 ---

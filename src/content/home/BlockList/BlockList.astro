@@ -1,10 +1,17 @@
 ---
-import { STRAPI_URL } from "@constants";
 import RichText from "@components/richtext/RichText.astro";
+import { Image } from 'astro:assets';
+import { getFields } from "@utils";
+import imgicon1 from '@assets/images/slides/icons/icon777-1.svg';
+import imgicon2 from '@assets/images/slides/icons/icon777-2.svg';
+import imgicon3 from '@assets/images/slides/icons/icon777-3.png';
+import imgicon4 from '@assets/images/slides/icons/icon777-4.svg';
 
 const {data} = Astro.props;
 const availablegamestitle = data?.availablegamestitle;
 const availablegameslist = data?.availablegameslist;
+const iconsList = [imgicon1, imgicon2, imgicon3, imgicon4];
+
 ---
 <RichText
     data={availablegamestitle}
@@ -13,22 +20,20 @@ const availablegameslist = data?.availablegameslist;
 <section class="bg-pnp/[.03] border border-pnp/[.1] relative rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
     <ul class="flex flex-col gap-[24px]">
         {
-            availablegameslist.map(item=>{
-                const isImage = item.coverImage.data
-                const imageAttributes = isImage.attributes;
-                const icon = isImage ? `${STRAPI_URL}${imageAttributes.url}` : ''; 
+            availablegameslist.map((item, index)=>{
+                const picinfo = getFields(item?.coverImage?.data?.attributes);
                 return (
                     <li class="flex flex-col sm:flex-row gap-4 border-t border-[#ffffff]/[.2] pt-4 first:border-t-0 first:pt-0">
                         <div class="relative bg-pnp-black/[.2] flex items-center justify-center h-[100px] w-[100px] min-w-[100px] rounded-full">
-                            <img
-                                src={icon}
-                                width={imageAttributes.width}
-                                height={imageAttributes.height}
+                            <Image
+                                src={iconsList[index]}
+                                width={picinfo.w}
+                                height={picinfo.h}
                                 loading="lazy"
-                                alt=""
+                                alt={picinfo.alternativeText || ''} 
                                 class="z-10"
-                            />    
-                        </div>
+                            />
+                            </div>
                         <div>
                             <RichText
                                 data={item.description}

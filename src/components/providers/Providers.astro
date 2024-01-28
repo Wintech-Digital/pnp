@@ -1,34 +1,25 @@
 ---
-/**
-    const providersName = ['bitcoin', 'mastercard', 'neteller'];
-    const images = {
-    'mastercard': () => import('/src/assets/svg/mastercard.svg'),
-    'neteller': () => import('/src/assets/svg/neteller.svg'),
-    'bitcoin': () => import('/src/assets/svg/bitcoin.svg'),
-    };
-
-Get all SVG files:
-   const providersList = providersName.map(item=> ({alt: item, key: `/src/assets/svg/${item}.svg`}));
-   const images = await import.meta.glob('/src/assets/svg/*.svg');
-*/
-
-import { STRAPI_URL } from '@constants';
+import { getFields } from '@utils';
+import neteller from '/src/assets/svg/neteller.svg';
+import visa from '/src/assets/svg/visa.svg';
+import paypal from '/src/assets/svg/paypal.svg';
+import mastercard from '/src/assets/svg/mastercard.svg';
+import bitcoin from '/src/assets/svg/bitcoin.svg';
+import skrill from '/src/assets/svg/skrill.svg';
 const {data} = Astro.props;
+const slidesList = [neteller, visa, paypal, mastercard, bitcoin, skrill];
 ---
 <div class="mt-6 grid gap-x-4 gap-y-4 grid-cols-2 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 lg:mx-0 lg:grid-cols-6">
-    {data.map(item => {
-        const coverImage = item.coverImage?.data;
-        const imgUrl = coverImage ? `${STRAPI_URL}${coverImage.attributes.url}` : '';
-        const h = "25";
-        const w = coverImage.attributes.width;
+    {data.map((item,index) => {
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
         return (
             <div class='flex justify-center items-center px-8 py-8 h-[120px] rounded-[24px] bg-pnp/[.05]'>
                 <img 
-                    src={imgUrl}
-                    width={w}
-                    height={h}
+                    src={slidesList[index].src}
+                    width={picinfo.w}
+                    height={picinfo.h}
                     loading="lazy"
-                    alt=''
+                    alt={picinfo.alternativeText || ''}
                 />
             </div>
         )

@@ -5,6 +5,11 @@ import RichText from '@components/richtext/RichText.astro';
 import Table from "@components/table/TableDynamic.astro";
 import { getFields } from "@utils";
 
+import slideimg1 from '@assets/images/slides/guide/image-1.webp';
+import slideimg2 from '@assets/images/slides/guide/image-2.webp';
+import slideimg3 from '@assets/images/slides/guide/image-3.webp';
+import slideimg4 from '@assets/images/slides/guide/image-4.webp';
+
 const gridList = 'sm:grid sm:gap-6 sm:grid-cols-2 md:gap-6 md:grid-cols-3 lg:gap-6 lg:grid-cols-3 xl:gap-6 xl:grid-cols-4';
 const flexList = 'flex flex-row overflow-x-scroll gap-4';
 
@@ -13,11 +18,19 @@ const guidesteps = data?.guidesteps;
 const guidetitle = data?.guidetitle;
 const guideslider = data?.guideslider;
 const guidetable = data?.guidetable;
-const sliderData = guideslider.map(item=>{
+const slidesList = [ slideimg1, slideimg2, slideimg3, slideimg4, slideimg1, slideimg2, slideimg3, slideimg4 ];
+const sliderData = guideslider.map((item, index)=>{
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    const pic = {
+        url: slidesList[index].src,
+        alternativeText: picinfo.alternativeText,
+        w: 269,
+        h: 171,
+    }
     return({
         text: item?.title || '',
         description: item?.description || '',
-        pic: getFields(item?.coverImage?.data?.attributes) || ''
+        pic
     })
 })
 ---
