@@ -1,7 +1,8 @@
 ---
-import Hero from '@components/hero/Hero.astro';
-import Layout from '@layout/Layout.astro';
 import Section from '@components/accordion/AccordionSection.astro';
+
+import Layout from '@layout/Layout.astro';
+import Hero from '@components/hero/Hero.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
 import BannerItem1 from "@components/banner/BannerItem1.astro";
 
@@ -54,98 +55,70 @@ const debug = false;
         />
     </WithBottom>
 
-    {debug && 1}
-    <div class="block sm:hidden">
-        <BlockOfetas
-            data={dataOfferSlider}
-        />
-    </div>
+    <!-- Only render if dataOfferSlider has data (Conditional Rendering) -->
+    {dataOfferSlider && (
+        <div class="block sm:hidden">
+            <!-- Lazy loading would be implemented here if applicable -->
+            <BlockOfetas data={dataOfferSlider} />
+        </div>
+    )}
 
-    {debug && 2}
-    <BlockSlotsList
-        data={dataSlotsList}
-    />
+    <!-- The rest of your components defaulted to being shown as usual -->
+    <BlockSlotsList data={dataSlotsList} />
 
-    {debug && 3}
-    <BlockConciseFormat
-        data={articleAnalises}
-    />
+    <BlockConciseFormat data={articleAnalises} />
 
-    {debug && 4}
     <WithBottom>
-        <BlockCasinoInfo
-            data={slider2}
-        />
+        <BlockCasinoInfo data={slider2} />
     </WithBottom>
 
-    {debug && 5}
-    <BlockBonus
-        data={bonuses}
-        bonusDescription={bonusDescription}
-    />
+    <!-- Only render if bonuses has data -->
+    {bonuses && (
+        <BlockBonus data={bonuses} bonusDescription={bonusDescription} />
+    )}
 
-    {debug && 6}
-    <BlockBonus2
-        data={promotions}
-    />
+    <!-- Only render if promotions has data -->
+    {promotions && (
+        <BlockBonus2 data={promotions} />
+    )}
 
-    {debug && 7}
     <WithBottom>
-        <BlockCasinoInfo2
-            data={guide}
-        />
-    </WithBottom>    
-
-    {debug && 8}
-    <WithBottom>
-        <BlockCasinoProviders
-            data={payment}
-        />
+        <BlockCasinoInfo2 data={guide} />
     </WithBottom>
 
-   {debug && 9}
-   <WithBottom>
-        <BlockList
-            data={availablegames}
-        />
-    </WithBottom>
-
-    {debug && 10}
     <WithBottom>
-        <BlockInfo2
-            data={appadvantages}
-        />
+        <BlockCasinoProviders data={payment} />
     </WithBottom>
 
-    {debug && 11}
+    <WithBottom>
+        <BlockList data={availablegames} />
+    </WithBottom>
+
+    <WithBottom>
+        <BlockInfo2 data={appadvantages} />
+    </WithBottom>
+
+    <!-- Only render if banner has data. Similar conditional check can be applied as needed -->
+    {banner && (
+        <div class="mb-[32px]">
+            <BannerItem1 data={banner} />
+        </div>
+    )}
+
+    <BlockInfo3 data={strategies} />
+
     <div class="mb-[32px]">
-        <BannerItem1
-            data={banner}
-        />
-    </div>
-     
-    {debug && 12}
-    <BlockInfo3
-        data={strategies}
-    />
-    
-    {debug && 13}
-    <div class="mb-[32px]">
-        <BlockSuporte
-            data={support}
-        />
+        <BlockSuporte data={support} />
     </div>
 
-    {debug && 14}
     <WithBottom>
-        <Section
-            data={infoSection}
-        />
+        <Section data={infoSection} />
     </WithBottom>
 
-    <WithBottom>
-        <AccordionContainer
-            data={faqData}
-        />
-    </WithBottom>
+    <!-- Only render if faqData has data -->
+    {faqData && (
+        <WithBottom>
+            <AccordionContainer data={faqData} />
+        </WithBottom>
+    )}
 </Layout>
