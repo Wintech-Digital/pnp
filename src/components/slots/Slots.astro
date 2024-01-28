@@ -21,11 +21,10 @@ const {list} = Astro.props;
                     { coverImage?.format !== '.webp' 
                         ? <Image
                             src={coverImage?.url}
-                            width={coverImage?.w/2}
-                            height={coverImage?.h/2}
+                            width={coverImage?.w}
+                            height={coverImage?.h}
                             loading="lazy"
                             format="webp"
-                            quality={'mid'}
                             alt={coverImage?.alternativeText}
                             class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
                             />
