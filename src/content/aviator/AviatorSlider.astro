@@ -1,23 +1,32 @@
 ---
-import Article from "@components/article/Article.astro";
 import RichText from "@components/richtext/RichText.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import { getFields } from "@utils";
+import slideavi1 from '@assets/images/slides/aviator/avi-slider-1.webp';
+import slideavi2 from '@assets/images/slides/aviator/avi-slider-2.webp';
+const slideList = [slideavi1, slideavi2];
 
 const {data} = Astro.props;
 const sliderTitle = data?.sliderTitle;
 const sliderItems = data?.sliderItems;
 
-const sliderList =  sliderItems.map(item=> {
+const sliderList =  sliderItems.map((item,index)=> {
     const text = item?.title || '';
     const description = item.description || '';
     const link = item.url;
 
+    const picinfo = getFields(item?.coverImage?.data?.attributes)
     return ({
         text,
         link,
         description,
-        pic: getFields(item?.coverImage?.data?.attributes),
+        pic:{
+            url: slideList[index].src,
+            w: picinfo.w,
+            h: picinfo.h,
+            alternativeText: picinfo.alternativeText
+
+        }
     })
 })
 ---

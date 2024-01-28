@@ -5,6 +5,7 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import { ViewTransitions } from 'astro:transitions';
 import { endpoints, fetchApi } from '@api/index';
 import { SEO } from "astro-seo";
+
 const {
 	seo = null,
 } = Astro.props;
@@ -28,7 +29,8 @@ const isNoFollow = getSeoData(seo, 'nofollow');
 const isMetaData = getSeoData( Astro.url.pathname !== '/404' ? seo : metaData404, 'metaData');
 const isStructuredData = getSeoData(seo, 'structuredData');
 const noindex = isNoIndex !== null ? isNoIndex : true;
-const nofollow = isNoFollow !== null ? isNoFollow : true; 
+const nofollow = isNoFollow !== null ? isNoFollow : true;
+
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>

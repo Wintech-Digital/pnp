@@ -12,11 +12,11 @@ const hero404MBg = await getImage({src: hero404M, format: 'webp'})
 const hero404DBg = await getImage({src: hero404D, format: 'webp'})
 const heroDefaultMBg = await getImage({src: heroDefaultM, format: 'webp'})
 
-const { pathname } = Astro.url;
+const metaData404 = [{metaData:{
+	title: "404 - Página não encontrada.",
+	description : "Esta página não foi localizada ou foi removida ᐉ Dirija-se à página inicial."
+}}];
 
-if (pathname !== '/404') {
-  return Astro.redirect('/404');
-}
 ---
 <Layout>
     <WithBottom>
