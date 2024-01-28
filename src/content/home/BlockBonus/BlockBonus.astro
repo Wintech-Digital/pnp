@@ -3,16 +3,28 @@ import { getFields } from "@utils";
 import SliderContainer from "@components/slider/SliderContainer";
 import RichText from "@components/richtext/RichText.astro";
 import WithBottom from "@components/spaces/WithBottom.astro";
+import slideimg1 from '@assets/images/slides/homeBonuses/bonus-frame-1.webp';
+import slideimg2 from '@assets/images/slides/homeBonuses/bonus-frame-2.webp';
+import slideimg3 from '@assets/images/slides/homeBonuses/bonus-frame-3.webp';
 
 const {data, bonusDescription}=Astro.props;
 const title = data?.bonusSliderTitle;
 const bonusItem = data?.bonusItem;
-const sliderBonusesList = bonusItem?.map((item)=>{
+const slidesList = [ slideimg1, slideimg2, slideimg3 ];
+const sliderBonusesList = bonusItem?.map((item, index)=>{
+  const picinfo = getFields(item?.imageCover?.data?.attributes);
+    const pic = {
+        url: slidesList[index].src,
+        alternativeText: picinfo.alternativeText,
+        w: 434,
+        h: 164,
+        format: '.svg'
+    }
+
     return({
         text: item?.title || '',
         description: item?.description || '',
-        imageLink: item?.imageLink || '#',
-        imageData: getFields(item?.imageCover?.data?.attributes),
+        imageData: pic,
         buttons: item?.buttons || []
     })
 });
