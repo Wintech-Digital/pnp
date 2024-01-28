@@ -16,23 +16,24 @@ export function getFields(data){
     }
     return null;
 }
-type Tkey = 'mobile' | 'desktop' | 'card' | null;
-export function parseImageData(data, key:Tkey = null){
-    if(!data) return null;
 
-    if(key){
-        const imageByKey = data.find(item => {
-            return item.attributes.caption === key;
-        });
+type Tkey = 'mobile' | 'desktop' | 'mobile-hd' | 'desktop-hd' | 'card' | null;
 
-        return (
-            imageByKey ? getFields(imageByKey.attributes) : null
-        );
+export function parseImageData(data, key: Tkey = null, isHD = false) {
+    if (!data) return null;
+
+    let adjustedKey = key as Tkey | string; // Temporarily bypassing strict type checking
+    
+    if (key && isHD && !key.includes('-hd')) {
+        adjustedKey = `${key}-hd`; // TypeScript will allow this now
     }
 
-    return (
-        data.map(item => getFields(item.attributes))
-    );
+    if (adjustedKey) {
+        const imageByKey = data.find(item => item.attributes.caption === adjustedKey);
+        return imageByKey ? getFields(imageByKey.attributes) : null;
+    }
+
+    return data.map(item => getFields(item.attributes));
 }
 
 // data = [
