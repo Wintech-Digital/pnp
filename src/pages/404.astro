@@ -14,11 +14,12 @@ const heroDefaultMBg = await getImage({src: heroDefaultM, format: 'webp'})
 
 const metaData404 = [{metaData:{
 	title: "404 - Página não encontrada.",
+    canonical: 'https://pinupcasinobonus.com.br/404/',
 	description : "Esta página não foi localizada ou foi removida ᐉ Dirija-se à página inicial."
 }}];
 
 ---
-<Layout>
+<Layout seo={metaData404}>
     <WithBottom>
     <HeroContainer
         pictures={[
