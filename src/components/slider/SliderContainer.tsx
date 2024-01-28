@@ -48,14 +48,15 @@ const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, l
     // Define the function to adjust tabIndex for interactive elements
     const adjustTabIndex = () => {
         setTimeout(() => {
-            carouselRef.current.querySelectorAll('.react-multi-carousel-item').forEach(item => {
-                // Assuming .react-multi-carousel-item--active indicates the currently visible slide
-                const isActive = item.classList.contains('react-multi-carousel-item--active');
-                item.querySelectorAll('a, button, input, textarea, select, [tabindex]').forEach(el => {
-                    el.tabIndex = isActive ? '0' : '-1';
+            if (carouselRef.current) {
+                carouselRef.current.querySelectorAll('.react-multi-carousel-item').forEach(item => {
+                    const isActive = item.classList.contains('react-multi-carousel-item--active');
+                    item.querySelectorAll('a, button, input, textarea, select, [tabindex]').forEach(el => {
+                        el.tabIndex = isActive ? '0' : '-1';
+                    });
                 });
-            });
-        }, 100); // A slight delay to ensure the DOM has updated
+            }
+        }, 100);
     };
 
     if (isMobile === undefined) {
