@@ -4,6 +4,7 @@ export const TERMS_URL = '/terms';
 export const STRAPI_URL = 'https://strapi.wtech.co';
 
 export enum PageId {
+    PAGE_404 = '404',
     HOME = 'home',
     APP = 'app',
     AVIATOR='aviator', 
@@ -34,6 +35,7 @@ export enum PageId {
 export type TPageIdValue =`${PageId}`;
 
 export enum PageName {
+    PAGE_404 = '404',
     HOME = 'Home',
     APP = 'Aplicativo',
     AVIATOR='Aviator', 
@@ -67,6 +69,11 @@ export const pagePreferencies = {
         id: PageId.HOME,
         name: PageName.HOME,
         url: `${BASE_URL}`
+    },
+    [PageId.PAGE_404]: {
+        id: PageId.PAGE_404,
+        name: PageName.PAGE_404,
+        url: `${BASE_URL}/404`
     },
     [PageId.APP]: {
         id: PageId.APP,

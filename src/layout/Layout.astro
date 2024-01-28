@@ -18,13 +18,17 @@ function getSeoData(seoData, key){
 
 	return seoData[0][`${key}`];
 }
+
+const metaData404 = [{metaData:{
+	title: "404 - Página não encontrada.",
+	description : "Esta página não foi localizada ou foi removida ᐉ Dirija-se à página inicial."
+}}];
 const isNoIndex = getSeoData(seo, 'noindex');
 const isNoFollow = getSeoData(seo, 'nofollow');
-const isMertaData = getSeoData(seo, 'metaData');
+const isMetaData = getSeoData( Astro.url.pathname !== '/404' ? seo : metaData404, 'metaData');
 const isStructuredData = getSeoData(seo, 'structuredData');
 const noindex = isNoIndex !== null ? isNoIndex : true;
 const nofollow = isNoFollow !== null ? isNoFollow : true; 
-
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
 	<head>
@@ -41,11 +45,11 @@ const nofollow = isNoFollow !== null ? isNoFollow : true;
 		<!-- schema start -->
 
 		<!-- SEO start -->
-		{isMertaData && 
+		{isMetaData && 
 			<SEO 
 				noindex = {noindex}
 				nofollow = {nofollow}
-				{...isMertaData}
+				{...isMetaData}
 			/>
 		}
 		<!-- SEO end -->
