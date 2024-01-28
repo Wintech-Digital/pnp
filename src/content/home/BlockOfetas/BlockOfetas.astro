@@ -1,20 +1,31 @@
 ---
 import RichText from "@components/richtext/RichText.astro";
 import SliderContainer from "@components/slider/SliderContainer";
-import { getFields } from "@utils";
+import slideimg1 from '@assets/images/slides/ofertas/pro-special-offer-1-min.svg';
+import slideimg2 from '@assets/images/slides/ofertas/pro-special-offer-2-min.svg';
+import slideimg3 from '@assets/images/slides/ofertas/pro-special-offer-3-min.svg';
 
 const {data} = Astro.props;
 const title = data?.title;
 const slides = data?.slides;
+import { getFields } from "@utils";
 
-const sliderList = slides.map((item) => {
-    // TODO: index page is text field | Slots page RichText. Move index page to RichText;
+
+const slidesList = [ slideimg1, slideimg2, slideimg3 ];
+const sliderList = slides.map((item,index) => {
     const text = item?.title || '';
-    // TODO: index page is text field | Slots page RichText. Move index page to RichText;
-
     const link = item?.url || '';
     const description = item?.description || '';
-    const pic = getFields(item?.coverImage?.data?.attributes);
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    // console.log('picinfo ::::', picinfo)
+    const pic = {
+        url: slidesList[index].src,
+        alternativeText: picinfo.alternativeText,
+        w: 102,
+        h: 136,
+        format: '.svg'
+    }
+
     return ({
         pic,
         text,
