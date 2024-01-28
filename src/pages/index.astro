@@ -1,10 +1,10 @@
 ---
-import Section from '@components/accordion/AccordionSection.astro';
-
-import Layout from '@layout/Layout.astro';
 import Hero from '@components/hero/Hero.astro';
+import Layout from '@layout/Layout.astro';
+import Section from '@components/accordion/AccordionSection.astro';
 import WithBottom from '@components/spaces/WithBottom.astro';
 import BannerItem1 from "@components/banner/BannerItem1.astro";
+
 
 import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
 import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
@@ -55,70 +55,98 @@ const debug = false;
         />
     </WithBottom>
 
-    <!-- Only render if dataOfferSlider has data (Conditional Rendering) -->
-    {dataOfferSlider && (
-        <div class="block sm:hidden">
-            <!-- Lazy loading would be implemented here if applicable -->
-            <BlockOfetas data={dataOfferSlider} />
-        </div>
-    )}
-
-    <!-- The rest of your components defaulted to being shown as usual -->
-    <BlockSlotsList data={dataSlotsList} />
-
-    <BlockConciseFormat data={articleAnalises} />
-
-    <WithBottom>
-        <BlockCasinoInfo data={slider2} />
-    </WithBottom>
-
-    <!-- Only render if bonuses has data -->
-    {bonuses && (
-        <BlockBonus data={bonuses} bonusDescription={bonusDescription} />
-    )}
-
-    <!-- Only render if promotions has data -->
-    {promotions && (
-        <BlockBonus2 data={promotions} />
-    )}
-
-    <WithBottom>
-        <BlockCasinoInfo2 data={guide} />
-    </WithBottom>
-
-    <WithBottom>
-        <BlockCasinoProviders data={payment} />
-    </WithBottom>
-
-    <WithBottom>
-        <BlockList data={availablegames} />
-    </WithBottom>
-
-    <WithBottom>
-        <BlockInfo2 data={appadvantages} />
-    </WithBottom>
-
-    <!-- Only render if banner has data. Similar conditional check can be applied as needed -->
-    {banner && (
-        <div class="mb-[32px]">
-            <BannerItem1 data={banner} />
-        </div>
-    )}
-
-    <BlockInfo3 data={strategies} />
-
-    <div class="mb-[32px]">
-        <BlockSuporte data={support} />
+    {debug && 1}
+    <div class="block sm:hidden">
+        <BlockOfetas
+            data={dataOfferSlider}
+        />
     </div>
 
+    {debug && 2}
+    <BlockSlotsList
+        data={dataSlotsList}
+    />
+
+    {debug && 3}
+    <BlockConciseFormat
+        data={articleAnalises}
+    />
+
+    {debug && 4}
     <WithBottom>
-        <Section data={infoSection} />
+        <BlockCasinoInfo
+            data={slider2}
+        />
     </WithBottom>
 
-    <!-- Only render if faqData has data -->
-    {faqData && (
-        <WithBottom>
-            <AccordionContainer data={faqData} />
-        </WithBottom>
-    )}
+    {debug && 5}
+    <BlockBonus
+        data={bonuses}
+        bonusDescription={bonusDescription}
+    />
+
+    {debug && 6}
+    <BlockBonus2
+        data={promotions}
+    />
+
+    {debug && 7}
+    <WithBottom>
+        <BlockCasinoInfo2
+            data={guide}
+        />
+    </WithBottom>    
+
+    {debug && 8}
+    <WithBottom>
+        <BlockCasinoProviders
+            data={payment}
+        />
+    </WithBottom>
+
+   {debug && 9}
+   <WithBottom>
+        <BlockList
+            data={availablegames}
+        />
+    </WithBottom>
+
+    {debug && 10}
+    <WithBottom>
+        <BlockInfo2
+            data={appadvantages}
+        />
+    </WithBottom>
+
+    {debug && 11}
+    <div class="mb-[32px]">
+        <BannerItem1
+            data={banner}
+        />
+    </div>
+     
+    {debug && 12}
+    <BlockInfo3
+        data={strategies}
+    />
+    
+    {debug && 13}
+    <div class="mb-[32px]">
+        <BlockSuporte
+            data={support}
+        />
+    </div>
+
+    {debug && 14}
+    <WithBottom>
+        <Section
+            data={infoSection}
+        />
+    </WithBottom>
+
+    <WithBottom>
+        <AccordionContainer
+            data={faqData}
+        />
+    </WithBottom>
 </Layout>
