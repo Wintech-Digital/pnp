@@ -1,22 +1,32 @@
 ---
-import { STRAPI_URL } from "@constants";
 import RichText from "@components/richtext/RichText.astro";
 import SliderContainer from "@components/slider/SliderContainer";
 import { getFields } from "@utils";
+
+import iconmonitor from '@assets/svg/monitor.svg';
+import iconapple from '@assets/svg/apple.svg';
+import iconandroid from '@assets/svg/android.svg';
+const iconList = [iconandroid, iconapple, iconmonitor];
 
 const {data} = Astro.props;
 const appAdvantagesTitle = data?.appAdvantagesTitle;
 const appAdvantagesSlider = data?.appAdvantagesSlider;
 
-const sliderList = appAdvantagesSlider.map(item => {
+const sliderList = appAdvantagesSlider.map((item, index) => {
     const text = item.title;
     const description = item.description;
-    const pic = getFields(item?.coverImage?.data?.attributes);
- 
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    console.log('picinfo', picinfo.alternativeText)
+
     return ({
         text,
         description,
-        pic,
+        pic:{
+            url: iconList[index].src,
+            width: picinfo.w,
+            height: picinfo.h,
+            alt:picinfo.alternativeText        
+        },
     })
 })
 ---

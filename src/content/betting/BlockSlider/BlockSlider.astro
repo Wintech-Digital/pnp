@@ -3,20 +3,27 @@ import { STRAPI_URL } from '@constants';
 import RichText from '@components/richtext/RichText.astro';
 import ButtonRounded from "@components/buttons/ButtonRounded";
 import SliderContainer from "@components/slider/SliderContainer";
+import betslide1 from '@assets/images/slides/bet/bet-image-1.webp';
+import betslide2 from '@assets/images/slides/bet/bet-image-2.webp';
+import betslide3 from '@assets/images/slides/bet/bet-image-3.webp';
+import betslide4 from '@assets/images/slides/bet/bet-image-4.webp';
+import betslide0 from '@assets/images/slides/bet/bet-image.webp';
+import { getFields } from '@utils';
+const slideCoverList = [betslide1,betslide0,betslide2,betslide4,betslide3 ];
 
 const {data} = Astro.props;
 const sliderTitle = data?.sliderTitle;
 const sliderItems = data?.sliderItems;
 const commonBtn = data?.commonBtn;
-const slideList = sliderItems.map(item=>{
+const slideList = sliderItems.map((item, index)=>{
     const text = item?.title || '';
-    const link = item?.url || '/';
-    const isCoverImage = item?.coverImage.data;
-    const coverImage = isCoverImage ? `${STRAPI_URL}${isCoverImage.attributes.url}` : '/';
+    const link = item?.url || '#';
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
     return ({
         text,
         link,
-        pic: coverImage
+        pic: slideCoverList[index].src,
+        alt: picinfo.alternativeText
     })
 })
 ---

@@ -26,7 +26,7 @@ const secondList = listsBlockItem.find(item => item.id === 2);
     </div>
 
     <TwoColomns100>
-        <BannerItem pic={slideIcon1} slot="first-col">
+        <BannerItem pic={slideIcon1} alt="ícone representando vantagens" slot="first-col">
             <div class="flex flex-col gap-4 h-full">
                 <RichText
                     data={firstList.list}
@@ -37,7 +37,7 @@ const secondList = listsBlockItem.find(item => item.id === 2);
                 />
             </div>
         </BannerItem>
-        <BannerItem pic={slideIcon2} slot="second-col">
+        <BannerItem pic={slideIcon2} alt="ícone representando desvantagens" slot="second-col">
             <div class="flex flex-col gap-4">
                 <RichText
                     data={secondList.list}

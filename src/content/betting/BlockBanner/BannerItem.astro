@@ -1,10 +1,10 @@
 ---
-const {pic} = Astro.props;
+const {pic, alt = ''} = Astro.props;
 ---
 <div class={`pt-[74px] pb-[24px] px-[24px] mt-[42px] relative w-full h-full card-base border text-center hover:gradient-green-coner-1 box-shadow-1 rounded-[24px] sm:rounded-[32px]`}>
     <div class={`flex flex-wrap justify-center absolute left-0 top-0 right-0 -mt-12`}>
         <div class={`relative bg-pnp-black/[.2] flex w-[100px] h-[100px] rounded-full items-center justify-center before:absolute before:h-[340px] before:w-[340px] before:rounded-full`} >
-            <img src={pic.src} alt="imagepng." class={"z-10"} />
+            <img src={pic.src} alt={alt} class={"z-10"} />
         </div>
     </div>
     <div class="h-full" >

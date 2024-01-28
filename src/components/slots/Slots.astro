@@ -18,8 +18,7 @@ const {list} = Astro.props;
         return (
             <li class="col-span-1 flex flex-col rounded-lg text-center" >
                 <SlotsItem url={slug} name={title}>
-                    { coverImage?.format !== '.webp' 
-                        ? <Image
+                    <Image
                             src={coverImage?.url}
                             width={coverImage?.w}
                             height={coverImage?.h}
@@ -28,15 +27,7 @@ const {list} = Astro.props;
                             alt={coverImage?.alternativeText}
                             class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
                             />
-                        : <img
-                            width={coverImage?.w}
-                            height={coverImage?.h}
-                            src={coverImage?.url}
-                            alt={coverImage?.alternativeText}
-                            loading="lazy"
-                            class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
-                        />
-                    }
+
                 </SlotsItem>
             </li>
         )

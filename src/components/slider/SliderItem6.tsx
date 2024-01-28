@@ -20,7 +20,7 @@ const SliderItem6: FC<Props> = ({ text, pic, description }) => {
             src={pic.url}
             width={pic.w}
             height={pic.h}
-            alt={pic.alternativeText}
+            alt={pic.alt}
             className="z-10"
           />
         </div>

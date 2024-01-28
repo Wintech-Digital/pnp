@@ -1,19 +1,25 @@
 ---
-import { STRAPI_URL } from "@constants";
 import RichText from "@components/richtext/RichText.astro";
 import SliderContainer from "@components/slider/SliderContainer";
+import slidericon1 from '@assets/images/slides/icons/arrow-trending-up.svg';
+import slidericon2 from '@assets/images/slides/icons/trophy.svg';
+import slidericon3 from '@assets/images/slides/icons/gift.svg';
+import slidericon4 from '@assets/images/slides/icons/information-circle.svg';
+import { getFields } from "@utils";
 
+const iconsList = [slidericon1, slidericon2, slidericon3, slidericon4];
 const {data} = Astro.props;
 const strategiesTitle = data?.strategiesTitle;
 const strategiesSlider = data?.strategiesSlider;
-const sliderData = strategiesSlider.map(item =>{
-    const isImage = item.coverImage.data;
-    const imgUrl = isImage.attributes.url;
-    const pic = isImage ? `${STRAPI_URL}${imgUrl}` : '';
+const sliderData = strategiesSlider.map((item, index) =>{
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
     return ({
         text: item.title,
         description: item.description,
-        pic
+        pic: {
+            url: iconsList[index].src,
+            alt: picinfo.alternativeText
+        }
     });
 });
 ---
