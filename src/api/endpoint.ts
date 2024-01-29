@@ -12,7 +12,7 @@ enum HomeQueries {
     OFFERS = 'populate[offerSlider][populate][slides][populate]=*',
     SLOTS = 'populate[slotsList][populate][slots][populate]=*',
     ANALISES = 'populate[analisesArticle][populate][table][populate]=*&populate[analisesArticle][populate][buttons][populate]=*',
-    SLIDER2 = 'populate[slider2][populate]=*',
+    SLIDER2 = 'populate[slider2][populate][slide][populate]=*',
     BONUSES = 'populate[bonusSlider][populate][bonusItem][populate]=*',
     BONUSES_DESCRIPTION = 'populate[bonusDescription][populate]=*',
     PROMOTIONS = 'populate[promotions][populate][slider3][populate]=*',

@@ -6,6 +6,7 @@ interface Props {
   text: string;
   pic: any;
   description: string;
+  alt?: string
 }
 
 const SliderItem5: FC<Props> = ({ ...props }) => {
@@ -29,7 +30,7 @@ const SliderItem5: FC<Props> = ({ ...props }) => {
             src={picUrl}
             width={picW}
             height={picH}
-            alt=""
+            alt={props?.alt || ''}
             className={"z-10"}
           />
         </div>

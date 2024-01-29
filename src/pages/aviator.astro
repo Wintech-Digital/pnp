@@ -33,7 +33,6 @@ const imgArticle2 = dataArticle2.aviatorArticleContent.find(item=>item.type==='i
 
 const textArticle3 = dataArticle3.aviatorArticleContent.filter(item=>item.type!=='image');
 const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='image');
-
 const debug = false;
 
 ---
@@ -63,15 +62,16 @@ const debug = false;
                     }}
                 />
             </div>
+            {imgArticle1 &&
             <Image
                 src={imgArticle1.image.url}
                 width={400}
                 height={ 200}
                 format='webp'
-                alt=""
+                alt={imgArticle1.image.alternativeText}
                 slot="second-col"
                 class={'w-full sm:max-h-[200px] border border-pnp/[.1] rounded-[24px]'}
-            />
+            />}
             <div class="flex justify-center sm:justify-start" slot="action">
                 <ButtonRounded
                     size="xl"
@@ -110,15 +110,17 @@ const debug = false;
                     />
                 </div>
             </div>
+
+            {imgArticle2 && 
             <Image
                 src={imgArticle2.image.url}
                 width={400}
                 height={ 200}
                 format='webp'
-                alt=""
+                alt={imgArticle2.image.alternativeText}
                 slot="second-col"
                 class={'w-full border border-pnp/[.1] rounded-[40px]'}
-            />
+            />}
         </TwoColomns50>
     </WithBottom>
 
@@ -158,15 +160,17 @@ const debug = false;
                 </div>
 
             </div>
-            <Image
+
+            { imgArticle3 &&
+             <Image
                 src={imgArticle3.image.url}
                 width={400}
                 height={ 200}
                 format='webp'
-                alt=""
+                alt={imgArticle3.image.alternativeText}
                 slot="first-col"
                 class={'w-full border border-pnp/[.1] rounded-[40px]'}
-            />
+            />}
         </TwoColomns50>
     </div>
     </WithBottom>

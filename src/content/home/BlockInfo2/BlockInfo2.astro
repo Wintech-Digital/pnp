@@ -16,8 +16,6 @@ const sliderList = appAdvantagesSlider.map((item, index) => {
     const text = item.title;
     const description = item.description;
     const picinfo = getFields(item?.coverImage?.data?.attributes);
-    console.log('picinfo', picinfo.alternativeText)
-
     return ({
         text,
         description,

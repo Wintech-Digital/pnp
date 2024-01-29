@@ -4,6 +4,7 @@ import SliderContainer from "@components/slider/SliderContainer";
 import infoPic1 from "@assets/svg/letter.svg";
 import infoPic2 from "@assets/images/star.png";
 import infoPic3 from "@assets/images/checked.png";
+import { getFields } from "@utils";
 
 const slideImage1 = await getImage({ src: infoPic1, height: 50, format: 'webp' });
 const slideImage2 = await getImage({ src: infoPic2, height: 50, format: 'webp' });
@@ -22,11 +23,13 @@ const images = [
     slideImage3,
 ]
 
-const infoData = slide?.map((sld: any,index: any)=>{
+const infoData = slide?.map((item: any,index: any)=>{
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
     return ({
-        text: sld.title,
+        text: item.title,
         pic: images[index],
-        description: sld.description,
+        description: item.description,
+        alt: picinfo.alternativeText
     })
 });
 
