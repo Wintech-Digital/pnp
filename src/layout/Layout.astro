@@ -33,16 +33,13 @@ const nofollow = isNoFollow !== null ? isNoFollow : true;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<!-- schema start -->
 		{isStructuredData &&
 			isStructuredData.map(item => {
 				const jsonLd = JSON.stringify(item.structuredItem);
 				return <script type="application/ld+json" set:html={jsonLd}></script>
 			}) 
 		}
-		<!-- schema start -->
 
-		<!-- SEO start -->
 		{isMetaData && 
 			<SEO 
 				noindex = {noindex}
@@ -50,7 +47,6 @@ const nofollow = isNoFollow !== null ? isNoFollow : true;
 				{...isMetaData}
 			/>
 		}
-		<!-- SEO end -->
 
 		<link
 			rel="icon"
