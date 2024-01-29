@@ -49,6 +49,7 @@ const ButtonRounded = ({ ...props }: Props) => {
       return(
         <a
           href={getLink(rest.link)}
+          rel="nofollow"
           className={`${classN({ size: 'empty', color, className })} inline-flex flex-col justify-center border border-pnp/[.1] px-6 pb-2 sm:py-0 my-0`}
         >
             <span className="text-pnp-grey20 text-14-24-600 text-nowrap">{title}</span>
@@ -64,6 +65,7 @@ const ButtonRounded = ({ ...props }: Props) => {
     return (
       <a
         href={getLink(rest.link)}
+        rel="nofollow"
         className={classN({ size, color, className })}
       >
         <span className="text-pnp text-nowrap">{title}</span>
@@ -80,6 +82,7 @@ const ButtonRounded = ({ ...props }: Props) => {
     <a
       className={classN({ size, color, className })}
       href={getLink(rest.link)}
+      rel="nofollow"
     >
 
       <span className="text-pnp text-nowrap">{title}</span>
