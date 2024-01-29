@@ -12,7 +12,7 @@ const {cardTitle = [], data = []} = Astro.props;
 const cards = data.map((item) => {
     const texts = item.texts;
     const images = item.images;
-    const button = item.button[0];
+    const button = item.button[0];    
     return ({
         texts,
         images,
@@ -20,7 +20,7 @@ const cards = data.map((item) => {
     })
 })
 
-const iosCard = cards[0]; 
+const iosCard = cards[0];
 const andriodCard = cards[1];
 ---
 
@@ -33,7 +33,9 @@ const andriodCard = cards[1];
         <MobAppCard
             slot="first-col"
             icon={appleIcon}
+            iconAlt={'Ícone do sistema operacional móvel apple'}
             pic={MobApplePic}
+            picAlt={'dois telefones celulares com um aplicativo de cassino pin up'}
             title="IOS App"
             description="Uma colorida slot infernal com símbolos ardentes e grandes prémios."
             style="red"
@@ -50,7 +52,9 @@ const andriodCard = cards[1];
         <MobAppCard
             slot="second-col"
             icon={androidIcon}
+            iconAlt={'Ícone do sistema operacional móvel Android'}
             pic={MobAndroidPic}
+            picAlt={'pin up site de cassino com roleta da sorte em segundo plano'}
             title="Android App"
             description="Mergulhe numa aventura emocionante com personagens únicas e grandes prémios."
             style="green"

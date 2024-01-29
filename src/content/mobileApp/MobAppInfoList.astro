@@ -1,23 +1,34 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import RichText from "@components/richtext/RichText.astro";
-import { STRAPI_URL } from "@constants";
 import WithBottom from "@components/spaces/WithBottom.astro";
+import infoPic1 from "@assets/svg/letter.svg";
+import infoPic2 from "@assets/images/star.png";
+import infoPic3 from "@assets/images/checked.png";
+import { getFields } from "@utils";
+const slideImage1 = await getImage({ src: infoPic1, height: 50, format: 'webp' });
+const slideImage2 = await getImage({ src: infoPic2, height: 50, format: 'webp' });
+const slideImage3 = await getImage({ src: infoPic3, height: 65, format: 'webp' });
+const images = [
+    slideImage1,
+    slideImage2,
+    slideImage3,
+]
 
 const {data} = Astro.props;
 const availablegamestitle = data?.availablegamestitle;
 const availablegameslist = data?.availablegameslist;
-const dataList = availablegameslist.map(item=>{
+const dataList = availablegameslist.map((item, index)=>{
     const description = item.description;
-    const isImage = item.coverImage.data;
-    const imgUrl = isImage? `${STRAPI_URL}${isImage.attributes.url}` : '';
+    const isImage = images[index];
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
     return({
         description,
         img: {
-            url: imgUrl,
+            url: isImage.src,
             w: isImage.attributes.width,
             h: isImage.attributes.height,
-            alt: isImage.attributes.alternativeText || '',
+            alt: picinfo.alternativeText || '',
             format: isImage.attributes.ext,
         }
         
@@ -37,7 +48,7 @@ const dataList = availablegameslist.map(item=>{
         { dataList.map(item => {
             return (
                 <li class="flex flex-col sm:flex-row gap-4 border-t border-[#ffffff]/[.2] pt-4 first:border-t-0 first:pt-0">
-                    <div class="relative flex items-center justify-center h-[100px] w-[100px] min-w-[100px] rounded-full">
+                   <div class="relative flex items-center justify-center h-[100px] w-[100px] min-w-[100px] rounded-full">
                         { item.img.format !== '.svg' 
                             ? (
                                 <Image

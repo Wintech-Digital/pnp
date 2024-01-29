@@ -1,13 +1,26 @@
 ---
+import slideimg1 from '@assets/images/slides/guide/image-1.webp';
+import slideimg2 from '@assets/images/slides/guide/image-2.webp';
+import slideimg3 from '@assets/images/slides/guide/image-3.webp';
+
 import SliderContainer from "@components/slider/SliderContainer";
 import RichText from "@components/richtext/RichText.astro";
 import { STRAPI_URL } from "@constants";
+import { getFields } from '@utils';
 const {sliderTitle,sliderData} = Astro.props;
-const infoData = sliderData.map(item=> {
+const slidesList = [ slideimg1, slideimg2, slideimg3 ];
+
+const infoData = sliderData.map((item, index)=> {
     const text = item.title; 
     const description = item.description; 
-    const isImage = item.coverImage.data;
-    const pic = isImage ?  `${STRAPI_URL}${isImage.attributes.url}` : '';
+    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    const pic = {
+        url: slidesList[index].src,
+        w: slidesList[index].width,
+        h: slidesList[index].height,
+        alternativeText: picinfo.alternativeText,
+    }
+
     return({
         text,
         description,

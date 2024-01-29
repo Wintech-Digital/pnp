@@ -39,14 +39,16 @@ const imgArticle1 = articleBody.find(item=>item.type==='image');
             />
         </div>
     </div>
-    <Image
-        src={imgArticle1.image.url}
-        width={imgArticle1.image.width}
-        height={imgArticle1.image.height}
-        alt={imgArticle1.image.alternativeText}
-        slot="second-col"
-        class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
-    />
+    {imgArticle1 && 
+        <Image
+            src={imgArticle1.image.url}
+            width={imgArticle1.image.width}
+            height={imgArticle1.image.height}
+            alt={imgArticle1.image.alternativeText}
+            slot="second-col"
+            class={'w-full border border-pnp/[.1] rounded-[32px] sm:rounded-[48px]'}
+        />
+    }
 </TwoColomns50>
 
 

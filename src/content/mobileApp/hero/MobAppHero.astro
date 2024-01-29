@@ -3,7 +3,10 @@ import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
 import { STRAPI_URL } from "@constants";
 import { parseImageData } from "@utils";
-
+import { Image} from "astro:assets";
+import iconandroid from '@assets/svg/android-white.svg';
+import iconapple from '@assets/svg/apple.svg';
+const iconsList = [iconapple, iconandroid,];
 const {data} = Astro.props;
 const btns = data?.btn;
 const title = data?.title;
@@ -20,7 +23,7 @@ const pictures = [mobile, desktop];
 >
     <div class="flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0" slot="btn-box">
         {
-            btns.map(item => {
+            btns.map((item, index) => {
                 const name = item.name;
                 const link = item.link;
                 const color = item.type;
@@ -35,7 +38,14 @@ const pictures = [mobile, desktop];
                         className="w-full sm:w-auto flex flex-row gap-4 justify-center z-50"
                     >
                         {isIcon && (
-                            <img src={`${STRAPI_URL}${btnIcon}`} alt="" class="h-[20px]"/>
+                            <Image
+                                src={iconsList[index]}
+                                width="20"
+                                height="20"
+                                loading="lazy"
+                                alt={isIcon?.attributes?.alternativeText || ''}
+                                class="h-[20px]"
+                            />
                         )}
                     </ButtonRounded>
                 )
