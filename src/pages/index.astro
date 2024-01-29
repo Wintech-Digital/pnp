@@ -21,6 +21,7 @@ import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
 
 import {fetchApi, endpoints} from '@api/index';
 import AccordionContainer from '@components/accordion/AccordionContainer.astro';
+import ShowContent from '@components/ShowContetnt';
 
 const pageHomeSchema = await fetchApi({
     endpoint: endpoints.home,
@@ -126,23 +127,29 @@ const debug = false;
     </div>
      
     {debug && 12}
-    <BlockInfo3
-        data={strategies}
-    />
+    <ShowContent client:load>
+        <BlockInfo3
+            data={strategies}
+        />
+    </ShowContent>
     
     {debug && 13}
+    <ShowContent client:load>
     <div class="mb-[32px]">
         <BlockSuporte
             data={support}
         />
     </div>
+    </ShowContent>
 
     {debug && 14}
-    <WithBottom>
+    <ShowContent client:load>
+        <WithBottom>
         <Section
             data={infoSection}
         />
-    </WithBottom>
+        </WithBottom>
+    </ShowContent>
 
     <WithBottom>
         <AccordionContainer

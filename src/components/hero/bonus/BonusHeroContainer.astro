@@ -57,7 +57,17 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
             />
             : null
         }
-        {pictureD ? pictureD.format !== '.webp'
+        {pictureD &&
+            <Image
+                src={ pictureD.url }
+                width={ pictureD.w }
+                height={ pictureD.h }
+                loading="eager"
+                alt={pictureD.alternativeText || ''} 
+                class={`hero-img hidden sm:block w-full`}
+            />
+        }
+        <!-- {pictureD ? pictureD.format !== '.webp'
             ? <Image
                 src={ pictureD.url }
                 width={ pictureD.w }
@@ -79,8 +89,8 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
                 loading="eager"
                 alt={''} 
                 class={`hero-img hidden sm:block w-full`}
-            />
-        }
+            /> 
+        }-->
         {pictureM ? pictureM.format !== '.webp' 
             ? <Image
                 src={pictureM.url}
