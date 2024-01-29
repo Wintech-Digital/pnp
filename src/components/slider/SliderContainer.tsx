@@ -94,7 +94,7 @@ const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, l
                 infinite={!noInfiniti}
                 
                 rewind={true}
-                focusOnSelect={true}
+                focusOnSelect={false}
                 renderDotsOutside={false}
                 rewindWithAnimation={false}
                 renderArrowsWhenDisabled={false}

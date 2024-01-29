@@ -21,7 +21,7 @@ import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
 
 import {fetchApi, endpoints} from '@api/index';
 import AccordionContainer from '@components/accordion/AccordionContainer.astro';
-import ShowContent from '@components/ShowContetnt';
+// import ShowContent from '@components/ShowContetnt';
 
 const pageHomeSchema = await fetchApi({
     endpoint: endpoints.home,
@@ -80,81 +80,63 @@ const debug = false;
         />
     </WithBottom>
 
-<ShowContent client:load>
     {debug && 5}
     <BlockBonus
         data={bonuses}
         bonusDescription={bonusDescription}
     />
-</ShowContent>
 
-<ShowContent client:load>
     {debug && 6}
     <BlockBonus2
         data={promotions}
     />
-</ShowContent>
 
-<ShowContent client:load>
     {debug && 7}
     <WithBottom>
         <BlockCasinoInfo2
             data={guide}
         />
     </WithBottom>    
-</ShowContent>
 
-<ShowContent client:load>
     {debug && 8}
     <WithBottom>
         <BlockCasinoProviders
             data={payment}
         />
     </WithBottom>
-</ShowContent>
 
-<ShowContent client:load>
     {debug && 9}
     <WithBottom>
         <BlockList
             data={availablegames}
         />
     </WithBottom>
-</ShowContent>
 
-<ShowContent client:load>
     {debug && 10}
     <WithBottom>
         <BlockInfo2
             data={appadvantages}
         />
     </WithBottom>
-</ShowContent>
 
-<ShowContent client:load>
     {debug && 11}
     <div class="mb-[32px]">
         <BannerItem1
             data={banner}
         />
     </div>
-</ShowContent>
      
-<ShowContent client:load>
     {debug && 12}
     <BlockInfo3
         data={strategies}
     />
-</ShowContent>
     
-<ShowContent client:load>
     {debug && 13}
     <div class="mb-[32px]">
         <BlockSuporte
             data={support}
         />
     </div>
-</ShowContent>
 
     {debug && 14}
         <WithBottom>
