@@ -28,7 +28,7 @@ const ShowContent = ({children}) => {
     }, []);
   
     return (
-      <div ref={observerRef} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
+      <div ref={observerRef} className={`${ !isVisible ? 'invisible' : 'visible'}`}>
         {children}
       </div>
     );};

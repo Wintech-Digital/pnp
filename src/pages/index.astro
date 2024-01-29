@@ -74,57 +74,73 @@ const debug = false;
     />
 
     {debug && 4}
-    <WithBottom>
+    <ShowContent client:load>
+        <WithBottom>
         <BlockCasinoInfo
             data={slider2}
         />
     </WithBottom>
+</ShowContent>
 
     {debug && 5}
-    <BlockBonus
+    <ShowContent client:load>
+        <BlockBonus
         data={bonuses}
         bonusDescription={bonusDescription}
     />
+</ShowContent>
 
     {debug && 6}
-    <BlockBonus2
+    <ShowContent client:load>
+        <BlockBonus2
         data={promotions}
     />
+</ShowContent>
 
     {debug && 7}
-    <WithBottom>
+    <ShowContent client:load>
+        <WithBottom>
         <BlockCasinoInfo2
             data={guide}
         />
     </WithBottom>    
+</ShowContent>
 
     {debug && 8}
-    <WithBottom>
+    <ShowContent client:load>
+        <WithBottom>
         <BlockCasinoProviders
             data={payment}
         />
     </WithBottom>
+</ShowContent>
 
    {debug && 9}
-   <WithBottom>
+   <ShowContent client:load>
+    <WithBottom>
         <BlockList
             data={availablegames}
         />
     </WithBottom>
+</ShowContent>
 
     {debug && 10}
-    <WithBottom>
+    <ShowContent client:load>
+        <WithBottom>
         <BlockInfo2
             data={appadvantages}
         />
     </WithBottom>
+</ShowContent>
 
     {debug && 11}
-    <div class="mb-[32px]">
+    <ShowContent client:load>
+        <div class="mb-[32px]">
         <BannerItem1
             data={banner}
         />
     </div>
+    </ShowContent>
      
     {debug && 12}
     <ShowContent client:load>
