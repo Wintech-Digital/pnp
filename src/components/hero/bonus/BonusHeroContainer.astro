@@ -38,20 +38,12 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
 // bg-[linear-gradient(to_right_bottom,rgba(49,84,44,0.8),rgba(16,71,52,0.8))]
 ---
      <div class=`hero-wrapper ${common} relative`>
-        { pictureCard ? pictureCard?.format !== '.webp'
-            ? <Image
+        { pictureCard ?
+            <Image
                 src={pictureCard?.url || ''}
                 width={pictureCard?.w || 0}
                 height={pictureCard?.h || 0}
                 alt={pictureCard?.alternativeText || ''}
-                loading="eager"
-                class={`block sm:hidden absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
-            />
-            : <img
-                src={pictureCard.url}
-                width={pictureCard.w}
-                height={pictureCard.h}
-                alt={pictureCard.alternativeText || ''} 
                 loading="eager"
                 class={`block sm:hidden absolute w-[calc(100%-32px)] sm:w-[700px] right-4 sm:-right-32 top-4 sm:top-1/2 transform  sm:-translate-y-1/2 sm:rotate-12 shadow-2xl ${rounded}`}
             />
@@ -67,7 +59,7 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
                 class={`hero-img hidden sm:block w-full`}
             />
         }
-        <!-- {pictureD ? pictureD.format !== '.webp'
+        {pictureD 
             ? <Image
                 src={ pictureD.url }
                 width={ pictureD.w }
@@ -76,23 +68,14 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
                 alt={pictureD.alternativeText || ''} 
                 class={`hero-img hidden sm:block w-full`}
             />
-            : <img
-                src={pictureD.url}
-                width={pictureD.w}
-                height={pictureD.h}
-                alt={pictureD.alternativeText || ''} 
-                loading="eager"
-                class={`hero-img hidden sm:block w-full`}
-            />
             : <Image
                 src={heroSlotD}
                 loading="eager"
                 alt={''} 
                 class={`hero-img hidden sm:block w-full`}
             /> 
-        }-->
-        {pictureM ? pictureM.format !== '.webp' 
-            ? <Image
+        }
+        {pictureM ? <Image
                 src={pictureM.url}
                 width={pictureM.w}
                 height={pictureM.h}
@@ -100,14 +83,6 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //  $
                 alt={pictureM.alternativeText || ''}
                 class={`hero-img block sm:hidden w-full`}
             /> 
-            : <img
-                src={pictureM.url}
-                width={pictureM.w}
-                height={pictureM.h}
-                loading="eager"
-                alt={pictureM.alternativeText || ''} 
-                class={`hero-img hidden sm:block w-full`}
-            />
             : <Image
                 src={heroSlotM}
                 loading="eager"
