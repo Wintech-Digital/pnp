@@ -12,22 +12,21 @@ const {list} = Astro.props;
             w: 0,
             h: 0,
             url: '',
-            format: '.webp',
-            alternativeText: '',
         };
+        const coverSeo = item?.coverSeo;
         return (
-            <li class="col-span-1 flex flex-col rounded-lg text-center" >
+            <li class="col-span-1 flex flex-col rounded-lg text-center">
                 <SlotsItem url={slug} name={title}>
                     <Image
-                            src={coverImage?.url}
-                            width={coverImage?.w}
-                            height={coverImage?.h}
-                            loading="lazy"
-                            format="webp"
-                            alt={coverImage?.alternativeText}
-                            class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
-                            />
-
+                        src={coverImage?.url}
+                        width={coverImage?.w}
+                        height={coverImage?.h}
+                        alt={coverSeo.alt}
+                        title={coverSeo.title}
+                        format="webp"
+                        loading="lazy"
+                        class="w-full rounded-[24px] border border-pnp/[.1] mb-4"
+                    />
                 </SlotsItem>
             </li>
         )

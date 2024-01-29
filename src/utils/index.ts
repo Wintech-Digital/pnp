@@ -36,28 +36,14 @@ export function parseImageData(data, key: Tkey = null, isHD = false) {
     return data.map(item => getFields(item.attributes));
 }
 
-// data = [
-//     {
-//       id: 100,
-//       attributes: {
-//         url: '/uploads/banner_3_m_2fa33ee233.png',
-//         alternativeText: 'termos alt',
-//         caption: 'mobile' | 'desktop',
-//         width: 382,
-//         height: 280,
-//         ext: '.png',
-//
-//         previewUrl: null,
-//         provider: 'local',
-//
-//         hash: 'banner_3_m_2fa33ee233',
-//         formats: [Object],
-//         mime: 'image/png',
-//         size: 2.05,
-//         provider_metadata: null,
-//         name: 'banner-3-m.png',
-//         createdAt: '2024-01-11T22:25:49.395Z',
-//         updatedAt: '2024-01-11T22:26:55.673Z'
-//       }
-//     },
-// ]
+export function getSeo(data) {
+    if(!data){
+        return {
+            alt: '',
+            title: ''        
+        }
+    };
+    return data;
+}
+
+
