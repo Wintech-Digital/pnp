@@ -74,49 +74,47 @@ const debug = false;
     />
 
     {debug && 4}
-    <ShowContent client:load>
-        <WithBottom>
+    <WithBottom>
         <BlockCasinoInfo
             data={slider2}
         />
     </WithBottom>
-</ShowContent>
 
+<ShowContent client:load>
     {debug && 5}
-    <ShowContent client:load>
-        <BlockBonus
+    <BlockBonus
         data={bonuses}
         bonusDescription={bonusDescription}
     />
 </ShowContent>
 
+<ShowContent client:load>
     {debug && 6}
-    <ShowContent client:load>
-        <BlockBonus2
+    <BlockBonus2
         data={promotions}
     />
 </ShowContent>
 
+<ShowContent client:load>
     {debug && 7}
-    <ShowContent client:load>
-        <WithBottom>
+    <WithBottom>
         <BlockCasinoInfo2
             data={guide}
         />
     </WithBottom>    
 </ShowContent>
 
+<ShowContent client:load>
     {debug && 8}
-    <ShowContent client:load>
-        <WithBottom>
+    <WithBottom>
         <BlockCasinoProviders
             data={payment}
         />
     </WithBottom>
 </ShowContent>
 
-   {debug && 9}
-   <ShowContent client:load>
+<ShowContent client:load>
+    {debug && 9}
     <WithBottom>
         <BlockList
             data={availablegames}
@@ -124,48 +122,46 @@ const debug = false;
     </WithBottom>
 </ShowContent>
 
+<ShowContent client:load>
     {debug && 10}
-    <ShowContent client:load>
-        <WithBottom>
+    <WithBottom>
         <BlockInfo2
             data={appadvantages}
         />
     </WithBottom>
 </ShowContent>
 
+<ShowContent client:load>
     {debug && 11}
-    <ShowContent client:load>
-        <div class="mb-[32px]">
+    <div class="mb-[32px]">
         <BannerItem1
             data={banner}
         />
     </div>
-    </ShowContent>
+</ShowContent>
      
+<ShowContent client:load>
     {debug && 12}
-    <ShowContent client:load>
-        <BlockInfo3
-            data={strategies}
-        />
-    </ShowContent>
+    <BlockInfo3
+        data={strategies}
+    />
+</ShowContent>
     
+<ShowContent client:load>
     {debug && 13}
-    <ShowContent client:load>
     <div class="mb-[32px]">
         <BlockSuporte
             data={support}
         />
     </div>
-    </ShowContent>
+</ShowContent>
 
     {debug && 14}
-    <ShowContent client:load>
         <WithBottom>
         <Section
             data={infoSection}
         />
         </WithBottom>
-    </ShowContent>
 
     <WithBottom>
         <AccordionContainer

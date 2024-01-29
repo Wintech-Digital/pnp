@@ -11,7 +11,7 @@ const ShowContent = ({children}) => {
         },
         {
           root: null, // Using the viewport as the root
-          rootMargin: '0px',
+          rootMargin: '200px',
           threshold: 0.1, // Adjust this value if needed, from 0 to 1
         }
       );
@@ -28,9 +28,13 @@ const ShowContent = ({children}) => {
     }, []);
   
     return (
-      <div ref={observerRef} className={`${ !isVisible ? 'invisible' : 'visible'}`}>
-        {children}
+      <div ref={observerRef} >
+        { isVisible && children}
       </div>
     );};
 
 export default ShowContent;
+
+{/* <div ref={observerRef} className={`${ !isVisible ? 'invisible' : 'visible'}`}>
+{ children}
+</div> */}
