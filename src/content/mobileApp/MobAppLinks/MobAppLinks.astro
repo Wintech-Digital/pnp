@@ -22,6 +22,11 @@ const cards = data.map((item) => {
 
 const iosCard = cards[0];
 const andriodCard = cards[1];
+
+const iosIconAlt = iosCard?.images?.data[0]?.attributes?.alternativeText || '';
+const andriodIconAlt = andriodCard?.images?.data[0]?.attributes?.alternativeText || '';
+const iosImgAlt = iosCard?.images?.data[1]?.attributes?.alternativeText || '';
+const andriodImgAlt = andriodCard?.images?.data[1]?.attributes?.alternativeText || '';
 ---
 
 {!!cardTitle?.length && 
@@ -33,9 +38,9 @@ const andriodCard = cards[1];
         <MobAppCard
             slot="first-col"
             icon={appleIcon}
-            iconAlt={'Ícone do sistema operacional móvel apple'}
+            iconAlt={iosIconAlt}
             pic={MobApplePic}
-            picAlt={'dois telefones celulares com um aplicativo de cassino pin up'}
+            picAlt={iosImgAlt}
             title="IOS App"
             description="Uma colorida slot infernal com símbolos ardentes e grandes prémios."
             style="red"
@@ -52,9 +57,9 @@ const andriodCard = cards[1];
         <MobAppCard
             slot="second-col"
             icon={androidIcon}
-            iconAlt={'Ícone do sistema operacional móvel Android'}
+            iconAlt={andriodIconAlt}
             pic={MobAndroidPic}
-            picAlt={'pin up site de cassino com roleta da sorte em segundo plano'}
+            picAlt={andriodImgAlt}
             title="Android App"
             description="Mergulhe numa aventura emocionante com personagens únicas e grandes prémios."
             style="green"

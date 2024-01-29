@@ -2,7 +2,14 @@ import { getFields } from "@utils";
 import { useMemo, useState } from "react";
 import BonusCardList from "./BonusCardList";
 
-
+import bonusCard1 from '@assets/images/slides/bonusCards/bonus-2.webp';
+import bonusCard2 from '@assets/images/slides/bonusCards/bonus-4.webp';
+import bonusCard3 from '@assets/images/slides/bonusCards/bonus-6.webp';
+import bonusCard4 from '@assets/images/slides/bonusCards/bonus-7.webp';
+import bonusCard5 from '@assets/images/slides/bonusCards/bonus-9.webp';
+import bonusCard6 from '@assets/images/slides/bonusCards/bonus-10.webp';
+import bonusCard7 from '@assets/images/slides/bonusCards/bonus-12.webp';
+const bonusCardLocal = [bonusCard1, bonusCard2, bonusCard3, bonusCard4, bonusCard5, bonusCard6, bonusCard7];
 const filters = [
     {
         id: 'todos',
@@ -22,7 +29,7 @@ const BonusCardContainer = ({...props}) => {
     const data = props?.data || [];
     const [cardFilter, setCardFilter] = useState('todos');
     const cardData = useMemo(()=> {
-        return data.map(item=>{
+        return data.map((item, index)=>{
             const attributes = item?.attributes;
             const slug  = attributes?.slug || '';
             const active  = attributes?.active;
@@ -33,6 +40,7 @@ const BonusCardContainer = ({...props}) => {
             const coverImage = attributes?.coverImage || '#';
             const btnList = attributes?.btnList || [];
 
+            const localImg = bonusCardLocal[index];
             return({
                 slug,
                 active,
@@ -40,7 +48,12 @@ const BonusCardContainer = ({...props}) => {
                 description,
                 text: title,
                 imageLink: coverImageLink,
-                imageData: getFields(coverImage?.data?.attributes),
+                imageData:{
+                    url: localImg.src,
+                    w: localImg.width,
+                    h: localImg.height,
+                    alternativeText: getFields(coverImage?.data?.attributes).alternativeText
+                },
                 buttons: btnList
             })
         })
