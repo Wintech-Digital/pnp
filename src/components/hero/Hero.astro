@@ -2,22 +2,21 @@
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
 import { btnIconUrl } from './util';
-import { parseImageData } from '@utils';
+import { getSeo, parseImageData } from '@utils';
 
 const { data, mobileTopSpace="mt-0" } = Astro.props;
 const title = data?.title || '';
 const buttons = data?.btn || [];
 const description = data?.description || '';
-
 const desktop = parseImageData(data?.coverImage.data, 'desktop')
 const mobile = parseImageData(data?.coverImage.data, 'mobile')
-
-const pictures = [mobile, desktop]; 
+const pictures = [mobile, desktop];
 ---
 
 { data &&
     <HeroContainer
         pictures={pictures}
+        coverSeo={data?.coverSeo}
         title={title}
         description={description}
         textTopSpaceMobile={mobileTopSpace}

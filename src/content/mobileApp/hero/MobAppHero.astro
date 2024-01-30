@@ -1,7 +1,7 @@
 ---
 import HeroContainer from "@components/hero/HeroContainer.astro";
 import ButtonRounded from '@components/buttons/ButtonRounded';
-import { STRAPI_URL } from "@constants";
+
 import { parseImageData } from "@utils";
 import { Image} from "astro:assets";
 import iconandroid from '@assets/svg/android-white.svg';
@@ -16,6 +16,7 @@ const pictures = [mobile, desktop];
 ---
 <HeroContainer
     pictures={pictures}
+    coverSeo={data?.coverSeo}
     title={title}
     description=''
     textTopSpaceMobile={"-mt-[35%]"}

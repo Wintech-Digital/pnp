@@ -3,6 +3,7 @@ import RichText from '@components/richtext/RichText.astro';
 import { Image } from 'astro:assets';
 import heroSlotD from '@assets/images/hero/hero-slots-d.png';
 import heroSlotM from '@assets/images/hero/hero-mob-test_copy.png';
+import { getSeo } from '@utils';
  
 interface Props {
     heroText?: any;
@@ -11,6 +12,16 @@ interface Props {
     textTopSpaceMobile: string,
     textBoxWidth: string,
     pictures: any[];
+    coverSeo:{
+        mobile: {
+            alt: string;
+            title: string;
+        },
+        desktop:{
+            alt: string;
+            title: string;
+        }
+    };
 }
 
 const {
@@ -19,7 +30,8 @@ const {
     description = null,
     textTopSpaceMobile,
     textBoxWidth,
-    pictures: [pictureM, pictureD]
+    pictures: [pictureM, pictureD],
+    coverSeo
 } = Astro.props as Props;
 
 // Styles:
@@ -33,6 +45,7 @@ const rounded = 'rounded-[24px] sm:rounded-[32px] md:rounded-[42px] md:rounded-[
 
 // Common Styles: 
 const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${debug}
+
 ---
      <div class=`hero-wrapper ${common} relative gr-red-green-coner`>
         { pictureD 
@@ -40,14 +53,15 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
                 src={pictureD.url}
                 width={pictureD.w}
                 height={pictureD.h}
+                alt={getSeo(coverSeo?.desktop).alt}
+                title={getSeo(coverSeo?.desktop).title}
                 loading="eager"
-                alt={pictureD.alternativeText || ''} 
                 class={`hero-img hidden sm:block w-full`}
             />
             : <Image
                 src={heroSlotD}
                 loading="eager"
-                alt={''} 
+                alt={''}
                 class={`hero-img hidden sm:block w-full`}
             />
         }
@@ -56,17 +70,17 @@ const common = `relative overflow-hidden ${border} ${bgColor} ${rounded}`; //${d
                 src={pictureM.url}
                 width={pictureM.w}
                 height={pictureM.h}
-                quality={'mid'}
-                loading="eager"
+                alt={getSeo(coverSeo?.mobile).alt}
+                title={getSeo(coverSeo?.mobile).title}
                 format='webp'
-                alt={pictureM.alternativeText || ''}
+                loading="eager"
+                quality={'mid'}
                 class={`hero-img block sm:hidden w-full`}
             />
             : <Image
                 src={heroSlotM}
-                quality={'low'}
                 loading="eager"
-                alt={''} 
+                alt=""
                 class={`hero-img block sm:hidden w-full`}
             />
         }
