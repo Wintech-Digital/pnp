@@ -15,9 +15,3 @@
 .accc button:focus-visible {
     outline-width: 0px;
 }
-
-/* 
-   Example:
-   background: linear-gradient(30deg, #06ba9f33 0%, #06ba9f23 55%, #ffffff08  65%, #ffffff08 73%, #e1141413 95%, #e1141423 100% ) var(--x, 100%)/ 200%;
-   --x: 100%; 
-*/

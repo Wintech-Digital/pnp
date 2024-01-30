@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const { nextui } = require("@nextui-org/react");
 export default {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-],
+	],
 	theme: {
 		extend: {
 			screens: {
@@ -43,15 +42,8 @@ export default {
 		},
 	},
 	plugins: [
-		nextui(),
-		plugin(function ({ addBase, addComponents, theme }) {
+		plugin(function ({ addComponents, theme }) {
 			addComponents({
-				'.bred': {
-					border: '1px solid red',
-				},
-				'.bblue': {
-					border: '1px solid blue',
-				},
 			    '.text-14-24-600': {
 					fontSize: '14px',
 					lineHeight: '22px',
@@ -146,9 +138,6 @@ export default {
 			    '.card-shadow': {
 					boxShadow: '0px 12px 34px 0px rgba(13, 10, 44, 0.08), 0px 34px 26px 0px rgba(13, 10, 44, 0.05)',
 			    },
-			    '.card': {
-					backgroundColor: '',
-			    },
 			    '.card-base': {
 					borderColor: `${theme('colors.pnp.card-border')}`,
 					backgroundColor: theme('colors.pnp.card-bg'),
@@ -158,18 +147,11 @@ export default {
 					flexDirection: 'flex-row',
 					alignItems: 'center',
 			    },
-				'.box-shadow-test': {
-					boxShadow: '0px 12px 34px 0px rgba(13, 10, 44, 0.08), 0px 34px 26px 0px rgba(13, 10, 44, 1)',
-				},
 				'.box-shadow-1': {
 					boxShadow: '0px 12px 34px 0px rgba(13, 10, 44, 0.08), 0px 34px 26px 0px rgba(13, 10, 44, 0.05)',
 				},
 				'.gradient-red': {
 					background: 'radial-gradient(110% 50% at 50% 100%, rgba(255, 59, 28, 0.40) 0%, rgba(28, 28, 29, 0.00) 100%), rgba(255, 255, 255, 0.03)',
-					backdropFilter: 'blur(50px)',
-			    },
-				'.gradient-red-rl': {
-					background: 'radial-gradient(50% 70% at 100% 50%, rgba(255, 59, 28, 0.40) 0%, rgba(28, 28, 29, 0.00) 100%), rgba(255, 255, 255, 0.03)',
 					backdropFilter: 'blur(50px)',
 			    },
 				'.gradient-green-small': {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const ShowContent = ({children}) => {
     const [isVisible, setIsVisible] = useState(false);
