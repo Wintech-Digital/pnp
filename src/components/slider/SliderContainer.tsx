@@ -33,10 +33,10 @@ interface ListProps {
     bgHoverStyle?: string;
 }
 
-const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, list, itemComponentName }) => {
+// const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, list, itemComponentName }) => {
+const BlockHeroSlider1 = ({ isVisible=false, itemsNum = 3, noShadow = false, noInfiniti = false, list, itemComponentName }) => {
     const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
-    const carouselRef = useRef(null);
-
+    const carouselRef = useRef(null);    
     useEffect(() => {
         if (window) {
             const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
@@ -77,6 +77,8 @@ const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, l
     }
 
     // Carousel component with all configured props
+
+
     return (
         <div className='relative' ref={carouselRef}>
             {!isMobile && (<ButtonSliderHidden />)}
@@ -143,4 +145,62 @@ const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, l
     );
 };
 
+
+const BlockHeroSlider = ({...props}) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const observerRef = useRef(null);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVisible(entry.isIntersecting);
+        },
+        {
+          root: null, // Using the viewport as the root
+          rootMargin: '200px',
+          threshold: 0.1, // Adjust this value if needed, from 0 to 1
+        }
+      );
+  
+      if (observerRef.current) {
+        observer.observe(observerRef.current);
+      }
+  
+      return () => {
+        if (observerRef.current) {
+          observer.unobserve(observerRef.current);
+        }
+      };
+    }, []);
+  
+    const sliderComponents = useMemo(()=>{
+        return props?.list.map((item, index) => {
+            const Component = componentMapping[props?.itemComponentName];
+            return (
+                <div key={index}>
+                    <Component ind={index} {...item} />
+                </div>
+            );
+        })
+    },[props?.list?.length]);
+
+
+    return (
+      <div ref={observerRef}>
+        { !isVisible 
+            ? sliderComponents
+            : <BlockHeroSlider1
+            isVisible={isVisible}
+             itemsNum={props?.itemsNum}
+             noShadow={props?.noShadow}
+             noInfiniti={props?.noInfiniti}
+             list={props?.list}
+             itemComponentName={props?.itemComponentName}
+             />
+        
+        }
+      </div>
+    );
+  };
+  
 export default BlockHeroSlider;

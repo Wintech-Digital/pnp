@@ -20,7 +20,7 @@ import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
 
 import {fetchApi, endpoints} from '@api/index';
 import AccordionContainer from '@components/accordion/AccordionContainer.astro';
-import ShowContent from '@components/ShowContetnt';
+// import ShowContent from '@components/ShowContetnt';
 
 const pageHomeSchema = await fetchApi({
     endpoint: endpoints.home,
@@ -56,7 +56,7 @@ const debug = false;
     </WithBottom>
 
     {debug && 1}
-    <div class="block sm:hidden">
+    <div class="block sm:hidden">        
         <BlockOfetas
             data={dataOfferSlider}
         />
@@ -86,13 +86,9 @@ const debug = false;
     />
 
     {debug && 6}
-    <ShowContent
-        client:load
-    >
-        <BlockBonus2
-            data={promotions}
-        />
-    </ShowContent>
+    <BlockBonus2
+        data={promotions}
+    />
 
     {debug && 7}
     <WithBottom>
