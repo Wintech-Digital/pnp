@@ -10,6 +10,20 @@ const {data} = Astro.props;
 const title = data?.title;
 const slides = data?.slides;
 const slidesList = [ slideimg1, slideimg2, slideimg3 ];
+const seoTitles = [
+    {
+        alt: 'vip bonus promoções',
+        title: ''
+    },
+    {
+        alt: 'presente special offer do casino pinup',
+        title: ''
+    },
+    {
+        alt: 'Oferta especial na roleta no casino Pin Up',
+        title: ''
+    },
+];
 const sliderList = slides.map((item,index) => {
     const text = item?.title || '';
     const link = item?.url || '';
@@ -17,7 +31,8 @@ const sliderList = slides.map((item,index) => {
     const picinfo = getFields(item?.coverImage?.data?.attributes);
     const pic = {
         url: slidesList[index].src,
-        alternativeText: picinfo.alternativeText,
+        alternativeText: seoTitles[index].alt,
+        title: seoTitles[index].title,
         w: 102,
         h: 136,
         format: '.svg'

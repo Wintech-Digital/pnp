@@ -33,6 +33,7 @@ const SliderItem = ({ ...props }) => {
               width={props.pic.w}
               height={props.pic.h}
               alt={props.pic.alternativeText}
+              title={props.pic.title}
             />
         </div> 
       </div>
