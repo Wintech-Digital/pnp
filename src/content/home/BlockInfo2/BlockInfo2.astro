@@ -7,6 +7,20 @@ import iconmonitor from '@assets/svg/monitor.svg';
 import iconapple from '@assets/svg/apple.svg';
 import iconandroid from '@assets/svg/android.svg';
 const iconList = [iconandroid, iconapple, iconmonitor];
+const seoTitles = [
+    {
+        alt: "Ícone do sistema operacional móvel Android",
+        title: "Ícone Android"
+    },
+    {
+        alt: "Ícone do sistema operacional móvel apple",
+        title: "Ícone Apple"
+    },
+    {
+        alt: "ícone de computador desktop e monitor",
+        title: "Ícone de Computador Desktop e Monitor"
+    },
+];
 
 const {data} = Astro.props;
 const appAdvantagesTitle = data?.appAdvantagesTitle;
@@ -23,7 +37,8 @@ const sliderList = appAdvantagesSlider.map((item, index) => {
             url: iconList[index].src,
             w: picinfo.w,
             h: picinfo.h,
-            alt:picinfo.alternativeText        
+            alt:picinfo.alternativeText,
+            title: seoTitles[index].title
         },
     })
 })

@@ -3,9 +3,12 @@ import RichText from "@components/richtext/RichText.astro";
 import TwoColomns50 from "@components/sections/TwoColomns50.astro";
 const {data} = Astro.props;
 const supportArticle = data?.supportArticle || [];
+const seoTitle = data?.seoTitle;
+
 const heading = supportArticle.filter(item=> item.type === 'heading');
 const paragraph = supportArticle.filter(item=> item.type === 'paragraph');
 const image = supportArticle.filter(item=> item.type === 'image');
+
 ---
 <RichText
     data={heading}
@@ -13,6 +16,7 @@ const image = supportArticle.filter(item=> item.type === 'image');
 <TwoColomns50>
     <RichText
         data={image}
+        seoTitle={seoTitle}
         slot="first-col"
     />
     <RichText

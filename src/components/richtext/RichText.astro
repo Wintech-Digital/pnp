@@ -4,7 +4,7 @@ import Heading from '@components/richtext/Heading/Heading.astro';
 import Paragraph from '@components/richtext/Paragraph/Paragraph.astro';
 import ImageBlock from '@components/richtext/ImageBlock/ImageBlock.astro';
 
-const {data, listBullet = null, classList = '', styles = null} = Astro.props;
+const {data, seoTitle = null, listBullet = null, classList = '', styles = null} = Astro.props;
 ---
 {
     data?.map(block => {
@@ -38,6 +38,7 @@ const {data, listBullet = null, classList = '', styles = null} = Astro.props;
                 return (
                     <ImageBlock
                         block={block}
+                        seoTitle={seoTitle}
                         styles={styles}
                     />
                 );

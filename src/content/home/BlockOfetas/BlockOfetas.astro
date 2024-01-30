@@ -28,7 +28,7 @@ const sliderList = slides.map((item,index) => {
     const text = item?.title || '';
     const link = item?.url || '';
     const description = item?.description || '';
-    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    // const picinfo = getFields(item?.coverImage?.data?.attributes);
     const pic = {
         url: slidesList[index].src,
         alternativeText: seoTitles[index].alt,

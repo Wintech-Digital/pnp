@@ -11,6 +11,24 @@ const {data} = Astro.props;
 const availablegamestitle = data?.availablegamestitle;
 const availablegameslist = data?.availablegameslist;
 const iconsList = [imgicon1, imgicon2, imgicon3, imgicon4];
+const seoTitles = [
+    {
+        alt: "número 777 em um slot que geralmente é considerado um símbolo de boa sorte e energia positiva",
+        title: "777: Símbolo de Boa Sorte em Slot"
+    },
+    {
+        alt: "Baralho de cartas",
+        title: "Baralho de Cartas"
+    },
+    {
+        alt: "vista superior dos jogos de mesa em um cassino",
+        title: "Vista Superior de Jogos de Mesa em Cassino"
+    },
+    {
+        alt: "novo ícone de jogos",
+        title: "Novo Ícone de Jogos"
+    },
+];
 
 ---
 <RichText
@@ -31,6 +49,7 @@ const iconsList = [imgicon1, imgicon2, imgicon3, imgicon4];
                                 height={picinfo.h}
                                 loading="lazy"
                                 alt={picinfo.alternativeText || ''} 
+                                title={seoTitles[index].title || ''} 
                                 class="z-10"
                             />
                             </div>

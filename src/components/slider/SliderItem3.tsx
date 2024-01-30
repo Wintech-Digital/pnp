@@ -20,6 +20,7 @@ const SliderItem3 = ({ text, description, pic, link = '#', ...props }) => {
           width={pic?.w}
           height={pic?.h}
           alt={pic?.alternativeText || ''}
+          title={pic?.title || ''}
           className="w-full"
         /> 
       </div> 

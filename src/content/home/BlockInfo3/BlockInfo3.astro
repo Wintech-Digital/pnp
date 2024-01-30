@@ -8,6 +8,24 @@ import slidericon4 from '@assets/images/slides/icons/information-circle.svg';
 import { getFields } from "@utils";
 
 const iconsList = [slidericon1, slidericon2, slidericon3, slidericon4];
+const seoTitle = [
+    {
+        alt: "curva de crescimento",
+        title: "Curva de Crescimento"
+    },
+    {
+        alt: "ícone de troféu ou vitória",
+        title: "Ícone de Troféu"
+    },
+    {
+        alt: "ícone de presente",
+        title: "Ícone de Presente"
+    },
+    {
+        alt: "ícone de informações",
+        title: "Ícone de Informações"
+    },
+];
 const {data} = Astro.props;
 const strategiesTitle = data?.strategiesTitle;
 const strategiesSlider = data?.strategiesSlider;
@@ -18,7 +36,8 @@ const sliderData = strategiesSlider.map((item, index) =>{
         description: item.description,
         pic: {
             url: iconsList[index].src,
-            alt: picinfo.alternativeText
+            alt: picinfo.alternativeText,
+            title: seoTitle[index].title,
         }
     });
 });

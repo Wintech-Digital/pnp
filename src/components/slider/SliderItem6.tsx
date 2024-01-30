@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import type { ImageMetadata } from "astro";
 
 interface Props {
   text: string;
@@ -21,6 +20,7 @@ const SliderItem6: FC<Props> = ({ text, pic, description }) => {
             width={pic.w}
             height={pic.h}
             alt={pic.alt}
+            title={pic.title}
             className="z-10"
           />
         </div>

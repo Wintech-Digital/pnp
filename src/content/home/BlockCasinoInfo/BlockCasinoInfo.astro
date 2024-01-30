@@ -17,19 +17,30 @@ const slide = data?.slide;
 const images = [
     slideImage1,
     slideImage2,
-    slideImage3,
-    slideImage1,
-    slideImage2,
-    slideImage3,
-]
-
+    slideImage3
+];
+const seoTitles = [
+    {
+        alt: 'caneta no ícone de papel',
+        title: 'Ícone de Papel com Caneta'
+    },
+    {
+        alt: 'ícone de estrela',
+        title: 'Ícone de Estrela'
+    },
+    {
+        alt: 'ícone de notas com lista de marcadores',
+        title: 'Ícone de Notas com Lista de Marcadores'
+    }
+];
 const infoData = slide?.map((item: any,index: any)=>{
-    const picinfo = getFields(item?.coverImage?.data?.attributes);
+    // const picinfo = getFields(item?.coverImage?.data?.attributes);
     return ({
         text: item.title,
-        pic: images[index],
         description: item.description,
-        alt: picinfo.alternativeText
+        pic: images[index],
+        alt: seoTitles[index].alt,
+        title: seoTitles[index].title
     })
 });
 
