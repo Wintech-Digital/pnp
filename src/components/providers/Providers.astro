@@ -6,22 +6,51 @@ import paypal from '@assets/svg/paypal.svg';
 import mastercard from '@assets/svg/mastercard.svg';
 import bitcoin from '@assets/svg/bitcoin.svg';
 import skrill from '@assets/svg/skrill.svg';
+import { Image } from 'astro:assets';
 const {data} = Astro.props;
 const slidesList = [neteller, visa, paypal, mastercard, bitcoin, skrill];
+const seoTitles = [
+    {
+        alt: 'logotipo da solução de pagamento mais popular da Neteller para jogadores de cassino que desejam depositar fundos em cassinos online',
+        title: 'Neteller: Solução de Pagamento para Depósitos em Cassinos Online'
+    },
+    {
+        alt: 'logotipo da solução de pagamento visa para jogadores de cassino que desejam depositar fundos em cassinos online',
+        title: 'Visa: Solução de Pagamento para Depósitos em Cassinos Online'
+    },
+    {
+        alt: 'logotipo da solução de pagamento paypal para jogadores de cassino que desejam depositar fundos em cassinos online',
+        title: 'PayPal: Solução de Pagamento para Depósitos em Cassinos Online'
+    },
+    {
+        alt: 'logotipo da solução de pagamento mastercard para jogadores de cassino que desejam depositar fundos em cassinos online',
+        title: 'Mastercard: Solução de Pagamento para Depósitos em Cassinos Online'
+    },
+    {
+        alt: 'logotipo da solução de pagamento bitcoin para jogadores de cassino que desejam depositar fundos em cassinos online',
+        title: 'Bitcoin: Solução de Pagamento para Depósitos em Cassinos Online'
+    },
+    {
+        alt: 'logotipo da solução de pagamento skrill para jogadores de cassino que desejam depositar fundos em cassinos online',
+        title: 'Skrill: Solução de Pagamento para Depósitos em Cassinos Online'
+    }
+];
 ---
 <div class="mt-6 grid gap-x-4 gap-y-4 grid-cols-2 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 lg:mx-0 lg:grid-cols-6">
     {data.map((item,index) => {
-    const picinfo = getFields(item?.coverImage?.data?.attributes);
+        const picinfo = getFields(item?.coverImage?.data?.attributes);
         return (
             <div class='flex justify-center items-center px-8 py-8 h-[120px] rounded-[24px] bg-pnp/[.05]'>
-                <img 
-                    src={slidesList[index].src}
+                <Image
+                    src={slidesList[index]}
                     width={picinfo.w}
                     height={picinfo.h}
+                    alt={seoTitles[index].alt}
+                    title={seoTitles[index].title}
                     loading="lazy"
-                    alt={picinfo.alternativeText || ''}
                 />
             </div>
         )
     })}
 </div>
+
