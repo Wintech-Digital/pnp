@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import SliderItem from '@components/slider/SliderItem';
@@ -59,18 +59,22 @@ const BlockHeroSlider = ({ itemsNum = 3, noShadow = false, noInfiniti = false, l
         }, 100);
     };
 
+    const sliderComponents = useMemo(()=>{
+        return list.map((item, index) => {
+            const Component = componentMapping[itemComponentName];
+            return (
+                <div key={index} className={`h-full ${!noShadow ? 'shadow-1' : ''} rounded-[24px]`}>
+                    <Component ind={index} {...item} />
+                </div>
+            );
+        })
+
+    },[list.length]);
+
+
     if (isMobile === undefined) {
         return null;
     }
-
-    const sliderComponents = list.map((item, index) => {
-        const Component = componentMapping[itemComponentName];
-        return (
-            <div key={index} className={`h-full ${!noShadow ? 'shadow-1' : ''} rounded-[24px]`}>
-                <Component ind={index} {...item} />
-            </div>
-        );
-    });
 
     // Carousel component with all configured props
     return (
