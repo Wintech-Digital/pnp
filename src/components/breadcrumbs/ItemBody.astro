@@ -1,4 +1,5 @@
 ---
+
 import Home from 'astro-heroicons/mini/Home.astro';
 import ChevronRight from 'astro-heroicons/mini/ChevronRight.astro';
 import { PageId, PageName } from '@constants';
@@ -11,12 +12,9 @@ interface Props {
 const { id, name } = Astro.props as Props;
 const modeName = id !== PageId.BONUS ? name : 'Bonus Do Pin Up Casino';
 ---
-<> 
-    { (id !== PageId.HOME) 
-        ? <ChevronRight class="h-[20px]"/> 
-        : <Home class="h-[20px]"/>
-    }
-    <span>
-        {modeName}
-    </span>
+<>  
+    <div class="flex items-center space-x-2">
+        {id === PageId.HOME ? <Home class="h-[20px]" /> : <ChevronRight class="h-[20px]" />}
+        <span>{modeName}</span>
+    </div>
 </>
