@@ -1,3 +1,5 @@
+import React from 'react';
+
 const sizes = {
   empty: '',
   xs: "text-[12px] px-[13px] py-[7px]",
@@ -13,12 +15,13 @@ const btnColors = {
   transparent: "bg-pnp/[.05] hover:bg-pnp/[.20] active:ring-pnp-white",
   info: "bg-pnp/[.03] hover:bg-pnp/[.10] active:ring-pnp-white",
 };
-const classN = ({ color, size = '', className }) => {
+
+const classN = ({ color, size = '', className = '' }) => {
   const btnBg = `${btnColors[color]}`;
   const sizeClasses = `${sizes[size]}`;
   const colorClasses = `${sizeClasses} ${btnBg}`;
 
-  return `transition-colors ease-in-out duration-300 text-center cursor-pointer rounded-full active:ring-2 active:ring-offset-2 ${sizeClasses} ${colorClasses} ${className}`;
+  return `transition-colors ease-in-out duration-300 text-center cursor-pointer rounded-full active:ring-2 active:ring-offset-2 ${colorClasses} ${className}`;
 };
 
 type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
@@ -34,59 +37,30 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const _DEFAULT = 'https://try.pi1pur.com/C3wx7K';
 const getLink = (param) => {
   if(param && param !== '#'){
     return param;
   }
-  return _DEFAULT;
 }
 
-const ButtonRounded = ({ ...props }: Props) => {
-  const { size, color, title, details, className, ...rest } = props;
-  if(rest.link){
-    if(color === 'info'){
-      return(
-        <a
-          href={getLink(rest.link)}
-          rel="nofollow"
-          className={`${classN({ size: 'empty', color, className })} inline-flex flex-col justify-center border border-pnp/[.1] px-6 pb-2 sm:py-0 my-0`}
-        >
-            <span className="text-pnp-grey20 text-14-24-600 text-nowrap">{title}</span>
-            { details && 
-              <span className="text-pnp text-24-24-700 text-nowrap">{details}</span>
-            }
-            {rest?.children &&
-              <span className="text-pnp">{rest?.children}</span>
-            }
-        </a>
-      )
-    }
-    return (
-      <a
-        href={getLink(rest.link)}
-        rel="nofollow"
-        className={classN({ size, color, className })}
-      >
-        <span className="text-pnp text-nowrap">{title}</span>
-        { details && 
-          <span className="text-pnp text-24-36-700">{details}</span>
-        }
-        {rest?.children &&
-          <span className="text-pnp">{rest?.children}</span>
-        }
-      </a>
-    )
-  }
+const ButtonRounded = (props: Props) => {
+  const { size, color, title, details, className = '', link, children } = props;
+  
+  // Make sure the link is retrieved safely
+  const targetLink = getLink(link);
+
+  // Ensuring targetLink is a string before calling .includes()
+  const relValue = typeof targetLink === 'string' && targetLink.includes("click.pinupcasinobonus.com.br") ? "nofollow" : undefined;
+
   return (
     <a
+      href={targetLink} // This should always be a string now
+      rel={relValue}
       className={classN({ size, color, className })}
-      href={getLink(rest.link)}
-      rel="nofollow"
     >
-
       <span className="text-pnp text-nowrap">{title}</span>
-      {rest?.children && <span className="text-pnp">{rest?.children}</span>}
+      {details && <span className="text-pnp text-24-36-700">{details}</span>}
+      {children && <span className="text-pnp">{children}</span>}
     </a>
   );
 };
