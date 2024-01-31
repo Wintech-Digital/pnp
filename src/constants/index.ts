@@ -1,5 +1,5 @@
 export const BASE_URL = '/';
-export const SLOTS_URL = '/slots';
+export const SLOTS_URL = '/slots/';
 export const TERMS_URL = '/terms';
 export const STRAPI_URL = 'https://strapi.wtech.co';
 
@@ -73,53 +73,53 @@ export const pagePreferencies = {
     [PageId.PAGE_404]: {
         id: PageId.PAGE_404,
         name: PageName.PAGE_404,
-        url: `${BASE_URL}/404`
+        url: `${BASE_URL}/404/`
     },
     [PageId.APP]: {
         id: PageId.APP,
         name: PageName.APP,
-        url: `${BASE_URL}${PageId.APP}`
+        url: `${BASE_URL}${PageId.APP}/`
     },
     [PageId.AVIATOR]: {
         id: PageId.AVIATOR,
         name: PageName.AVIATOR,
-        url: `${BASE_URL}${PageId.AVIATOR}`
+        url: `${BASE_URL}${PageId.AVIATOR}/`
     }, 
     [PageId.BET]: {
         id: PageId.BET,
         name: PageName.BET,
-        url: `${BASE_URL}${PageId.BET}`
+        url: `${BASE_URL}${PageId.BET}/`
     },
     [PageId.BONUS]: {
         id: PageId.BONUS,
         name: PageName.BONUS,
-        url: `${BASE_URL}${PageId.BONUS}`
+        url: `${BASE_URL}${PageId.BONUS}/`
     }, 
     [PageId.TERMS]: {
         id: PageId.TERMS,
         name: PageName.TERMS,
-        url: `${TERMS_URL}`
+        url: `${TERMS_URL}/`
     }, 
     [PageId.RESPONSIBLE_GAMBLING]: {
         id: PageId.RESPONSIBLE_GAMBLING,
         name: PageName.RESPONSIBLE_GAMBLING,
-        url: `${TERMS_URL}#termmos`
+        url: `${TERMS_URL}/#termmos`
     }, 
     [PageId.SUPPORT]: {
         id: PageId.SUPPORT,
         name: PageName.SUPPORT,
-        url: `${TERMS_URL}#centralDeAjuda`
+        url: `${TERMS_URL}/#centralDeAjuda`
     },
     
     [PageId.PAYMENTS] : {
         id: PageId.PAYMENTS,
         name: PageName.PAYMENTS,
-        url: `${TERMS_URL}#termmos`
+        url: `${TERMS_URL}/#termmos`
     },
     [PageId.CONTACTS] : {
         id: PageId.CONTACTS,
         name: PageName.CONTACTS,
-        url: `${TERMS_URL}#contacts`
+        url: `${TERMS_URL}/#contacts`
     },
     [PageId.SLOTS]: {
         id: PageId.SLOTS,
@@ -130,69 +130,69 @@ export const pagePreferencies = {
     [PageId.SUN_OF_EGYPT] : {
         id: PageId.SUN_OF_EGYPT,
         name: PageName.SUN_OF_EGYPT,
-        url: `${SLOTS_URL}/${PageId.SUN_OF_EGYPT}`
+        url: `${SLOTS_URL}/${PageId.SUN_OF_EGYPT}/`
     },
     [PageId.HIT_2021] : {
         id: PageId.HIT_2021,
         name: PageName.HIT_2021,
-        url: `${SLOTS_URL}/${PageId.HIT_2021}`
+        url: `${SLOTS_URL}/${PageId.HIT_2021}/`
     },
     [PageId.JOKER_WIN] : {
         id: PageId.JOKER_WIN,
         name: PageName.JOKER_WIN,
-        url: `${SLOTS_URL}/${PageId.JOKER_WIN}`
+        url: `${SLOTS_URL}/${PageId.JOKER_WIN}/`
     },
     [PageId.FRUITY_REELS] : {
         id: PageId.FRUITY_REELS,
         name: PageName.FRUITY_REELS,
-        url: `${SLOTS_URL}/${PageId.FRUITY_REELS}`
+        url: `${SLOTS_URL}/${PageId.FRUITY_REELS}/`
     },
     [PageId.BOOK_OF_CHAMPION] : {
         id: PageId.BOOK_OF_CHAMPION,
         name: PageName.BOOK_OF_CHAMPION,
-        url: `${SLOTS_URL}/${PageId.BOOK_OF_CHAMPION}`
+        url: `${SLOTS_URL}/${PageId.BOOK_OF_CHAMPION}/`
     },
 
     [PageId.HELL_HOT] : {
         id: PageId.HELL_HOT,
         name: PageName.HELL_HOT,
-        url: `${SLOTS_URL}/${PageId.HELL_HOT}`
+        url: `${SLOTS_URL}/${PageId.HELL_HOT}/`
     },
     [PageId.DEMI_GOD_2] : {
         id: PageId.DEMI_GOD_2,
         name: PageName.DEMI_GOD_2,
-        url: `${SLOTS_URL}/${PageId.DEMI_GOD_2}`
+        url: `${SLOTS_URL}/${PageId.DEMI_GOD_2}/`
     },
     [PageId.GATES_OF_OLYMPUS] : {
         id: PageId.GATES_OF_OLYMPUS,
         name: PageName.GATES_OF_OLYMPUS,
-        url: `${SLOTS_URL}/${PageId.GATES_OF_OLYMPUS}`
+        url: `${SLOTS_URL}/${PageId.GATES_OF_OLYMPUS}/`
     },
     [PageId.LEPRECHAUN_RICHES] : {
         id: PageId.LEPRECHAUN_RICHES,
         name: PageName.LEPRECHAUN_RICHES,
-        url: `${SLOTS_URL}/${PageId.LEPRECHAUN_RICHES}`
+        url: `${SLOTS_URL}/${PageId.LEPRECHAUN_RICHES}/`
     },
     [PageId.MAJESTIC_KING] : {
         id: PageId.MAJESTIC_KING,
         name: PageName.MAJESTIC_KING,
-        url: `${SLOTS_URL}/${PageId.MAJESTIC_KING}`
+        url: `${SLOTS_URL}/${PageId.MAJESTIC_KING}/`
     },
     [PageId.WOLF_STRIKE] : {
         id: PageId.WOLF_STRIKE,
         name: PageName.WOLF_STRIKE,
-        url: `${SLOTS_URL}/${PageId.WOLF_STRIKE}`
+        url: `${SLOTS_URL}/${PageId.WOLF_STRIKE}/`
     },
     [PageId.HOT_FRUITS] : {
         id: PageId.HOT_FRUITS,
         name: PageName.HOT_FRUITS,
-        url: `${SLOTS_URL}/${PageId.HOT_FRUITS}`
+        url: `${SLOTS_URL}/${PageId.HOT_FRUITS}/`
 
     },
     [PageId.COINS_9] : {
         id: PageId.COINS_9,
         name: PageName.COINS_9,
-        url: `${SLOTS_URL}/${PageId.COINS_9}`
+        url: `${SLOTS_URL}/${PageId.COINS_9}/`
     },
 };
 

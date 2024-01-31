@@ -13,7 +13,7 @@ const Hovered = ({ id, menu, name, icon }) => {
   const listData = menu[id].map((item) => {
     return {
       slug: item.slug,
-      url: `/${id}/${item.slug}`,
+      url: `/${id}/${item.slug}/`,
       name: item.name,
     };
   });
