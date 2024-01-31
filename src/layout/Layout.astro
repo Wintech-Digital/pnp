@@ -4,28 +4,28 @@ import Footer from '@components/footer/Footer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import { ViewTransitions } from 'astro:transitions';
 import { endpoints, fetchApi } from '@api/index';
-import { SEO } from "astro-seo";
+// import { SEO } from "astro-seo";
 
-const {
-	seo = null,
-} = Astro.props;
+// const {
+// 	seo = null,
+// } = Astro.props;
 
 const controls = await fetchApi({ endpoint: endpoints.controls });
 const dataControls = controls['data']?.attributes;
 
-function getSeoData(seoData, key){
-	if(seoData === null) return null;
-	if(!seoData.length) return null;
+// function getSeoData(seoData, key){
+// 	if(seoData === null) return null;
+// 	if(!seoData.length) return null;
 
-	return seoData[0][`${key}`];
-}
+// 	return seoData[0][`${key}`];
+// }
 
-const isNoIndex = getSeoData(seo, 'noindex');
-const isNoFollow = getSeoData(seo, 'nofollow');
-const isMetaData = getSeoData( seo, 'metaData');
-const isStructuredData = getSeoData(seo, 'structuredData');
-const noindex = isNoIndex !== null ? isNoIndex : true;
-const nofollow = isNoFollow !== null ? isNoFollow : true;
+// const isNoIndex = getSeoData(seo, 'noindex');
+// const isNoFollow = getSeoData(seo, 'nofollow');
+// const isMetaData = getSeoData( seo, 'metaData');
+// const isStructuredData = getSeoData(seo, 'structuredData');
+// const noindex = isNoIndex !== null ? isNoIndex : true;
+// const nofollow = isNoFollow !== null ? isNoFollow : true;
 
 ---
 <html lang="pt" class="w-full bg-pnp-card-bg">
@@ -33,20 +33,20 @@ const nofollow = isNoFollow !== null ? isNoFollow : true;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		{isStructuredData &&
+		<!-- {isStructuredData &&
 			isStructuredData.map(item => {
 				const jsonLd = JSON.stringify(item.structuredItem);
 				return <script type="application/ld+json" set:html={jsonLd}></script>
 			}) 
-		}
+		} -->
 
-		{isMetaData && 
+		<!-- {isMetaData && 
 			<SEO 
 				noindex = {noindex}
 				nofollow = {nofollow}
 				{...isMetaData}
 			/>
-		}
+		} -->
 
 		<link
 			rel="icon"
