@@ -1,0 +1,135 @@
+---
+import { endpoints, fetchApi } from '@api/index';
+import { getSlotsBySlug } from '@api/endpoint';
+import Layout from '@layout/Layout.astro';
+import WithBottom from '@components/spaces/WithBottom.astro';
+import SlotBonus from '@content/slot/SlotBonus.astro';
+import SlotDetailsArticle from '@content/slot/SlotDetailsArticle.astro';
+import SlotArticle from '@content/slot/SlotArticle.astro';
+import GenerateText from '@components/richtext/GenerateText/GenerateText.astro';
+import AccordionContainer from '@components/accordion/AccordionContainer.astro';
+import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
+import RichText from '@components/richtext/RichText.astro';
+import SlotHero from "@content/slot/SlotHero.astro";
+import BannerAviator from '@components/banner/BannerAviator.astro';
+
+export async function getStaticPaths() {
+  const pageSlots = await fetchApi({ endpoint: endpoints.slots });
+  return pageSlots['data']?.map(item=> {
+    return ({
+      params: { slot: item.attributes.slug },
+      props: { name: item.attributes.name }
+    })
+  })
+}
+
+const { slot } = Astro.params;
+const pageSlotData = await fetchApi({ endpoint: getSlotsBySlug(slot) });
+const pageSlotSchema = pageSlotData['data']?.find(item => item.attributes.slug === slot);
+const pageBlocks = pageSlotSchema?.attributes;
+const dataHero = pageBlocks?.hero;
+const dataOfferSlider = pageBlocks?.slotsSlider;
+const dataArticleMain = pageBlocks?.articleMain;
+const dataArticleList = pageBlocks?.articleList;
+const dataBonusSlider = pageBlocks?.bonusSlider;
+const dataBonusList = pageBlocks?.bonusList;
+const dataBlackRiderArticle = pageBlocks?.blackRiderArticle;
+const dataBanner = pageBlocks?.banner;
+const faqData = pageBlocks?.faqBlock;
+const dataSeo = pageBlocks?.seo;
+const debug = false;
+
+---
+<Layout seo={dataSeo}>
+  { dataHero &&
+      <WithBottom>
+        <SlotHero data={dataHero}/>
+      </WithBottom>
+  }
+
+  {debug && 1}
+  { dataOfferSlider &&
+        <BlockOfetas
+          data={dataOfferSlider}
+        />
+  }
+
+  {debug && 2}
+  {dataArticleMain && 
+    <WithBottom>
+      <SlotArticle
+        data={dataArticleMain}
+      />
+    </WithBottom>
+  }
+
+  {debug && 3}
+  { (!!dataArticleList?.length) && 
+        dataArticleList.map(article => { 
+            return (
+                <GenerateText
+                    data = {article}
+                    blockStyle={'mb-4'}
+                    textStyle={{
+                      h3: 'my-4',
+                    }}
+                />
+            )
+        })
+    }
+
+  {debug && 4}
+  {dataBonusSlider &&
+    <SlotBonus
+      data={dataBonusSlider}
+    />
+  }
+
+  {debug && 5}
+    {!!dataBonusList?.length && 
+    <WithBottom>
+      <section class="bg-pnp/[.03] border border-pnp/[.1] rounded-[24px] sm:rounded-[30px] px-[24px] py-[24px] sm:px-[32px] sm:py-[32px] bg-gradient-to-bl from-pnp-red/[.4] to-50% ">
+        <ul class=" grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-700 lg:max-w-none lg:grid-cols-3">
+            { dataBonusList.map(item =>{
+              return (
+                  <li>
+                    <RichText
+                        data={item.descrition}
+                        styles={{
+                          h3: '!text-24-26-700 mb-4 text-pnp',
+                          paragraph: '!text-16-24-400 text-pnp-grey20'
+                        }}
+                    />
+                  </li>
+              )
+            })}
+        </ul>
+      </section>
+    </WithBottom>
+  }
+
+  {debug && 6}
+  {dataBlackRiderArticle && 
+      <SlotDetailsArticle
+          data={dataBlackRiderArticle}
+      />
+  }
+
+  {debug && 7}
+  {dataBanner && 
+    <WithBottom>
+      <BannerAviator
+            data={dataBanner}
+        />
+    </WithBottom>
+  }
+  
+  {debug && 8}
+  {faqData &&
+    <WithBottom>
+      <AccordionContainer
+          data={faqData}
+      />
+    </WithBottom>
+  }
+</Layout>

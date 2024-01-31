@@ -1,0 +1,71 @@
+---
+import Layout from '@layout/Layout.astro';
+import MobAppHero from '@content/mobileApp/hero/MobAppHero.astro';
+import MobAppInfoList from '@content/mobileApp/MobAppInfoList.astro';
+import MobAppInfoArticle from '@content/mobileApp/MobAppInfoArticle.astro';
+import MobAppInfoSlider1 from '@content/mobileApp/infoSliders/MobAppInfoSlider1.astro';
+import MobAppInfoSlider2 from '@content/mobileApp/infoSliders/MobAppInfoSlider2.astro';
+import MobAppLinks from '@content/mobileApp/MobAppLinks/MobAppLinks.astro';
+import WithBottom from '@components/spaces/WithBottom.astro';
+import { endpoints, fetchApi } from '@api/index';
+const pageAppSchema = await fetchApi({
+    endpoint: endpoints.app,
+});
+const pageAttributes = pageAppSchema['data']?.attributes;
+
+const dataAppHero = pageAttributes?.hero;
+const appSlider = pageAttributes?.appSlider;
+const appSlider2 = pageAttributes?.appSlider2;
+const appArticle = pageAttributes?.appArticle;
+const appBenefits = pageAttributes?.appBenefits;
+const cardTitle = pageAttributes?.cardTitle;
+const card = pageAttributes?.card;
+const dataSeo = pageAttributes?.seo;
+
+const { appSliderTitle, appSliderItem } = appSlider;
+const { appSliderTitle: slider2Title, appSliderItem: slider2Data } = appSlider2;
+const debug = false;
+
+---
+<Layout seo={dataSeo}>
+    <WithBottom>
+        <MobAppHero
+            data={dataAppHero}
+        />
+    </WithBottom>
+    {debug && 1}
+    <WithBottom>
+        <MobAppInfoSlider1
+            sliderTitle = {appSliderTitle}
+            sliderData={appSliderItem}
+        />
+    </WithBottom>
+
+    {debug && 2}
+    <WithBottom>
+        <MobAppInfoArticle
+            data = {appArticle}
+        />
+    </WithBottom>
+
+    {debug && 3}
+    <WithBottom>
+        <MobAppInfoList
+            data={appBenefits}
+        />
+    </WithBottom>
+
+    {debug && 4}
+    <MobAppInfoSlider2
+        sliderTitle = {slider2Title}
+        sliderData = {slider2Data}
+    />
+
+    {debug && 5}
+    <WithBottom>
+        <MobAppLinks
+            cardTitle={cardTitle}
+            data={card}
+        />
+    </WithBottom>
+</Layout>

@@ -1,22 +1,22 @@
 ---
 import Layout from '@layout/Layout.astro';
-// import Hero from '@components/hero/Hero.astro';
-// import Section from '@components/accordion/AccordionSection.astro';
-// import WithBottom from '@components/spaces/WithBottom.astro';
-// import BannerItem1 from "@components/banner/BannerItem1.astro";
-// import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
-// import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
-// import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
-// import BlockCasinoInfo from '@content/home/BlockCasinoInfo/BlockCasinoInfo.astro';
-// import BlockBonus from '@content/home/BlockBonus/BlockBonus.astro';
-// import BlockBonus2 from '@content/home/BlockBonus2/BlockBonus2.astro';
-// import BlockCasinoInfo2 from '@content/home/BlockCasinoInfo2/BlockCasinoInfo2.astro';
-// import BlockCasinoProviders from '@content/home/BlockCasinoProviders/BlockCasinoProviders.astro';
-// import BlockList from '@content/home/BlockList/BlockList.astro';
-// import BlockSuporte from '@content/home/BlockSuporte/BlockSuporte.astro';
-// import BlockInfo2 from '@content/home/BlockInfo2/BlockInfo2.astro';
-// import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
-// import AccordionContainer from '@components/accordion/AccordionContainer.astro';
+import Hero from '@components/hero/Hero.astro';
+import Section from '@components/accordion/AccordionSection.astro';
+import WithBottom from '@components/spaces/WithBottom.astro';
+import BannerItem1 from "@components/banner/BannerItem1.astro";
+import BlockOfetas from '@content/home/BlockOfetas/BlockOfetas.astro';
+import BlockSlotsList from '@content/home/BlockSlotsList/BlockSlotsList.astro';
+import BlockConciseFormat from '@content/home/BlockConciseFormat/BlockConciseFormat.astro';
+import BlockCasinoInfo from '@content/home/BlockCasinoInfo/BlockCasinoInfo.astro';
+import BlockBonus from '@content/home/BlockBonus/BlockBonus.astro';
+import BlockBonus2 from '@content/home/BlockBonus2/BlockBonus2.astro';
+import BlockCasinoInfo2 from '@content/home/BlockCasinoInfo2/BlockCasinoInfo2.astro';
+import BlockCasinoProviders from '@content/home/BlockCasinoProviders/BlockCasinoProviders.astro';
+import BlockList from '@content/home/BlockList/BlockList.astro';
+import BlockSuporte from '@content/home/BlockSuporte/BlockSuporte.astro';
+import BlockInfo2 from '@content/home/BlockInfo2/BlockInfo2.astro';
+import BlockInfo3 from '@content/home/BlockInfo3/BlockInfo3.astro';
+import AccordionContainer from '@components/accordion/AccordionContainer.astro';
 
 import {fetchApi, endpoints} from '@api/index';
 
@@ -25,30 +25,29 @@ const pageHomeSchema = await fetchApi({
 });
 const pageAttributes = pageHomeSchema['data']?.attributes;
 
-// const dataHero = pageAttributes?.hero;
-// const dataOfferSlider = pageAttributes?.offerSlider;
-// const dataSlotsList = pageAttributes?.slotsList;
-// const articleAnalises = pageAttributes?.analisesArticle;
-// const slider2 = pageAttributes?.slider2;
-// const bonuses = pageAttributes?.bonusSlider;
-// const bonusDescription = pageAttributes?.bonusDescription;
-// const promotions = pageAttributes?.promotions;
-// const guide = pageAttributes?.guide;
-// const payment = pageAttributes?.payment;
-// const availablegames = pageAttributes?.availablegames;
-// const appadvantages = pageAttributes?.appadvantages;
-// const banner = pageAttributes?.banner;
-// const strategies = pageAttributes?.strategies;
-// const support = pageAttributes?.support;
-// const infoSection = pageAttributes?.infoSection;
-// const faqData = pageAttributes?.faqBlock;
-// const debug = false;
+const dataHero = pageAttributes?.hero;
+const dataOfferSlider = pageAttributes?.offerSlider;
+const dataSlotsList = pageAttributes?.slotsList;
+const articleAnalises = pageAttributes?.analisesArticle;
+const slider2 = pageAttributes?.slider2;
+const bonuses = pageAttributes?.bonusSlider;
+const bonusDescription = pageAttributes?.bonusDescription;
+const promotions = pageAttributes?.promotions;
+const guide = pageAttributes?.guide;
+const payment = pageAttributes?.payment;
+const availablegames = pageAttributes?.availablegames;
+const appadvantages = pageAttributes?.appadvantages;
+const banner = pageAttributes?.banner;
+const strategies = pageAttributes?.strategies;
+const support = pageAttributes?.support;
+const infoSection = pageAttributes?.infoSection;
+const faqData = pageAttributes?.faqBlock;
+const debug = false;
 const dataSeo = pageAttributes?.seo;
 
 ---
 <Layout seo={dataSeo}>
-    HOME
-    <!-- <WithBottom>
+    <WithBottom>
         <Hero
             data={dataHero}
             mobileTopSpace="-mt-[25px]"
@@ -148,5 +147,5 @@ const dataSeo = pageAttributes?.seo;
         <AccordionContainer
             data={faqData}
         />
-    </WithBottom> -->
+    </WithBottom>
 </Layout>

@@ -1,0 +1,197 @@
+---
+import { Image } from "astro:assets";
+import Layout from '@layout/Layout.astro';
+import Hero from '@components/hero/Hero.astro';
+import AviatorSlider from '@content/aviator/AviatorSlider.astro';
+import BannerAviator from "@components/banner/BannerAviator.astro";
+import WithBottom from '@components/spaces/WithBottom.astro';
+import ButtonRounded from '@components/buttons/ButtonRounded';
+import TwoColomns from '@components/sections/TwoColomns.astro';
+import RichText from '@components/richtext/RichText.astro';
+import TwoColomns50 from '@components/sections/TwoColomns50.astro';
+import {fetchApi, endpoints} from '@api/index';
+import AccordionContainer from "@components/accordion/AccordionContainer.astro";
+
+const pageAviatorSchema = await fetchApi({
+    endpoint: endpoints.aviator,
+});
+const pageAttributes = pageAviatorSchema['data']?.attributes;
+const dataHero = pageAttributes?.hero;
+const dataArticle1 = pageAttributes?.aviatorArticle1;
+const dataArticle2 = pageAttributes?.aviatorArticle2;
+const dataArticle3 = pageAttributes?.aviatorArticle3;
+const sliderItems = pageAttributes?.aviatorSlider;
+const aviatorBanner = pageAttributes?.aviatorBanner;
+const faqData = pageAttributes?.faqBlock;
+const dataSeo = pageAttributes?.seo;
+
+const textArticle1 = dataArticle1.aviatorArticleContent.filter(item=>item.type!=='image');
+const imgArticle1 = dataArticle1.aviatorArticleContent.find(item=>item.type==='image');
+
+const textArticle2 = dataArticle2.aviatorArticleContent.filter(item=>item.type!=='image');
+const imgArticle2 = dataArticle2.aviatorArticleContent.find(item=>item.type==='image');
+
+const textArticle3 = dataArticle3.aviatorArticleContent.filter(item=>item.type!=='image');
+const imgArticle3 = dataArticle3.aviatorArticleContent.find(item=>item.type==='image');
+const debug = false;
+
+---
+<Layout seo={dataSeo}>
+    <WithBottom>
+        <Hero
+            data={dataHero}
+            mobileTopSpace="-mt-[100px]"
+        />
+        <!-- <AviatorHero/> -->
+    </WithBottom>
+    {debug && 1}
+    <WithBottom>
+        <RichText
+            data={dataArticle1.aviatorArticleTitle}
+            styles={{
+                h2: 'mb-10',
+            }}
+        />
+        <TwoColomns>
+            <div slot="first-col">
+                <RichText
+                    data={textArticle1}
+                    styles={{
+                        h3: 'mb-2',
+                        paragraph: 'mb-2' 
+                    }}
+                />
+            </div>
+            {imgArticle1 &&
+            <Image
+                src={imgArticle1.image.url}
+                width={400}
+                height={ 200}
+                format='webp'
+                alt={imgArticle1.image.alternativeText}
+                slot="second-col"
+                class={'w-full sm:max-h-[200px] border border-pnp/[.1] rounded-[24px]'}
+            />}
+            <div class="flex justify-center sm:justify-start" slot="action">
+                <ButtonRounded
+                    size="xl"
+                    color={dataArticle1.aviatorArticleBtn.type || 'red'}
+                    title={dataArticle1.aviatorArticleBtn.name || 'Jogue agora'}
+                    link={dataArticle1.aviatorArticleBtn.link || '#'}
+                    className="w-full sm:w-auto"
+                />
+            </div>
+        </TwoColomns>
+    </WithBottom>
+    {debug && 2}
+    <WithBottom>
+        <RichText
+            data={dataArticle2.aviatorArticleTitle}
+            styles={{
+                h2: 'mb-10',
+            }}
+        />
+        <TwoColomns50 stretch reverse>
+            <div slot="first-col">
+                <RichText
+                    data={textArticle2}
+                    styles={{
+                        h3: 'mb-2',
+                        paragraph: 'mb-2' 
+                    }}
+                />
+                <div class="flex justify-center sm:justify-start mt-10" slot="action">
+                    <ButtonRounded
+                        size="xl"
+                        color={dataArticle2.aviatorArticleBtn.type || 'red'}
+                        title={dataArticle2.aviatorArticleBtn.name || 'Jogue agora'}
+                        link={dataArticle2.aviatorArticleBtn.link || '#'}
+                        className="w-full sm:w-auto"
+                    />
+                </div>
+            </div>
+
+            {imgArticle2 && 
+            <Image
+                src={imgArticle2.image.url}
+                width={400}
+                height={ 200}
+                format='webp'
+                alt={imgArticle2.image.alternativeText}
+                slot="second-col"
+                class={'w-full border border-pnp/[.1] rounded-[40px]'}
+            />}
+        </TwoColomns50>
+    </WithBottom>
+
+    {debug && 2.1}
+    <WithBottom>
+        <RichText
+            data={dataArticle3.aviatorArticleTitle}
+            styles={{
+                h2: 'mb-10',
+                list: 'my-4'
+            }}
+        />
+    </WithBottom>
+
+
+    {debug && 3}
+    <WithBottom>
+        <TwoColomns50 stretch>
+            <div slot="second-col">
+                <RichText
+                    data={textArticle3}
+                    listBullet="checked"
+                    styles={{
+                        h3: 'mb-2',
+                        paragraph: 'mb-2' 
+                    }}
+
+                />
+                <div class="flex justify-center sm:justify-start mt-10" slot="action">
+                    <ButtonRounded
+                        size="xl"
+                        color={dataArticle3.aviatorArticleBtn.type || 'red'}
+                        title={dataArticle3.aviatorArticleBtn.name || 'Jogue agora'}
+                        link={dataArticle3.aviatorArticleBtn.link || '#'}
+                        className="w-full sm:w-auto"
+                    />
+                </div>
+
+            </div>
+
+            { imgArticle3 &&
+             <Image
+                src={imgArticle3.image.url}
+                width={400}
+                height={ 200}
+                format='webp'
+                alt={imgArticle3.image.alternativeText}
+                slot="first-col"
+                class={'w-full border border-pnp/[.1] rounded-[40px]'}
+            />}
+        </TwoColomns50>
+    </div>
+    </WithBottom>
+
+    {debug && 4}
+    <AviatorSlider
+        data={sliderItems}
+    />
+
+    {debug && 5}
+    <WithBottom>
+        <BannerAviator
+            data={aviatorBanner}
+        />
+    </WithBottom>
+
+    {debug && 6}
+    <WithBottom>
+        <AccordionContainer
+            data={faqData}
+        />
+    </WithBottom>
+</Layout>
+

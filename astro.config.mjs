@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   output: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   site: 'https://pinupcasinobonus.com.br',
   integrations: [
     react(),

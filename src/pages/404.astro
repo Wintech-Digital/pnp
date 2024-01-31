@@ -1,0 +1,63 @@
+---
+import HeroContainer from "@components/hero/bonus/BonusHeroContainer.astro";
+import ButtonRounded from "@components/buttons/ButtonRounded";
+import WithBottom from "@components/spaces/WithBottom.astro";
+import Layout from "@layout/Layout.astro";
+import hero404M from '@assets/images/hero/hero404M.png';
+import hero404D from '@assets/images/hero/hero404D.png';
+import heroDefaultM from '@assets/images/hero/hero-default-mobile.png';
+import { getImage } from "astro:assets";
+
+const hero404MBg = await getImage({src: hero404M, format: 'webp'})
+const hero404DBg = await getImage({src: hero404D, format: 'webp'})
+const heroDefaultMBg = await getImage({src: heroDefaultM, format: 'webp'})
+
+const metaData404 = [{metaData:{
+	title: "404 - Página não encontrada.",
+    canonical: 'https://pinupcasinobonus.com.br/404/',
+	description : "Esta página não foi localizada ou foi removida ᐉ Dirija-se à página inicial."
+}}];
+
+---
+<Layout seo={metaData404}>
+    <WithBottom>
+        404
+    <!-- <HeroContainer
+        pictures={[
+            { 
+                url: heroDefaultMBg.src,
+                w: heroDefaultMBg.attributes.width,
+                h: heroDefaultMBg.attributes.height,
+                alternativeText: ''
+            },
+            { 
+                url: hero404DBg.src,
+                w: hero404DBg.attributes.width,
+                h: hero404DBg.attributes.height,
+                alternativeText: ''
+            },
+            { 
+                url: hero404MBg.src,
+                w: hero404MBg.attributes.width,
+                h: hero404MBg.attributes.height,
+                alternativeText: ''
+            },
+        ]}
+        title={'404'}
+        description={'Essa página não existe ou foi removida.'}
+        textTopSpaceMobile={'-mt-[450px]'}
+        textBoxWidth={"w-full sm:w-[53%]"}
+    >
+        <div class={`flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0`} slot="btn-box">
+            <ButtonRounded
+                size="xl"
+                color={'red'}
+                title={'Ir para a página principal'}
+                link={'/'}
+                className={`w-full sm:w-auto flex flex-row text-center justify-center z-50`}
+            />
+        </div>
+    </HeroContainer> -->
+</WithBottom>
+
+</Layout>
