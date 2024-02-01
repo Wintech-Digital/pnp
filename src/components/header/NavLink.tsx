@@ -39,7 +39,7 @@ const MobileNavButton = ({ isOpen, name, icon }) => (
   <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-grey30 hover:text-pnp hover:bg-[#06BA9F]/[.2]">
     <div className="flex flex-row space-x-2 items-center">
       {icon}
-      <a href="/slots">
+      <a href="/slots/">
         {name}
       </a>
       <ChevronDownIcon
