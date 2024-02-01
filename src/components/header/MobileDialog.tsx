@@ -56,7 +56,7 @@ const MobileDialog = ({ isOpen, handlerToggle, nestedMenu, logoLink }) => {
                                       <Disclosure.Button
                                         key={i.slug}
                                         as="a"
-                                        href={`/${id}/${i.slug}/`}
+                                        href={`/${id}/${i.slug}`}
                                         className="flex flex-row rounded-lg py-2 pl-[60px] pr-3 text-sm font-semibold leading-7 text-grey30 hover:text-pnp hover:bg-[#06BA9F]/[.2]"
                                       >
                                         {i.name}

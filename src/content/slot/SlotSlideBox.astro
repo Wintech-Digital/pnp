@@ -11,27 +11,24 @@ const coverImage = data?.coverImage || {
     w: 0,
     h: 0,
     url: '',
-    format: '.webp',
     alternativeText: '',
 };
 const buttons = data?.buttons || [];
+
+console.log('data', data)
 ---
 <div class={`bg-pnp/[.03] border border-pnp/[.1] shadow-2xl gradient-red rounded-[24px] sm:rounded-[32px] overflow-hidden flex flex-col justify-between`}>
     <a href={`${slug}/`} class="">
-        { coverImage?.format !== '.webp' 
-            ? <Image
+        { coverImage && 
+            <Image
                 src={coverImage?.url}
                 width={coverImage?.w}
                 height={coverImage?.h}
                 loading="lazy"
                 alt={coverImage?.alternativeText}
-                class={`w-full`} />
-            : <img
-                width={coverImage?.w}
-                height={coverImage?.h}
-                src={coverImage?.url}
-                alt={coverImage?.alternativeText}
-                class="" />
+                title={data?.coverSeo?.title || ''}
+                class={`w-full`}
+            />
         }
     </a>
     <div class="py-4 sm:py-4 px-4 sm:px-6 flex flex-col gap-4 justify-between h-full">
