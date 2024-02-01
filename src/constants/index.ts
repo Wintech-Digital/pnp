@@ -1,7 +1,7 @@
 export const BASE_URL = '/';
 export const SLOTS_URL = '/slots/';
 export const TERMS_URL = '/terms';
-export const STRAPI_URL = 'https://strapi.wtech.co';
+export const STRAPI_URL = 'https://content.pinupcasinobonus.com.br';
 
 export enum PageId {
     PAGE_404 = '404',
