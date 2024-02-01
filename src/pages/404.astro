@@ -12,52 +12,66 @@ const hero404MBg = await getImage({src: hero404M, format: 'webp'})
 const hero404DBg = await getImage({src: hero404D, format: 'webp'})
 const heroDefaultMBg = await getImage({src: heroDefaultM, format: 'webp'})
 
-const metaData404 = [{metaData:{
-	title: "404 - Página não encontrada.",
-    canonical: 'https://pinupcasinobonus.com.br/404/',
-	description : "Esta página não foi localizada ou foi removida ᐉ Dirija-se à página inicial."
-}}];
+const metaData404 = [{
+    noindex: true,
+    nofollow: true,
+    metaData:{
+ 	    title: "404 - Página não encontrada.",
+        canonical: 'https://pinupcasinobonus.com.br/404/',
+	    description : "Esta página não foi localizada ou foi removida ᐉ Dirija-se à página inicial."
+    }
+}];
 
+const coverSeo = {
+        card:{
+            alt: 'Placa grande com o número 404 e garota vintage pin-up ao lado de um arcade exibindo uma mensagem de erro 404.',
+            title: 'Grande letreiro com o número 404 e Mulher com visual pin-up sentada ao lado de um jogo eletrônico que apresenta um erro 404.'
+        },
+        mobile: {
+            alt: 'fundo verde gradiente',
+            title: 'Fundo Verde Gradiente'
+        },
+        desktop:{
+            alt: 'Mulher no estilo pin-up sentada ao lado de uma máquina caça-níqueis que exibe um erro 404.',
+            title: 'Jovem no estilo retrô pin-up junto a um fliperama que mostra um erro 404.'
+        }
+    }
 ---
 <Layout seo={metaData404}>
     <WithBottom>
-        404
-    <!-- <HeroContainer
-        pictures={[
-            { 
-                url: heroDefaultMBg.src,
-                w: heroDefaultMBg.attributes.width,
-                h: heroDefaultMBg.attributes.height,
-                alternativeText: ''
-            },
-            { 
-                url: hero404DBg.src,
-                w: hero404DBg.attributes.width,
-                h: hero404DBg.attributes.height,
-                alternativeText: ''
-            },
-            { 
-                url: hero404MBg.src,
-                w: hero404MBg.attributes.width,
-                h: hero404MBg.attributes.height,
-                alternativeText: ''
-            },
-        ]}
-        title={'404'}
-        description={'Essa página não existe ou foi removida.'}
-        textTopSpaceMobile={'-mt-[450px]'}
-        textBoxWidth={"w-full sm:w-[53%]"}
-    >
-        <div class={`flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0`} slot="btn-box">
-            <ButtonRounded
-                size="xl"
-                color={'red'}
-                title={'Ir para a página principal'}
-                link={'/'}
-                className={`w-full sm:w-auto flex flex-row text-center justify-center z-50`}
-            />
-        </div>
-    </HeroContainer> -->
-</WithBottom>
-
+        <HeroContainer
+        coverSeo={coverSeo}
+            pictures={[
+                { 
+                    url: heroDefaultMBg.src,
+                    w: heroDefaultMBg.attributes.width,
+                    h: heroDefaultMBg.attributes.height,
+                },
+                { 
+                    url: hero404DBg.src,
+                    w: hero404DBg.attributes.width,
+                    h: hero404DBg.attributes.height,
+                },
+                { 
+                    url: hero404MBg.src,
+                    w: hero404MBg.attributes.width,
+                    h: hero404MBg.attributes.height,
+                },
+            ]}
+            title={'404'}
+            description={'Essa página não existe ou foi removida.'}
+            textTopSpaceMobile={'-mt-[450px]'}
+            textBoxWidth={"w-full sm:w-[53%]"}
+        >
+            <div class={`flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0`} slot="btn-box">
+                <ButtonRounded
+                    size="xl"
+                    color={'red'}
+                    title={'Ir para a página principal'}
+                    link={'/'}
+                    className={`w-full sm:w-auto flex flex-row text-center justify-center z-50`}
+                />
+            </div>
+        </HeroContainer>
+    </WithBottom>
 </Layout>
